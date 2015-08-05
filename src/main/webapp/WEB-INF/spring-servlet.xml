@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		
+    <!-- importamos el fichero de configuración para los servicios -->
+	<import resource="spring/services.xml"></import>
+	
+	<context:annotation-config />
+
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.myrecommended" />
+	
+	<mvc:resources mapping="/static/**" location="/static/" />
+	<mvc:resources mapping="/templates/**" location="/WEB-INF/views/angular-templates/" />
+	
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="caseSensitive" value="true" />
+	</bean>
+
+	<!-- Resolucion de la parte de vista por parte del DispatcherServlet -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="1" />
+	</bean>
+	
+	<bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+        p:location="/WEB-INF/properties/jdbc-local.properties" />
+	
+	<!-- Tratamiento de Base de datos -->
+	<bean id="dataSource"
+	    class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	    <property name="driverClass" value="${jdbc.driverClassName}" />
+        <property name="jdbcUrl" value="${jdbc.databaseurl}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+
+	    <property name="idleConnectionTestPeriod" value="14400"/>
+    	<property name="preferredTestQuery" value="select 1"/>
+	</bean>
+	
+	<!-- App Settings -->
+	<!-- <util:properties id="configProps" location="classpath:config.properties" />-->
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="configLocation">
+	        <value>classpath:hibernate.cfg.xml</value>
+	    </property>
+	    <property name="configurationClass">
+	        <value>org.hibernate.cfg.AnnotationConfiguration</value>
+	    </property>
+	    <property name="hibernateProperties">
+	        <props>
+	            <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+	            <prop key="hibernate.show_sql">true</prop>
+	        </props>
+	    </property>
+	</bean>
+	
+	<tx:annotation-driven />
+	
+    <bean id="transactionManager"
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="mapper" class="org.dozer.DozerBeanMapper">
+	  <property name="mappingFiles">
+	    <list>
+	    	<value>dtoMappings/category-mapping.xml</value>
+	    	<value>dtoMappings/fullcategory-mapping.xml</value>
+	    	<value>dtoMappings/loggeduser-mapping.xml</value>
+	    	<value>dtoMappings/petition-mapping.xml</value>
+	    	<value>dtoMappings/recommended-mapping.xml</value>
+	    	<value>dtoMappings/user-mapping.xml</value>
+	    </list>
+	  </property>
+	</bean> 
+</beans>

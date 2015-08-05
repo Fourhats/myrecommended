@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.myrecommended.models.User" />
+        <mapping class="com.myrecommended.models.Role" />
+        <mapping class="com.myrecommended.models.Recommended" />
+        <mapping class="com.myrecommended.models.Category" />
+        <mapping class="com.myrecommended.models.Answer" />
+        <mapping class="com.myrecommended.models.Question" />
+        <mapping class="com.myrecommended.models.QuestionableObject" />
+        <mapping class="com.myrecommended.models.Petition" />
+        <mapping class="com.myrecommended.models.CategoryKeyword" />
+    </session-factory>
+         
+</hibernate-configuration>

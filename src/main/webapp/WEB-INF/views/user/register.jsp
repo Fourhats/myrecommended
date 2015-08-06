@@ -5,7 +5,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Mis Recomendados</title>
 	<%@ include file="../partials/styles.jsp" %>
-	
 </head>
 
 <body data-ng-controller="registerUserController">
@@ -125,4 +124,6 @@
 	    fjs.parentNode.insertBefore(js, fjs);
 	  }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<%@ include file="../partials/footerScritps.jsp" %>
 </html>

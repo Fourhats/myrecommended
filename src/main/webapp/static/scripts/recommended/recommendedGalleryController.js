@@ -1,5 +1,7 @@
 myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, $document) {
 	$scope.categories = categories;
+	
+	setCategoryImages(recommendedPage.elements);
 	$scope.recommendedPage = recommendedPage;
 	
 	$scope.selectedCategories = [];
@@ -14,6 +16,8 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 		
 		$http.get(getCompletePath("recommended/" + ($scope.recommendedPage.pageIndex + 1) + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
 		.success(function (newRecommendedPage) {
+			setCategoryImages(newRecommendedPage.elements);
+			
 			$scope.recommendedPage.pageIndex++;
 			$scope.recommendedPage.elements = $scope.recommendedPage.elements.concat(newRecommendedPage.elements);
 			$scope.recommendedPage.totalItems = newRecommendedPage.totalItems;
@@ -41,6 +45,15 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	
 	$scope.getRecommendedImage = function(recommended) {
 		return getCompletePath('/static/images/defaultImages/' + recommended.categories[0].name + '.png');
+	};
+	
+	function setCategoryImages(newRecommended) {
+		angular.forEach(newRecommended, function(aRecommended, key) {
+			aRecommended.recommendedCategoriesImages = [];
+			angular.forEach(aRecommended.categories, function(category, key) {
+				category.image = getCompletePath('/static/images/defaultImages/' + category.name + '.png');
+			});
+		});
 	};
 	
 	function onScroll() {

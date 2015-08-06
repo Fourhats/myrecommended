@@ -38,27 +38,9 @@
 						</div>
 						
 						<div data-ng-repeat="recommended in recommendedPage.elements">
-							<!-- <div class="col-sm-4 ">
-								<div class="single-item">
-									<div class="single-item-header">
-										<a href="product.html"><img data-ng-src="{{getRecommendedImage(recommended)}}" alt=""></a>
-									</div>
-									<div class="single-item-body">
-										<p class="single-item-title" data-ng-bind="recommended.name"></p>
-										<p class="single-item-price">
-										</p>
-									</div>
-									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-arrow-right"></i></a>
-										<a class="beta-btn primary" href="product.html">Conocelo!</a>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>-->
-							
 							<div class="row listRow">
 								<div class="col-md-2">
-									<img class="rowThumbnail" data-ng-src="{{getRecommendedImage(recommended)}}" alt="" />
+									<img class="rowThumbnail" data-ng-src="{{recommended.categories[0].image}}" alt="" />
 								</div>
 								<div class="col-md-6" style="  padding-top: 20px;">
 									<h4 data-ng-bind="recommended.name"></h4>
@@ -66,48 +48,23 @@
 								</div>
 								<div class="col-md-2">
 									<div class="rating">
-										<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></br>
+										<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+										<br>
 										(15 reviews positivos)
 									</div>
 								</div>
-								<div class="col-md-2" style="  padding-top: 20px;">
-								<img class="rowBadge" src="static/images/badges/constructor.png" title="Constructor"/>
+								<div class="col-md-2" style="padding-top: 20px;">
+								<img class="rowBadge" data-ng-repeat="category in recommended.categories" data-ng-src="{{category.image}}" data-ng-attr-title="{{category.name}}"/>
+								
+								<!--<img class="rowBadge" src="static/images/badges/constructor.png" title="Constructor"/>
 								<img class="rowBadge" src="static/images/badges/electricista.png" title="Electricista"/>
 								<img class="rowBadge" src="static/images/badges/gasista.png" title="Gasista"/>
 								<img class="rowBadge" src="static/images/badges/jardinero.png" title="Jardinero"/>
-								<img class="rowBadge" src="static/images/badges/pintor.png" title="Pintor"/>
+								<img class="rowBadge" src="static/images/badges/pintor.png" title="Pintor"/>-->
 								</div>
 							</div>
-							
-							<!-- <div class="row listRow">
-								<div class="col-md-2">
-									<img class="rowThumbnail" src="static/images/defaultImages/constructor.png" />
-								</div>
-								<div class="col-md-6" style="  padding-top: 20px;">
-									<h4>Gasista profesional, el mejor</h4>
-									<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
-								</div>
-								<div class="col-md-2">
-									<div class="rating">
-										<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></br>
-										(15 reviews positivos)
-									</div>
-								</div>
-								<div class="col-md-2" style="  padding-top: 20px;">
-								<img class="rowBadge" src="static/images/badges/constructor.png" title="Constructor"/>
-								<img class="rowBadge" src="static/images/badges/electricista.png" title="Electricista"/>
-								<img class="rowBadge" src="static/images/badges/gasista.png" title="Gasista"/>
-								<img class="rowBadge" src="static/images/badges/jardinero.png" title="Jardinero"/>
-								<img class="rowBadge" src="static/images/badges/pintor.png" title="Pintor"/>
-								</div>
-							</div> -->
 						</div>
-						
-						
-						
 					</div>
-					 
-
 					<div class="space50">&nbsp;</div>
 					
 				</div> <!-- .main-content -->
@@ -118,7 +75,7 @@
 						<div class="widget-body">
 							<ul class="list-unstyled">
 								<li data-ng-repeat="category in categories">
-									<input type="checkbox" data-ng-checked="selectedCategories.indexOf(category.id) > -1" ng-click="toggleCategorySelection(category.id)" id="category-{{category.name}}" value="{{category.id}}">
+									<input type="checkbox" data-ng-checked="selectedCategories.indexOf(category.id) > -1" data-ng-click="toggleCategorySelection(category.id)" id="category-{{category.name}}" value="{{category.id}}">
 									<label for="category-{{category.name}}"><span></span><span data-ng-bind="category.name"></span></label>
 								</li>
 							</ul>

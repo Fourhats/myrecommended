@@ -9,6 +9,11 @@
     <class-b>com.myrecommended.services.recommended.dtos.RecommendedDTO</class-b>
       
       <field>
+		<a>id</a>
+      	<b>id</b>
+      </field>
+      
+      <field>
         <a>user</a>
         <b>user</b>
       </field>

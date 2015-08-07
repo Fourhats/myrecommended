@@ -1,7 +1,6 @@
 myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, $document) {
 	$scope.categories = categories;
 	
-	setCategoryImages(recommendedPage.elements);
 	$scope.recommendedPage = recommendedPage;
 	
 	$scope.selectedCategories = [];
@@ -42,9 +41,9 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	    $scope.recommendedPage.elements = [];
 	    $scope.getMoreRecommendeds();
 	};
-	
-	$scope.getRecommendedImage = function(recommended) {
-		return getCompletePath('/static/images/defaultImages/' + recommended.categories[0].name + '.png');
+
+	$scope.goToRecommendedDetail = function(recommended) {
+		redirect("recomendado/" + recommended.id + "/" + recommended.name);
 	};
 	
 	function setCategoryImages(newRecommended) {
@@ -65,5 +64,7 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
         }
     };
 
+	setCategoryImages(recommendedPage.elements);
+	
     $document.bind('scroll', onScroll);
 });

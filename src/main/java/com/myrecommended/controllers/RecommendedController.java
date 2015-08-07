@@ -46,8 +46,11 @@ public class RecommendedController {
 		return "recommended/recommendedGallery";
     }
 	
-	@RequestMapping(value="/recomendado")
-    public String singleRecommended(Model model) {
+	@RequestMapping(value="/recomendado/{recommendedId}/{recommendedName}")
+    public String singleRecommended(@PathVariable long recommendedId, @PathVariable String recommendedName, Model model) {
+		Gson gson = new Gson();
+		
+		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId)));
 		return "singleRecommended";
     }
 }

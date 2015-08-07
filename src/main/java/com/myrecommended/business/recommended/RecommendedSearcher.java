@@ -26,4 +26,8 @@ public class RecommendedSearcher {
 	public Page<Recommended> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {
 		return this.recommendedDao.getRecommendedsPageByKeyword(pageIndex, pageSize, recommendedKey);
 	}
+
+	public Recommended getRecommendedById(long recommendedId) {
+		return this.recommendedDao.getById(recommendedId);
+	}
 }

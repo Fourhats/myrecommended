@@ -7,6 +7,8 @@ import com.myrecommended.services.users.dtos.UserDTO;
 
 public class RecommendedDTO {
 
+	private Long id;
+	
 	private String error;
 	
 	private UserDTO user;
@@ -17,6 +19,14 @@ public class RecommendedDTO {
 	
 	private List<CategoryDTO> categories;
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getError() {
 		return error;
 	}

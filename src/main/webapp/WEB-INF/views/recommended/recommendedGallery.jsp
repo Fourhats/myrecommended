@@ -42,8 +42,8 @@
 								<div class="col-md-2">
 									<img class="rowThumbnail" data-ng-src="{{recommended.categories[0].image}}" alt="" />
 								</div>
-								<div class="col-md-6" style="  padding-top: 20px;">
-									<h4 data-ng-bind="recommended.name"></h4>
+								<div class="col-md-6" style="padding-top: 20px;">
+									<h4 data-ng-bind="recommended.name" data-ng-click="goToRecommendedDetail(recommended)"></h4>
 									<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
 								</div>
 								<div class="col-md-2">
@@ -54,13 +54,10 @@
 									</div>
 								</div>
 								<div class="col-md-2" style="padding-top: 20px;">
-								<img class="rowBadge" data-ng-repeat="category in recommended.categories" data-ng-src="{{category.image}}" data-ng-attr-title="{{category.name}}"/>
-								
-								<!--<img class="rowBadge" src="static/images/badges/constructor.png" title="Constructor"/>
-								<img class="rowBadge" src="static/images/badges/electricista.png" title="Electricista"/>
-								<img class="rowBadge" src="static/images/badges/gasista.png" title="Gasista"/>
-								<img class="rowBadge" src="static/images/badges/jardinero.png" title="Jardinero"/>
-								<img class="rowBadge" src="static/images/badges/pintor.png" title="Pintor"/>-->
+									<img class="rowBadge" 
+										data-ng-repeat="category in recommended.categories" 
+										data-ng-src="{{category.image}}" 
+										data-ng-attr-title="{{category.name}}"/>
 								</div>
 							</div>
 						</div>

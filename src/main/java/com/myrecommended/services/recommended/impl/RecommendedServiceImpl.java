@@ -40,4 +40,9 @@ public class RecommendedServiceImpl implements RecommendedService {
 		Page<Recommended> recommededsPage = this.recommendedSearcher.getRecommendedsPageByKeyword(pageIndex, pageSize, recommendedKey);
 		return MapperUtil.map(mapper, recommededsPage, RecommendedDTO.class);
 	}
+
+	public RecommendedDTO getRecommendedById(long recommendedId) {
+		Recommended recommeded = this.recommendedSearcher.getRecommendedById(recommendedId);
+		return MapperUtil.map(mapper, recommeded, RecommendedDTO.class);
+	}
 }

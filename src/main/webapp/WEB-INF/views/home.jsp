@@ -80,8 +80,9 @@
 
 		<div class="space50">&nbsp;</div>
 		<div class="container">
-			<h2 class="text-center wow fadeInDown">Algunos de los trabajos
-				realizados recientemente</h2>
+			<h2 class="text-center wow fadeInDown">
+				Algunos de los trabajos realizados recientemente
+			</h2>
 		</div>
 		<div class="space30">&nbsp;</div>
 
@@ -91,28 +92,30 @@
 					<div class="portfolioitems-holder">
 						<ul id="portfolioitems"
 							class="isotope beta-filter-body four_up tiles latest-works">
-							<li class="isotope-item web"><a
-								href="single_type_image.html" class="beta-block">
+							<li class="isotope-item web">
+								<a href="single_type_image.html" class="beta-block">
 									<div class="beta-block-over over-a">
 										<div class="over-details">
 											<h5 class="over-title">Pintura en habitación</h5>
 											<p class="over-date">25 de Diciembre 2014</p>
 										</div>
 										<span class="over-more"><i class="fa fa-plus"></i></span>
-									</div> <img class="over-img-active" src="static/images/pintor.jpg"
-									alt="">
-							</a></li>
-							<li class="isotope-item photography web"><a
-								href="single_type_image.html" class="beta-block">
+									</div> 
+									<img class="over-img-active" src="static/images/pintor.jpg" alt="">
+								</a>
+							</li>
+							<li class="isotope-item photography web">
+								<a href="single_type_image.html" class="beta-block">
 									<div class="beta-block-over over-a">
 										<div class="over-details">
 											<h5 class="over-title">Reparación de fuga</h5>
 											<p class="over-date">14 de Enero 2015</p>
 										</div>
 										<span class="over-more"><i class="fa fa-plus"></i></span>
-									</div> <img class="over-img-active" src="static/images/gasista.jpg"
-									alt="">
-							</a></li>
+									</div>
+									<img class="over-img-active" src="static/images/gasista.jpg" alt="">
+								</a>
+							</li>
 							<li class="isotope-item photography web illustrations"><a
 								href="single_type_image.html" class="beta-block">
 									<div class="beta-block-over over-a">

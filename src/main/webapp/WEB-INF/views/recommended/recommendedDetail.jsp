@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <html data-ng-app="myRecommendedApp">
 <head>
-	<%@ include file="partials/styles.jsp"%>
+	<%@ include file="../partials/styles.jsp"%>
 	<title>Mis Recomendados</title>
 	<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
 </head>
 <body data-ng-controller="recommendedDetailController">
-	<%@ include file="partials/header.jsp"%>
+	<%@ include file="../partials/header.jsp"%>
 	
 	<div class="container">
 		<div id="content">
@@ -181,10 +181,10 @@
 		</div> <!-- #content -->
 	</div> <!-- .container -->
 
-	<%@ include file="partials/footer.jsp"%>
+	<%@ include file="../partials/footer.jsp"%>
 </body>
 
-<%@ include file="partials/scripts.jsp"%>
+<%@ include file="../partials/scripts.jsp"%>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script> <!-- 16 KB -->
 <script>
 	var recommended = <%= request.getAttribute("recommended") %>;
@@ -192,5 +192,5 @@
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/recommended/recommendedDetailController.js"></script>
 
-<%@ include file="partials/footerScritps.jsp" %>
+<%@ include file="../partials/footerScritps.jsp" %>
 </html>

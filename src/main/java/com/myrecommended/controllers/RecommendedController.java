@@ -51,6 +51,6 @@ public class RecommendedController {
 		Gson gson = new Gson();
 		
 		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId)));
-		return "singleRecommended";
+		return "recommended/recommendedDetail";
     }
 }

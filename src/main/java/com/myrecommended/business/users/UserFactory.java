@@ -20,7 +20,8 @@ public class UserFactory {
 		Role role = this.roleDao.findByName("ROLE_USER");
 		
 		return new User(userDto.getEmail(), true, userDto.getUsername(), 
-				userDto.getPassword(), userDto.getName(), userDto.getSurname(), userDto.getSignInProvider(), userDto.getProviderId(), role);
+				userDto.getPassword(), userDto.getName(), userDto.getSurname(), 
+				userDto.getSignInProvider(), userDto.getProviderId(), userDto.getAvatarPath(), role);
 	}
 
 	public User Create(com.restfb.types.User fbUser) {
@@ -28,6 +29,7 @@ public class UserFactory {
 		String password = UUID.randomUUID().toString();
 		
 		return new User(fbUser.getEmail(), true, fbUser.getEmail(), 
-				password, fbUser.getFirstName(), fbUser.getLastName(), "FACEBOOK", fbUser.getId(), role);
+				password, fbUser.getFirstName(), fbUser.getLastName(), 
+				"FACEBOOK", fbUser.getId(), "", role);//TODO: VER FACEBOOK image PATH
 	}
 }

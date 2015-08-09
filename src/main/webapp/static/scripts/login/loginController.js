@@ -1,4 +1,4 @@
-myRecommendedApp.controller('registerUserController', function ($scope, $http) {
+myRecommendedApp.controller('registerUserController', function ($scope, $http, FileUploader) {
 	$scope.registerUser = function() {
 		if ($scope.registrationForm.$valid) {
 			$scope.sendRegisterUser();
@@ -75,4 +75,26 @@ myRecommendedApp.controller('registerUserController', function ($scope, $http) {
 		  }
 		}, {scope: 'public_profile,email'});
 	};
+	
+	//UPLOADER
+	var uploader = $scope.uploader = new FileUploader({
+        url: getCompletePath("image/uploadAvatar")
+    });
+	
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
+    uploader.autoUpload = true;
+    
+    uploader.onCompleteItem = function(item, response, status, headers) {
+    	$scope.newUser.avatarPath = response.name;
+    };
+    
+    uploader.onErrorItem = function(item, response, status, headers) {
+    	alert("Ha ocurrido un problema. Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb");
+    };
 });

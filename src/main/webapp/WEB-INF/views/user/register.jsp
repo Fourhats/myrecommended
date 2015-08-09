@@ -80,6 +80,17 @@
 							</label>
 							<input class="form-control" data-ng-readonly="newUser.signInProvider == 'FACEBOOK'" data-ng-show="newUser.signInProvider != 'FACEBOOK'" name="password" required maxlength="100" data-ng-minlength="5" placeholder="Contraseña" type="password" tabindex="8" data-ng-model="newUser.password"/>
 						</div>
+						<div>
+							<h1>borrar</h1>
+							<input type="file" nv-file-select="" uploader="uploader"/><br/>
+							<div data-ng-repeat="item in uploader.queue">
+                                <div data-ng-show="$last">
+                                    <strong>{{ item.file.name }}</strong>
+                                    <div data-ng-show="uploader.isHTML5" data-ng-thumb="{ file: item._file, height: 100 }"></div>
+                                </div>
+                            </div>
+						</div>
+						
 						<div class="form-block">
 							<button type="submit" class="beta-btn beta-btn-3d beta-btn-dodger beta-btn-small" data-ng-disabled="registrationForm.$invalid" tabindex="9">
 								Registrar <i class="fa fa-chevron-right"></i>
@@ -97,9 +108,13 @@
 </body>
 
 <%@ include file="../partials/scripts.jsp"%>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/js/angularjs/imageUploader/angular-file-upload.min.js"></script>
+
 <script>
-	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap']);
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload']);
 </script>
+
+<script type="text/javascript" src="<%=scriptPageContext%>/static/js/angularjs/imageUploader/ngThumbDirective.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/login/loginController.js"></script>
 <script>
 	window.fbAsyncInit = function() {

@@ -7,10 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,17 +29,17 @@ import com.myrecommended.services.utils.ImageInfo;
 @RequestMapping("/image")
 public class UploadImageController {
 
+	@Value("#{configProps}")
+	private Properties properties;
+	
 	private final String SMALL_IMAGE_FOLDER = "small";
 	private final String MEDIUM_IMAGE_FOLDER = "medium";
 	private final String LARGE_IMAGE_FOLDER = "large";
 	private final String ORIGINAL_IMAGE_FOLDER = "originals";
 	
-	private final String ORIGINAL_TEMP_FOLDER = "originals";
-	
 	@RequestMapping(value="/uploadAvatar", method=RequestMethod.POST)
 	public @ResponseBody UploadedFile uploadAvatar(@RequestParam("file") MultipartFile file) throws Exception{
-		//String avatarPath = properties.getProperty("folder.avatar");
-		String avatarPath = "C:/myRecommendedImages/avatars/";
+		String avatarPath = properties.getProperty("folder.avatar");
 		
 		BufferedImage imageSrc = null;
 		List<ImageInfo> imagesInfo = new ArrayList<ImageInfo>();
@@ -65,13 +67,13 @@ public class UploadImageController {
 		String extension = FilenameUtils.getExtension(generatedFileName);
 		String newFileName = generatedFileName.replace("." + extension, ".jpg");
 		
-		String originalImgPath = FileHelper.getFullPath(tempPath, ORIGINAL_TEMP_FOLDER, generatedFileName);
-		String convertedImgPath = FileHelper.getFullPath(tempPath, ORIGINAL_TEMP_FOLDER, newFileName);
+		String originalImgPath = FileHelper.getFullPath(tempPath, ORIGINAL_IMAGE_FOLDER, generatedFileName);
+		String convertedImgPath = FileHelper.getFullPath(tempPath, ORIGINAL_IMAGE_FOLDER, newFileName);
 		
 		//copia la imagen original en la carpeta temp.
 		FileCopyUtils.copy(file.getBytes(), new FileOutputStream(originalImgPath));
 		
-		boolean isJpg = extension.equals("jpeg") || extension.equals("jpg");
+		boolean isJpg = extension.toLowerCase().equals("jpeg") || extension.toLowerCase().equals("jpg");
 		if(!isJpg){
 			//convierte la imagen a jpg.
 			FileHelper.convertToJPG(originalImgPath, convertedImgPath);
@@ -81,7 +83,7 @@ public class UploadImageController {
 		byte[] compressedImageBytes = FileHelper.compress(isJpg ? originalImgPath : convertedImgPath, 0.2f);
 		
 		FileHelper.generateImages2(compressedImageBytes, tempPath, newFileName, imagesInfo);
-		FileCopyUtils.copy(compressedImageBytes, new FileOutputStream(new File(tempPath, newFileName).getAbsolutePath()));
+		//FileCopyUtils.copy(compressedImageBytes, new FileOutputStream(new File(tempPath, newFileName).getAbsolutePath()));
 		
 		return new UploadedFile(newFileName);
 	}

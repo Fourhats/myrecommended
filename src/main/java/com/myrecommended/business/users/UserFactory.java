@@ -21,7 +21,7 @@ public class UserFactory {
 		
 		return new User(userDto.getEmail(), true, userDto.getUsername(), 
 				userDto.getPassword(), userDto.getName(), userDto.getSurname(), 
-				userDto.getSignInProvider(), userDto.getProviderId(), userDto.getAvatarPath(), role);
+				userDto.getSignInProvider(), userDto.getProviderId(), userDto.getAvatarName(), role);
 	}
 
 	public User Create(com.restfb.types.User fbUser) {

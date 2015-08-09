@@ -17,7 +17,7 @@ public class User extends PersistibleEntity {
 	public User() {
 	}
 	
-	public User(String email, boolean enable, String username, String password, String name, String surname, String signInProvider, String providerId, String avatarPath, Role role) {
+	public User(String email, boolean enable, String username, String password, String name, String surname, String signInProvider, String providerId, String avatarName, Role role) {
 		this.email = email;
 		this.enable = enable;
 		this.username = username;
@@ -27,7 +27,7 @@ public class User extends PersistibleEntity {
 		this.signInProvider = signInProvider;
 		this.providerId = providerId;
 		this.role = role;
-		this.avatarPath = avatarPath;
+		this.avatarName = avatarName;
 		this.creationDate = new Date();
 	}
 	
@@ -58,8 +58,8 @@ public class User extends PersistibleEntity {
 	@Column(name="creationDate")
 	public Date creationDate;
 	
-	@Column(name="avatarPath")
-	private String avatarPath;
+	@Column(name="avatarName")
+	private String avatarName;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name="user_roles",
@@ -148,11 +148,11 @@ public class User extends PersistibleEntity {
 		this.creationDate = creationDate;
 	}
 
-	public String getAvatarPath() {
-		return avatarPath;
+	public String getAvatarName() {
+		return avatarName;
 	}
 
-	public void setAvatarPath(String avatarPath) {
-		this.avatarPath = avatarPath;
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
 	}
 }

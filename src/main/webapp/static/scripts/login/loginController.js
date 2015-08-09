@@ -91,10 +91,13 @@ myRecommendedApp.controller('registerUserController', function ($scope, $http, F
     uploader.autoUpload = true;
     
     uploader.onCompleteItem = function(item, response, status, headers) {
-    	$scope.newUser.avatarPath = response.name;
+    	$scope.newUser.avatarName = response.name;
     };
     
     uploader.onErrorItem = function(item, response, status, headers) {
+    	uploader.cleanQueue();
     	alert("Ha ocurrido un problema. Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb");
     };
+    
+    $scope.defaultAvatarPath = getImagePath('avatarThumb', "defaultAvatar.jpg", "small");
 });

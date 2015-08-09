@@ -81,13 +81,15 @@
 							<input class="form-control" data-ng-readonly="newUser.signInProvider == 'FACEBOOK'" data-ng-show="newUser.signInProvider != 'FACEBOOK'" name="password" required maxlength="100" data-ng-minlength="5" placeholder="Contraseña" type="password" tabindex="8" data-ng-model="newUser.password"/>
 						</div>
 						<div>
-							<h1>borrar</h1>
 							<input type="file" nv-file-select="" uploader="uploader"/><br/>
 							<div data-ng-repeat="item in uploader.queue">
                                 <div data-ng-show="$last">
                                     <strong>{{ item.file.name }}</strong>
                                     <div data-ng-show="uploader.isHTML5" data-ng-thumb="{ file: item._file, height: 100 }"></div>
                                 </div>
+                            </div>
+                            <div data-ng-show="uploader.queue.length == 0">
+                                <img data-ng-src="{{defaultAvatarPath}}" style="height: 100px"/>
                             </div>
 						</div>
 						

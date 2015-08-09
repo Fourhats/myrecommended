@@ -16,7 +16,7 @@ public class UserRequestDTO {
 	
 	private String providerId;
 	
-	private String avatarPath;
+	private String avatarName;
 
 	public String getEmail() {
 		return email;
@@ -74,11 +74,11 @@ public class UserRequestDTO {
 		this.providerId = providerId;
 	}
 
-	public String getAvatarPath() {
-		return avatarPath;
+	public String getAvatarName() {
+		return avatarName;
 	}
 
-	public void setAvatarPath(String avatarPath) {
-		this.avatarPath = avatarPath;
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
 	}
 }

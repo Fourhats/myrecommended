@@ -11,7 +11,7 @@
 		<div class="homeHero">
 			<div class="col-sm-10 .col-md-offset-4" style="margin-left: 10%;">
 				<div class="col-lg-6 textContent">
-					<span class="heroTitle">Mis Recomendados</span>
+					<span class="heroTitle">Recomendados</span>
 					<p>La mejor manera de contratar servicios y recomendarlos ;)</p>
 					<br />
 					<button type="submit" class="beta-btn beta-btn-3d beta-btn-dodger beta-btn-small" data-ng-disabled="loginForm.$invalid" tabindex="3">

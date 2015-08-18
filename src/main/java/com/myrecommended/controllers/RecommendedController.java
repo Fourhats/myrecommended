@@ -22,7 +22,7 @@ public class RecommendedController {
 	private RecommendedService recommendedService;
 	
 	@RequestMapping(value="/pedilo")
-    public String request(Model model) {
+    public String goToPedilo(Model model) {
 		Gson gson = new Gson();
 		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
 		return "recommended/petition";
@@ -36,7 +36,7 @@ public class RecommendedController {
     }
 	
 	@RequestMapping(value="/recomendados")
-    public String recommended(Model model) {
+    public String goToRecomendados(Model model) {
 		Gson gson = new Gson();
 		
 		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
@@ -45,7 +45,7 @@ public class RecommendedController {
     }
 	
 	@RequestMapping(value="/recomendados/{recommendedKey}")
-    public String recommended(@PathVariable String recommendedKey, Model model) {
+    public String goToRecomendadosSearch(@PathVariable String recommendedKey, Model model) {
 		Gson gson = new Gson();
 		
 		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
@@ -54,7 +54,7 @@ public class RecommendedController {
     }
 	
 	@RequestMapping(value="/recomendado/{recommendedId}/{recommendedName}")
-    public String singleRecommended(@PathVariable long recommendedId, @PathVariable String recommendedName, Model model) {
+    public String goToRecomendadosDetail(@PathVariable long recommendedId, @PathVariable String recommendedName, Model model) {
 		Gson gson = new Gson();
 		
 		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId)));

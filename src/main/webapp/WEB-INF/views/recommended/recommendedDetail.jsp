@@ -7,7 +7,55 @@
 </head>
 <body data-ng-controller="recommendedDetailController">
 	<%@ include file="../partials/header.jsp"%>
-	
+
+
+<main>
+<div class="section no-pad-bot" id="index-banners">
+	<div class="container">
+		<div class="row" style="margin-top: 30px;">
+				<div class="col s4">
+					<img src="static/img/defaultImages/electricista.png">
+				</div>
+				<div class="col s8" style="text-align: left;">	
+					<h4 style="font-weight: 100;">Nombre del Recomendado</h4>
+						<div class="col s6" style="float: left;">
+							<div class="rating">
+								<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+								(15 reviews positivos)
+							</div>
+						</div>
+						<div class="col s6" style="float: left;">
+								<img class="rowBadge" src="static/img/badges/constructor.png" title="Constructor">
+								<img class="rowBadge" src="static/img/badges/electricista.png" title="Electricista">
+								<img class="rowBadge" src="static/img/badges/gasista.png" title="Gasista">
+								<img class="rowBadge" src="static/img/badges/jardinero.png" title="Jardinero">
+								<img class="rowBadge" src="static/img/badges/pintor.png" title="Pintor">
+						</div>
+					
+					<span class="recommendedDescription" style="width: 100%; float: left; margin-top: 30px;">Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción Descripción </span>	
+					
+					<div class="col s12" style="float: left; padding-top: 20px; text-align: left;">
+						<img style="height: 70px; width: 70px; margin: 10px;" src="static/img/foto.jpg" />
+						<img style="height: 70px; width: 70px; margin: 10px;" src="static/img/foto.jpg" />
+						<img style="height: 70px; width: 70px; margin: 10px;" src="static/img/foto.jpg" />
+						<img style="height: 70px; width: 70px; margin: 10px;" src="static/img/foto.jpg" />
+						<img style="height: 70px; width: 70px; margin: 10px;" src="static/img/foto.jpg" />
+					</div>
+				</div>
+
+
+
+				<div class="col s12">
+					
+				</div>
+
+		
+		</div>
+	</div>
+</div>
+
+</main>	
+<!-- 
 	<div class="container">
 		<div id="content">
 			<div class="row">
@@ -48,7 +96,7 @@
 								</a>
 							</div>
 						</div>
-					</div> <!-- tags cloud widget -->
+					</div>
 					<div class="space40">&nbsp;</div>
 					<div class="photoGallery">
 						<h5 class="widget-title">Fotos de algunos trabajos</h5>
@@ -142,7 +190,7 @@
 								</div>
 							</div>
 						</div>
-					</div> <!-- .beta-products-list -->
+					</div>
 				</div>
 				<div class="col-sm-3 aside">
 					<div class="widget">
@@ -175,11 +223,11 @@
 								</div>
 							</div>
 						</div>
-					</div> <!-- best sellers widget -->
+					</div> 
 				</div>
 			</div>
-		</div> <!-- #content -->
-	</div> <!-- .container -->
+		</div> 
+	</div> -->
 
 	<%@ include file="../partials/footer.jsp"%>
 </body>

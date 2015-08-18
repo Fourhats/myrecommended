@@ -10,8 +10,68 @@
 
 <body>
 	<%@ include file="../partials/header.jsp"%>
-	
+<main>
+	<div class="section no-pad-bot" id="index-banners">
+		<div class="container">
+			
+			<h4>Preguntas</h4>
+			
+			<div class="row">
+				<div class="col s3">
+				 <div class="collection">
+					<a href="#!" class="collection-item">Información del usuario</a>
+					<a href="#!" class="collection-item">Información del Recomendado</a>
+					<a href="#!" class="collection-item">Trabajos realizados</a>
+					<a href="#!" class="collection-item active">Preguntas <span class="new badge">4</span></a>
+				  </div>
+				</div>
+				<div class="col s9">
+				  <div class="row">
+					<ul class="collection">
+					    <li class="collection-item avatar">
+					      <img src="../static/img/defaultImages/jardinero.png" alt="" class="circle">
+					      <span class="title">NombreDelQuePregunta</span>
+					      <p>¿Es esta la pregunta?<br>
+					      </p>
+					      <label for="email">Respuesta</label>
+					      <input id="phone" type="text" class="validate">
+					       <button class="btn waves-effect waves-light secondary-content" type="submit" name="action">Responder
+   								<i class="material-icons right">send</i>
+							</button>
+					    </li>
+					    <li class="collection-item avatar">
+					      <img src="../static/img/defaultImages/jardinero.png" alt="" class="circle">
+					      <span class="title">NombreDelQuePregunta</span>
+					      <p>¿Es esta la pregunta?<br>
+					      </p>
+					      <label for="email">Respuesta</label>
+					      <input id="phone" type="text" class="validate">
+					       <button class="btn waves-effect waves-light secondary-content" type="submit" name="action">Responder
+   								<i class="material-icons right">send</i>
+							</button>
+					    </li>
+					    <li class="collection-item avatar">
+					      <img src="../static/img/defaultImages/jardinero.png" alt="" class="circle">
+					      <span class="title">NombreDelQuePregunta</span>
+					      <p>¿Es esta la pregunta?<br>
+					      </p>
+					      <label for="email">Respuesta</label>
+					      <input id="phone" type="text" class="validate">
+					       <button class="btn waves-effect waves-light secondary-content" type="submit" name="action">Responder
+   								<i class="material-icons right">send</i>
+							</button>
+					    </li>
+					  </ul>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+  
+</main>
+
+<!--  
 <div class="container">
 		<div id="content">
 			<div class="col-md-3">
@@ -90,9 +150,9 @@
 								
 			</div>
 
-		</div> <!-- #content -->
-	</div> <!-- .container -->
-
+		</div> 
+	</div> 
+-->
 	<%@ include file="../partials/footer.jsp"%>
 </body>
 

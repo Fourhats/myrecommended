@@ -14,25 +14,25 @@
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/commonFunctions.js"></script>
 
 <!-- TEMPLATE -->
-<script  src="<%=scriptPageContext%>/static/js/waypoints.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/wow.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery.isotope.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/bootstrap.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/scripts.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/custom.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery.themepunch.tools.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery.themepunch.revolution.min.js"></script>	
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery.bxslider.min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery.colorbox-min.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/jquery/jquery.fancybox.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/Animo.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/dug.js"></script>
-<script  src="<%=scriptPageContext%>/static/js/beta.utils.js"></script>
+    <script  src="<%=scriptPageContext%>/static/js/jquery.timeago.min.js"></script>  
+    <script  src="<%=scriptPageContext%>/static/js/prism.js"></script>
+    <script  src="<%=scriptPageContext%>/static/js/materialize.js"></script>
+    <script  src="<%=scriptPageContext%>/static/js/init.js"></script>
 
-<script type="text/javascript">
-		$(document).ready(function() {
-			$('.fancybox').fancybox();
-		});
-</script>
+<script>
+
+$i=1;
+window.setInterval(function(){
+	var image = $('#index-banner');
+	image.fadeOut(1000, function () {
+		$i++;
+		$img = "static/img/workerBanner" + $i + ".jpg";
+	    image.css("background", "url('" + $img + "')");
+	    image.fadeIn(1000);
+	});
 	
+	if($i==3){
+		$i=0;		
+	}
+	}, 5000);
+</script>

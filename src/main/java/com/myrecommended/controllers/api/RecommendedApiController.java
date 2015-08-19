@@ -19,6 +19,7 @@ import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
+import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
 
 @RestController
 public class RecommendedApiController extends BaseController {
@@ -26,6 +27,7 @@ public class RecommendedApiController extends BaseController {
 	@Autowired
 	private RecommendedService recommendedService;
 	
+	//TODO: ES NECESARIO EL MODELO ACA Y EN LOS DEMAS METODOS DE RECOMMENDEDAPICONTROLLER Y USERAPICONTROLLER???
 	@RequestMapping(value = "/recommended/createRecommended", method = RequestMethod.POST)
     public @ResponseBody RecommendedDTO addRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) {
 		RecommendedDTO returnObject = new RecommendedDTO();
@@ -44,6 +46,22 @@ public class RecommendedApiController extends BaseController {
 		}
 		
 		return returnObject;
+    }
+	
+	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
+    public void updateRecommended(@RequestBody UpdateRecommendedRequestDTO recommendedDto, Model model) {
+		try {
+			this.verifyAuthentication();
+			
+			recommendedDto.setUserId(this.getUserId());
+			this.recommendedService.updateRecommneded(recommendedDto);
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			//TODO: DEVOLVER OBJETO CON ERROR
+			e.printStackTrace();
+		} catch (MyRecommendedBusinessException e) {
+			//TODO: DEVOLVER OBJETO CON ERROR
+			e.printStackTrace();
+		}
     }
 	
 	@RequestMapping(value="/recommended/{pageIndex}/{pageSize}", method = RequestMethod.GET, consumes="*/*")

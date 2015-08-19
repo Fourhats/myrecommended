@@ -16,6 +16,7 @@ import com.myrecommended.services.petitions.dtos.PetitionDTO;
 import com.myrecommended.services.petitions.dtos.PetitionRequestDTO;
 import com.myrecommended.services.users.UserService;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
+import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -46,7 +47,8 @@ public class UserApiController extends BaseController {
 				returnObject = this.userService.getFbLoggedUserByEmail(user.getEmail());
 			} else {
 				returnObject = this.userService.addUser(user);
-			}	
+			}
+			
 		} catch (MyRecommendedBusinessException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
@@ -66,6 +68,22 @@ public class UserApiController extends BaseController {
 		}
 		
 		return returnObject;
+    }
+	
+	@RequestMapping(value = "/users/updateUser", method = RequestMethod.POST)
+    public void updateUser(@RequestBody UpdateUserRequestDTO userDto, Model model) {
+		try {
+			this.verifyAuthentication();
+			
+			userDto.setId(this.getUserId());
+			this.userService.updateUser(userDto);
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			//TODO: DEVOLVER OBJETO CON ERROR
+			e.printStackTrace();
+		} catch (MyRecommendedBusinessException e) {
+			//TODO: devolver objeto con error
+			e.printStackTrace();
+		}
     }
 	
 	@RequestMapping(value = "/users/createPetition", method = RequestMethod.POST)

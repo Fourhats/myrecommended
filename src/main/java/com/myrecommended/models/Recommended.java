@@ -26,6 +26,7 @@ public class Recommended extends PersistibleEntity {
 		this.name = name;
 		this.description = description;
 		this.creationDate = new Date();
+		this.updateDate = new Date();
 	}
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -47,6 +48,9 @@ public class Recommended extends PersistibleEntity {
 	
 	@Column(name="creationDate")
 	public Date creationDate;
+	
+	@Column(name="updateDate")
+	public Date updateDate;
 	
 	public User getUser() {
 		return user;
@@ -86,5 +90,13 @@ public class Recommended extends PersistibleEntity {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

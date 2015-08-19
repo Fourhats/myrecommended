@@ -12,4 +12,6 @@ public interface RecommendedDAO extends BaseDAO<Recommended, Long> {
 	Page<Recommended> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered);
 
 	Page<Recommended> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey);
+
+	Recommended getByUserId(Long userId);
 }

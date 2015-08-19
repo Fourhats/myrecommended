@@ -48,4 +48,17 @@ public class RecommendedDAOImpl extends BaseDAOImpl<Recommended, Long> implement
 		
 		return getPageByCriteria(criteria, pageIndex, pageSize);
 	}
+
+	@SuppressWarnings("rawtypes")
+	public Recommended getByUserId(Long userId) {
+		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
+		criteria.createAlias("user", "user");
+		criteria.add(Restrictions.eq("user.id", userId));
+		List result = getHibernateTemplate().findByCriteria(criteria);
+		if(!result.isEmpty()){
+			return (Recommended) result.get(0);
+		}
+		
+		return null;
+	}
 }

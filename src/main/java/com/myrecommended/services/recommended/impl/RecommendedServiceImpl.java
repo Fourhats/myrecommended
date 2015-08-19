@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.business.recommended.RecommendedGenerator;
 import com.myrecommended.business.recommended.RecommendedSearcher;
+import com.myrecommended.business.recommended.RecommendedUpdater;
 import com.myrecommended.models.Page;
 import com.myrecommended.models.Recommended;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
+import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
 import com.myrecommended.services.utils.MapperUtil;
 
 public class RecommendedServiceImpl implements RecommendedService {
@@ -26,9 +28,16 @@ public class RecommendedServiceImpl implements RecommendedService {
 	@Autowired
 	private RecommendedSearcher recommendedSearcher;
 	
+	@Autowired
+	private RecommendedUpdater recommendedUpdater;
+	
 	public RecommendedDTO addRecommended(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
 		Recommended recommended = this.recommendedGenerator.generate(recommendedDto);
 		return MapperUtil.map(mapper, recommended, RecommendedDTO.class);
+	}
+	
+	public void updateRecommneded(UpdateRecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
+		this.recommendedUpdater.update(recommendedDto);
 	}
 
 	public Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered) {

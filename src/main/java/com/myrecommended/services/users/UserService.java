@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
+import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.restfb.types.User;
 
@@ -18,6 +19,9 @@ public interface UserService {
 
 	@Transactional
 	LoggedUserDTO addUser(User user) throws MyRecommendedBusinessException;
+
+	@Transactional
+	void updateUser(UpdateUserRequestDTO userDto) throws MyRecommendedBusinessException;
 
 	@Transactional
 	boolean existUserWithEmail(String email);

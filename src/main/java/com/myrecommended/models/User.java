@@ -29,6 +29,7 @@ public class User extends PersistibleEntity {
 		this.role = role;
 		this.avatarName = avatarName;
 		this.creationDate = new Date();
+		this.updateDate = new Date();
 	}
 	
 	@Column(name="email",unique=true,nullable=false)
@@ -57,6 +58,9 @@ public class User extends PersistibleEntity {
 	
 	@Column(name="creationDate")
 	public Date creationDate;
+	
+	@Column(name="updateDate")
+	public Date updateDate;
 	
 	@Column(name="avatarName")
 	private String avatarName;
@@ -146,6 +150,14 @@ public class User extends PersistibleEntity {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public String getAvatarName() {

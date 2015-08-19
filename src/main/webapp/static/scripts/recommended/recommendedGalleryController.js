@@ -50,7 +50,7 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 		angular.forEach(newRecommended, function(aRecommended, key) {
 			aRecommended.recommendedCategoriesImages = [];
 			angular.forEach(aRecommended.categories, function(category, key) {
-				category.image = getCompletePath('/static/images/defaultImages/' + category.name + '.png');
+				category.image = getCompletePath('/static/img/defaultImages/' + category.name + '.png');
 			});
 		});
 	};

@@ -13,26 +13,19 @@
 <!-- COMMONS -->
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/commonFunctions.js"></script>
 
-<!-- TEMPLATE -->
-    <script  src="<%=scriptPageContext%>/static/js/jquery.timeago.min.js"></script>  
-    <script  src="<%=scriptPageContext%>/static/js/prism.js"></script>
-    <script  src="<%=scriptPageContext%>/static/js/materialize.js"></script>
-    <script  src="<%=scriptPageContext%>/static/js/init.js"></script>
-
 <script>
-
-$i=1;
-window.setInterval(function(){
-	var image = $('#index-banner');
-	image.fadeOut(1000, function () {
-		$i++;
-		$img = "static/img/workerBanner" + $i + ".jpg";
-	    image.css("background", "url('" + $img + "')");
-	    image.fadeIn(1000);
-	});
-	
-	if($i==3){
-		$i=0;		
-	}
+	$i=1;
+	window.setInterval(function(){
+		var image = $('#index-banner');
+		image.fadeOut(1000, function () {
+			$i++;
+			$img = "static/img/workerBanner" + $i + ".jpg";
+		    image.css("background", "url('" + $img + "')");
+		    image.fadeIn(1000);
+		});
+		
+		if($i==3){
+			$i=0;		
+		}
 	}, 5000);
 </script>

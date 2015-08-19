@@ -8,8 +8,100 @@
 <body data-ng-controller="recommendedGalleryController">
 	<%@ include file="../partials/header.jsp"%>
 
-	<span us-spinner="{radius:30, width:8, length: 16}" style="position: absolute;top: 50%;left: 50%;"></span>
+	<!-- <span us-spinner="{radius:30, width:8, length: 16}" style="position: absolute;top: 50%;left: 50%;"></span> -->
 
+<main>
+	<div class="section no-pad-bot" id="index-banners">
+		<div class="container">
+			<h4>Resultados</h4>
+			
+			<div class="row listRow z-depth-1">
+									<div class="col s2">
+										<img class="rowThumbnail" src="static/img/defaultImages/electricista.png" alt="" src="static/img/defaultImages/electricista.png">
+									</div>
+									<div class="col s6" >
+										<h4 style="font-weight: 100;" data-ng-bind="recommended.name" class="ng-binding">Vendedor test</h4>
+										<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
+									</div>
+									<div class="col s2">
+										<div class="rating">
+											<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><br>
+											(15 reviews positivos)
+										</div>
+									</div>
+									<div class="col s2" style="  padding-top: 20px;">
+									<img class="rowBadge" src="static/img/badges/constructor.png" title="Constructor">
+									<img class="rowBadge" src="static/img/badges/electricista.png" title="Electricista">
+									<img class="rowBadge" src="static/img/badges/gasista.png" title="Gasista">
+									<img class="rowBadge" src="static/img/badges/jardinero.png" title="Jardinero">
+									<img class="rowBadge" src="static/img/badges/pintor.png" title="Pintor">
+									</div>
+		</div>
+		
+			<div class="row listRow z-depth-1">
+									<div class="col s2">
+										<img class="rowThumbnail" src="static/img/defaultImages/gasista.png" alt="" src="static/img/defaultImages/electricista.png">
+									</div>
+									<div class="col s6" >
+										<h4 style="font-weight: 100;" data-ng-bind="recommended.name" class="ng-binding">Vendedor test</h4>
+										<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
+									</div>
+									<div class="col s2">
+										<div class="rating">
+											<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><br>
+											(15 reviews positivos)
+										</div>
+									</div>
+									<div class="col s2" style="  padding-top: 20px;">
+									<img class="rowBadge" src="static/img/badges/constructor.png" title="Constructor">
+									<img class="rowBadge" src="static/img/badges/electricista.png" title="Electricista">
+									<img class="rowBadge" src="static/img/badges/gasista.png" title="Gasista">
+									<img class="rowBadge" src="static/img/badges/jardinero.png" title="Jardinero">
+									<img class="rowBadge" src="static/img/badges/pintor.png" title="Pintor">
+									</div>
+		</div>
+		
+			<div class="row listRow z-depth-1">
+									<div class="col s2">
+										<img class="rowThumbnail" src="static/img/defaultImages/jardinero.png" alt="" src="static/img/defaultImages/electricista.png">
+									</div>
+									<div class="col s6" >
+										<h4 style="font-weight: 100;" data-ng-bind="recommended.name" class="ng-binding">Vendedor test</h4>
+										<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
+									</div>
+									<div class="col s2">
+										<div class="rating">
+											<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><br>
+											(15 reviews positivos)
+										</div>
+									</div>
+									<div class="col s2" style="  padding-top: 20px;">
+									<img class="rowBadge" src="static/img/badges/constructor.png" title="Constructor">
+									<img class="rowBadge" src="static/img/badges/electricista.png" title="Electricista">
+									<img class="rowBadge" src="static/img/badges/gasista.png" title="Gasista">
+									<img class="rowBadge" src="static/img/badges/jardinero.png" title="Jardinero">
+									<img class="rowBadge" src="static/img/badges/pintor.png" title="Pintor">
+									</div>
+		</div>
+		
+		
+		 <ul class="pagination">
+	    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+	    <li class="active"><a href="#!">1</a></li>
+	    <li class="waves-effect"><a href="#!">2</a></li>
+	    <li class="waves-effect"><a href="#!">3</a></li>
+	    <li class="waves-effect"><a href="#!">4</a></li>
+	    <li class="waves-effect"><a href="#!">5</a></li>
+	    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+	  </ul>
+	
+		</div>
+	</div>
+
+
+
+</main>
+<!-- 
 	<div class="container">
 		<div id="content">
 			<div class="row">
@@ -18,7 +110,7 @@
 					<div class="beta-promobox">
 						<h2 class="pull-left "><span class="white">Recomendados</span> ¡Conocelos y contratalos vos también!</h2>
 						<div class="clearfix"></div>
-					</div> <!-- .beta-promobox -->
+					</div> 
 					
 					<div class="space50">&nbsp;</div>
 					<div class="beta-products-list">
@@ -64,7 +156,7 @@
 					</div>
 					<div class="space50">&nbsp;</div>
 					
-				</div> <!-- .main-content -->
+				</div>
 
 				<div class="col-sm-3 aside">
 					<div class="widget">
@@ -77,11 +169,12 @@
 								</li>
 							</ul>
 						</div>
-					</div> <!-- brands widget -->
-				</div> <!-- .aside -->
+					</div> 
+				</div> 
 			</div>
-		</div> <!-- #content -->
-	</div> <!-- .container -->
+		</div> 
+	</div> 
+	 -->
 
 	<%@ include file="../partials/footer.jsp"%>
 </body>

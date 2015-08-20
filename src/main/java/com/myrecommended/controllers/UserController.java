@@ -19,20 +19,17 @@ public class UserController extends BaseController {
 	//Borrar cuando funcione
 	@RequestMapping(value="/miperfil")
     public String myprofile(Model model) {
-		
 		return "user/profileRecommended";
     }
 	
 	@RequestMapping(value="/miperfildetalles")
     public String myprofileMore(Model model) {
-		
 		return "user/profileRecommendedMore";
     }
-	
-	
 	//Fin Borrar
+
 	@RequestMapping(value="/perfil")
-    public String profileRecommended(Model model) {
+    public String goToRecommendedProfile(Model model) {
 		if(!this.isUserLogged()) {
 			return "redirect:/home";
 		}

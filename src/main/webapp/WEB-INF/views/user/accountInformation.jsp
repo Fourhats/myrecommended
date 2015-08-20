@@ -112,8 +112,6 @@
 
 		</div> <!-- #content -->
 	</div> <!-- .container -->
-
-	<%@ include file="../partials/footer.jsp"%>
 </body>
 
 <%@ include file="../partials/scripts.jsp"%>

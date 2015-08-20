@@ -153,7 +153,6 @@
 		</div> 
 	</div> 
 -->
-	<%@ include file="../partials/footer.jsp"%>
 </body>
 
 <%@ include file="../partials/scripts.jsp"%>

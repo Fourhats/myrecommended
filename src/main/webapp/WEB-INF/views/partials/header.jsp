@@ -36,7 +36,7 @@
 		</li>
 		<sec:authorize access="!isAuthenticated()">
 			<li class="menuLink">
-				<a class="modal-trigger" href="#registerModal">
+				<a class="modal-trigger" href="#login">
 					Iniciar Sesión
 				</a>
 			</li>
@@ -52,7 +52,7 @@
 	</ul>
 </header>
 
-<div id="registerModal" class="modal" style="text-align: center;">
+<div id="login" class="modal" style="text-align: center;">
 	<div class="modal-content" style="margin-left: auto; margin-right: auto;">
 		<h4>Inicia Sesión / Registrate</h4>
 		<div class="input-field col s6">

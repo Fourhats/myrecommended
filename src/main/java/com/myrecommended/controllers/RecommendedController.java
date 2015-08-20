@@ -28,13 +28,6 @@ public class RecommendedController {
 		return "recommended/petition";
     }
 	
-	
-	//borrar cuando funcione
-	@RequestMapping(value="/recomendado")
-    public String singleRecommended(Model model) {
-		return "recommended/recommendedDetail";
-    }
-	
 	@RequestMapping(value="/recomendados")
     public String goToRecomendados(Model model) {
 		Gson gson = new Gson();

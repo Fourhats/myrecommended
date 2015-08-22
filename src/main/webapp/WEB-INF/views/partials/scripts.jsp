@@ -12,6 +12,9 @@
 
 <!-- COMMONS -->
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/commonFunctions.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/js/prism.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/js/materialize.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/js/init.js"></script>
 
 <script>
 	$i=1;

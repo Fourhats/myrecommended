@@ -10,7 +10,7 @@
 		</a>
 	</div>
 	<ul id="nav-mobile" class="side-nav fixed">
-		<li class="logo"><img src="<%=headerPageContext%>/static/img/logo.png" /></li>
+		<li class="logo"><a href="/MyRecommended" style="display: inline;"><img src="<%=headerPageContext%>/static/img/logo.png" /></a></li>
 		<li style="margin-bottom: 20px;">
 			<div class="input-field col s6">
 				<input id="searchKey" data-ng-model="recommendedKey" type="text" class="validate"> 

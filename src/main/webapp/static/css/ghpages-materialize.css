@@ -8883,6 +8883,18 @@ body.parallax-demo footer {
  ul.side-nav.fixed li.logo{
  border: none;
  }
+ 
+ .header{
+ background: #26a69a;
+ color: white;
+ font-size: 24px!important;
+ padding: 5px;
+ margin-top: 0px;
+ }
+ .header h1{
+ color: white;
+ 
+ }
  @media (min-width:1280px) 
   {
     #index-banner, #index-banner .container{

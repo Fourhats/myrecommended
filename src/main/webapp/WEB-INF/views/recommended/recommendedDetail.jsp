@@ -13,6 +13,9 @@
 	<%@ include file="../partials/header.jsp"%>
 
 	<main>
+		<div class="col m12">
+			<h1 class="header center-on-small-only">Información del recomendado</h1>
+		</div>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
 				<div class="row" style="margin-top: 30px;">

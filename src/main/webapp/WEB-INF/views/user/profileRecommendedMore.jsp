@@ -56,6 +56,15 @@
 								for="email">Email</label>
 						</div>
 					</div>
+				    <div class="file-field input-field">
+				      <div class="btn">
+				        <span>Fotos</span>
+				        <input type="file" multiple>
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" type="text" placeholder="Subí tus fotos para la galería">
+				      </div>
+				    </div>
 				</form>
 			</div>
 		</div>

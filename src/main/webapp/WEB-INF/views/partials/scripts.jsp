@@ -17,18 +17,19 @@
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/init.js"></script>
 
 <script>
-	$i=1;
-	window.setInterval(function(){
-		var image = $('#index-banner');
-		image.fadeOut(1000, function () {
-			$i++;
-			$img = "static/img/workerBanner" + $i + ".jpg";
-		    image.css("background", "url('" + $img + "')");
-		    image.fadeIn(1000);
-		});
-		
-		if($i==3){
-			$i=0;		
-		}
-	}, 5000);
+var count = 1
+setInterval(function(){
+  var old= $('#banner' + count);
+  old.fadeOut(2000);
+
+  count++;
+  if (count>3){
+    count = 1
+  }
+
+  var next= $('#banner' + count);
+  next.fadeIn(2000);
+}, 7000);
+
+
 </script>

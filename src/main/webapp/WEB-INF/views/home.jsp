@@ -10,6 +10,9 @@
 	<main>
 		<div class="section no-pad-bot" id="index-banner">
 			<div class="container">
+				<img id="banner1" class="homeImage" src="static/img/workerBanner1.jpg" />
+				<img id="banner2" class="homeImage" src="static/img/workerBanner2.jpg" />
+				<img id="banner3" class="homeImage" src="static/img/workerBanner3.jpg" />
 				<div class="row homeRecommendedRow">
 	
 					<div class="col s4 homeRecommended">

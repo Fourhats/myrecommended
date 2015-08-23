@@ -100,7 +100,7 @@
 
 <script>
 	var categories = <%= request.getAttribute("categories") %>;
-	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'ngLoadingSpinner']);
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'ngLoadingSpinner', 'angularFileUpload']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/recommended/petitionController.js"></script>
 

@@ -109,13 +109,11 @@
 </body>
 
 <%@ include file="../partials/scripts.jsp"%>
-<script type="text/javascript" src="<%=scriptPageContext%>/static/js/angularjs/imageUploader/angular-file-upload.min.js"></script>
 
 <script>
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload']);
 </script>
 
-<script type="text/javascript" src="<%=scriptPageContext%>/static/js/angularjs/imageUploader/ngThumbDirective.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/login/loginController.js"></script>
 <script>
 	window.fbAsyncInit = function() {

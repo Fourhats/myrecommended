@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+  <mapping wildcard="false">
+    <class-a>com.myrecommended.models.RecommendedImage</class-a>
+    <class-b>com.myrecommended.services.recommended.dtos.RecommendedImageDTO</class-b>
+      
+      <field>
+        <a>id</a>
+        <b>id</b>
+      </field>
+      <field>
+        <a>path</a>
+        <b>path</b>
+      </field>
+      <field>
+      	<a>isPrincipal</a>
+      	<b>isPrincipal</b>
+      </field>
+  </mapping>
+</mappings>

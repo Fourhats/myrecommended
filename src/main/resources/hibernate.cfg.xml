@@ -8,6 +8,7 @@
         <mapping class="com.myrecommended.models.User" />
         <mapping class="com.myrecommended.models.Role" />
         <mapping class="com.myrecommended.models.Recommended" />
+        <mapping class="com.myrecommended.models.RecommendedImage" />
         <mapping class="com.myrecommended.models.Category" />
         <mapping class="com.myrecommended.models.Answer" />
         <mapping class="com.myrecommended.models.Question" />

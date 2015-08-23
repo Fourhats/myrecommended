@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="image")
+@Table(name="recommendedimage")
 public class RecommendedImage extends PersistibleEntity {
 
 	public RecommendedImage() {

@@ -67,14 +67,10 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
 <!-- 16 KB -->
 <script>
-	var recommended =
-<%=request.getAttribute("recommended")%>
-	;
-	var myRecommendedApp = angular.module('myRecommendedApp',
-			[ 'ui.bootstrap' ]);
+	var recommended = <%=request.getAttribute("recommended")%>;
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload']);
 </script>
-<script type="text/javascript"
-	src="<%=scriptPageContext%>/static/scripts/recommended/recommendedDetailController.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/recommended/recommendedDetailController.js"></script>
 
 <%@ include file="../partials/footerScritps.jsp"%>
 </html>

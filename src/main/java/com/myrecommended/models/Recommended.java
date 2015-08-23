@@ -10,9 +10,15 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+/**
+ * @author dorozco
+ *
+ */
 @Entity
 @Table(name="recommended")
 public class Recommended extends PersistibleEntity {
@@ -51,6 +57,11 @@ public class Recommended extends PersistibleEntity {
 	
 	@Column(name="updateDate")
 	public Date updateDate;
+	
+	@OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+	@JoinColumn(name="recommendedId")
+	@OrderBy("isPrincipal DESC")
+	private Set<RecommendedImage> recommendedImages;
 	
 	public User getUser() {
 		return user;
@@ -98,5 +109,13 @@ public class Recommended extends PersistibleEntity {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public Set<RecommendedImage> getRecommendedImages() {
+		return recommendedImages;
+	}
+
+	public void setRecommendedImages(Set<RecommendedImage> recommendedImages) {
+		this.recommendedImages = recommendedImages;
 	}
 }

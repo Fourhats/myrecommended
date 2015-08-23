@@ -19,6 +19,8 @@ public class RecommendedDTO {
 	
 	private List<CategoryDTO> categories;
 	
+	private List<RecommendedImageDTO> recommendedImages;
+	
 	public Long getId() {
 		return id;
 	}
@@ -65,5 +67,13 @@ public class RecommendedDTO {
 
 	public void setCategories(List<CategoryDTO> categories) {
 		this.categories = categories;
+	}
+
+	public List<RecommendedImageDTO> getRecommendedImages() {
+		return recommendedImages;
+	}
+
+	public void setRecommendedImages(List<RecommendedImageDTO> recommendedImages) {
+		this.recommendedImages = recommendedImages;
 	}
 }

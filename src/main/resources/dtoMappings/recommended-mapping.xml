@@ -32,5 +32,10 @@
         <a>categories</a>
         <b>categories</b>
       </field>
+      
+      <field>
+        <a>recommendedImages</a>
+        <b>recommendedImages</b>
+      </field>
   </mapping>
 </mappings>

@@ -52,26 +52,27 @@
 	</ul>
 </header>
 
-<div id="login" class="modal" style="text-align: center;">
+<div id="login" class="modal" style="text-align: center;" data-ng-controller="loginController">
 	<div class="col m12">
 		<h1 class="header center-on-small-only">Inicia sesión</h1>
 	</div>
 	<div class="modal-content" style="margin-left: auto; margin-right: auto;">
-		<div class="input-field col s6">
-			<input id="usuario" type="text" class="validate">
-			<label for="usuario">Usuario</label>
-		</div>
-		<div class="input-field col s6">
-			<input id="contrasena" type="text" class="validate"> 
-			<label for="contrasena">Contraseña</label>
-		</div>
-		<button class="btn-large waves-effect waves-light">
-			Registrate / Inicia
-		</button>
+		<form name="loginForm" data-ng-submit="login()" >
+			<div class="input-field col s6">
+				<input id="usuario" type="text" class="validate" required maxlength="100" data-ng-model="user.email">
+				<label for="usuario">Usuario</label>
+			</div>
+			<div class="input-field col s6">
+				<input id="contrasena" type="password" class="validate" required maxlength="100" data-ng-model="user.password">
+				<label for="contrasena">Contraseña</label>
+			</div>
+			<button class="btn-large waves-effect waves-light" data-ng-disabled="loginForm.$invalid" type="submit">
+				Registrate / Inicia
+			</button>
+		</form>
 		<br>
 		<br>o<br>
 		<br>
-		<button class="btn-large waves-effect waves-light blue darken-1"
-			data-ng-click="facebookLogin()">Iniciar sesión con Facebook</button>
+		<button class="btn-large waves-effect waves-light blue darken-1" data-ng-click="facebookLogin()">Iniciar sesión con Facebook</button>
 	</div>
 </div>

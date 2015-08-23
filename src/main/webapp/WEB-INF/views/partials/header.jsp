@@ -53,8 +53,10 @@
 </header>
 
 <div id="login" class="modal" style="text-align: center;">
+	<div class="col m12">
+		<h1 class="header center-on-small-only">Inicia sesión</h1>
+	</div>
 	<div class="modal-content" style="margin-left: auto; margin-right: auto;">
-		<h4>Inicia Sesión / Registrate</h4>
 		<div class="input-field col s6">
 			<input id="usuario" type="text" class="validate">
 			<label for="usuario">Usuario</label>

@@ -26,7 +26,7 @@
 				<div class="col s3">
 					<div class="collection">
 						<a href="#!" class="collection-item active">Información del
-							usuario</a> <a href="#!" class="collection-item">Información del
+							usuario</a> <a href="#!" class="collection-item">Perfíl
 							Recomendado</a> <a href="#!" class="collection-item">Trabajos
 							realizados</a> <a href="#!" class="collection-item">Preguntas <span
 							class="new badge">4</span></a>

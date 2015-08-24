@@ -6,6 +6,7 @@ public class LoggedUserDTO {
 	
 	private String username;
 	
+	//TODO: ver si sirve para algo!
 	private String password;
 	
 	private String error;

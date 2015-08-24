@@ -12,6 +12,7 @@ import com.myrecommended.models.User;
 import com.myrecommended.services.users.UserService;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
+import com.myrecommended.services.users.dtos.UserDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.myrecommended.services.utils.MapperUtil;
 
@@ -53,5 +54,10 @@ public class UserServiceImpl implements UserService {
 
 	public void updateUser(UpdateUserRequestDTO userDto) throws MyRecommendedBusinessException {
 		this.userUpdater.update(userDto);
+	}
+
+	public UserDTO getUser(long userId) {
+		User user = this.userSearcher.getUser(userId);
+		return MapperUtil.map(mapper, user, UserDTO.class);
 	}
 }

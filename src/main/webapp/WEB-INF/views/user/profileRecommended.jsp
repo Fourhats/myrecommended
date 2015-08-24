@@ -37,6 +37,8 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
 
 <script>
+	var user = <%=request.getAttribute("user")%>;
+	var recommended = <%=request.getAttribute("recommended")%>;
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>

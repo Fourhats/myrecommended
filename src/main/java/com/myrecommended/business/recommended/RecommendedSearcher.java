@@ -19,15 +19,19 @@ public class RecommendedSearcher {
 		return this.recommendedDao.getAll();
 	}
 	
-	public Page<Recommended> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered) {
+	public Page<Recommended> getPage(int pageIndex, int pageSize, List<Long> categoriesFiltered) {
 		return this.recommendedDao.getRecommendedsPage(pageIndex, pageSize, categoriesFiltered);
 	}
 
-	public Page<Recommended> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {
+	public Page<Recommended> getPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {
 		return this.recommendedDao.getRecommendedsPageByKeyword(pageIndex, pageSize, recommendedKey);
 	}
 
-	public Recommended getRecommendedById(long recommendedId) {
+	public Recommended getById(long recommendedId) {
 		return this.recommendedDao.getById(recommendedId);
+	}
+
+	public Recommended getByUserId(Long userId) {
+		return this.recommendedDao.getByUserId(userId);
 	}
 }

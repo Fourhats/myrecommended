@@ -41,17 +41,22 @@ public class RecommendedServiceImpl implements RecommendedService {
 	}
 
 	public Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered) {
-		Page<Recommended> recommededsPage = this.recommendedSearcher.getRecommendedsPage(pageIndex, pageSize, categoriesFiltered);
-		return MapperUtil.map(mapper, recommededsPage, RecommendedDTO.class);
+		Page<Recommended> recommendedsPage = this.recommendedSearcher.getPage(pageIndex, pageSize, categoriesFiltered);
+		return MapperUtil.map(mapper, recommendedsPage, RecommendedDTO.class);
 	}
 
 	public Page<RecommendedDTO> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {
-		Page<Recommended> recommededsPage = this.recommendedSearcher.getRecommendedsPageByKeyword(pageIndex, pageSize, recommendedKey);
-		return MapperUtil.map(mapper, recommededsPage, RecommendedDTO.class);
+		Page<Recommended> recommendedsPage = this.recommendedSearcher.getPageByKeyword(pageIndex, pageSize, recommendedKey);
+		return MapperUtil.map(mapper, recommendedsPage, RecommendedDTO.class);
 	}
 
 	public RecommendedDTO getRecommendedById(long recommendedId) {
-		Recommended recommeded = this.recommendedSearcher.getRecommendedById(recommendedId);
-		return MapperUtil.map(mapper, recommeded, RecommendedDTO.class);
+		Recommended recommended = this.recommendedSearcher.getById(recommendedId);
+		return MapperUtil.map(mapper, recommended, RecommendedDTO.class);
+	}
+
+	public RecommendedDTO getRecommendedByUserId(Long userId) {
+		Recommended recommended = this.recommendedSearcher.getByUserId(userId);
+		return MapperUtil.map(mapper, recommended, RecommendedDTO.class);
 	}
 }

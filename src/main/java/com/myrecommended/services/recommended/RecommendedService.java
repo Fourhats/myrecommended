@@ -28,4 +28,7 @@ public interface RecommendedService {
 
 	@Transactional
 	RecommendedDTO getRecommendedById(long recommendedId);
+
+	@Transactional
+	RecommendedDTO getRecommendedByUserId(Long userId);
 }

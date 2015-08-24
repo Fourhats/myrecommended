@@ -1,22 +1,22 @@
 <form class="col s9">
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="first_name" type="text" class="validate"> 
-			<label for="first_name">Nombre</label>
+			<input id="first_name" type="text" class="validate" data-ng-model="user.name"> 
+			<label for="first_name" data-ng-class="{active : user.name}">Nombre</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="last_name" type="text" class="validate"> 
-			<label for="last_name">Apellido</label>
+			<input id="last_name" type="text" class="validate" data-ng-model="user.surname">
+			<label for="last_name" data-ng-class="{active : user.surname}">Apellido</label>
 		</div>
 	</div>
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="email" type="email" class="validate"> 
-			<label for="email">Email</label>
+			<input id="email" type="email" class="validate" data-ng-model="user.email"> 
+			<label for="email" data-ng-class="{active : user.email}">Email</label>
 		</div>
 		<div class="input-field col s6">
 			<input id="phone" type="text" class="validate"> 
-			<label for="email">Teléfono</label>
+			<label for="phone" data-ng-class="{active : user.phone}">Teléfono</label>
 		</div>
 	</div>
 </form>

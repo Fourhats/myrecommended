@@ -16,7 +16,9 @@ myRecommendedApp.config(function($routeProvider) {
 });
 
 myRecommendedApp.controller('userProfileController', function($scope) {
+	$scope.user = user;
 });
 
 myRecommendedApp.controller('recommendedProfileController', function($scope) {
+	$scope.recommended = recommended;
 });

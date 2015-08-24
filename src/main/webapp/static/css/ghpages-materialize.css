@@ -6028,19 +6028,23 @@ a.waves-effect .waves-ripple {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 70%;
+  max-height: 85%;
   width: 55%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
-  will-change: top, opacity; }
+  will-change: top, opacity;
+      
+   }
   @media only screen and (max-width : 992px) {
     .modal {
       width: 80%; } }
   .modal h1, .modal h2, .modal h3, .modal h4 {
     margin-top: 0; }
   .modal .modal-content {
-    padding: 24px; }
+    padding: 24px;
+    padding-top: 0px;
+     }
   .modal .modal-close {
     cursor: pointer; }
   .modal .modal-footer {
@@ -8830,8 +8834,9 @@ body.parallax-demo footer {
  
  .homeRecommendedRow{
      position: absolute;
-    bottom: 10px;
-    width: 100%;
+    bottom: 0px;
+    left: 10px;
+    width: 66%;
  }
  ul.side-nav.fixed li:hover{
  background: none;
@@ -8877,7 +8882,7 @@ body.parallax-demo footer {
  }
  
  .modal {
- width: 26%;
+ width: 33%;
  }
  
  .rowBadge{
@@ -8910,6 +8915,16 @@ body.parallax-demo footer {
  .header h1{
  color: white;
  
+ }
+ 
+ .modalButton{
+ width: 100%;
+ font-size: 14px;
+ line-height: 14px;
+ }
+ 
+ #registerForm{
+ display: none;
  }
  @media (min-width:1280px) 
   {

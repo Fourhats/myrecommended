@@ -14,16 +14,16 @@
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
 	
-				<div class="row listRow z-depth-1"
-					data-ng-repeat="recommended in recommendedPage.elements">
+				<div style="cursor: hand;" class="row listRow z-depth-1"
+					data-ng-repeat="recommended in recommendedPage.elements" data-ng-click="goToRecommendedDetail(recommended)"
+							class="ng-binding">
 					<div class="col s2">
 						<img class="rowThumbnail"
 							data-ng-src="{{recommended.categories[0].image}}" alt="">
 					</div>
 					<div class="col s6">
 						<h4 style="font-weight: 100;" data-ng-bind="recommended.name"
-							data-ng-click="goToRecommendedDetail(recommended)"
-							class="ng-binding"></h4>
+							></h4>
 						<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
 					</div>
 					<div class="col s2">

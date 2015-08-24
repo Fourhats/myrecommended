@@ -33,3 +33,11 @@
 	  next.fadeIn(2000);
 	}, 7000);
 </script>
+
+			<script>
+			$( '#register' ).click(function() {
+			  $( "#loginForm" ).toggle( "slide" );
+			  $( "#registerForm" ).toggle( "slide" );
+			  
+			});
+			</script>

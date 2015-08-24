@@ -13,7 +13,7 @@
 				<img id="banner3" class="homeImage" src="static/img/workerBanner3.jpg" />
 				<div class="row homeRecommendedRow">
 	
-					<div class="col s4 homeRecommended">
+					<div class="col s6 homeRecommended">
 						<div class="col s4">
 							<img src="static/img/defaultImages/electricista.png">
 						</div>
@@ -22,7 +22,7 @@
 							 <span class="recommendedDescription">Descripción</span>
 						</div>
 					</div>
-					<div class="col s4 homeRecommended">
+					<div class="col s6 homeRecommended">
 						<div class="col s4">
 							<img src="static/img/defaultImages/gasista.png">
 						</div>
@@ -32,7 +32,7 @@
 								Descripción Descripción Descripción Descripción </span>
 						</div>
 					</div>
-					<div class="col s4 homeRecommended">
+					<div class="col s6 homeRecommended">
 						<div class="col s4">
 							<img src="static/img/defaultImages/jardinero.png">
 						</div>
@@ -42,7 +42,7 @@
 								Descripción Descripción Descripción Descripción </span>
 						</div>
 					</div>
-					<div class="col s4 homeRecommended">
+					<div class="col s6 homeRecommended">
 						<div class="col s4">
 							<img src="static/img/defaultImages/gasista.png">
 						</div>
@@ -53,6 +53,7 @@
 					</div>
 	
 				</div>
+				<div style="position: absolute; bottom: 33px; right: 10px;" class="fb-page" data-href="https://www.facebook.com/facebook" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
 			</div>
 		</div>
 	</main>

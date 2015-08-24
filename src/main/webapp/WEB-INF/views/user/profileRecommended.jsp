@@ -4,11 +4,12 @@
 <head>
 	<%@ include file="../partials/styles.jsp"%>
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.15/toaster.min.css" rel="stylesheet" />
 </head>
 
 <body>
 	<%@ include file="../partials/header.jsp"%>
-
+	<toaster-container></toaster-container>
 	<main>
 		<div class="col m12">
 			<h1 class="header center-on-small-only">Perfil de usuario</h1>
@@ -34,12 +35,15 @@
 
 <%@ include file="../partials/scripts.jsp"%>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular-route.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular-animate.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.15/toaster.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
 
 <script>
 	var user = <%=request.getAttribute("user")%>;
 	var recommended = <%=request.getAttribute("recommended")%>;
-	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute']);
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toaster', 'ngAnimate']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>
 

@@ -138,14 +138,6 @@ myRecommendedApp.controller('headerController', function ($scope, $http) {
 	    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
 	    });*/
 		
-		//update de user
-		/*var user = {name: "nuevo nombre", surname: "nuevo apellido", avatarName: "nuevo avatar.jpg"};
-		$http.post(getCompletePath("users/updateUser"), JSON.stringify(user))
-		.success(function () {
-	    }).error(function (data, status, headers, config) {
-	    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
-	    });*/
-		
 		//update de recommended
 		/*var recommended = {name: "nuevo nombre", description: "nueva description", categoryIds: [2,5]};
 		$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify(recommended))

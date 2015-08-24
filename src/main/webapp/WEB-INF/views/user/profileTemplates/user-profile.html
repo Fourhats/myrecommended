@@ -1,4 +1,4 @@
-<form class="col s9">
+<form class="col s9" data-ng-submit="updateUser()" name="updateUserForm">
 	<div class="row">
 		<div class="input-field col s6">
 			<input id="first_name" type="text" class="validate" data-ng-model="user.name"> 
@@ -11,12 +11,31 @@
 	</div>
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="email" type="email" class="validate" data-ng-model="user.email"> 
+			<input id="email" disabled type="email" class="validate" data-ng-model="user.email"> 
 			<label for="email" data-ng-class="{active : user.email}">Email</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="phone" type="text" class="validate"> 
-			<label for="phone" data-ng-class="{active : user.phone}">Teléfono</label>
+			<input id="username" disabled type="text" class="validate" data-ng-model="user.username"> 
+			<label for="username" data-ng-class="{active : user.username}">Nombre de usuario</label>
 		</div>
 	</div>
+	<button type="submit">Actualizar datos</button>
+</form>
+
+<form class="col s9" data-ng-submit="changePassword()" name="changePasswordForm">
+	<div class="row">
+		<div class="input-field col s6">
+			<input id="currentPassword" type="password" class="validate" data-ng-model="currentPassword"> 
+			<label for="currentPassword">Contrase&ntilde;a actual</label>
+		</div>
+		<div class="input-field col s6">
+			<input id="newPassword" type="password" class="validate" data-ng-model="newPassword"> 
+			<label for="newPassword">Contrase&ntilde;a password</label>
+		</div>
+		<div class="input-field col s6">
+			<input id="repeatPassword" type="password" class="validate" data-ng-model="passwordRepeated"> 
+			<label for="repeatPassword">Contrase&ntilde;a password</label>
+		</div>
+	</div>
+	<button type="submit">Cambiar contrase&ntilde;a</button>
 </form>

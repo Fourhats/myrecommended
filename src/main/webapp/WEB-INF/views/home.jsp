@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <html data-ng-app="myRecommendedApp">
 <head>
-<%@ include file="partials/styles.jsp"%>
-<title>Mis Recomendados</title>
+	<%@ include file="partials/styles.jsp"%>
 </head>
 <body>
 	<%@ include file="partials/header.jsp"%>

@@ -1,13 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <html data-ng-app="myRecommendedApp">
 <head>
-<%@ include file="../partials/styles.jsp"%>
-<title>Mis Recomendados</title>
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css"
-	rel="stylesheet">
-<!-- 3 KB -->
+	<%@ include file="../partials/styles.jsp"%>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet">
 </head>
 <body data-ng-controller="recommendedDetailController">
 	<%@ include file="../partials/header.jsp"%>

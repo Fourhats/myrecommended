@@ -27,7 +27,7 @@
 	<context:component-scan base-package="com.myrecommended" />
 	
 	<mvc:resources mapping="/static/**" location="/static/" />
-	<mvc:resources mapping="/templates/**" location="/WEB-INF/views/angular-templates/" />
+	<mvc:resources mapping="/profileTemplates/**" location="/WEB-INF/views/user/profileTemplates/" />
 	
 	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
 		<property name="caseSensitive" value="true" />

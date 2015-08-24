@@ -74,11 +74,12 @@
 					<div class="col s6">
 						<button class="btn-large waves-effect waves-light modalButton" data-ng-disabled="loginForm.$invalid" type="submit">Inicia sesión</button>
 					</div>
+					<div class="col s6">
+						<button class="btn-large waves-effect waves-light blue darken-1 modalButton" type="button" data-ng-click="facebookLogin()">Inicia con <br>Facebook</button>
+					</div>
 				</div>
 			</form>
-			<div class="col s6">
-				<button class="btn-large waves-effect waves-light blue darken-1 modalButton" data-ng-click="facebookLogin()">Inicia con <br>Facebook</button>
-			</div>
+			
 			¿No tenés una cuenta?
 			<br>
 			<button id="register" class="btn-large waves-effect waves-light blue darken-1">Registrate</button>

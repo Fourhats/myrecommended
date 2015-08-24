@@ -57,6 +57,10 @@ public class RecommendedServiceImpl implements RecommendedService {
 
 	public RecommendedDTO getRecommendedByUserId(Long userId) {
 		Recommended recommended = this.recommendedSearcher.getByUserId(userId);
+		if (recommended == null) {
+			return null;
+		}
+		
 		return MapperUtil.map(mapper, recommended, RecommendedDTO.class);
 	}
 }

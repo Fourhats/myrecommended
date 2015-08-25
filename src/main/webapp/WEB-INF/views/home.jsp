@@ -60,7 +60,7 @@
 </body>
 <%@ include file="partials/scripts.jsp"%>
 <script>
-	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload']);
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'toastr', 'angularFileUpload']);
 </script>
 <%@ include file="partials/footerScritps.jsp"%>
 </html>

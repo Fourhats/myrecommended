@@ -60,7 +60,7 @@
 <script>
 	var recommendedPage = <%=request.getAttribute("recommendedPage")%>;
 	var categories = <%=request.getAttribute("categories")%>;
-	var myRecommendedApp = angular.module('myRecommendedApp', [ 'ui.bootstrap', 'angularFileUpload' ]);
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'toastr']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/recommended/recommendedGalleryController.js"></script>
 

@@ -18,7 +18,7 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-myRecommendedApp.controller('loginController', function ($scope, $http, FileUploader) {
+myRecommendedApp.controller('loginController', function ($scope, $http, toastr) {
 	$scope.registerUser = function() {
 		if ($scope.registrationForm.$valid) {
 			$scope.sendRegisterUser();
@@ -34,7 +34,7 @@ myRecommendedApp.controller('loginController', function ($scope, $http, FileUplo
 				$scope.loginUser(user.username, user.password);
 			}
 	    }).error(function (data, status, headers, config) {
-	    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
+	    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 	    });
 	};
 	
@@ -73,7 +73,7 @@ myRecommendedApp.controller('loginController', function ($scope, $http, FileUplo
 		          }
 	    	  },
 		      error: function(XMLHttpRequest, textStatus, errorThrown){
-		    	  alert("Usuario o contraseña incorrecta");
+		    	  toastr.warning('Usuario o contraseña incorrecta');
 		    	  return false; 
 		      }
 		});
@@ -90,7 +90,7 @@ myRecommendedApp.controller('loginController', function ($scope, $http, FileUplo
 						$scope.loginUser(user.email, user.password);
 					}
 			    }).error(function (data, status, headers, config) {
-			    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
+			    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			    });
 		  } else if (response.status === 'not_authorized') {
 		  } else {
@@ -99,7 +99,7 @@ myRecommendedApp.controller('loginController', function ($scope, $http, FileUplo
 	};
 	
 	//UPLOADER
-	var uploader = $scope.uploader = new FileUploader({
+	/*var uploader = $scope.uploader = new FileUploader({
         url: getCompletePath("image/uploadAvatar")
     });
 	
@@ -118,10 +118,10 @@ myRecommendedApp.controller('loginController', function ($scope, $http, FileUplo
     
     uploader.onErrorItem = function(item, response, status, headers) {
     	uploader.cleanQueue();
-    	alert("Ha ocurrido un problema. Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb");
+    	toastr.error('Ha ocurrido un problema. Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb');
     };
     
-    $scope.defaultAvatarPath = getImagePath('avatarThumb', "defaultAvatar.jpg", "small");
+    $scope.defaultAvatarPath = getImagePath('avatarThumb', "defaultAvatar.jpg", "small");*/
 });
 
 myRecommendedApp.controller('headerController', function ($scope, $http) {
@@ -129,21 +129,5 @@ myRecommendedApp.controller('headerController', function ($scope, $http) {
 		if($scope.recommendedKey) {
 			redirect("recomendados/" + $scope.recommendedKey);
 		}
-		
-		//creacion de nuevo recomendado
-		/*var newRecommended = {categoryIds : [1,2,3], name: "nuevo recomendado", description: "descripcion del nuevo recomendado"};
-		$http.post(getCompletePath("recommended/createRecommended"), JSON.stringify(newRecommended))
-		.success(function (user) {
-	    }).error(function (data, status, headers, config) {
-	    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
-	    });*/
-		
-		//update de recommended
-		/*var recommended = {name: "nuevo nombre", description: "nueva description", categoryIds: [2,5]};
-		$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify(recommended))
-		.success(function () {
-	    }).error(function (data, status, headers, config) {
-	    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
-	    });*/
 	};
 });

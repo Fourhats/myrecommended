@@ -10,6 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/angularjs/imageUploader/angular-file-upload.min.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/js/angularjs/angular-toastr.tpls.js"></script>
 
 <!-- COMMONS -->
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/commonFunctions.js"></script>

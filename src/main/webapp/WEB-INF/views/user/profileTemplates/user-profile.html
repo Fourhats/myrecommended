@@ -19,23 +19,23 @@
 			<label for="username" data-ng-class="{active : user.username}">Nombre de usuario</label>
 		</div>
 	</div>
-	<button type="submit" data-ng-disabled="updateUserForm.$invalid">Actualizar datos</button>
+	<button type="submit" class="btn waves-effect waves-light" data-ng-disabled="updateUserForm.$invalid">Actualizar datos</button>
 </form>
 
-<form class="col s9" data-ng-submit="changePassword()" name="changePasswordForm">
+<form class="col s9" data-ng-submit="changePassword()" name="changePasswordForm" style="float: right;">
 	<div class="row">
-		<div class="input-field col s6">
+		<div class="input-field col s4">
 			<input id="currentPassword" type="password" class="validate" data-ng-model="currentPassword"> 
 			<label for="currentPassword">Contrase&ntilde;a actual</label>
 		</div>
-		<div class="input-field col s6">
+		<div class="input-field col s4">
 			<input id="newPassword" type="password" class="validate" data-ng-model="newPassword"> 
 			<label for="newPassword">Nueva contrase&ntilde;a </label>
 		</div>
-		<div class="input-field col s6">
+		<div class="input-field col s4">
 			<input id="repeatPassword" type="password" class="validate" data-ng-model="passwordRepeated"> 
 			<label for="repeatPassword">Repetir nueva contrase&ntilde;a</label>
 		</div>
 	</div>
-	<button type="submit">Cambiar contrase&ntilde;a</button>
+	<button class="btn waves-effect waves-light" type="submit">Cambiar contrase&ntilde;a</button>
 </form>

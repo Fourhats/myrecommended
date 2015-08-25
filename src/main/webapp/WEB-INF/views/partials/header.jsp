@@ -15,15 +15,15 @@
 				<input id="searchKey" data-ng-model="recommendedKey" type="text" class="validate"> 
 				<label for="searchKey">Busca tu recomendado</label>
 			</div>
-			<div class="input-field col s12">
+			<div class="col s12">
 				<select>
-					<option value="" disabled selected>Ubicación</option>
+					<option value="" selected>Ubicación</option>
 					<option value="1">Caballito</option>
 					<option value="2">Flores</option>
 					<option value="3">Belgrano</option>
 				</select>
 			</div>
-			<div class="input-field col s12">
+			<div class="col s12">
 				<select>
 					<option value="" disabled selected>Especialidad</option>
 					<option value="1">Electricista</option>
@@ -142,6 +142,8 @@
 						<button type="submit" class="btn-large waves-effect waves-light blue darken-1" data-ng-disabled="registrationForm.$invalid" tabindex="9">
 							Registrar 
 						</button>
+						<br>
+						<span style="cursor: pointer; color: #26a69a" id="backRegister">Volver</span>
 					</div>
 				</div>
 			</form>

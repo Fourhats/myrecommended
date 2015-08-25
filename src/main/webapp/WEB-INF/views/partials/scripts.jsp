@@ -18,27 +18,34 @@
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/prism.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/materialize.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/init.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
 <script>
-	var count = 1;
-	setInterval(function(){
-	  var old= $('#banner' + count);
-	  old.fadeOut(2000);
-	
-	  count++;
-	  if (count > 3) {
-	    count = 1;
-	  }
-	
-	  var next= $('#banner' + count);
-	  next.fadeIn(2000);
-	}, 7000);
-</script>
 
-			<script>
-			$( '#register' ).click(function() {
-			  $( "#loginForm" ).toggle( "slide" );
-			  $( "#registerForm" ).toggle( "slide" );
-			  
-			});
-			</script>
+$('select').select2();
+
+var count = 1;
+setInterval(function(){
+  var old= $('#banner' + count);
+  old.fadeOut(2000);
+
+  count++;
+  if (count > 3) {
+    count = 1;
+  }
+
+  var next= $('#banner' + count);
+  next.fadeIn(2000);
+}, 7000);
+
+$( '#register' ).click(function() {
+  $( "#loginForm" ).toggle( "slide" );
+  $( "#registerForm" ).toggle( "slide" );
+  
+});
+$( '#backRegister' ).click(function() {
+	  $( "#registerForm" ).toggle( "slide" );
+	  $( "#loginForm" ).toggle( "slide" );
+	  
+	});
+</script>

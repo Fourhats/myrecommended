@@ -14,6 +14,7 @@
 <!--  Android 5 Chrome Color-->
 <meta name="theme-color" content="#EE6E73">
 <!-- CSS-->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/prism.css">
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/ghpages-materialize.css" type="text/cs" media="screen,projection">
 <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">

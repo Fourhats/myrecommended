@@ -14,8 +14,10 @@
 <!--  Android 5 Chrome Color-->
 <meta name="theme-color" content="#EE6E73">
 <!-- CSS-->
-<link rel="stylesheet" href="<%=stylePageContext %>/static/css/prism.css" rel="stylesheet">
-<link rel="stylesheet" href="<%=stylePageContext %>/static/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link rel="stylesheet" href="<%=stylePageContext %>/static/css/prism.css">
+<link rel="stylesheet" href="<%=stylePageContext %>/static/css/ghpages-materialize.css" type="text/cs" media="screen,projection">
 <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
+
+<!-- AngularJs css -->
+<link rel="stylesheet" href="<%=stylePageContext %>/static/css/angular-toastr.css" />

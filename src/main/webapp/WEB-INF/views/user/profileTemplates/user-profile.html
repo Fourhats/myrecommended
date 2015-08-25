@@ -1,11 +1,11 @@
 <form class="col s9" data-ng-submit="updateUser()" name="updateUserForm">
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="first_name" type="text" class="validate" data-ng-model="user.name"> 
+			<input id="first_name" required maxlength="100" type="text" class="validate" data-ng-model="user.name"> 
 			<label for="first_name" data-ng-class="{active : user.name}">Nombre</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="last_name" type="text" class="validate" data-ng-model="user.surname">
+			<input id="last_name" required maxlength="60" type="text" class="validate" data-ng-model="user.surname">
 			<label for="last_name" data-ng-class="{active : user.surname}">Apellido</label>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 			<label for="username" data-ng-class="{active : user.username}">Nombre de usuario</label>
 		</div>
 	</div>
-	<button type="submit">Actualizar datos</button>
+	<button type="submit" data-ng-disabled="updateUserForm.$invalid">Actualizar datos</button>
 </form>
 
 <form class="col s9" data-ng-submit="changePassword()" name="changePasswordForm">
@@ -30,11 +30,11 @@
 		</div>
 		<div class="input-field col s6">
 			<input id="newPassword" type="password" class="validate" data-ng-model="newPassword"> 
-			<label for="newPassword">Contrase&ntilde;a password</label>
+			<label for="newPassword">Nueva contrase&ntilde;a </label>
 		</div>
 		<div class="input-field col s6">
 			<input id="repeatPassword" type="password" class="validate" data-ng-model="passwordRepeated"> 
-			<label for="repeatPassword">Contrase&ntilde;a password</label>
+			<label for="repeatPassword">Repetir nueva contrase&ntilde;a</label>
 		</div>
 	</div>
 	<button type="submit">Cambiar contrase&ntilde;a</button>

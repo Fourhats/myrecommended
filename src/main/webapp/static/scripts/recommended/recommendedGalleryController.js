@@ -1,4 +1,4 @@
-myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, $document) {
+myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, $document, toastr) {
 	$scope.categories = categories;
 	
 	$scope.recommendedPage = recommendedPage;
@@ -24,7 +24,7 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 			$scope.isLoading = false;
 	    }).error(function () {
 	    	$scope.isLoading = false;
-	    	alert("Ha ocurrido un problema. Por favor intente nuevamente");
+			toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 	    });
 	};
 	

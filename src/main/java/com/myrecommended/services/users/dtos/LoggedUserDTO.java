@@ -1,6 +1,8 @@
 package com.myrecommended.services.users.dtos;
 
-public class LoggedUserDTO {
+import com.myrecommended.services.utils.MyRecommendedBaseDTO;
+
+public class LoggedUserDTO extends MyRecommendedBaseDTO {
 
 	private String email;
 	
@@ -9,8 +11,6 @@ public class LoggedUserDTO {
 	//TODO: ver si sirve para algo!
 	private String password;
 	
-	private String error;
-
 	public String getEmail() {
 		return email;
 	}
@@ -33,13 +33,5 @@ public class LoggedUserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getError() {
-		return error;
-	}
-
-	public void setError(String error) {
-		this.error = error;
 	}
 }

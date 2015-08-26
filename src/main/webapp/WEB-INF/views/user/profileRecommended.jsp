@@ -14,7 +14,6 @@
 		</div>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
-	
 				<div class="row">
 					<div class="col s3">
 						<div class="collection">

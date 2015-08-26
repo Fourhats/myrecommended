@@ -15,17 +15,45 @@ myRecommendedApp.config(function($routeProvider) {
     	});
 });
 
+myRecommendedApp.controller('MainProfileController', function($scope) {
+	$scope.menu = ProfileMenu.currentMenu;
+});
+
 myRecommendedApp.controller('userProfileController', function($scope, $http, toastr) {
 	$scope.user = user;
 	
 	$scope.updateUser = function() {
 		if ($scope.updateUserForm.$valid) {
 			$http.post(getCompletePath("users/updateUser"), JSON.stringify($scope.user))
-			.success(function () {
-				toastr.success('El usuario se ha modificado exitosamente');
+			.success(function (result) {
+				if(result.hasError) {
+					toastr.warning(result.error);
+				} else {
+					toastr.success('El usuario se ha modificado exitosamente');
+				}
 		    }).error(function (data, status, headers, config) {
 				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 		    });
+		}
+	};
+	
+	$scope.changePassword = function() {
+		if ($scope.changePasswordForm.$valid) {
+			if($scope.passowordDto.newPassword != $scope.passowordDto.passwordRepeated) {
+				toastr.warning('Las contraseñas nuevas deben coincidir');
+			} else {
+				$http.post(getCompletePath("users/changePassword"), JSON.stringify($scope.passowordDto))
+				.success(function (result) {
+					if(result.hasError) {
+						toastr.warning(result.error);
+					} else {
+						toastr.success('La contraseña se ha modificado exitosamente');
+						$scope.passowordDto = {};
+					}
+			    }).error(function (data, status, headers, config) {
+					toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+			    });
+			}
 		}
 	};
 });

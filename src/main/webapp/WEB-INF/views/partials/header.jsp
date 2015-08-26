@@ -129,7 +129,7 @@
 					</div>
 					<div class="col m12">
 						<div class="input-field">
-							<input name="password" required maxlength="100" data-ng-minlength="5" placeholder="Contraseña" type="password" tabindex="8" data-ng-model="newUser.password"/>
+							<input name="password" required maxlength="50" data-ng-minlength="5" placeholder="Contraseña" type="password" tabindex="8" data-ng-model="newUser.password"/>
 							<label class="ng-hide" for="password" data-ng-show="registrationForm.password.$dirty && registrationForm.password.$invalid">
 								<span data-ng-show="registrationForm.password.$error.required">Debe ingresar su contraseña</span>
 								<span data-ng-show="registrationForm.password.$error.maxlength">Supera la cantidad maxima de caracteres</span>

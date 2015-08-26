@@ -25,17 +25,17 @@
 <form class="col s9" data-ng-submit="changePassword()" name="changePasswordForm" style="float: right;">
 	<div class="row">
 		<div class="input-field col s4">
-			<input id="currentPassword" type="password" class="validate" data-ng-model="currentPassword"> 
+			<input id="currentPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.oldPassword"> 
 			<label for="currentPassword">Contrase&ntilde;a actual</label>
 		</div>
 		<div class="input-field col s4">
-			<input id="newPassword" type="password" class="validate" data-ng-model="newPassword"> 
+			<input id="newPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.newPassword"> 
 			<label for="newPassword">Nueva contrase&ntilde;a </label>
 		</div>
 		<div class="input-field col s4">
-			<input id="repeatPassword" type="password" class="validate" data-ng-model="passwordRepeated"> 
+			<input id="repeatPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.passwordRepeated"> 
 			<label for="repeatPassword">Repetir nueva contrase&ntilde;a</label>
 		</div>
 	</div>
-	<button class="btn waves-effect waves-light" type="submit">Cambiar contrase&ntilde;a</button>
+	<button class="btn waves-effect waves-light" type="submit" data-ng-disabled="changePasswordForm.$invalid">Cambiar contrase&ntilde;a</button>
 </form>

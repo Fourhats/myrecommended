@@ -10,6 +10,7 @@ import com.myrecommended.business.users.UserUpdater;
 import com.myrecommended.daos.UserDAO;
 import com.myrecommended.models.User;
 import com.myrecommended.services.users.UserService;
+import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserDTO;
@@ -59,5 +60,9 @@ public class UserServiceImpl implements UserService {
 	public UserDTO getUser(long userId) {
 		User user = this.userSearcher.getUser(userId);
 		return MapperUtil.map(mapper, user, UserDTO.class);
+	}
+
+	public void changePassword(ChangePasswordRequestDTO changePasswordDto) throws MyRecommendedBusinessException {
+		this.userUpdater.changePassword(changePasswordDto);
 	}
 }

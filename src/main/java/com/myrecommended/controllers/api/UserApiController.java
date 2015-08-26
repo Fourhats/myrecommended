@@ -15,9 +15,11 @@ import com.myrecommended.services.petitions.PetitionService;
 import com.myrecommended.services.petitions.dtos.PetitionDTO;
 import com.myrecommended.services.petitions.dtos.PetitionRequestDTO;
 import com.myrecommended.services.users.UserService;
+import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
+import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.types.User;
@@ -71,19 +73,43 @@ public class UserApiController extends BaseController {
     }
 	
 	@RequestMapping(value = "/users/updateUser", method = RequestMethod.POST)
-    public void updateUser(@RequestBody UpdateUserRequestDTO userDto, Model model) {
+    public MyRecommendedBaseDTO updateUser(@RequestBody UpdateUserRequestDTO userDto, Model model) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
 		try {
 			this.verifyAuthentication();
 			
 			userDto.setId(this.getUserId());
 			this.userService.updateUser(userDto);
 		} catch (AuthenticationCredentialsNotFoundException e) {
-			//TODO: DEVOLVER OBJETO CON ERROR
+			returnObject.setError(e.getMessage());
 			e.printStackTrace();
 		} catch (MyRecommendedBusinessException e) {
-			//TODO: devolver objeto con error
+			returnObject.setError(e.getMessage());
 			e.printStackTrace();
 		}
+		
+		return returnObject;
+    }
+	
+	@RequestMapping(value = "/users/changePassword", method = RequestMethod.POST)
+    public MyRecommendedBaseDTO changePassword(@RequestBody ChangePasswordRequestDTO changePasswordDto, Model model) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
+		try {
+			this.verifyAuthentication();
+			
+			changePasswordDto.setUserId(this.getUserId());
+			this.userService.changePassword(changePasswordDto);
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		} catch (MyRecommendedBusinessException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return returnObject;
     }
 	
 	@RequestMapping(value = "/users/createPetition", method = RequestMethod.POST)

@@ -15,7 +15,7 @@
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
 				<div class="row">
-					<div class="col s3">
+					<div class="col s3 profileMenu">
 						<div class="collection">
 							<a href="#usuario" class="collection-item active">Información del usuario</a> 
 							<a href="#recomendado" class="collection-item">Información del recomendado</a> 

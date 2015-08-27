@@ -8978,5 +8978,56 @@ body.parallax-demo footer {
    }
 }
 
+ @media screen and (max-width:460px) 
+  {
+    .row .col.s3.profileMenu{
+		width:100%;
+   }
+   
+   .row .col.userProfileForm{
+   		width:100%;
+   }
+   
+    .passwordRow, .dataRow{
+   		text-align: center;
+   }
+   .row.passwordRow .s4{
+   width: 100%;
+   }
+   
+   a.button-collapse.top-nav {
+    left: -7%;
+    top: -6px;
+}
+
+.section.no-pad-bot {
+    padding-top: 0px;
+    margin-top: -20px;
+}
+
+.modal {
+    width: 95%;
+ }
+ 
+ .contact-form .row .m12{
+ width: 100%;
+ }
+ 
+ #registerForm{
+ margin-top: -20px;
+ }
+ 
+  #registerForm .input-field {
+    margin-top: 0px;
+}
+
+ #registerForm .input-field input{
+    margin-bottom: 0px;
+}
+   
+   
+}
+
+
 
   

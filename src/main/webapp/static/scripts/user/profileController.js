@@ -16,7 +16,6 @@ myRecommendedApp.config(function($routeProvider) {
 });
 
 myRecommendedApp.controller('MainProfileController', function($scope) {
-	$scope.menu = ProfileMenu.currentMenu;
 });
 
 myRecommendedApp.controller('userProfileController', function($scope, $http, toastr) {
@@ -56,10 +55,13 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 			}
 		}
 	};
+	
+	$scope.$parent.currentPage = "userProfile";
 });
 
 myRecommendedApp.controller('recommendedProfileController', function($scope, $http) {
 	$scope.recommended = recommended;
+	$scope.$parent.currentPage = "recommendedProfile";
 });
 
 //creacion de nuevo recomendado

@@ -9024,8 +9024,16 @@ body.parallax-demo footer {
  #registerForm .input-field input{
     margin-bottom: 0px;
 }
+  
+  ul.side-nav.fixed li.logo {
+    margin-top: 0px;
+    margin-bottom: 0px;
+} 
    
    
+   ul.side-nav.fixed li.logo img{
+    width: 60%;
+} 
 }
 
 

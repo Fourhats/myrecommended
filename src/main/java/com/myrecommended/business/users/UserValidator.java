@@ -5,8 +5,11 @@ import org.springframework.stereotype.Component;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.business.users.exceptions.DuplicatedUserException;
+import com.myrecommended.business.users.exceptions.OldPasswordDoNotMatchException;
+import com.myrecommended.business.users.exceptions.PasswordLengthNotValidException;
 import com.myrecommended.business.users.exceptions.UserNotExistException;
 import com.myrecommended.daos.UserDAO;
+import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 
@@ -19,6 +22,7 @@ public class UserValidator {
 	public void validateIfCanBeCreated(UserRequestDTO userRequestDTO) throws MyRecommendedBusinessException {
 		this.validateDuplicatedEmail(userRequestDTO.getEmail());
 		this.validateDuplicatedUsername(userRequestDTO.getUsername());
+		this.validateIfPasswordIsCorrect(userRequestDTO.getPassword());
 	}
 
 	public void validateIfCanBeCreated(com.restfb.types.User fbUser) throws MyRecommendedBusinessException {
@@ -30,6 +34,22 @@ public class UserValidator {
 		this.validateIfExistId(userRequestDTO.getId());
 	}
 	
+	public void validateIfCanChangePassword(ChangePasswordRequestDTO changePasswordDto) throws MyRecommendedBusinessException {
+		if(!this.userDao.getById(changePasswordDto.getUserId()).getPassword().equals(changePasswordDto.getOldPassword())) {
+			throw new OldPasswordDoNotMatchException();
+		}
+		
+		this.validateIfPasswordIsCorrect(changePasswordDto.getNewPassword());
+	}
+	
+	private void validateIfPasswordIsCorrect(String password) throws PasswordLengthNotValidException {
+		if(password.length() < 5) {
+			throw new PasswordLengthNotValidException("La contraseña debe tener más de 4 caracteres");
+		} else if(password.length() > 50) {
+			throw new PasswordLengthNotValidException("La contraseña no debe superar los 50 caracteres");
+		}
+	}
+
 	private void validateIfExistId(Long userId) throws UserNotExistException {
 		if(this.userDao.getById(userId) == null) {
 			throw new UserNotExistException("No existe el usuario");

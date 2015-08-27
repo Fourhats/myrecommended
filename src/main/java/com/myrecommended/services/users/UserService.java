@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserDTO;
@@ -28,4 +29,7 @@ public interface UserService {
 	boolean existUserWithEmail(String email);
 
 	UserDTO getUser(long userId);
+
+	@Transactional
+	void changePassword(ChangePasswordRequestDTO changePasswordDto) throws MyRecommendedBusinessException;
 }

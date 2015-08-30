@@ -19,7 +19,7 @@ import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
-import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
+import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
 @RestController
 public class RecommendedApiController extends BaseController {
@@ -28,40 +28,24 @@ public class RecommendedApiController extends BaseController {
 	private RecommendedService recommendedService;
 	
 	//TODO: ES NECESARIO EL MODELO ACA Y EN LOS DEMAS METODOS DE RECOMMENDEDAPICONTROLLER Y USERAPICONTROLLER???
-	@RequestMapping(value = "/recommended/createRecommended", method = RequestMethod.POST)
-    public @ResponseBody RecommendedDTO addRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) {
-		RecommendedDTO returnObject = new RecommendedDTO();
+	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
+    public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
 		try {
 			this.verifyAuthentication();
 			
 			recommendedDto.setUserId(this.getUserId());
-			returnObject = recommendedService.addRecommended(recommendedDto);
-		} catch (MyRecommendedBusinessException e) {
+			this.recommendedService.createOrUpdate(recommendedDto);
+		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
-		} catch (AuthenticationCredentialsNotFoundException e) {
+		} catch (MyRecommendedBusinessException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
 		}
 		
 		return returnObject;
-    }
-	
-	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
-    public void updateRecommended(@RequestBody UpdateRecommendedRequestDTO recommendedDto, Model model) {
-		try {
-			this.verifyAuthentication();
-			
-			recommendedDto.setUserId(this.getUserId());
-			this.recommendedService.updateRecommneded(recommendedDto);
-		} catch (AuthenticationCredentialsNotFoundException e) {
-			//TODO: DEVOLVER OBJETO CON ERROR
-			e.printStackTrace();
-		} catch (MyRecommendedBusinessException e) {
-			//TODO: DEVOLVER OBJETO CON ERROR
-			e.printStackTrace();
-		}
     }
 	
 	@RequestMapping(value="/recommended/{pageIndex}/{pageSize}", method = RequestMethod.GET, consumes="*/*")

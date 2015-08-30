@@ -95,9 +95,9 @@
 	    	<value>dtoMappings/category-mapping.xml</value>
 	    	<value>dtoMappings/fullcategory-mapping.xml</value>
 	    	<value>dtoMappings/loggeduser-mapping.xml</value>
+	    	<value>dtoMappings/currentuser-mapping.xml</value>
 	    	<value>dtoMappings/petition-mapping.xml</value>
 	    	<value>dtoMappings/recommended-mapping.xml</value>
-	    	<value>dtoMappings/user-mapping.xml</value>
 	    </list>
 	  </property>
 	</bean> 

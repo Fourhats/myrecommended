@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.users.UserService;
-import com.myrecommended.services.users.dtos.UserDTO;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
 
 @Controller
 public class UserController extends BaseController {
@@ -37,7 +37,7 @@ public class UserController extends BaseController {
 		}
 		
 		Gson gson = new Gson();
-		UserDTO user =  this.userService.getUser(this.getUserId());
+		CurrentUserDTO user =  this.userService.getUser(this.getUserId());
 		model.addAttribute("user", gson.toJson(user));
 		RecommendedDTO recommended = this.recommendedService.getRecommendedByUserId(user.getId());
 		model.addAttribute("recommended", gson.toJson(recommended));

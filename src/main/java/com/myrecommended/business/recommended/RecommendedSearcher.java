@@ -34,4 +34,8 @@ public class RecommendedSearcher {
 	public Recommended getByUserId(Long userId) {
 		return this.recommendedDao.getByUserId(userId);
 	}
+
+	public boolean existByUserId(Long userId) {
+		return this.recommendedDao.existByUserId(userId);
+	}
 }

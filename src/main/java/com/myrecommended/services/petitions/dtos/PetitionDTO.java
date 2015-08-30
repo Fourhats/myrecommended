@@ -3,7 +3,7 @@ package com.myrecommended.services.petitions.dtos;
 import java.util.Date;
 
 import com.myrecommended.services.categories.dtos.CategoryDTO;
-import com.myrecommended.services.users.dtos.UserDTO;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
 
 public class PetitionDTO {
 
@@ -11,7 +11,7 @@ public class PetitionDTO {
 	
 	private Long id;
 	
-	private UserDTO user;
+	private CurrentUserDTO user;
 	
 	private CategoryDTO category;
 	
@@ -39,11 +39,11 @@ public class PetitionDTO {
 		this.id = id;
 	}
 
-	public UserDTO getUser() {
+	public CurrentUserDTO getUser() {
 		return user;
 	}
 
-	public void setUser(UserDTO user) {
+	public void setUser(CurrentUserDTO user) {
 		this.user = user;
 	}
 

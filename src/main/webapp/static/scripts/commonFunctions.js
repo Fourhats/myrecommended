@@ -14,3 +14,8 @@ function getImagePath(actionControllerName, imageName, type){
 	type = type || 'none';
 	return getCompletePath("imageHandler/" + actionControllerName) + '?fileName=' + imageName + '&type=' + type;
 }
+
+function getCurrentUserImagePath(actionControllerName, type){
+	type = type || 'none';
+	return getCompletePath("imageHandler/" + actionControllerName) + '?type=' + type;
+}

@@ -1,11 +1,28 @@
 <form class="col s9 userProfileForm" data-ng-submit="updateUser()" name="updateUserForm">
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="first_name" required maxlength="100" type="text" class="validate" data-ng-model="user.name"> 
+			<div data-ng-show="uploader.queue.length == 0">
+				<img data-ng-src="{{user.avatarPath}}" style="width: 200px" />
+			</div>
+			<div data-ng-repeat="item in uploader.queue">
+				<div data-ng-show="$last">
+					<div data-ng-show="uploader.isHTML5" data-ng-thumb="{ file: item._file, height: 100 }"></div>
+					<strong>{{ item.file.name }}</strong>
+				</div>
+			</div>
+		</div>
+		<div class="input-field col s6" data-ng-hide="user.isFacebookLogin">
+			<input style="display: none;" id="avatarUpload" type="file" nv-file-select="" uploader="uploader" />
+			<button type="button" class="btn waves-effect waves-light" data-ng-click="uploadAvatar()">Cambiar Avatar</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s6">
+			<input id="first_name" data-ng-disabled="user.isFacebookLogin" required maxlength="100" type="text" class="validate" data-ng-model="user.name"> 
 			<label for="first_name" data-ng-class="{active : user.name}">Nombre</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="last_name" required maxlength="60" type="text" class="validate" data-ng-model="user.surname">
+			<input id="last_name" data-ng-disabled="user.isFacebookLogin" required maxlength="60" type="text" class="validate" data-ng-model="user.surname">
 			<label for="last_name" data-ng-class="{active : user.surname}">Apellido</label>
 		</div>
 	</div>
@@ -18,22 +35,24 @@
 			<input id="username" disabled type="text" class="validate" data-ng-model="user.username"> 
 			<label for="username" data-ng-class="{active : user.username}">Nombre de usuario</label>
 		</div>
-		<button type="submit" class="btn waves-effect waves-light" data-ng-disabled="updateUserForm.$invalid">Actualizar datos</button>
+	</div>
+	<div class="row dataRow">
+		<button type="submit" class="btn waves-effect waves-light" data-ng-disabled="updateUserForm.$invalid || user.isFacebookLogin">Actualizar datos</button>
 	</div>
 </form>
 
-<form class="col s9 userProfileForm" data-ng-submit="changePassword()" name="changePasswordForm" style="float: right;">
+<form class="col s9 userProfileForm" data-ng-hide="user.isFacebookLogin" data-ng-submit="changePassword()" name="changePasswordForm" style="float: right;">
 	<div class="row passwordRow">
 		<div class="input-field col s4">
-			<input id="currentPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.oldPassword"> 
+			<input id="currentPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.oldPassword" class="validate">
 			<label for="currentPassword">Contrase&ntilde;a actual</label>
 		</div>
 		<div class="input-field col s4">
-			<input id="newPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.newPassword"> 
+			<input id="newPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.newPassword" class="validate"> 
 			<label for="newPassword">Nueva contrase&ntilde;a </label>
 		</div>
 		<div class="input-field col s4">
-			<input id="repeatPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.passwordRepeated"> 
+			<input id="repeatPassword" type="password" required maxlength="50" data-ng-minlength="5" data-ng-model="passowordDto.passwordRepeated" class="validate">
 			<label for="repeatPassword">Repetir nueva contrase&ntilde;a</label>
 		</div>
 		<button class="btn waves-effect waves-light" type="submit" data-ng-disabled="changePasswordForm.$invalid">Cambiar contrase&ntilde;a</button>

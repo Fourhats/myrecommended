@@ -13,7 +13,7 @@ import com.myrecommended.services.users.UserService;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
-import com.myrecommended.services.users.dtos.UserDTO;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.myrecommended.services.utils.MapperUtil;
 
@@ -57,12 +57,16 @@ public class UserServiceImpl implements UserService {
 		this.userUpdater.update(userDto);
 	}
 
-	public UserDTO getUser(long userId) {
+	public CurrentUserDTO getUser(long userId) {
 		User user = this.userSearcher.getUser(userId);
-		return MapperUtil.map(mapper, user, UserDTO.class);
+		return MapperUtil.map(mapper, user, CurrentUserDTO.class);
 	}
 
 	public void changePassword(ChangePasswordRequestDTO changePasswordDto) throws MyRecommendedBusinessException {
 		this.userUpdater.changePassword(changePasswordDto);
+	}
+
+	public String getUserAvatar(long userId) {
+		return this.getUser(userId).getAvatarName();
 	}
 }

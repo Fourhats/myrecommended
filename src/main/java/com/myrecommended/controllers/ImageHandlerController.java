@@ -1,3 +1,4 @@
+
 package com.myrecommended.controllers;
 
 import java.awt.image.BufferedImage;
@@ -15,24 +16,34 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.imgscalr.Scalr;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.myrecommended.services.users.UserService;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
+
 @Controller
 @RequestMapping("imageHandler")
-public class ImageHandlerController {
+public class ImageHandlerController extends BaseController {
 
 	@Value("#{configProps}")
 	private Properties properties;
+	
+	@Autowired
+	private UserService userService;
 	
 	//TODO: PASAR A UNA COSTANTE
 	private final String SMALL_IMAGE_FOLDER = "small";
 	private final String MEDIUM_IMAGE_FOLDER = "medium";
 	private final String LARGE_IMAGE_FOLDER = "large";
 	private final String ORIGINAL_IMAGE_FOLDER = "originals";
+	
+	private final String DEFAULT_AVATAR = "defaultAvatar.jpg";
 	
 	/*@RequestMapping(value="/avatarThumb", method=RequestMethod.GET, params={"fileName", "w"})
 	public void avatarThumb(HttpServletResponse response, @RequestParam(value="fileName") String fileName, @RequestParam(value="w") int width){
@@ -54,7 +65,19 @@ public class ImageHandlerController {
 	public void avatarThumb(HttpServletResponse response, String fileName, String type){
 		String tempPath = properties.getProperty("folder.avatar");
 		File directory = new File(tempPath, type);
+		if(fileName == null || fileName.isEmpty()) {
+			fileName = this.DEFAULT_AVATAR;
+		}
+		
 		handleImage(response, fileName, directory.getAbsolutePath());
+	}
+	
+	@RequestMapping(value="/currentAvatarThumb", method=RequestMethod.GET)
+	public void currentAvatarThumb(HttpServletResponse response, String type){
+		this.verifyAuthentication();
+		
+		String avatarName = this.userService.getUserAvatar(this.getUserId());
+		this.avatarThumb(response, avatarName, type);
 	}
 
 	private void resize(HttpServletResponse response, String folderPath, String fileName, int width, int height) {

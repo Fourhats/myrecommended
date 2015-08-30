@@ -1,27 +1,25 @@
-<form class="col s9 userProfileForm" data-ng-submit="updateUser()" name="updateUserForm">
+<form class="col s9 userProfileForm" data-ng-submit="updateRecommended()" name="updateRecommendedForm">
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="first_name" required maxlength="100" type="text" class="validate" data-ng-model="user.name"> 
-			<label for="first_name" data-ng-class="{active : user.name}">Nombre. Ej.: "Daniel - Pintor profesional"</label>
+			<input id="name" required maxlength="45" type="text" class="validate" data-ng-model="recommended.name"> 
+			<label for="name" data-ng-class="{active : recommended.name}">Nombre. Ej.: "Daniel - Pintor profesional"</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="last_name" required maxlength="60" type="text" class="validate" data-ng-model="user.surname">
-			<label for="last_name" data-ng-class="{active : user.surname}">Telefono</label>
+			<input id="phne" type="text" class="validate">
+			<label for="phone">Tel&eacute;fono</label>
 		</div>
 		<div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Descripcion</label>
+          	<textarea id="description" required maxlength="2000" class="materialize-textarea" data-ng-model="recommended.description"></textarea>
+          	<label for="description" data-ng-class="{active : recommended.description}">Descripci&oacute;n</label>
 		</div>
-
 	</div>
 	<div class="row dataRow">
-	
 		<div class="input-field col s6">
-			<input id="email" type="email" class="validate" data-ng-model="user.email"> 
-			<label for="email" data-ng-class="">Email Recomendado</label> <!-- Por default estaria bueno que traiga el del perfil -->
+			<input id="email" type="email" required maxlength="60" class="validate" data-ng-model="recommended.email"> 
+			<label for="email" data-ng-class="{active : recommended.email}">Email Recomendado</label>
 		</div>
 		<div class="input-field col s12">
-			<button type="submit" class="btn waves-effect waves-light" data-ng-disabled="updateUserForm.$invalid">Actualizar datos</button>
+			<button type="submit" class="btn waves-effect waves-light" data-ng-disabled="updateRecommendedForm.$invalid">Actualizar datos</button>
 		</div>
 	</div>
 </form>

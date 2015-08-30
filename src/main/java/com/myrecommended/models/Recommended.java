@@ -15,10 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-/**
- * @author dorozco
- *
- */
 @Entity
 @Table(name="recommended")
 public class Recommended extends PersistibleEntity {
@@ -26,11 +22,12 @@ public class Recommended extends PersistibleEntity {
 	public Recommended(){
 	}
 
-	public Recommended(User user, Set<Category> categories, String name, String description) {
+	public Recommended(User user, Set<Category> categories, String name, String description, String email) {
 		this.user = user;
 		this.categories = categories;
 		this.name = name;
 		this.description = description;
+		this.email = email;
 		this.creationDate = new Date();
 		this.updateDate = new Date();
 	}
@@ -51,6 +48,9 @@ public class Recommended extends PersistibleEntity {
 	
 	@Column(name="description")
 	private String description;
+	
+	@Column(name="email")
+	private String email;
 	
 	@Column(name="creationDate")
 	public Date creationDate;
@@ -93,6 +93,14 @@ public class Recommended extends PersistibleEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Date getCreationDate() {

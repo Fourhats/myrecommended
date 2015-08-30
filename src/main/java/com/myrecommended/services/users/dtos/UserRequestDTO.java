@@ -12,10 +12,6 @@ public class UserRequestDTO {
 	
 	private String username;
 	
-	private String signInProvider;
-	
-	private String providerId;
-	
 	private String avatarName;
 
 	public String getEmail() {
@@ -56,22 +52,6 @@ public class UserRequestDTO {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getSignInProvider() {
-		return signInProvider;
-	}
-
-	public void setSignInProvider(String signInProvider) {
-		this.signInProvider = signInProvider;
-	}
-
-	public String getProviderId() {
-		return providerId;
-	}
-
-	public void setProviderId(String providerId) {
-		this.providerId = providerId;
 	}
 
 	public String getAvatarName() {

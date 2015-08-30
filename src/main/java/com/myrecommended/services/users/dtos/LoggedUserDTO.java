@@ -2,6 +2,11 @@ package com.myrecommended.services.users.dtos;
 
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
+/**
+ * @author dorozco
+ *
+ * Used after user registration to log in the user
+ */
 public class LoggedUserDTO extends MyRecommendedBaseDTO {
 
 	private String email;

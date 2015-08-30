@@ -25,6 +25,7 @@ public class RecommendedFactory {
 	public Recommended create(RecommendedRequestDTO recommendedDto) {
 		User user = this.userDao.getById(recommendedDto.getUserId());
 		List<Category> categories = this.categoryDAO.getByIds(recommendedDto.getCategoryIds());
-		return new Recommended(user, new HashSet<Category>(categories), recommendedDto.getName(), recommendedDto.getDescription());
+		return new Recommended(user, new HashSet<Category>(categories), recommendedDto.getName(), 
+				recommendedDto.getDescription(), recommendedDto.getEmail());
 	}
 }

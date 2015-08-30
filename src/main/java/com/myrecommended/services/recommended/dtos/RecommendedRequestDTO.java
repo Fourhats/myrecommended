@@ -11,6 +11,8 @@ public class RecommendedRequestDTO {
 	private String name;
 	
 	private String description;
+	
+	private String email;
 
 	public Long getUserId() {
 		return userId;
@@ -42,5 +44,13 @@ public class RecommendedRequestDTO {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

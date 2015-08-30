@@ -14,7 +14,6 @@ import com.myrecommended.models.Recommended;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
-import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
 import com.myrecommended.services.utils.MapperUtil;
 
 public class RecommendedServiceImpl implements RecommendedService {
@@ -31,13 +30,12 @@ public class RecommendedServiceImpl implements RecommendedService {
 	@Autowired
 	private RecommendedUpdater recommendedUpdater;
 	
-	public RecommendedDTO addRecommended(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
-		Recommended recommended = this.recommendedGenerator.generate(recommendedDto);
-		return MapperUtil.map(mapper, recommended, RecommendedDTO.class);
-	}
-	
-	public void updateRecommneded(UpdateRecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
-		this.recommendedUpdater.update(recommendedDto);
+	public void createOrUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
+		if(this.recommendedSearcher.existByUserId(recommendedDto.getUserId())) {
+			this.recommendedUpdater.update(recommendedDto);	
+		} else {
+			this.recommendedGenerator.generate(recommendedDto);
+		}
 	}
 
 	public Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered) {

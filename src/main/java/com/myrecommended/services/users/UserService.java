@@ -7,7 +7,7 @@ import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
-import com.myrecommended.services.users.dtos.UserDTO;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.restfb.types.User;
 
@@ -28,8 +28,10 @@ public interface UserService {
 	@Transactional
 	boolean existUserWithEmail(String email);
 
-	UserDTO getUser(long userId);
+	CurrentUserDTO getUser(long userId);
 
 	@Transactional
 	void changePassword(ChangePasswordRequestDTO changePasswordDto) throws MyRecommendedBusinessException;
+
+	String getUserAvatar(long userId);
 }

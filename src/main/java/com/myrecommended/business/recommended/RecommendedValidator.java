@@ -13,7 +13,6 @@ import com.myrecommended.business.recommended.exceptions.RecommendedNotExistExce
 import com.myrecommended.daos.CategoryDAO;
 import com.myrecommended.daos.RecommendedDAO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
-import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
 
 @Component
 public class RecommendedValidator {
@@ -29,9 +28,9 @@ public class RecommendedValidator {
 		this.validateValidCategories(recommendedDto.getCategoryIds());
 	}
 
-	public void validateIfCanUpdate(UpdateRecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
-		this.validateValidCategories(recommendedDto.getCategoryIds());
+	public void validateIfCanUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
 		this.validateIfRecommendedExist(recommendedDto.getUserId());
+		this.validateValidCategories(recommendedDto.getCategoryIds());
 	}
 
 	//RECOMMENDED VALIDATIONS

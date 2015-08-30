@@ -4,7 +4,7 @@
 </script>
 
 <!-- JQuery LIBS -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 <!-- ANGULAR LIBS -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
@@ -21,31 +21,31 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
 <script>
+	$('select').select2();
 
-$('select').select2();
+	var count = 1;
+	setInterval(function() {
+		var old = $('#banner' + count);
+		old.fadeOut(2000);
 
-var count = 1;
-setInterval(function(){
-  var old= $('#banner' + count);
-  old.fadeOut(2000);
+		count++;
+		if (count > 3) {
+			count = 1;
+		}
 
-  count++;
-  if (count > 3) {
-    count = 1;
-  }
+		var next = $('#banner' + count);
+		next.fadeIn(2000);
+	}, 7000);
 
-  var next= $('#banner' + count);
-  next.fadeIn(2000);
-}, 7000);
+	$('#register').click(function() {
+		$("#loginForm").toggle("slide");
+		$("#registerForm").toggle("slide");
 
-$( '#register' ).click(function() {
-  $( "#loginForm" ).toggle( "slide" );
-  $( "#registerForm" ).toggle( "slide" );
-  
-});
-$( '#backRegister' ).click(function() {
-	  $( "#registerForm" ).toggle( "slide" );
-	  $( "#loginForm" ).toggle( "slide" );
-	  
+	});
+	
+	$('#backRegister').click(function() {
+		$("#registerForm").toggle("slide");
+		$("#loginForm").toggle("slide");
+
 	});
 </script>

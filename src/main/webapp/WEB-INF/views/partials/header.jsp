@@ -42,7 +42,7 @@
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<li class="menuLink">Bienvenido 
-				<strong> <sec:authentication property="principal.fullName" /> </strong>!
+				<strong><sec:authentication property="principal.fullName" /></strong>!
 				<a href="<%=headerPageContext%>/perfil" >
 					Ver Perfíl 
 				</a> 

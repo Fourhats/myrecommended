@@ -12,7 +12,7 @@ import com.myrecommended.daos.CategoryDAO;
 import com.myrecommended.daos.RecommendedDAO;
 import com.myrecommended.models.Category;
 import com.myrecommended.models.Recommended;
-import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
+import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
 
 @Component
 public class RecommendedUpdater {
@@ -29,7 +29,7 @@ public class RecommendedUpdater {
 	@Autowired
 	private RecommendedValidator recommendedValidator;
 	
-	public void update(UpdateRecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
+	public void update(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
 		this.recommendedValidator.validateIfCanUpdate(recommendedDto);
 		
 		Recommended recommended = this.recommendedDAO.getByUserId(recommendedDto.getUserId());
@@ -38,6 +38,8 @@ public class RecommendedUpdater {
 		recommended.setCategories(categories);
 		recommended.setDescription(recommendedDto.getDescription());
 		recommended.setName(recommendedDto.getName());
+		recommended.setEmail(recommendedDto.getEmail());
+		
 		recommended.setUpdateDate(new Date());
 		
 		this.recommendedDAO.add(recommended);

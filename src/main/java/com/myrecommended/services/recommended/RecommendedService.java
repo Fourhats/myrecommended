@@ -9,16 +9,12 @@ import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
-import com.myrecommended.services.recommended.dtos.UpdateRecommendedRequestDTO;
 
 @Service
 public interface RecommendedService {
-
+	
 	@Transactional
-	RecommendedDTO addRecommended(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException;
-
-	@Transactional
-	void updateRecommneded(UpdateRecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException;
+	void createOrUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException;
 	
 	@Transactional
 	Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered);

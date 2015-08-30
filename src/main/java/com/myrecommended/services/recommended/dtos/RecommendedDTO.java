@@ -3,7 +3,7 @@ package com.myrecommended.services.recommended.dtos;
 import java.util.List;
 
 import com.myrecommended.services.categories.dtos.CategoryDTO;
-import com.myrecommended.services.users.dtos.UserDTO;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
 
 public class RecommendedDTO {
 
@@ -11,7 +11,7 @@ public class RecommendedDTO {
 	
 	private String error;
 	
-	private UserDTO user;
+	private CurrentUserDTO user;
 	
 	private String name;
 	
@@ -37,11 +37,11 @@ public class RecommendedDTO {
 		this.error = error;
 	}
 	
-	public UserDTO getUser() {
+	public CurrentUserDTO getUser() {
 		return user;
 	}
 
-	public void setUser(UserDTO user) {
+	public void setUser(CurrentUserDTO user) {
 		this.user = user;
 	}
 	

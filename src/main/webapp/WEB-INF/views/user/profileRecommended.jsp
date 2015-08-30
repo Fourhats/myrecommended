@@ -10,7 +10,7 @@
 	<%@ include file="../partials/header.jsp"%>
 	<main>
 		<div class="col m12">
-			<h1 class="header center-on-small-only">Perfil de usuario</h1>
+			<h1 class="header center-on-small-only" data-ng-bind="currentPageName"></h1>
 		</div>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
@@ -38,6 +38,7 @@
 <script>
 	var user = <%=request.getAttribute("user")%>;
 	var recommended = <%=request.getAttribute("recommended")%>;
+	var categories = <%=request.getAttribute("categories")%>;
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toastr']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>

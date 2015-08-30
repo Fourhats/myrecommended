@@ -1,5 +1,6 @@
 package com.myrecommended.services.recommended.dtos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.myrecommended.services.categories.dtos.CategoryDTO;
@@ -15,9 +16,13 @@ public class RecommendedDTO {
 	
 	private String name;
 	
+	private String email;
+	
 	private String description;
 	
 	private List<CategoryDTO> categories;
+	
+	private List<Long> categoryIds = new ArrayList<Long>();
 	
 	private List<RecommendedImageDTO> recommendedImages;
 	
@@ -53,6 +58,14 @@ public class RecommendedDTO {
 		this.name = name;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -67,6 +80,17 @@ public class RecommendedDTO {
 
 	public void setCategories(List<CategoryDTO> categories) {
 		this.categories = categories;
+		for(CategoryDTO category : categories) {
+			this.categoryIds.add(category.getId());
+		}
+	}
+	
+	public List<Long> getCategoryIds() {
+		return categoryIds;
+	}
+
+	public void setCategoryIds(List<Long> categoryIds) {
+		this.categoryIds = categoryIds;
 	}
 
 	public List<RecommendedImageDTO> getRecommendedImages() {

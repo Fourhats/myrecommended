@@ -3,6 +3,7 @@ package com.myrecommended.daos.impl;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +21,7 @@ public class CategoryDAOImpl extends BaseDAOImpl<Category, Long> implements Cate
 	public List<Category> getByIds(List<Long> categoryIds) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
 		criteria.add(Restrictions.in("id", categoryIds));
+		criteria.addOrder(Order.asc("name"));
 		return (List<Category>) getHibernateTemplate().findByCriteria(criteria);
 	}
 

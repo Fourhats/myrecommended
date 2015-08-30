@@ -91,10 +91,17 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 	};
 	
 	$scope.$parent.currentPage = "userProfile";
+	$scope.$parent.currentPageName = "Perfil de usuario";
 });
 
 myRecommendedApp.controller('recommendedProfileController', function($scope, $http, toastr, FileUploader) {
 	$scope.recommended = recommended == null ? { email : user.email } : recommended;
+	$scope.categories = categories;
+	
+	$scope.toggleCategorySelection = function(category) {
+		var idx = $scope.recommended.categoryIds.indexOf(category.id);
+	    idx > -1 ?  $scope.recommended.categoryIds.splice(idx, 1) : $scope.recommended.categoryIds.push(category.id);
+	};
 	
 	$scope.updateRecommended = function() {
 		if ($scope.updateRecommendedForm.$valid) {
@@ -103,7 +110,7 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 				if(result.hasError) {
 					toastr.warning(result.error);
 				} else {
-					toastr.success('El usuario se ha modificado exitosamente');
+					toastr.success('El recomendado se ha modificado exitosamente');
 				}
 			}).error(function (data, status, headers, config) {
 				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
@@ -137,15 +144,8 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     $scope.uploadAvatar = function() {
     	angular.element('#avatarUpload').click();
     };
-  //FIN UPLOADER
+    //FIN UPLOADER
 	
 	$scope.$parent.currentPage = "recommendedProfile";
+	$scope.$parent.currentPageName = "Perfil de recomendado";
 });
-
-//update de recommended
-/*var recommended = {name: "nuevo nombre", description: "nueva description", categoryIds: [2,5]};
-$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify(recommended))
-.success(function () {
-}).error(function (data, status, headers, config) {
-	alert("Ha ocurrido un problema. Por favor intente nuevamente");
-});*/

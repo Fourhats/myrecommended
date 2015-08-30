@@ -15,6 +15,26 @@
 	</div>
 	<div class="row dataRow">
 		<div class="input-field col s6">
+			<input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+		</div>
+		<div class="input-field col s12">
+			
+		</div>
+	</div>
+	<div class="row dataRow">
+		<div class="input-field col s12">
+			<p data-ng-repeat="category in categories">
+		      	<input type="checkbox" 
+		      		data-ng-attr-id="{{'category' + category.id}}" 
+		      		data-ng-checked="recommended.categoryIds.indexOf(category.id) > -1"
+		      		data-ng-click="toggleCategorySelection(category)"/>
+				<label for="{{'category' + category.id}}" data-ng-bind="category.name"></label>
+			</p>
+		</div>
+	</div>
+	
+	<div class="row dataRow">
+		<div class="input-field col s6">
 			<input id="email" type="email" required maxlength="60" class="validate" data-ng-model="recommended.email"> 
 			<label for="email" data-ng-class="{active : recommended.email}">Email Recomendado</label>
 		</div>

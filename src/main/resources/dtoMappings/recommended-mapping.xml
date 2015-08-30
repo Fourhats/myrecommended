@@ -24,6 +24,11 @@
       </field>
       
       <field>
+        <a>email</a>
+        <b>email</b>
+      </field>
+      
+      <field>
         <a>description</a>
         <b>description</b>
       </field>

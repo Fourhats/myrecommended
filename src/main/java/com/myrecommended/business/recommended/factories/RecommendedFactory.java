@@ -1,4 +1,4 @@
-package com.myrecommended.business.recommended;
+package com.myrecommended.business.recommended.factories;
 
 import java.util.HashSet;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.myrecommended.business.recommended.factories.RecommendedImageFactory;
 import com.myrecommended.daos.CategoryDAO;
 import com.myrecommended.daos.UserDAO;
 import com.myrecommended.models.Category;

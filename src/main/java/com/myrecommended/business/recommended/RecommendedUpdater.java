@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.business.recommended.factories.RecommendedFactory;
 import com.myrecommended.business.recommended.factories.RecommendedImageFactory;
 import com.myrecommended.daos.CategoryDAO;
 import com.myrecommended.daos.RecommendedDAO;

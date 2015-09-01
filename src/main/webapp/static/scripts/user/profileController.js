@@ -147,8 +147,8 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     	toastr.warning('Ha ocurrido un problema.', 'Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb');
     };
     
-    $scope.uploadAvatar = function() {
-    	angular.element('#avatarUpload').click();
+    $scope.uploadOldJobs = function() {
+    	angular.element('#oldJobsUploadButton').click();
     };
     //FIN UPLOADER
 	

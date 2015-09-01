@@ -16,7 +16,8 @@
 	
 	<div class="row dataRow">
 		<div class="input-field col s6">
-			<input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+			<input id="oldJobsUploadButton" type="file" nv-file-select="" uploader="uploader" multiple style="display: none;" /><br/>
+			<button type="button" class="btn waves-effect waves-light" data-ng-click="uploadOldJobs()">Subir fotos de trabajos anteriores</button>
 		</div>
 		<div class="input-field col s12">
 			<!-- imagenes actuales -->

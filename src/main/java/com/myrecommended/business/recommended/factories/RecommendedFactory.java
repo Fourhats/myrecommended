@@ -32,6 +32,7 @@ public class RecommendedFactory {
 		List<RecommendedImage> recommendedImages = this.recommendedImageFactory.create(recommendedDto.getRecommendedImages());
 		
 		return new Recommended(user, new HashSet<Category>(categories), recommendedDto.getName(), 
-				recommendedDto.getDescription(), recommendedDto.getEmail(), new HashSet<RecommendedImage>(recommendedImages));
+				recommendedDto.getDescription(), recommendedDto.getEmail(), recommendedDto.getPhone().toString(), 
+				new HashSet<RecommendedImage>(recommendedImages));
 	}
 }

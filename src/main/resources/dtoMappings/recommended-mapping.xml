@@ -29,6 +29,11 @@
       </field>
       
       <field>
+        <a>phone</a>
+        <b>phone</b>
+      </field>
+      
+      <field>
         <a>description</a>
         <b>description</b>
       </field>

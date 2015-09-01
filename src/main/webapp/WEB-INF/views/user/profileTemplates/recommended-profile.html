@@ -5,8 +5,8 @@
 			<label for="name" data-ng-class="{active : recommended.name}">Nombre. Ej.: "Daniel - Pintor profesional"</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="phne" type="text" class="validate">
-			<label for="phone">Tel&eacute;fono</label>
+			<input id="phone" required  type="number" min="10000" class="validate" data-ng-model="recommended.phone">
+			<label for="phone" data-ng-class="{active : recommended.phone}">Tel&eacute;fono</label>
 		</div>
 		<div class="input-field col s12">
           	<textarea id="description" required maxlength="2000" class="materialize-textarea" data-ng-model="recommended.description"></textarea>

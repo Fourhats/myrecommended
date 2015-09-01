@@ -18,6 +18,8 @@ public class RecommendedDTO {
 	
 	private String email;
 	
+	private Integer phone;
+	
 	private String description;
 	
 	private List<CategoryDTO> categories;
@@ -64,6 +66,14 @@ public class RecommendedDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
 	}
 
 	public String getDescription() {

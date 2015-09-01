@@ -24,7 +24,7 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 	if($scope.user.isFacebookLogin) {
 		$scope.user.avatarPath = 'http://graph.facebook.com/' + $scope.user.providerId + '/picture?type=large';
 	} else {
-		$scope.user.avatarPath = getCurrentUserImagePath('currentAvatarThumb', "originals");
+		$scope.user.avatarPath = getCurrentUserImagePath('currentAvatarThumb', "medium");
 	}
 	
 	$scope.updateUser = function() {
@@ -95,7 +95,9 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 });
 
 myRecommendedApp.controller('recommendedProfileController', function($scope, $http, toastr, FileUploader) {
-	$scope.recommended = recommended == null ? { email : user.email } : recommended;
+	$scope.recommended = recommended == null ? { email : user.email, categoryIds: [], recommendedImages: [] } : recommended;
+	$scope.recommended.recommendedImageNames = [];
+	$scope.recommended.previousRecommendedImages = $scope.recommended.recommendedImages.slice();
 	$scope.categories = categories;
 	
 	$scope.toggleCategorySelection = function(category) {
@@ -105,6 +107,10 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	
 	$scope.updateRecommended = function() {
 		if ($scope.updateRecommendedForm.$valid) {
+			angular.forEach($scope.recommended.recommendedImageNames, function(image, key) {
+				$scope.recommended.recommendedImages.push({ path: image });
+			});
+			
 			$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify($scope.recommended))
 			.success(function (result) {
 				if(result.hasError) {
@@ -120,7 +126,7 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	
 	//UPLOADER
 	var uploader = $scope.uploader = new FileUploader({
-        url: getCompletePath("image/uploadAvatar")
+        url: getCompletePath("image/uploadRecommendedImage")
     });
 	
     uploader.filters.push({
@@ -133,7 +139,7 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     uploader.autoUpload = true;
     
     uploader.onCompleteItem = function(item, response, status, headers) {
-    	$scope.user.avatarName = response.name;
+    	$scope.recommended.recommendedImageNames.push(response.name);
     };
     
     uploader.onErrorItem = function(item, response, status, headers) {
@@ -146,6 +152,10 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     };
     //FIN UPLOADER
 	
+    $scope.getRecommendedImagePath = function(recommendedImage) {
+    	return getImagePath('recommendedOldJobsThumb', recommendedImage.path, 'medium');
+    };
+    
 	$scope.$parent.currentPage = "recommendedProfile";
 	$scope.$parent.currentPageName = "Perfil de recomendado";
 });

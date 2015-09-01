@@ -14,18 +14,14 @@ import java.util.Properties;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
 import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myrecommended.services.users.UserService;
-import com.myrecommended.services.users.dtos.CurrentUserDTO;
 
 @Controller
 @RequestMapping("imageHandler")
@@ -37,29 +33,7 @@ public class ImageHandlerController extends BaseController {
 	@Autowired
 	private UserService userService;
 	
-	//TODO: PASAR A UNA COSTANTE
-	private final String SMALL_IMAGE_FOLDER = "small";
-	private final String MEDIUM_IMAGE_FOLDER = "medium";
-	private final String LARGE_IMAGE_FOLDER = "large";
-	private final String ORIGINAL_IMAGE_FOLDER = "originals";
-	
 	private final String DEFAULT_AVATAR = "defaultAvatar.jpg";
-	
-	/*@RequestMapping(value="/avatarThumb", method=RequestMethod.GET, params={"fileName", "w"})
-	public void avatarThumb(HttpServletResponse response, @RequestParam(value="fileName") String fileName, @RequestParam(value="w") int width){
-		this.avatarThumb(response, fileName, width, width);
-	}
-	
-	@RequestMapping(value="/avatarThumb", method=RequestMethod.GET, params={"fileName", "w", "h"})
-	public void avatarThumb(HttpServletResponse response, @RequestParam(value="fileName") String fileName, @RequestParam(value="w") int width, @RequestParam(value="h") int height){
-		if(!StringUtils.isNotBlank(fileName)){
-			fileName = "defaultAvatar.jpg";
-		}
-		
-		String avatarPath = properties.getProperty("folder.avatar");
-		File directory = new File(avatarPath, ORIGINAL_IMAGE_FOLDER);
-		resize(response, directory.getAbsolutePath(), fileName, width, height);
-	}*/
 	
 	@RequestMapping(value="/avatarThumb", method=RequestMethod.GET)
 	public void avatarThumb(HttpServletResponse response, String fileName, String type){
@@ -80,6 +54,16 @@ public class ImageHandlerController extends BaseController {
 		this.avatarThumb(response, avatarName, type);
 	}
 
+	@RequestMapping(value="/recommendedOldJobsThumb", method=RequestMethod.GET)
+	public void recommendedOldJobsThumb(HttpServletResponse response, String fileName, String type){
+		String tempPath = properties.getProperty("folder.recommendedOldJobs");
+		File directory = new File(tempPath, type);
+		handleImage(response, fileName, directory.getAbsolutePath());
+	}
+	
+	
+	
+	//TODO: REVISAR
 	private void resize(HttpServletResponse response, String folderPath, String fileName, int width, int height) {
 		BufferedImage imageSrc = null;
 		BufferedImage thumbnail = null;

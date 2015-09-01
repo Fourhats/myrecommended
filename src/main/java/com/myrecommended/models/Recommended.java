@@ -22,12 +22,13 @@ public class Recommended extends PersistibleEntity {
 	public Recommended(){
 	}
 
-	public Recommended(User user, Set<Category> categories, String name, String description, String email) {
+	public Recommended(User user, Set<Category> categories, String name, String description, String email, Set<RecommendedImage> recommendedImages) {
 		this.user = user;
 		this.categories = categories;
 		this.name = name;
 		this.description = description;
 		this.email = email;
+		this.recommendedImages = recommendedImages;
 		this.creationDate = new Date();
 		this.updateDate = new Date();
 	}

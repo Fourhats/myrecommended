@@ -1,9 +1,13 @@
 package com.myrecommended.controllers.api;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +22,9 @@ import com.myrecommended.controllers.BaseController;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
+import com.myrecommended.services.recommended.dtos.RecommendedImageDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
+import com.myrecommended.services.utils.FileHelper;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
 @RestController
@@ -27,9 +33,16 @@ public class RecommendedApiController extends BaseController {
 	@Autowired
 	private RecommendedService recommendedService;
 	
-	//TODO: ES NECESARIO EL MODELO ACA Y EN LOS DEMAS METODOS DE RECOMMENDEDAPICONTROLLER Y USERAPICONTROLLER???
+	@Value("#{configProps}")
+	private Properties properties;
+	
+	private final String RECOMMENDED_OLD_JOBS_FOLDER = "recommendedOldJobs";
+	
 	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
-    public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) {
+    public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) throws FileNotFoundException, IOException, Exception {
+		String tempPath = properties.getProperty("folder.temp");
+		String recommendedOldJobsPath = properties.getProperty("folder.recommendedOldJobs");
+		
 		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
 		try {
@@ -37,6 +50,8 @@ public class RecommendedApiController extends BaseController {
 			
 			recommendedDto.setUserId(this.getUserId());
 			this.recommendedService.createOrUpdate(recommendedDto);
+			
+			FileHelper.generateImagesWithDifferentSizes(recommendedDto.getRecommendedImageNames(), tempPath, RECOMMENDED_OLD_JOBS_FOLDER, recommendedOldJobsPath);
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

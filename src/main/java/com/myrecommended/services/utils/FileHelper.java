@@ -6,44 +6,173 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
 import java.rmi.server.UID;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.ImageOutputStream;
 
 import org.apache.commons.io.FilenameUtils;
 import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.myrecommended.models.UploadedFile;
 
 public class FileHelper {
 	
-	public static byte[] bufferedImageToByte(BufferedImage bufferedImage, String formatName) throws Exception{
+	private final static String SMALL_IMAGE_FOLDER = "small";
+	private final static String MEDIUM_IMAGE_FOLDER = "medium";
+	private final static String LARGE_IMAGE_FOLDER = "large";
+	private final static String ORIGINAL_IMAGE_FOLDER = "originals";
+	
+	//hecho para poder modificar en un solo lugar el UID() y asi poder trabajar en windows
+	public static String getUniqueImageName(String imageName) {
+		String extension = FilenameUtils.getExtension(imageName);
+		String uniqueName = new UID().toString();
+		return imageName;
+		//return String.format("%s.%s", uniqueName, extension);
+	}
+	
+	public static void convertToJPG(String srcImgPath, String targetImgPath) {
+		BufferedImage bufferedImage = null;
+		BufferedImage newBufferedImage = null;
+		try {
+			bufferedImage = ImageIO.read(new File(srcImgPath));
+			newBufferedImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+			newBufferedImage.getGraphics().drawImage(bufferedImage, 0, 0, Color.WHITE, null);
+			ImageIO.write(newBufferedImage, "jpg", new File(targetImgPath));
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(bufferedImage != null) {
+				bufferedImage.flush();
+			}
+			if(newBufferedImage != null) {
+				newBufferedImage.flush();
+			}
+		}
+	}
+	
+	public static String getFullPath(String parent, String child, String fileName) {
+		File directory = new File(parent, child);
+		if (!directory.exists()) {
+			//TODO: si no se pudo crear el directorio lanzar excepcion.
+			directory.mkdir();
+		}
+		
+		return new File(directory.getAbsolutePath(), fileName).getAbsolutePath();
+	}
+	
+	public static byte[] bufferedImageToByte(BufferedImage bufferedImage, String formatName) throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		try{
+		try {
 			ImageIO.write(bufferedImage, formatName, baos);
 			baos.flush();
 			byte[] imageBytes = baos.toByteArray();
 			return imageBytes;
-		}catch(Exception e){
+		} catch(Exception e) {
 			throw e;
-		}finally{
+		} finally {
 			baos.close();
 		}
 	}
 	
+	@SuppressWarnings("resource")
+	public static void copyFile(String src, String dst) throws IOException {
+		File sourceFile = new File(src);
+		File destFile = new File(dst);
+		
+		FileChannel source = null;
+        FileChannel destination = null;
+        try {
+            source = new FileInputStream(sourceFile).getChannel();
+            destination = new FileOutputStream(destFile).getChannel();
+
+            long count = 0;
+            long size = source.size();
+            while ((count += destination.transferFrom(source, count, size - count)) < size);
+        } finally {
+            if (source != null) {
+                source.close();
+            }
+            if (destination != null) {
+                destination.close();
+            }
+        }
+	}
+	
+	public static void generateImagesWithDifferentSizes(List<String> imageNames, String tempPath, String tempFolder, String targetPath) throws IOException, Exception,FileNotFoundException {
+		for(String imageName : imageNames) {
+			generateImagesWithDifferentSizes(imageName, tempPath, tempFolder, targetPath);
+		}
+	}
+
+	public static void generateImagesWithDifferentSizes(String imageName, String tempPath, String tempFolder, String targetPath) throws IOException, Exception,FileNotFoundException {
+		List<ImageInfo> imagesInfo = new ArrayList<ImageInfo>();
+			
+		BufferedImage tempImageSrc = null;
+		try {
+			File tempDirectory = new File(tempPath, tempFolder);
+			File tempFile = new File(tempDirectory.getAbsolutePath(), imageName);
+			tempImageSrc = ImageIO.read(tempFile);
+			
+			int smallWidth = tempImageSrc.getWidth() < 125 ? tempImageSrc.getWidth() : 125;
+			int smallHeight = tempImageSrc.getHeight() < 100 ? tempImageSrc.getHeight() : 100;
+			
+			int mediumWidth = tempImageSrc.getWidth() < 410 ? tempImageSrc.getWidth() : 410;
+			int mediumHeight = tempImageSrc.getHeight() < 270 ? tempImageSrc.getHeight() : 270;
+			
+			imagesInfo.add(new ImageInfo(SMALL_IMAGE_FOLDER, smallWidth, smallHeight));
+			imagesInfo.add(new ImageInfo(MEDIUM_IMAGE_FOLDER, mediumWidth, mediumHeight));
+			
+			byte [] imageBytes = FileHelper.bufferedImageToByte(tempImageSrc, FilenameUtils.getExtension(imageName));
+			imagesInfo.add(new ImageInfo(LARGE_IMAGE_FOLDER, tempImageSrc.getWidth(), tempImageSrc.getHeight()));
+			FileHelper.generateImagesWithDifferentSizes(imageBytes, targetPath, imageName, imagesInfo);
+			
+			String src = FileHelper.getFullPath(tempPath, tempFolder, imageName);
+			String dst = FileHelper.getFullPath(targetPath, ORIGINAL_IMAGE_FOLDER, imageName);
+			FileHelper.copyFile(src, dst);
+		} catch(Exception e) {
+			throw e;
+		} finally {
+			if(tempImageSrc != null) {
+				tempImageSrc.flush();
+			}
+		}
+	}
+	
+	private static void generateImagesWithDifferentSizes(byte[] compressedImageBytes, String tempPath, String generatedFileName, List<ImageInfo> imagesInfo) throws Exception {
+		InputStream in = null;
+		BufferedImage compressedBufferedImage = null;
+		try{
+			in = new ByteArrayInputStream(compressedImageBytes);
+			compressedBufferedImage = ImageIO.read(in);
+			for(ImageInfo imageInfo : imagesInfo){
+				
+				//Resize image
+				BufferedImage resizedImage = Scalr.resize(compressedBufferedImage, Scalr.Method.QUALITY, Scalr.Mode.AUTOMATIC, imageInfo.getWidth(), imageInfo.getHeight(), Scalr.OP_ANTIALIAS, Scalr.OP_BRIGHTER);
+				byte[] imageBytes = bufferedImageToByte(resizedImage, "jpeg");
+						
+				String productImgPath = FileHelper.getFullPath(tempPath, imageInfo.getFolder(), generatedFileName);
+				FileCopyUtils.copy(imageBytes, new FileOutputStream(productImgPath));
+			}
+		} catch(Exception e) {
+			throw e;
+		} finally {
+			if(in != null){
+				in.close();
+			}
+			
+			if(compressedBufferedImage != null) {
+				compressedBufferedImage.flush();
+			}
+		}
+	}
+	
+	/*
 	public static BufferedImage multipartFileToBufferedImage(MultipartFile file) throws Exception{
 		InputStream in = null;
 		BufferedImage bufferedImage = null;
@@ -59,62 +188,6 @@ public class FileHelper {
 				bufferedImage.flush();
 			}
 		}
-	}
-	
-	public static void generateImages2(byte[] compressedImageBytes, String tempPath, String generatedFileName, List<ImageInfo> imagesInfo) throws Exception {
-		InputStream in = null;
-		BufferedImage compressedBufferedImage = null;
-		try{
-			in = new ByteArrayInputStream(compressedImageBytes);
-			compressedBufferedImage = ImageIO.read(in);
-			for(ImageInfo imageInfo : imagesInfo){
-				
-				//Resize image
-				BufferedImage resizedImage = Scalr.resize(compressedBufferedImage, Scalr.Method.QUALITY, Scalr.Mode.AUTOMATIC, imageInfo.getWidth(), imageInfo.getHeight(), Scalr.OP_ANTIALIAS, Scalr.OP_BRIGHTER);
-				byte[] imageBytes = bufferedImageToByte(resizedImage, "jpeg");
-						
-				String productImgPath = FileHelper.getFullPath(tempPath, imageInfo.getFolder(), generatedFileName);
-				FileCopyUtils.copy(imageBytes, new FileOutputStream(productImgPath));
-			}
-		}catch(Exception e){
-			throw e;
-		}finally{
-			if(in != null){
-				in.close();
-			}
-			if(compressedBufferedImage != null){
-				compressedBufferedImage.flush();
-			}
-		}
-		
-	}
-	
-	@SuppressWarnings("resource")
-	public static void copyFile(String src, String dst) throws IOException{
-//		File file =new File(source);
-//		file.renameTo(new File(destination));
-		File sourceFile = new File(src);
-		File destFile = new File(dst);
-		
-		FileChannel source = null;
-        FileChannel destination = null;
-        try {
-            source = new FileInputStream(sourceFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-
-            // previous code: destination.transferFrom(source, 0, source.size());
-            // to avoid infinite loops, should be:
-            long count = 0;
-            long size = source.size();
-            while ((count += destination.transferFrom(source, count, size - count)) < size);
-        } finally {
-            if (source != null) {
-                source.close();
-            }
-            if (destination != null) {
-                destination.close();
-            }
-        }
 	}
 	
 	public static UploadedFile getUploadedFile(MultipartHttpServletRequest request, String tempPath) throws IOException {
@@ -136,16 +209,6 @@ public class FileHelper {
         uploadedFile.setName(generatedFileName);
        return uploadedFile;
 	}
-	
-	
-	//hecho para poder modificar en un solo lugar el UID() y asi poder trabajar en windows
-	public static String getUniqueImageName(String imageName) {
-		String extension = FilenameUtils.getExtension(imageName);
-		String uniqueName = new UID().toString();
-		return imageName;
-//		return String.format("%s.%s", uniqueName, extension);
-	}
-	
 	
 	public static byte[] compress(String sourcePath, float quality) throws Exception{
 		File imageFile = new File(sourcePath);
@@ -196,38 +259,6 @@ public class FileHelper {
 		}
 	}
 	
-	
-	public static String getFullPath(String parent, String child, String fileName){
-		File directory = new File(parent,child);
-		if(!directory.exists()){
-			//TODO: si no se pudo crear el directorio lanzar excepcion.
-			directory.mkdir();
-		}
-		
-		return new File(directory.getAbsolutePath(), fileName).getAbsolutePath();
-	}
-	
-	public static void convertToJPG(String srcImgPath, String targetImgPath){
-		BufferedImage bufferedImage = null;
-		BufferedImage newBufferedImage = null;
-		try{
-			bufferedImage = ImageIO.read(new File(srcImgPath));
-			newBufferedImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
-			newBufferedImage.getGraphics().drawImage(bufferedImage, 0, 0, Color.WHITE, null);
-			ImageIO.write(newBufferedImage, "jpg", new File(targetImgPath));
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			if(bufferedImage != null){
-				bufferedImage.flush();
-			}
-			if(newBufferedImage != null){
-				newBufferedImage.flush();
-			}
-		}
-	}
-	
-	
 	private static String cutImage(MultipartFile mpf, int x1, int y1, int w, int h, String tempPath) throws IOException {
 		InputStream in = new ByteArrayInputStream(mpf.getBytes());
 		BufferedImage bImageFromConvert = ImageIO.read(in);
@@ -237,6 +268,5 @@ public class FileHelper {
         String generatedFileName = getUniqueImageName(mpf.getOriginalFilename());
 		ImageIO.write(out, type, new File(tempPath, generatedFileName));
 		return generatedFileName;
-	}
-	
+	}*/
 }

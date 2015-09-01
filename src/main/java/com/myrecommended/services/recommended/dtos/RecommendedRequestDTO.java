@@ -8,6 +8,10 @@ public class RecommendedRequestDTO {
 	
 	private List<Long> categoryIds;
 	
+	private List<RecommendedImageDTO> recommendedImages;
+	
+	private List<String> recommendedImageNames;
+	
 	private String name;
 	
 	private String description;
@@ -28,6 +32,22 @@ public class RecommendedRequestDTO {
 
 	public void setCategoryIds(List<Long> categoryIds) {
 		this.categoryIds = categoryIds;
+	}
+
+	public List<RecommendedImageDTO> getRecommendedImages() {
+		return recommendedImages;
+	}
+
+	public void setRecommendedImages(List<RecommendedImageDTO> recommendedImages) {
+		this.recommendedImages = recommendedImages;
+	}
+	
+	public List<String> getRecommendedImageNames() {
+		return recommendedImageNames;
+	}
+
+	public void setRecommendedImageNames(List<String> recommendedImageNames) {
+		this.recommendedImageNames = recommendedImageNames;
 	}
 
 	public String getName() {

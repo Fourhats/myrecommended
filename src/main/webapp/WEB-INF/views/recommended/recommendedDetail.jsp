@@ -36,17 +36,8 @@
 	
 						<div class="col s12" style="float: left; padding-top: 20px; text-align: left;">
 							<img style="height: 70px; width: 70px; margin: 10px;"
-								src="<%=headerPageContext%>/static/img/foto.jpg" />
-								
-								 <img
-								style="height: 70px; width: 70px; margin: 10px;"
-								src="<%=headerPageContext%>/static/img/foto.jpg" /> <img
-								style="height: 70px; width: 70px; margin: 10px;"
-								src="<%=headerPageContext%>/static/img/foto.jpg" /> <img
-								style="height: 70px; width: 70px; margin: 10px;"
-								src="<%=headerPageContext%>/static/img/foto.jpg" /> <img
-								style="height: 70px; width: 70px; margin: 10px;"
-								src="<%=headerPageContext%>/static/img/foto.jpg" />
+								data-ng-repeat="recommendedImage in recommended.recommendedImages"
+								data-ng-src="{{getRecommendedImagePath(recommendedImage)}}"/>
 						</div>
 					</div>
 					<div class="col s12"></div>

@@ -22,7 +22,6 @@ import com.myrecommended.controllers.BaseController;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
-import com.myrecommended.services.recommended.dtos.RecommendedImageDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
 import com.myrecommended.services.utils.FileHelper;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;

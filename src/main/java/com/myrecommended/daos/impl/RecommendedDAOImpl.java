@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +37,9 @@ public class RecommendedDAOImpl extends BaseDAOImpl<Recommended, Long> implement
 			criteria.add(Restrictions.in("categories.id", categoriesFiltered));
 		}
 		
-		return getPageByCriteria(criteria, pageIndex, pageSize);
+		criteria.addOrder(Order.asc("name"));
+		
+		return this.getPageByCriteria(criteria, pageIndex, pageSize);
 	}
 
 	public Page<Recommended> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {

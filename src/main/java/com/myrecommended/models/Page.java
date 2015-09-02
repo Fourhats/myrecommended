@@ -13,13 +13,19 @@ public class Page<T> {
 	private Long totalItems;
 	
 	private int totalPages;
-
+	
+	private boolean hasNextPage;
+	
+	private boolean hasPreviousPage;
+	
 	public Page(List<T> elements, int pageIndex, int pageSize, Long totalItems){
 		this.elements = elements;
 		this.pageIndex = pageIndex;
 		this.pageSize = pageSize;
 		this.totalItems = totalItems;
 		this.setTotalPages(this.calculateTotalPages());
+		this.hasNextPage = this.totalPages > this.pageIndex;
+		this.hasPreviousPage = this.pageIndex > 1;
 	}
 	
 	public List<T> getElements() {
@@ -62,6 +68,22 @@ public class Page<T> {
 		this.totalPages = totalPages;
 	}
 	
+	public boolean isHasNextPage() {
+		return hasNextPage;
+	}
+
+	public void setHasNextPage(boolean hasNextPage) {
+		this.hasNextPage = hasNextPage;
+	}
+
+	public boolean isHasPreviousPage() {
+		return hasPreviousPage;
+	}
+
+	public void setHasPreviousPage(boolean hasPreviousPage) {
+		this.hasPreviousPage = hasPreviousPage;
+	}
+
 	private int calculateTotalPages() {
 		if(totalItems == 0){
 			return 1;

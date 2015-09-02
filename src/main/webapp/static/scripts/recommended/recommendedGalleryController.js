@@ -1,18 +1,34 @@
-myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, $document, toastr) {
+myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, toastr) {
 	$scope.categories = categories;
 	
 	$scope.recommendedPage = recommendedPage;
 	
 	$scope.selectedCategories = [];
 	
-	$scope.isLoading = false;
-	$scope.hasNextPage = function() {
-		return $scope.recommendedPage.totalPages > $scope.recommendedPage.pageIndex;
+	$scope.goToPage = function(pageNumber) {
+		$http.get(getCompletePath("recommended/" + pageNumber + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
+		.success(function (newRecommendedPage) {
+			setCategoryImages(newRecommendedPage.elements);
+			
+			$scope.recommendedPage = newRecommendedPage;
+	    }).error(function () {
+			toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+	    });
+	};
+	
+	$scope.goToNextPage = function() {
+		if($scope.recommendedPage.hasNextPage) {
+			$scope.goToPage($scope.recommendedPage.pageIndex + 1);
+		}
+	};
+	
+	$scope.goToPreviousPage = function() {
+		if($scope.recommendedPage.hasPreviousPage) {
+			$scope.goToPage($scope.recommendedPage.pageIndex - 1);
+		}
 	};
 	
 	$scope.getMoreRecommendeds = function() {
-		$scope.isLoading = true;
-		
 		$http.get(getCompletePath("recommended/" + ($scope.recommendedPage.pageIndex + 1) + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
 		.success(function (newRecommendedPage) {
 			setCategoryImages(newRecommendedPage.elements);
@@ -21,9 +37,7 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 			$scope.recommendedPage.elements = $scope.recommendedPage.elements.concat(newRecommendedPage.elements);
 			$scope.recommendedPage.totalItems = newRecommendedPage.totalItems;
 			
-			$scope.isLoading = false;
 	    }).error(function () {
-	    	$scope.isLoading = false;
 			toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 	    });
 	};
@@ -54,17 +68,27 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 			});
 		});
 	};
-	
-	function onScroll() {
-		if ($scope.hasNextPage() && !$scope.isLoading) {
-            var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 200);
-            if (closeToBottom) {
-                $scope.getMoreRecommendeds();
-            }
-        }
-    };
 
-	setCategoryImages(recommendedPage.elements);
+	/****Pager****/
+	$scope.getNumber = function(currentNumber, totalPages) {
+	    var array = [];
+	    if(currentNumber < 5) {
+	    	addElements(array, 1, totalPages < 9 ? totalPages : 9);
+	    } else if (currentNumber > totalPages - 5) {
+	    	addElements(array, totalPages - 9 < 1 ? 1 : totalPages - 9 , totalPages);
+	    } else {
+	    	addElements(array, currentNumber - 4, currentNumber + 4);
+	    }
+	    
+	    return array;
+	};
 	
-    $document.bind('scroll', onScroll);
+	function addElements(array, from, to) {
+		for(var i = from; i <= to; i++) {
+	    	array.push(i);
+	    }
+	}
+	
+	
+	setCategoryImages(recommendedPage.elements);
 });

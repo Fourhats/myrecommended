@@ -25,8 +25,8 @@ public class RecommendedImage extends PersistibleEntity {
 	private boolean isPrincipal;
 
 	@ManyToOne
-    @JoinColumn(name="recommendedId", insertable=false, 
-            updatable=false, nullable=false)
+	@JoinColumn(name="recommendedId", insertable=false, 
+	        updatable=false, nullable=false)
 	private Recommended recommended;
 
 	public String getPath() {

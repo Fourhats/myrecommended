@@ -64,7 +64,7 @@ public class Recommended extends PersistibleEntity {
 	@Column(name="updateDate")
 	public Date updateDate;
 	
-	@OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+	@OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
 	@JoinColumn(name="recommendedId")
 	@OrderBy("isPrincipal DESC")
 	private Set<RecommendedImage> recommendedImages;

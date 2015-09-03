@@ -61,4 +61,8 @@ public class RecommendedServiceImpl implements RecommendedService {
 		
 		return MapperUtil.map(mapper, recommended, RecommendedDTO.class);
 	}
+
+	public String getRecommendedAvatarByUser(long userId) {
+		return this.recommendedSearcher.getRecommendedAvatarByUser(userId);
+	}
 }

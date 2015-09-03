@@ -27,4 +27,6 @@ public interface RecommendedService {
 
 	@Transactional
 	RecommendedDTO getRecommendedByUserId(Long userId);
+
+	String getRecommendedAvatarByUser(long userId);
 }

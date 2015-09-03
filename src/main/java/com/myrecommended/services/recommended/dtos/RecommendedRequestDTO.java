@@ -19,6 +19,8 @@ public class RecommendedRequestDTO {
 	private String email;
 	
 	private Integer phone;
+	
+	private String avatarName;
 
 	public Long getUserId() {
 		return userId;
@@ -82,5 +84,13 @@ public class RecommendedRequestDTO {
 
 	public void setPhone(Integer phone) {
 		this.phone = phone;
+	}
+
+	public String getAvatarName() {
+		return avatarName;
+	}
+
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
 	}
 }

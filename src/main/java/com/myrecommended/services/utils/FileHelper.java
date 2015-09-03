@@ -112,6 +112,10 @@ public class FileHelper {
 	}
 
 	public static void generateImagesWithDifferentSizes(String imageName, String tempPath, String tempFolder, String targetPath) throws IOException, Exception,FileNotFoundException {
+		if(imageName == null) {
+			return;
+		}
+		
 		List<ImageInfo> imagesInfo = new ArrayList<ImageInfo>();
 			
 		BufferedImage tempImageSrc = null;

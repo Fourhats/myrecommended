@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.myrecommended.business.users.constants.SignInProvider;
+import com.myrecommended.constants.SignInProvider;
 import com.myrecommended.daos.RoleDAO;
 import com.myrecommended.models.Role;
 import com.myrecommended.models.User;

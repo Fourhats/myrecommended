@@ -100,6 +100,8 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 });
 
 myRecommendedApp.controller('headerController', function ($scope, $http) {
+	//$scope.recommendedKey = recommendedKey;
+	
 	$scope.searchRecommended = function() {
 		if($scope.recommendedKey) {
 			redirect("recomendados/" + $scope.recommendedKey);

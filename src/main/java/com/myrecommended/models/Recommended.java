@@ -23,7 +23,7 @@ public class Recommended extends PersistibleEntity {
 	}
 
 	public Recommended(User user, Set<Category> categories, String name, String description, String email, 
-			String phone, Set<RecommendedImage> recommendedImages) {
+			String phone, String avatarName, Set<RecommendedImage> recommendedImages) {
 		this.user = user;
 		this.categories = categories;
 		this.name = name;
@@ -31,6 +31,7 @@ public class Recommended extends PersistibleEntity {
 		this.email = email;
 		this.phone = phone;
 		this.recommendedImages = recommendedImages;
+		this.avatarName = avatarName;
 		this.creationDate = new Date();
 		this.updateDate = new Date();
 	}
@@ -57,6 +58,9 @@ public class Recommended extends PersistibleEntity {
 	
 	@Column(name="phone")
 	private String phone;
+
+	@Column(name="avatarName")
+	private String avatarName;
 	
 	@Column(name="creationDate")
 	public Date creationDate;
@@ -115,6 +119,14 @@ public class Recommended extends PersistibleEntity {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getAvatarName() {
+		return avatarName;
+	}
+
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
 	}
 
 	public Date getCreationDate() {

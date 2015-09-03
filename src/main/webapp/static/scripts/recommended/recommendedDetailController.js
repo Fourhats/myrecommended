@@ -2,7 +2,7 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 	$scope.recommended = recommended;
 	
 	angular.forEach(recommended.categories, function(category, key) {
-		category.image = getCompletePath('/static/img/defaultImages/' + category.name + '.png');
+		category.image = getCompletePath('static/img/defaultImages/' + category.name + '.png');
 	});
 	
 	$scope.getRecommendedImagePath = function(recommendedImage) {

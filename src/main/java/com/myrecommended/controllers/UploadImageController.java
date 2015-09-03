@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.myrecommended.constants.TempFolders;
 import com.myrecommended.models.UploadedFile;
 import com.myrecommended.services.utils.FileHelper;
 
@@ -25,17 +26,19 @@ public class UploadImageController {
 	@Value("#{configProps}")
 	private Properties properties;
 	
-	private final String AVATAR_FOLDER = "avatars";
-	private final String RECOMMENDED_OLD_JOBS_FOLDER = "recommendedOldJobs";
-	
 	@RequestMapping(value="/uploadAvatar", method=RequestMethod.POST)
 	public @ResponseBody UploadedFile uploadAvatar(@RequestParam("file") MultipartFile file) throws Exception {
-		return uploadTempImage(file, AVATAR_FOLDER);
+		return uploadTempImage(file, TempFolders.AVATAR_FOLDER.getValue());
 	}
 	
-	@RequestMapping(value="/uploadRecommendedImage", method=RequestMethod.POST)
-	public @ResponseBody UploadedFile uploadRecommendedImage(@RequestParam("file") MultipartFile file) throws Exception{
-		return uploadTempImage(file, RECOMMENDED_OLD_JOBS_FOLDER);
+	@RequestMapping(value="/uploadRecommendedAvatar", method=RequestMethod.POST)
+	public @ResponseBody UploadedFile uploadRecommendedAvatar(@RequestParam("file") MultipartFile file) throws Exception {
+		return uploadTempImage(file, TempFolders.RECOMMENDED_AVATARS_FOLDER.getValue());
+	}
+	
+	@RequestMapping(value="/uploadRecommendedOldJobsImages", method=RequestMethod.POST)
+	public @ResponseBody UploadedFile uploadRecommendedOldJobsImages(@RequestParam("file") MultipartFile file) throws Exception{
+		return uploadTempImage(file, TempFolders.RECOMMENDED_OLD_JOBS_FOLDER.getValue());
 	}
 	
 	private UploadedFile uploadTempImage(MultipartFile file, String folder) throws IOException, Exception, FileNotFoundException {

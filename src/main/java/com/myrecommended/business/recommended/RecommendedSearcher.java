@@ -38,4 +38,13 @@ public class RecommendedSearcher {
 	public boolean existByUserId(Long userId) {
 		return this.recommendedDao.existByUserId(userId);
 	}
+
+	public String getRecommendedAvatarByUser(long userId) {
+		Recommended recommended = this.recommendedDao.getByUserId(userId);
+		if(recommended != null) {
+			return recommended.getAvatarName();
+		}
+		
+		return null;
+	}
 }

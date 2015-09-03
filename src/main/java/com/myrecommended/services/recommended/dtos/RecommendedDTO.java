@@ -22,6 +22,8 @@ public class RecommendedDTO {
 	
 	private String description;
 	
+	private String avatarName;
+	
 	private List<CategoryDTO> categories;
 	
 	private List<Long> categoryIds = new ArrayList<Long>();
@@ -82,6 +84,14 @@ public class RecommendedDTO {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getAvatarName() {
+		return avatarName;
+	}
+
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
 	}
 
 	public List<CategoryDTO> getCategories() {

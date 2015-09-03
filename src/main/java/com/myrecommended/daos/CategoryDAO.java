@@ -8,6 +8,7 @@ public interface CategoryDAO extends BaseDAO<Category, Long> {
 	
 	List<Category> getByIds(List<Long> categoryIds);
 
-	boolean existCategory(Long categoryId);
+	List<Category> getCategoriesByKeyword(String recommendedKey);
 	
+	boolean existCategory(Long categoryId);
 }

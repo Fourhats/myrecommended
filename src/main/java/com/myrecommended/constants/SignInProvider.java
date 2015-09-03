@@ -1,4 +1,4 @@
-package com.myrecommended.business.users.constants;
+package com.myrecommended.constants;
 
 public enum SignInProvider {
 	FORM("FORM"), FACEBOOK("FACEBOOK");

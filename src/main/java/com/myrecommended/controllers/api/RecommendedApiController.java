@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.constants.TempFolders;
 import com.myrecommended.controllers.BaseController;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
@@ -35,12 +36,11 @@ public class RecommendedApiController extends BaseController {
 	@Value("#{configProps}")
 	private Properties properties;
 	
-	private final String RECOMMENDED_OLD_JOBS_FOLDER = "recommendedOldJobs";
-	
 	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
     public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) throws FileNotFoundException, IOException, Exception {
 		String tempPath = properties.getProperty("folder.temp");
 		String recommendedOldJobsPath = properties.getProperty("folder.recommendedOldJobs");
+		String recommendedAvatarsPath = properties.getProperty("folder.recommendedAvatars");
 		
 		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
@@ -50,7 +50,8 @@ public class RecommendedApiController extends BaseController {
 			recommendedDto.setUserId(this.getUserId());
 			this.recommendedService.createOrUpdate(recommendedDto);
 			
-			FileHelper.generateImagesWithDifferentSizes(recommendedDto.getRecommendedImageNames(), tempPath, RECOMMENDED_OLD_JOBS_FOLDER, recommendedOldJobsPath);
+			FileHelper.generateImagesWithDifferentSizes(recommendedDto.getRecommendedImageNames(), tempPath, TempFolders.RECOMMENDED_OLD_JOBS_FOLDER.getValue(), recommendedOldJobsPath);
+			FileHelper.generateImagesWithDifferentSizes(recommendedDto.getAvatarName(), tempPath, TempFolders.RECOMMENDED_AVATARS_FOLDER.getValue(), recommendedAvatarsPath);
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

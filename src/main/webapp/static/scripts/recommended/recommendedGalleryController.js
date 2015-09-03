@@ -3,7 +3,7 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	
 	$scope.recommendedPage = recommendedPage;
 	
-	$scope.selectedCategories = [];
+	$scope.selectedCategories = selectedCategories ? selectedCategories : [];
 	
 	$scope.goToPage = function(pageNumber) {
 		$http.get(getCompletePath("recommended/" + pageNumber + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
@@ -26,20 +26,6 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 		if($scope.recommendedPage.hasPreviousPage) {
 			$scope.goToPage($scope.recommendedPage.pageIndex - 1);
 		}
-	};
-	
-	$scope.getMoreRecommendeds = function() {
-		$http.get(getCompletePath("recommended/" + ($scope.recommendedPage.pageIndex + 1) + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
-		.success(function (newRecommendedPage) {
-			setCategoryImages(newRecommendedPage.elements);
-			
-			$scope.recommendedPage.pageIndex++;
-			$scope.recommendedPage.elements = $scope.recommendedPage.elements.concat(newRecommendedPage.elements);
-			$scope.recommendedPage.totalItems = newRecommendedPage.totalItems;
-			
-	    }).error(function () {
-			toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
-	    });
 	};
 	
 	$scope.toggleCategorySelection = function (categoryId) {

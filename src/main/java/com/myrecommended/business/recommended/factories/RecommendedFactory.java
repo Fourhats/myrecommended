@@ -33,6 +33,6 @@ public class RecommendedFactory {
 		
 		return new Recommended(user, new HashSet<Category>(categories), recommendedDto.getName(), 
 				recommendedDto.getDescription(), recommendedDto.getEmail(), recommendedDto.getPhone().toString(), 
-				new HashSet<RecommendedImage>(recommendedImages));
+				recommendedDto.getAvatarName(), new HashSet<RecommendedImage>(recommendedImages));
 	}
 }

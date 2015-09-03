@@ -1,6 +1,6 @@
 package com.myrecommended.services.users.dtos;
 
-import com.myrecommended.business.users.constants.SignInProvider;
+import com.myrecommended.constants.SignInProvider;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
 /**

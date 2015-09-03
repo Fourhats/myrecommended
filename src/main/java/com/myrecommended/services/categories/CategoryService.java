@@ -11,4 +11,5 @@ public interface CategoryService {
 
 	List<CategoryDTO> getAllCategories();
 
+	List<Long> getCategoryIdsByKeyword(String recommendedKey);
 }

@@ -16,6 +16,7 @@ myRecommendedApp.config(function($routeProvider) {
 });
 
 myRecommendedApp.controller('MainProfileController', function($scope) {
+	$scope.isLoading = false;
 });
 
 myRecommendedApp.controller('userProfileController', function($scope, $http, toastr, FileUploader) {
@@ -29,15 +30,18 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 	
 	$scope.updateUser = function() {
 		if ($scope.updateUserForm.$valid) {
+			$scope.$parent.isLoading = true;
 			$http.post(getCompletePath("users/updateUser"), JSON.stringify($scope.user))
 			.success(function (result) {
+				$scope.$parent.isLoading = false;
 				if(result.hasError) {
 					toastr.warning(result.error);
 				} else {
 					toastr.success('El usuario se ha modificado exitosamente');
 				}
 		    }).error(function (data, status, headers, config) {
-				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+		    	$scope.$parent.isLoading = false;
+		    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 		    });
 		}
 	};
@@ -75,8 +79,10 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 			if($scope.passowordDto.newPassword != $scope.passowordDto.passwordRepeated) {
 				toastr.warning('Las contraseñas nuevas deben coincidir');
 			} else {
+				$scope.$parent.isLoading = true;
 				$http.post(getCompletePath("users/changePassword"), JSON.stringify($scope.passowordDto))
 				.success(function (result) {
+					$scope.$parent.isLoading = false;
 					if(result.hasError) {
 						toastr.warning(result.error);
 					} else {
@@ -84,6 +90,7 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 						$scope.passowordDto = {};
 					}
 			    }).error(function (data, status, headers, config) {
+			    	$scope.$parent.isLoading = false;
 					toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			    });
 			}
@@ -98,6 +105,7 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	$scope.recommended = recommended == null ? { email : user.email, categoryIds: [], recommendedImages: [] } : recommended;
 	$scope.recommended.recommendedImageNames = [];
 	$scope.recommended.previousRecommendedImages = $scope.recommended.recommendedImages.slice();
+	$scope.recommended.avatarPath = getCurrentUserImagePath('currentRecommendedAvatarThumb', "medium");
 	$scope.categories = categories;
 	
 	$scope.toggleCategorySelection = function(category) {
@@ -107,27 +115,28 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	
 	$scope.updateRecommended = function() {
 		if ($scope.updateRecommendedForm.$valid) {
+			$scope.$parent.isLoading = true;
 			angular.forEach($scope.recommended.recommendedImageNames, function(image, key) {
 				$scope.recommended.recommendedImages.push({ path: image });
 			});
 			
 			$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify($scope.recommended))
 			.success(function (result) {
+				$scope.$parent.isLoading = false;
 				if(result.hasError) {
 					toastr.warning(result.error);
 				} else {
 					toastr.success('El recomendado se ha modificado exitosamente');
 				}
 			}).error(function (data, status, headers, config) {
+				$scope.$parent.isLoading = false;
 				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			});
 		}
 	};
 	
 	//UPLOADER
-	var uploader = $scope.uploader = new FileUploader({
-        url: getCompletePath("image/uploadRecommendedImage")
-    });
+	var uploader = $scope.uploader = new FileUploader();
 	
     uploader.filters.push({
         name: 'imageFilter',
@@ -139,7 +148,20 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     uploader.autoUpload = true;
     
     uploader.onCompleteItem = function(item, response, status, headers) {
-    	$scope.recommended.recommendedImageNames.push(response.name);
+    	if(item.uploadAction == 'uploadAvatar') {
+    		$scope.recommended.avatarName = response.name;
+    		$scope.recommended.avatarPath = getImagePath('tempRecommendedThumb', response.name);
+    	} else {
+    		$scope.recommended.recommendedImageNames.push(response.name);
+    	}
+    };
+    
+    uploader.onBeforeUploadItem = function(item) {
+    	if(item.uploadAction == 'uploadAvatar') {
+    		item.url = getCompletePath("image/uploadRecommendedAvatar");
+    	} else {
+    		item.url = getCompletePath("image/uploadRecommendedOldJobsImages");
+    	}
     };
     
     uploader.onErrorItem = function(item, response, status, headers) {
@@ -149,6 +171,10 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     
     $scope.uploadOldJobs = function() {
     	angular.element('#oldJobsUploadButton').click();
+    };
+    
+    $scope.uploadAvatar = function() {
+    	angular.element('#avatarUpload').click();
     };
     //FIN UPLOADER
 	

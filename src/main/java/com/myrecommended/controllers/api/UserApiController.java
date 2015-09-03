@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.constants.TempFolders;
 import com.myrecommended.controllers.BaseController;
 import com.myrecommended.services.petitions.PetitionService;
 import com.myrecommended.services.petitions.dtos.PetitionDTO;
@@ -41,8 +42,6 @@ public class UserApiController extends BaseController {
 	
 	@Value("#{configProps}")
 	private Properties properties;
-	
-	private final String AVATAR_FOLDER = "avatars";
 	
 	@RequestMapping(value = "/users/existUserWithEmail", method = RequestMethod.POST)
     public @ResponseBody boolean existUserWithEmail(@RequestBody String email, Model model) {
@@ -96,7 +95,7 @@ public class UserApiController extends BaseController {
 			userDto.setId(this.getUserId());
 			this.userService.updateUser(userDto);
 			
-			FileHelper.generateImagesWithDifferentSizes(userDto.getAvatarName(), tempPath, AVATAR_FOLDER, avatarPath);
+			FileHelper.generateImagesWithDifferentSizes(userDto.getAvatarName(), tempPath, TempFolders.AVATAR_FOLDER.getValue(), avatarPath);
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

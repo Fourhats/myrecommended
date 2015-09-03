@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.metal.MetalIconFactory.FolderIcon16;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.myrecommended.constants.TempFolders;
+import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.users.UserService;
 
 @Controller
@@ -26,13 +29,16 @@ public class ImageHandlerController extends BaseController {
 	
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private RecommendedService recommendedService;
 	
 	private final String DEFAULT_AVATAR = "defaultAvatar.jpg";
 	
 	@RequestMapping(value="/avatarThumb", method=RequestMethod.GET)
 	public void avatarThumb(HttpServletResponse response, String fileName, String type){
-		String tempPath = properties.getProperty("folder.avatar");
-		File directory = new File(tempPath, type);
+		String avatarPath = properties.getProperty("folder.avatar");
+		File directory = new File(avatarPath, type);
 		if(fileName == null || fileName.isEmpty()) {
 			fileName = this.DEFAULT_AVATAR;
 		}
@@ -47,11 +53,37 @@ public class ImageHandlerController extends BaseController {
 		String avatarName = this.userService.getUserAvatar(this.getUserId());
 		this.avatarThumb(response, avatarName, type);
 	}
+	
+	@RequestMapping(value="/recommendedAvatarThumb", method=RequestMethod.GET)
+	public void recommendedAvatarThumb(HttpServletResponse response, String fileName, String type){
+		String recommendedAvatarPath = properties.getProperty("folder.recommendedAvatars");
+		File directory = new File(recommendedAvatarPath, type);
+		if(fileName == null || fileName.isEmpty()) {
+			fileName = this.DEFAULT_AVATAR;
+		}
+		
+		handleImage(response, fileName, directory.getAbsolutePath());
+	}
+	
+	@RequestMapping(value="/currentRecommendedAvatarThumb", method=RequestMethod.GET)
+	public void currentRecommendedAvatarThumb(HttpServletResponse response, String type){
+		this.verifyAuthentication();
+		
+		String avatarName = this.recommendedService.getRecommendedAvatarByUser(this.getUserId());
+		this.recommendedAvatarThumb(response, avatarName, type);
+	}
 
 	@RequestMapping(value="/recommendedOldJobsThumb", method=RequestMethod.GET)
 	public void recommendedOldJobsThumb(HttpServletResponse response, String fileName, String type){
-		String tempPath = properties.getProperty("folder.recommendedOldJobs");
-		File directory = new File(tempPath, type);
+		String oldJobsPath = properties.getProperty("folder.recommendedOldJobs");
+		File directory = new File(oldJobsPath, type);
+		handleImage(response, fileName, directory.getAbsolutePath());
+	}
+	
+	@RequestMapping(value="/tempRecommendedThumb", method=RequestMethod.GET)
+	public void tempRecommendedThumb(HttpServletResponse response, String fileName){
+		String tempPath = properties.getProperty("folder.temp");
+		File directory = new File(tempPath, TempFolders.RECOMMENDED_AVATARS_FOLDER.getValue());
 		handleImage(response, fileName, directory.getAbsolutePath());
 	}
 	

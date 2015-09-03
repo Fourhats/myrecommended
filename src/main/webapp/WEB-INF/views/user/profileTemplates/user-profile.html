@@ -18,11 +18,11 @@
 	</div>
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="first_name" data-ng-disabled="user.isFacebookLogin" required maxlength="100" type="text" class="validate" data-ng-model="user.name"> 
+			<input id="first_name" data-ng-disabled="user.isFacebookLogin" required maxlength="100" length="100" type="text" class="validate" data-ng-model="user.name"> 
 			<label for="first_name" data-ng-class="{active : user.name}">Nombre</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="last_name" data-ng-disabled="user.isFacebookLogin" required maxlength="60" type="text" class="validate" data-ng-model="user.surname">
+			<input id="last_name" data-ng-disabled="user.isFacebookLogin" required maxlength="60" length="60" type="text" class="validate" data-ng-model="user.surname">
 			<label for="last_name" data-ng-class="{active : user.surname}">Apellido</label>
 		</div>
 	</div>

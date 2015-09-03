@@ -47,6 +47,8 @@ public class RecommendedUpdater {
 		recommended.setName(recommendedDto.getName());
 		recommended.setEmail(recommendedDto.getEmail());
 		recommended.setPhone(recommendedDto.getPhone().toString());
+		recommended.setAvatarName(recommendedDto.getAvatarName());
+		
 		recommended.setRecommendedImages(images);
 		
 		recommended.setUpdateDate(new Date());

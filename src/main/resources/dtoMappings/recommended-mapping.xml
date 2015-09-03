@@ -39,6 +39,11 @@
       </field>
       
       <field>
+        <a>avatarName</a>
+        <b>avatarName</b>
+      </field>
+      
+      <field>
         <a>categories</a>
         <b>categories</b>
       </field>

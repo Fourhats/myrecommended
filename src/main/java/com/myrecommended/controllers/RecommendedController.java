@@ -42,7 +42,9 @@ public class RecommendedController {
 		Gson gson = new Gson();
 		
 		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
+		model.addAttribute("selectedCategories", gson.toJson(this.categoryService.getCategoryIdsByKeyword(recommendedKey)));
 		model.addAttribute("recommendedPage", gson.toJson(this.recommendedService.getRecommendedsPageByKeyword(1, 3, recommendedKey)));
+		model.addAttribute("recommendedKey", gson.toJson(recommendedKey));
 		return "recommended/recommendedGallery";
     }
 	

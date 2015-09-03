@@ -22,18 +22,19 @@ import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
 
 public class FileHelper {
-	
 	private final static String SMALL_IMAGE_FOLDER = "small";
 	private final static String MEDIUM_IMAGE_FOLDER = "medium";
 	private final static String LARGE_IMAGE_FOLDER = "large";
 	private final static String ORIGINAL_IMAGE_FOLDER = "originals";
 	
-	//hecho para poder modificar en un solo lugar el UID() y asi poder trabajar en windows
-	public static String getUniqueImageName(String imageName) {
-		String extension = FilenameUtils.getExtension(imageName);
-		String uniqueName = new UID().toString();
-		return imageName;
-		//return String.format("%s.%s", uniqueName, extension);
+	public static String getUniqueImageName(String imageName, boolean isLocal) {
+		if (isLocal) {
+			return imageName;	
+		} else {
+			String extension = FilenameUtils.getExtension(imageName);
+			String uniqueName = new UID().toString();
+			return String.format("%s.%s", uniqueName, extension);
+		}
 	}
 	
 	public static void convertToJPG(String srcImgPath, String targetImgPath) {

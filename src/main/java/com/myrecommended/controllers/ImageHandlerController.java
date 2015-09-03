@@ -1,20 +1,14 @@
 
 package com.myrecommended.controllers;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
-import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -61,10 +55,32 @@ public class ImageHandlerController extends BaseController {
 		handleImage(response, fileName, directory.getAbsolutePath());
 	}
 	
-	
+	private void handleImage(HttpServletResponse response, String fileName, String imagePath) {
+		response.setContentType("image/jpeg");
+		OutputStream output  = null;
+		FileInputStream input = null;
+		File file = new File(imagePath, fileName);
+		try {
+			output = response.getOutputStream();
+			input = new FileInputStream(file);
+			byte[] buffer = new byte[(int) file.length()];
+			input.read(buffer);
+			response.setContentLength(buffer.length);
+			output.write(buffer);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				input.close();
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	//TODO: REVISAR
-	private void resize(HttpServletResponse response, String folderPath, String fileName, int width, int height) {
+	/*private void resize(HttpServletResponse response, String folderPath, String fileName, int width, int height) {
 		BufferedImage imageSrc = null;
 		BufferedImage thumbnail = null;
 		try {
@@ -102,29 +118,5 @@ public class ImageHandlerController extends BaseController {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	private void handleImage(HttpServletResponse response, String fileName, String imagePath) {
-		response.setContentType("image/jpeg");
-		OutputStream output  = null;
-		FileInputStream input = null;
-		File file = new File(imagePath, fileName);
-		try {
-			output = response.getOutputStream();
-			input = new FileInputStream(file);
-			byte[] buffer = new byte[(int) file.length()];
-			input.read(buffer);
-			response.setContentLength(buffer.length);
-			output.write(buffer);
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				input.close();
-				output.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	}*/
 }

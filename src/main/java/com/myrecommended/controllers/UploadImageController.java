@@ -38,10 +38,11 @@ public class UploadImageController {
 		return uploadTempImage(file, RECOMMENDED_OLD_JOBS_FOLDER);
 	}
 	
-	private UploadedFile uploadTempImage(MultipartFile file, String folder) 
-			throws IOException, Exception, FileNotFoundException {
+	private UploadedFile uploadTempImage(MultipartFile file, String folder) throws IOException, Exception, FileNotFoundException {
 		String tempPath = properties.getProperty("folder.temp");
-		String generatedFileName = FileHelper.getUniqueImageName(file.getOriginalFilename());
+		boolean isLocal = this.properties.getProperty("enviroment").equals("local");
+		
+		String generatedFileName = FileHelper.getUniqueImageName(file.getOriginalFilename(), isLocal);
 		
 		String extension = FilenameUtils.getExtension(generatedFileName).toLowerCase();
 		String finalFileName = generatedFileName.replace("." + extension, ".jpg");

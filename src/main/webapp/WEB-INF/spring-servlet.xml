@@ -103,6 +103,5 @@
 	</bean> 
 	
 	<!-- App Settings -->
-	<util:properties id="configProps" location="classpath:config.properties" />
-	
+	<util:properties id="configProps" location="classpath:config-local.properties" />
 </beans>

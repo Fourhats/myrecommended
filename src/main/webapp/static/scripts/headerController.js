@@ -11,12 +11,12 @@ window.fbAsyncInit = function() {
   };
   
 (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
+	var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/es_ES/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+}(document, 'script', 'facebook-jssdk'));
 
 myRecommendedApp.controller('loginController', function ($scope, $http, toastr) {
 	$scope.registerUser = function() {

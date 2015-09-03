@@ -9,7 +9,7 @@
 		</a>
 	</div>
 	<ul id="nav-mobile" class="side-nav fixed">
-		<li class="logo"><a href="/MyRecommended" style="display: inline;"><img src="<%=headerPageContext%>/static/img/logo.png" /></a></li>
+		<li class="logo"><a href="javascript:redirect('home');" style="display: inline;"><img src="<%=headerPageContext%>/static/img/logo.png" /></a></li>
 		<li style="margin-bottom: 20px;">
 			<div class="input-field col s6">
 				<input id="searchKey" data-ng-model="recommendedKey" type="text" class="validate"> 
@@ -91,7 +91,7 @@
 				<div class="row">
 					<div class="col m12">
 						<div class="input-field">
-							<input name="name" required maxlength="100" placeholder="Nombre" type="text" tabindex="4" data-ng-model="newUser.name"/>
+							<input name="name" required maxlength="50" placeholder="Nombre" type="text" tabindex="4" data-ng-model="newUser.name"/>
 							<label class="ng-hide" for="name" data-ng-show="registrationForm.name.$dirty && registrationForm.name.$invalid">
 								<span data-ng-show="registrationForm.name.$error.required">Debe ingresar su nombre</span>
 								<span data-ng-show="registrationForm.name.$error.maxlength">Supera la cantidad maxima de caracteres</span>
@@ -100,7 +100,7 @@
 					</div>
 					<div class="col m12">
 						<div class="input-field">
-							<input name="surname" required maxlength="60" placeholder="Apellido" type="text" tabindex="5" data-ng-model="newUser.surname"/>
+							<input name="surname" required maxlength="50" placeholder="Apellido" type="text" tabindex="5" data-ng-model="newUser.surname"/>
 							<label class="ng-hide" for="surname" data-ng-show="registrationForm.surname.$dirty && registrationForm.surname.$invalid">
 								<span data-ng-show="registrationForm.surname.$error.required">Debe ingresar su apellido</span>
 								<span data-ng-show="registrationForm.surname.$error.maxlength">Supera la cantidad maxima de caracteres</span>
@@ -109,7 +109,7 @@
 					</div>
 					<div class="col m12">
 						<div class="input-field">
-							<input name="username" required maxlength="60" placeholder="Nombre de usuario" type="text" tabindex="6" data-ng-model="newUser.username"/>
+							<input name="username" required maxlength="20" placeholder="Nombre de usuario" type="text" tabindex="6" data-ng-model="newUser.username"/>
 							<label class="ng-hide" for="username" data-ng-show="registrationForm.username.$dirty && registrationForm.username.$invalid">
 								<span data-ng-show="registrationForm.username.$error.required">Debe ingresar su nombre de usuario</span>
 								<span data-ng-show="registrationForm.username.$error.maxlength">Supera la cantidad maxima de caracteres</span>
@@ -118,7 +118,7 @@
 					</div>
 					<div class="col m12">
 						<div class="input-field">
-							<input name="email" required maxlength="100" placeholder="Mail" type="email" tabindex="7" data-ng-model="newUser.email"/>
+							<input name="email" required maxlength="50" placeholder="Mail" type="email" tabindex="7" data-ng-model="newUser.email"/>
 							<label class="ng-hide" for="email" data-ng-show="registrationForm.email.$dirty && registrationForm.email.$invalid">
 								<span data-ng-show="registrationForm.email.$error.required">Debe ingresar su e-mail</span>
 								<span data-ng-show="registrationForm.email.$error.email">Debe ingresar un e-mail valido</span>

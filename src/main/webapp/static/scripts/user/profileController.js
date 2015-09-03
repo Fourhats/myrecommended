@@ -52,21 +52,35 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
     });
 	
     uploader.filters.push({
-        name: 'imageFilter',
+        name: 'typeFilter',
         fn: function(item, options) {
             var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
             return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }
     });
+    
+    uploader.filters.push({
+        name: 'sizeFilter',
+        fn: function(item, options) {
+            return item.size <= 2097152;
+        }
+    });
+    
     uploader.autoUpload = true;
     
     uploader.onCompleteItem = function(item, response, status, headers) {
     	$scope.user.avatarName = response.name;
+    	$scope.isUploadingAvatar = false;
+    };
+    
+    uploader.onBeforeUploadItem = function(item) {
+    	$scope.isUploadingAvatar = true;
     };
     
     uploader.onErrorItem = function(item, response, status, headers) {
-    	uploader.cleanQueue();
-    	toastr.warning('Ha ocurrido un problema.', 'Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb');
+    	item.remove();
+    	toastr.warning('Ha ocurrido un problema.', 'Por favor asegurese de subir un archivo jpg/png que no exceda los 2mb');
+    	$scope.isUploadingAvatar = false;
     };
     
     $scope.uploadAvatar = function() {
@@ -99,6 +113,10 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 	
 	$scope.$parent.currentPage = "userProfile";
 	$scope.$parent.currentPageName = "Perfil de usuario";
+	
+	$(document).ready(function() {
+		$('input, textarea').characterCounter();
+	});
 });
 
 myRecommendedApp.controller('recommendedProfileController', function($scope, $http, toastr, FileUploader) {
@@ -107,6 +125,8 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	$scope.recommended.previousRecommendedImages = $scope.recommended.recommendedImages.slice();
 	$scope.recommended.avatarPath = getCurrentUserImagePath('currentRecommendedAvatarThumb', "medium");
 	$scope.categories = categories;
+	
+	$scope.qtyOldJobsImagesUploading = 0;
 	
 	$scope.toggleCategorySelection = function(category) {
 		var idx = $scope.recommended.categoryIds.indexOf(category.id);
@@ -145,28 +165,47 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
             return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }
     });
+    uploader.filters.push({
+        name: 'sizeFilter',
+        fn: function(item, options) {
+            return item.size <= 2097152;
+        }
+    });
+    
+    
     uploader.autoUpload = true;
     
     uploader.onCompleteItem = function(item, response, status, headers) {
     	if(item.uploadAction == 'uploadAvatar') {
     		$scope.recommended.avatarName = response.name;
     		$scope.recommended.avatarPath = getImagePath('tempRecommendedThumb', response.name);
+    		$scope.isUploadingAvatar = false;
     	} else {
     		$scope.recommended.recommendedImageNames.push(response.name);
+    		$scope.qtyOldJobsImagesUploading--;
     	}
     };
     
     uploader.onBeforeUploadItem = function(item) {
     	if(item.uploadAction == 'uploadAvatar') {
+    		$scope.isUploadingAvatar = true;
     		item.url = getCompletePath("image/uploadRecommendedAvatar");
     	} else {
+    		$scope.isUploadingOldJobs = true;
+    		$scope.qtyOldJobsImagesUploading++;
     		item.url = getCompletePath("image/uploadRecommendedOldJobsImages");
     	}
     };
     
     uploader.onErrorItem = function(item, response, status, headers) {
-    	uploader.cleanQueue();
+    	item.remove();
     	toastr.warning('Ha ocurrido un problema.', 'Por favor asegurese de subir un archivo jpg/png que no exceda los 5mb');
+    	
+    	if(item.uploadAction == 'uploadAvatar') {
+    		$scope.isUploadingAvatar = false;
+    	} else {
+    		$scope.qtyOldJobsImagesUploading--;
+    	}
     };
     
     $scope.uploadOldJobs = function() {
@@ -176,6 +215,10 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     $scope.uploadAvatar = function() {
     	angular.element('#avatarUpload').click();
     };
+    
+    $scope.isUploadingOldWorksImages = function() {
+    	return $scope.qtyOldJobsImagesUploading > 0;
+    };
     //FIN UPLOADER
 	
     $scope.getRecommendedImagePath = function(recommendedImage) {
@@ -184,4 +227,8 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     
 	$scope.$parent.currentPage = "recommendedProfile";
 	$scope.$parent.currentPageName = "Perfil de recomendado";
+	
+	$(document).ready(function() {
+		$('input, textarea').characterCounter();
+	});
 });

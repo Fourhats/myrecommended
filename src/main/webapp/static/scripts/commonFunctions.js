@@ -19,3 +19,11 @@ function getCurrentUserImagePath(actionControllerName, type){
 	type = type || 'none';
 	return getCompletePath("imageHandler/" + actionControllerName) + '?type=' + type;
 }
+
+function showMainProgressBar() {
+	$("#mainProgressBar").show();
+}
+
+function hideMainProgressBar() {
+	$("#mainProgressBar").hide();
+}

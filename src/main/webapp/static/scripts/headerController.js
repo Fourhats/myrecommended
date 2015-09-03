@@ -26,14 +26,17 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 	};
 	
 	$scope.sendRegisterUser = function() {
+		showMainProgressBar();
 		$http.post(getCompletePath("users/createUser"), JSON.stringify($scope.newUser))
 		.success(function (user) {
+			hideMainProgressBar();
 			if(user.error) {
 				$scope.error = user.error;
 			} else {
 				$scope.loginUser(user.username, user.password);
 			}
 	    }).error(function (data, status, headers, config) {
+	    	hideMainProgressBar();
 	    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 	    });
 	};
@@ -54,6 +57,7 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 	};
 	
 	$scope.loginUser = function(user, password) {
+		showMainProgressBar();
 	    $.ajax({
 	          url: getCompletePath("j_spring_security_check"),
 	          data: { j_username: user, j_password: password, _spring_security_remember_me: true }, 
@@ -61,7 +65,9 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 	          beforeSend: function (xhr) {
 	             xhr.setRequestHeader("X-Ajax-call", "true");
 	          },
-	          success: function(result) {       
+	          success: function(result) {
+	        	  hideMainProgressBar();
+	        	  
 		          if (result == "ok") {
 		        	  
 		        	//TODO: CERRAR POPIN Y NO RECARGAR LA PAGINA
@@ -73,6 +79,7 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 		          }
 	    	  },
 		      error: function(XMLHttpRequest, textStatus, errorThrown){
+		    	  hideMainProgressBar();
 		    	  toastr.warning('Usuario o contraseña incorrecta');
 		    	  return false; 
 		      }
@@ -82,14 +89,17 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 	$scope.facebookLogin = function() {
 		FB.login(function(response) {
 		  if (response.status === 'connected') {
+			  showMainProgressBar();
 			  $http.post(getCompletePath("users/loginFBUser"), response.authResponse.accessToken)
 				.success(function (user) {
+					hideMainProgressBar();
 					if(user.error) {
 						$scope.error = user.error;
 					} else {
 						$scope.loginUser(user.email, user.password);
 					}
 			    }).error(function (data, status, headers, config) {
+			    	hideMainProgressBar();
 			    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			    });
 		  } else if (response.status === 'not_authorized') {

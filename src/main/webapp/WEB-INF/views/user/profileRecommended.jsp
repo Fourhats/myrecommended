@@ -12,9 +12,6 @@
 		<div class="col m12">
 			<h1 class="header center-on-small-only" data-ng-bind="currentPageName"></h1>
 		</div>
-		<div class="progress" data-ng-show="isLoading">
-      		<div class="indeterminate"></div>
-  		</div>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
 				<div class="row">

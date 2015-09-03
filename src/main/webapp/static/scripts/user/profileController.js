@@ -16,7 +16,6 @@ myRecommendedApp.config(function($routeProvider) {
 });
 
 myRecommendedApp.controller('MainProfileController', function($scope) {
-	$scope.isLoading = false;
 });
 
 myRecommendedApp.controller('userProfileController', function($scope, $http, toastr, FileUploader) {
@@ -30,17 +29,17 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 	
 	$scope.updateUser = function() {
 		if ($scope.updateUserForm.$valid) {
-			$scope.$parent.isLoading = true;
+			showMainProgressBar();
 			$http.post(getCompletePath("users/updateUser"), JSON.stringify($scope.user))
 			.success(function (result) {
-				$scope.$parent.isLoading = false;
+				hideMainProgressBar();
 				if(result.hasError) {
 					toastr.warning(result.error);
 				} else {
 					toastr.success('El usuario se ha modificado exitosamente');
 				}
 		    }).error(function (data, status, headers, config) {
-		    	$scope.$parent.isLoading = false;
+		    	hideMainProgressBar();
 		    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 		    });
 		}
@@ -93,10 +92,10 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 			if($scope.passowordDto.newPassword != $scope.passowordDto.passwordRepeated) {
 				toastr.warning('Las contraseñas nuevas deben coincidir');
 			} else {
-				$scope.$parent.isLoading = true;
+				showMainProgressBar();
 				$http.post(getCompletePath("users/changePassword"), JSON.stringify($scope.passowordDto))
 				.success(function (result) {
-					$scope.$parent.isLoading = false;
+					hideMainProgressBar();
 					if(result.hasError) {
 						toastr.warning(result.error);
 					} else {
@@ -104,7 +103,7 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 						$scope.passowordDto = {};
 					}
 			    }).error(function (data, status, headers, config) {
-			    	$scope.$parent.isLoading = false;
+			    	hideMainProgressBar();
 					toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			    });
 			}
@@ -116,6 +115,7 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 	
 	$(document).ready(function() {
 		$('input, textarea').characterCounter();
+		hideMainProgressBar();
 	});
 });
 
@@ -135,21 +135,21 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	
 	$scope.updateRecommended = function() {
 		if ($scope.updateRecommendedForm.$valid) {
-			$scope.$parent.isLoading = true;
+			showMainProgressBar();
 			angular.forEach($scope.recommended.recommendedImageNames, function(image, key) {
 				$scope.recommended.recommendedImages.push({ path: image });
 			});
 			
 			$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify($scope.recommended))
 			.success(function (result) {
-				$scope.$parent.isLoading = false;
+				hideMainProgressBar();
 				if(result.hasError) {
 					toastr.warning(result.error);
 				} else {
 					toastr.success('El recomendado se ha modificado exitosamente');
 				}
 			}).error(function (data, status, headers, config) {
-				$scope.$parent.isLoading = false;
+				hideMainProgressBar();
 				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			});
 		}
@@ -230,5 +230,6 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	
 	$(document).ready(function() {
 		$('input, textarea').characterCounter();
+		hideMainProgressBar();
 	});
 });

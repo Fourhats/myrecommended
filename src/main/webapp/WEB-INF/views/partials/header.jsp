@@ -2,6 +2,10 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<div id="mainProgressBar" class="progress spinner-red" style="position: fixed; z-index: 9999; top: -8px;">
+  	<div class="indeterminate"></div>
+</div>
+
 <header data-ng-controller="headerController">
 	<div class="container">
 		<a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only">

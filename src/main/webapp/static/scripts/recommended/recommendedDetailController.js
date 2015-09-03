@@ -8,4 +8,8 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 	$scope.getRecommendedImagePath = function(recommendedImage) {
     	return getImagePath('recommendedOldJobsThumb', recommendedImage.path, 'medium');
     };
+    
+    $(document).ready(function() {
+		hideMainProgressBar();
+	});
 });

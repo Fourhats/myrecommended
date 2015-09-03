@@ -61,6 +61,9 @@
 <%@ include file="partials/scripts.jsp"%>
 <script>
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'toastr', 'angularFileUpload']);
+    $(document).ready(function() {
+		hideMainProgressBar();
+	});
 </script>
 <%@ include file="partials/footerScritps.jsp"%>
 </html>

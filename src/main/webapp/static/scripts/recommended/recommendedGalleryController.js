@@ -75,6 +75,9 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	    }
 	}
 	
-	
 	setCategoryImages(recommendedPage.elements);
+	
+    $(document).ready(function() {
+		hideMainProgressBar();
+	});
 });

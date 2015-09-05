@@ -6,13 +6,16 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	$scope.selectedCategories = selectedCategories ? selectedCategories : [];
 	
 	$scope.goToPage = function(pageNumber) {
+		showMainProgressBar();
 		$http.get(getCompletePath("recommended/" + pageNumber + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
-		.success(function (newRecommendedPage) {
-			setCategoryImages(newRecommendedPage.elements);
+		.then(function (response) {
+			setCategoryImages(response.data.elements);
 			
-			$scope.recommendedPage = newRecommendedPage;
-	    }).error(function () {
+			$scope.recommendedPage = response.data;
+	    }).catch(function (response) {
 			toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+	    }).finally(function() {
+	    	hideMainProgressBar();
 	    });
 	};
 	

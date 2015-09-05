@@ -31,16 +31,16 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 		if ($scope.updateUserForm.$valid) {
 			showMainProgressBar();
 			$http.post(getCompletePath("users/updateUser"), JSON.stringify($scope.user))
-			.success(function (result) {
-				hideMainProgressBar();
-				if(result.hasError) {
-					toastr.warning(result.error);
+			.then(function (result) {
+				if(result.data.hasError) {
+					toastr.warning(result.data.error);
 				} else {
 					toastr.success('El usuario se ha modificado exitosamente');
 				}
-		    }).error(function (data, status, headers, config) {
-		    	hideMainProgressBar();
+		    }).catch(function (result) {
 		    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+		    }).finally(function() {
+		    	hideMainProgressBar();
 		    });
 		}
 	};
@@ -94,17 +94,17 @@ myRecommendedApp.controller('userProfileController', function($scope, $http, toa
 			} else {
 				showMainProgressBar();
 				$http.post(getCompletePath("users/changePassword"), JSON.stringify($scope.passowordDto))
-				.success(function (result) {
-					hideMainProgressBar();
-					if(result.hasError) {
-						toastr.warning(result.error);
+				.then(function (result) {
+					if(result.data.hasError) {
+						toastr.warning(result.data.error);
 					} else {
 						toastr.success('La contraseña se ha modificado exitosamente');
 						$scope.passowordDto = {};
 					}
-			    }).error(function (data, status, headers, config) {
+			    }).catch(function (result) {
+			    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+			    }).finally(function() {
 			    	hideMainProgressBar();
-					toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 			    });
 			}
 		}
@@ -141,16 +141,16 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 			});
 			
 			$http.post(getCompletePath("recommended/updateRecommended"), JSON.stringify($scope.recommended))
-			.success(function (result) {
-				hideMainProgressBar();
-				if(result.hasError) {
-					toastr.warning(result.error);
+			.then(function (result) {
+				if(result.data.hasError) {
+					toastr.warning(result.data.error);
 				} else {
 					toastr.success('El recomendado se ha modificado exitosamente');
 				}
-			}).error(function (data, status, headers, config) {
-				hideMainProgressBar();
+			}).catch(function (result) {
 				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+			}).finally(function() {
+				hideMainProgressBar();
 			});
 		}
 	};

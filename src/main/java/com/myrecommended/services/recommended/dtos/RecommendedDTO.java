@@ -18,7 +18,7 @@ public class RecommendedDTO {
 	
 	private String email;
 	
-	private Integer phone;
+	private Long phone;
 	
 	private String description;
 	
@@ -70,11 +70,11 @@ public class RecommendedDTO {
 		this.email = email;
 	}
 
-	public Integer getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
 	}
 

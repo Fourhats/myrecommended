@@ -69,7 +69,7 @@
 			<label for="name" data-ng-class="{active : recommended.name}">Nombre. Ej.: "Daniel - Pintor profesional"</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="phone" required type="number" min="10000" class="validate" data-ng-model="recommended.phone">
+			<input id="phone" required type="number" min="10000" max="99999999999999" class="validate" data-ng-model="recommended.phone">
 			<label for="phone" data-ng-class="{active : recommended.phone}">Tel&eacute;fono</label>
 		</div>
 		<div class="input-field col s12">

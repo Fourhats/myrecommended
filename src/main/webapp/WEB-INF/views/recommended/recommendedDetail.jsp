@@ -15,7 +15,7 @@
 			<div class="container">
 				<div class="row" style="margin-top: 30px;">
 					<div class="col s4">
-						<img data-ng-src="{{recommended.categories[0].image}}">
+						<img width="270" data-ng-src="{{recommended.avatarPath}}">
 					</div>
 					<div class="col s8" style="text-align: left;">
 						<h4 style="font-weight: 100;" data-ng-bind="recommended.name"></h4>

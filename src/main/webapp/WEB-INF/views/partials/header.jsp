@@ -35,7 +35,11 @@
 					<option value="3">Plomero</option>
 				</select>
 			</div>
-			<button class="btn-large waves-effect waves-light" data-ng-click="searchRecommended()">Buscar</button>
+			<button class="btn-large waves-effect waves-light" 
+				data-ng-disabled="!recommendedKey"
+				data-ng-click="searchRecommended()">
+				Buscar
+			</button>
 		</li>
 		<sec:authorize access="!isAuthenticated()">
 			<li class="menuLink">

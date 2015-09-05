@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
-import com.myrecommended.constants.TempFolders;
 import com.myrecommended.controllers.BaseController;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
-import com.myrecommended.services.utils.FileHelper;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
 @RestController
@@ -48,10 +46,7 @@ public class RecommendedApiController extends BaseController {
 			this.verifyAuthentication();
 			
 			recommendedDto.setUserId(this.getUserId());
-			this.recommendedService.createOrUpdate(recommendedDto);
-			
-			FileHelper.generateImagesWithDifferentSizes(recommendedDto.getRecommendedImageNames(), tempPath, TempFolders.RECOMMENDED_OLD_JOBS_FOLDER.getValue(), recommendedOldJobsPath);
-			FileHelper.generateImagesWithDifferentSizes(recommendedDto.getAvatarName(), tempPath, TempFolders.RECOMMENDED_AVATARS_FOLDER.getValue(), recommendedAvatarsPath);
+			this.recommendedService.createOrUpdate(recommendedDto, tempPath, recommendedOldJobsPath, recommendedAvatarsPath);
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

@@ -9,6 +9,7 @@ import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.business.categories.exceptions.CategoryNotExistException;
 import com.myrecommended.business.recommended.exceptions.RecommendedAlreadyExistException;
 import com.myrecommended.business.recommended.exceptions.RecommendedCategorieslessException;
+import com.myrecommended.business.recommended.exceptions.RecommendedImagesLengthException;
 import com.myrecommended.business.recommended.exceptions.RecommendedNotExistException;
 import com.myrecommended.daos.CategoryDAO;
 import com.myrecommended.daos.RecommendedDAO;
@@ -23,14 +24,16 @@ public class RecommendedValidator {
 	@Autowired
 	private CategoryDAO categoryDao;
 	
-	public void validate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
+	public void validateIfCanCreate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
 		this.validateIfRecommendedNotExists(recommendedDto.getUserId());
 		this.validateValidCategories(recommendedDto.getCategoryIds());
+		this.validateQuantityImages(recommendedDto.getRecommendedImages().size());
 	}
 
 	public void validateIfCanUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
 		this.validateIfRecommendedExist(recommendedDto.getUserId());
 		this.validateValidCategories(recommendedDto.getCategoryIds());
+		this.validateQuantityImages(recommendedDto.getRecommendedImages().size());
 	}
 
 	//RECOMMENDED VALIDATIONS
@@ -63,6 +66,13 @@ public class RecommendedValidator {
 	private void validateIfHasCategories(List<Long> categoryIds) throws RecommendedCategorieslessException {
 		if(categoryIds == null || categoryIds.isEmpty()) {
 			throw new RecommendedCategorieslessException("El recomendado no tiene categorias");
+		}
+	}
+	
+	//IMAGES VALIDATIONS
+	private void validateQuantityImages(int imagesQuantity) throws RecommendedImagesLengthException {
+		if(imagesQuantity > 5) {
+			throw new RecommendedImagesLengthException("El máximo de imagenes es 5");
 		}
 	}
 }

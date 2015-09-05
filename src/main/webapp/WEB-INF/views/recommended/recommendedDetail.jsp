@@ -29,7 +29,7 @@
 							<img class="rowBadge"
 								data-ng-repeat="category in recommended.categories"
 								data-ng-src="{{category.image}}"
-								data-ng-title="category.name"> 
+								data-ng-attr-title="{{category.name}}"> 
 						</div>
 	
 						<span data-ng-bind="recommended.description" class="recommendedDescription" style="width: 100%; float: left; margin-top: 30px;"></span>

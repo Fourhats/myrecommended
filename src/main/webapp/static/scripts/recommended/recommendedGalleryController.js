@@ -9,7 +9,7 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 		showMainProgressBar();
 		$http.get(getCompletePath("recommended/" + pageNumber + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
 		.then(function (response) {
-			setCategoryImages(response.data.elements);
+			setImages(response.data.elements);
 			
 			$scope.recommendedPage = response.data;
 	    }).catch(function (response) {
@@ -17,18 +17,6 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	    }).finally(function() {
 	    	hideMainProgressBar();
 	    });
-	};
-	
-	$scope.goToNextPage = function() {
-		if($scope.recommendedPage.hasNextPage) {
-			$scope.goToPage($scope.recommendedPage.pageIndex + 1);
-		}
-	};
-	
-	$scope.goToPreviousPage = function() {
-		if($scope.recommendedPage.hasPreviousPage) {
-			$scope.goToPage($scope.recommendedPage.pageIndex - 1);
-		}
 	};
 	
 	$scope.toggleCategorySelection = function (categoryId) {
@@ -49,16 +37,32 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 		redirect("recomendado/" + recommended.id + "/" + recommended.name);
 	};
 	
-	function setCategoryImages(newRecommended) {
+	function setImages(newRecommended) {
 		angular.forEach(newRecommended, function(aRecommended, key) {
 			aRecommended.recommendedCategoriesImages = [];
 			angular.forEach(aRecommended.categories, function(category, key) {
 				category.image = getCompletePath('static/img/defaultImages/' + category.name + '.png');
 			});
+			
+			aRecommended.avatarPath = aRecommended.avatarName ?
+					getImagePath('recommendedAvatarThumb', aRecommended.avatarName, "medium") :
+					aRecommended.categories[0].image;
 		});
 	};
 
 	/****Pager****/
+	$scope.goToNextPage = function() {
+		if($scope.recommendedPage.hasNextPage) {
+			$scope.goToPage($scope.recommendedPage.pageIndex + 1);
+		}
+	};
+	
+	$scope.goToPreviousPage = function() {
+		if($scope.recommendedPage.hasPreviousPage) {
+			$scope.goToPage($scope.recommendedPage.pageIndex - 1);
+		}
+	};
+	
 	$scope.getNumber = function(currentNumber, totalPages) {
 	    var array = [];
 	    if(currentNumber < 5) {
@@ -77,8 +81,9 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	    	array.push(i);
 	    }
 	}
+	/****FIN Pager****/
 	
-	setCategoryImages(recommendedPage.elements);
+	setImages(recommendedPage.elements);
 	
     $(document).ready(function() {
 		hideMainProgressBar();

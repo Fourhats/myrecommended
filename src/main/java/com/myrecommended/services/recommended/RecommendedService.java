@@ -1,5 +1,7 @@
 package com.myrecommended.services.recommended;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,7 +16,8 @@ import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
 public interface RecommendedService {
 	
 	@Transactional
-	void createOrUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException;
+	void createOrUpdate(RecommendedRequestDTO recommendedDto, String tempPath, String recommendedOldJobsPath, String recommendedAvatarsPath) 
+			throws MyRecommendedBusinessException, FileNotFoundException, IOException, Exception;
 	
 	@Transactional
 	Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered);

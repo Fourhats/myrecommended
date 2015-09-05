@@ -5,8 +5,6 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
 	$scope.recommended.avatarPath = getCurrentUserImagePath('currentRecommendedAvatarThumb', "medium");
 	$scope.categories = categories;
 	
-	$scope.qtyOldJobsNewImages = 0;
-	
 	$scope.toggleCategorySelection = function(category) {
 		var idx = $scope.recommended.categoryIds.indexOf(category.id);
 	    idx > -1 ?  $scope.recommended.categoryIds.splice(idx, 1) : $scope.recommended.categoryIds.push(category.id);
@@ -52,13 +50,16 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     });
     
     uploader.autoUpload = true;
-    uploader.queueLimit = 5 - $scope.recommended.previousRecommendedImages.length;
+    
+    $scope.qtyOldJobsNewImages = 0;
+	$scope.qtyAvatarChanges = 0;
     
     uploader.onCompleteItem = function(item, response, status, headers) {
     	if(item.uploadAction == 'uploadAvatar') {
     		$scope.recommended.avatarName = response.name;
     		$scope.recommended.avatarPath = getImagePath('tempRecommendedThumb', response.name);
     		$scope.isUploadingAvatar = false;
+    		$scope.qtyAvatarChanges++;
     	} else {
     		$scope.recommended.recommendedImageNames.push(response.name);
     	}
@@ -88,10 +89,12 @@ myRecommendedApp.controller('recommendedProfileController', function($scope, $ht
     };
     
     $scope.uploadOldJobs = function() {
+    	uploader.queueLimit = 5 + $scope.qtyAvatarChanges - $scope.recommended.previousRecommendedImages.length ;
     	angular.element('#oldJobsUploadButton').click();
     };
     
     $scope.uploadAvatar = function() {
+    	uploader.queueLimit = 99999999;
     	angular.element('#avatarUpload').click();
     };
     //FIN UPLOADER

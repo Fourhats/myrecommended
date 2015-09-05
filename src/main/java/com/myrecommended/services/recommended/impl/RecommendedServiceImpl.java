@@ -1,5 +1,7 @@
 package com.myrecommended.services.recommended.impl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.dozer.Mapper;
@@ -9,11 +11,13 @@ import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.business.recommended.RecommendedGenerator;
 import com.myrecommended.business.recommended.RecommendedSearcher;
 import com.myrecommended.business.recommended.RecommendedUpdater;
+import com.myrecommended.constants.TempFolders;
 import com.myrecommended.models.Page;
 import com.myrecommended.models.Recommended;
 import com.myrecommended.services.recommended.RecommendedService;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
+import com.myrecommended.services.utils.FileHelper;
 import com.myrecommended.services.utils.MapperUtil;
 
 public class RecommendedServiceImpl implements RecommendedService {
@@ -30,12 +34,16 @@ public class RecommendedServiceImpl implements RecommendedService {
 	@Autowired
 	private RecommendedUpdater recommendedUpdater;
 	
-	public void createOrUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
+	public void createOrUpdate(RecommendedRequestDTO recommendedDto, String tempPath, String recommendedOldJobsPath, String recommendedAvatarsPath) 
+			throws MyRecommendedBusinessException, FileNotFoundException, IOException, Exception {
 		if(this.recommendedSearcher.existByUserId(recommendedDto.getUserId())) {
 			this.recommendedUpdater.update(recommendedDto);	
 		} else {
 			this.recommendedGenerator.generate(recommendedDto);
 		}
+		
+		FileHelper.generateImagesWithDifferentSizes(recommendedDto.getRecommendedImageNames(), tempPath, TempFolders.RECOMMENDED_OLD_JOBS_FOLDER.getValue(), recommendedOldJobsPath);
+		FileHelper.generateImagesWithDifferentSizes(recommendedDto.getAvatarName(), tempPath, TempFolders.RECOMMENDED_AVATARS_FOLDER.getValue(), recommendedAvatarsPath);
 	}
 
 	public Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered) {

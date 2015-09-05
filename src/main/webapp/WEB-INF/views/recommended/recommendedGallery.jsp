@@ -18,8 +18,7 @@
 					data-ng-repeat="recommended in recommendedPage.elements" data-ng-click="goToRecommendedDetail(recommended)"
 							class="ng-binding">
 					<div class="col s2">
-						<img class="rowThumbnail"
-							data-ng-src="{{recommended.categories[0].image}}" alt="">
+						<img class="rowThumbnail" data-ng-src="{{recommended.avatarPath}}">
 					</div>
 					<div class="col s6">
 						<h4 style="font-weight: 100;" data-ng-bind="recommended.name"

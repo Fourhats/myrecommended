@@ -58,7 +58,7 @@
 		</div>
 		<div class="input-field col s6">
 			<input id="avatarUpload" style="display: none;" type="file" 
-				nv-file-select="" uploader="uploader" 
+				nv-file-select uploader="uploader" 
 				options="{ uploadAction : 'uploadAvatar' }"/>
 			<button type="button" class="btn waves-effect waves-light" data-ng-click="uploadAvatar()">Cambiar Avatar de Recomendado</button>
 		</div>
@@ -81,7 +81,7 @@
 	<div class="row dataRow">
 		<div class="input-field col s6">
 			<input id="oldJobsUploadButton" style="display: none;" type="file" 
-				nv-file-select="" uploader="uploader" multiple 
+				nv-file-select uploader="uploader" multiple 
 				options="{ uploadAction : 'uploadOldJobs' }" />
 			<button type="button" class="btn waves-effect waves-light" 
 				data-ng-disabled="hasUploadedMaxQuantityOldJobsImages()"

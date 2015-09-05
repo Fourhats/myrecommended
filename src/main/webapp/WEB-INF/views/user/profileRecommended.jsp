@@ -42,6 +42,8 @@
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toastr']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/userProfileController.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/recommendedProfileController.js"></script>
 
 <%@ include file="../partials/footerScritps.jsp" %>
 </html>

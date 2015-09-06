@@ -2,10 +2,8 @@ package com.myrecommended.controllers.api;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
-import com.myrecommended.constants.TempFolders;
 import com.myrecommended.controllers.BaseController;
 import com.myrecommended.services.petitions.PetitionService;
 import com.myrecommended.services.petitions.dtos.PetitionDTO;
@@ -25,7 +22,6 @@ import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
-import com.myrecommended.services.utils.FileHelper;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -39,9 +35,6 @@ public class UserApiController extends BaseController {
 	
 	@Autowired
 	private PetitionService petitionService;
-	
-	@Value("#{configProps}")
-	private Properties properties;
 	
 	@RequestMapping(value = "/users/existUserWithEmail", method = RequestMethod.POST)
     public @ResponseBody boolean existUserWithEmail(@RequestBody String email, Model model) {
@@ -84,9 +77,6 @@ public class UserApiController extends BaseController {
 	
 	@RequestMapping(value = "/users/updateUser", method = RequestMethod.POST)
     public MyRecommendedBaseDTO updateUser(@RequestBody UpdateUserRequestDTO userDto, Model model) throws FileNotFoundException, IOException, Exception {
-		String tempPath = properties.getProperty("folder.temp");
-		String avatarPath = properties.getProperty("folder.avatar");
-		
 		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
 		try {
@@ -94,8 +84,6 @@ public class UserApiController extends BaseController {
 			
 			userDto.setId(this.getUserId());
 			this.userService.updateUser(userDto);
-			
-			FileHelper.generateImagesWithDifferentSizes(userDto.getAvatarName(), tempPath, TempFolders.AVATAR_FOLDER.getValue(), avatarPath);
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

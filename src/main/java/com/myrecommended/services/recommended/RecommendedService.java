@@ -16,8 +16,7 @@ import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
 public interface RecommendedService {
 	
 	@Transactional
-	void createOrUpdate(RecommendedRequestDTO recommendedDto, String tempPath, String recommendedOldJobsPath, String recommendedAvatarsPath) 
-			throws MyRecommendedBusinessException, FileNotFoundException, IOException, Exception;
+	void createOrUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException, FileNotFoundException, IOException, Exception;
 	
 	@Transactional
 	Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered);

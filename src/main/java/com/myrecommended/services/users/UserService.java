@@ -1,5 +1,8 @@
 package com.myrecommended.services.users;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +26,7 @@ public interface UserService {
 	LoggedUserDTO addUser(User user) throws MyRecommendedBusinessException;
 
 	@Transactional
-	void updateUser(UpdateUserRequestDTO userDto) throws MyRecommendedBusinessException;
+	void updateUser(UpdateUserRequestDTO userDto) throws FileNotFoundException, IOException, Exception;
 
 	@Transactional
 	boolean existUserWithEmail(String email);

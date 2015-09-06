@@ -3,9 +3,11 @@ package com.myrecommended.services.recommended.impl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.business.recommended.RecommendedGenerator;
@@ -34,13 +36,20 @@ public class RecommendedServiceImpl implements RecommendedService {
 	@Autowired
 	private RecommendedUpdater recommendedUpdater;
 	
-	public void createOrUpdate(RecommendedRequestDTO recommendedDto, String tempPath, String recommendedOldJobsPath, String recommendedAvatarsPath) 
-			throws MyRecommendedBusinessException, FileNotFoundException, IOException, Exception {
+	@Value("#{configProps}")
+	private Properties properties;
+	
+	public void createOrUpdate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException, FileNotFoundException, IOException, Exception {
+
 		if(this.recommendedSearcher.existByUserId(recommendedDto.getUserId())) {
 			this.recommendedUpdater.update(recommendedDto);	
 		} else {
 			this.recommendedGenerator.generate(recommendedDto);
 		}
+		
+		String tempPath = properties.getProperty("folder.temp");
+		String recommendedOldJobsPath = properties.getProperty("folder.recommendedOldJobs");
+		String recommendedAvatarsPath = properties.getProperty("folder.recommendedAvatars");
 		
 		FileHelper.generateImagesWithDifferentSizes(recommendedDto.getRecommendedImageNames(), tempPath, TempFolders.RECOMMENDED_OLD_JOBS_FOLDER.getValue(), recommendedOldJobsPath);
 		FileHelper.generateImagesWithDifferentSizes(recommendedDto.getAvatarName(), tempPath, TempFolders.RECOMMENDED_AVATARS_FOLDER.getValue(), recommendedAvatarsPath);

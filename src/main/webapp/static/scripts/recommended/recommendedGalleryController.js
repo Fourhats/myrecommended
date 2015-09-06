@@ -38,9 +38,9 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	};
 	
 	function setImages(newRecommended) {
-		angular.forEach(newRecommended, function(aRecommended, key) {
+		angular.forEach(newRecommended, function(aRecommended, rKey) {
 			aRecommended.recommendedCategoriesImages = [];
-			angular.forEach(aRecommended.categories, function(category, key) {
+			angular.forEach(aRecommended.categories, function(category, cKey) {
 				category.image = getCompletePath('static/img/defaultImages/' + category.name + '.png');
 			});
 			

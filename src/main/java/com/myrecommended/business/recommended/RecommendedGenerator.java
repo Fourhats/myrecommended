@@ -21,10 +21,9 @@ public class RecommendedGenerator {
 	@Autowired
 	private RecommendedValidator recommendedValidator;
 	
-	public Recommended generate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
+	public void generate(RecommendedRequestDTO recommendedDto) throws MyRecommendedBusinessException {
 		this.recommendedValidator.validateIfCanCreate(recommendedDto);
 		Recommended recommended = this.recommendedFactory.create(recommendedDto);
 		this.recommendedDao.add(recommended);
-		return recommended;
 	}
 }

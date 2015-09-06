@@ -4,10 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,29 +29,19 @@ public class RecommendedApiController extends BaseController {
 	@Autowired
 	private RecommendedService recommendedService;
 	
-	@Value("#{configProps}")
-	private Properties properties;
-	
 	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
     public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) throws FileNotFoundException, IOException, Exception {
-		String tempPath = properties.getProperty("folder.temp");
-		String recommendedOldJobsPath = properties.getProperty("folder.recommendedOldJobs");
-		String recommendedAvatarsPath = properties.getProperty("folder.recommendedAvatars");
-		
 		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
 		try {
 			this.verifyAuthentication();
 			
 			recommendedDto.setUserId(this.getUserId());
-			this.recommendedService.createOrUpdate(recommendedDto, tempPath, recommendedOldJobsPath, recommendedAvatarsPath);
-		} catch (AuthenticationCredentialsNotFoundException e) {
+			this.recommendedService.createOrUpdate(recommendedDto);
+		} catch (MyRecommendedBusinessException|AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
-		} catch (MyRecommendedBusinessException e) {
-			returnObject.setError(e.getMessage());
-			e.printStackTrace();
-		}
+		} 
 		
 		return returnObject;
     }

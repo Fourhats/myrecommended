@@ -1,4 +1,3 @@
-
 package com.myrecommended.controllers;
 
 import java.io.File;
@@ -8,7 +7,6 @@ import java.io.OutputStream;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.metal.MetalIconFactory.FolderIcon16;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -65,14 +65,17 @@
 	</div>
 	<div class="row">
 		<div class="input-field col s6">
+			<i class="material-icons prefix">supervisor_account</i>
 			<input id="name" required maxlength="45" length="45" type="text" class="validate" data-ng-model="recommended.name"> 
 			<label for="name" data-ng-class="{active : recommended.name}">Nombre. Ej.: "Daniel - Pintor profesional"</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="phone" required type="number" min="10000" max="99999999999999" class="validate" data-ng-model="recommended.phone">
-			<label for="phone" data-ng-class="{active : recommended.phone}">Tel&eacute;fono</label>
+			<i class="material-icons prefix">phone</i>
+			<input id="phone" required type="number" min="100000" max="99999999999999" class="validate" data-ng-model="recommended.phone">
+			<label for="phone" data-error="Debe tener al menos 6 caracteres" style="width: inherit" data-ng-class="{active : recommended.phone}">Tel&eacute;fono</label>
 		</div>
 		<div class="input-field col s12">
+          	<i class="material-icons prefix">description</i>
           	<textarea id="description" required maxlength="2000" length="2000" class="materialize-textarea" data-ng-model="recommended.description"></textarea>
           	<label for="description" data-ng-class="{active : recommended.description}">Descripci&oacute;n</label>
 		</div>
@@ -169,8 +172,9 @@
 	
 	<div class="row dataRow">
 		<div class="input-field col s6">
+			<i class="material-icons prefix">email</i>
 			<input id="email" type="email" required maxlength="60" class="validate" data-ng-model="recommended.email"> 
-			<label for="email" data-ng-class="{active : recommended.email}">Email Recomendado</label>
+			<label for="email" data-error="El formato es incorrecto" style="width: inherit" data-ng-class="{active : recommended.email}">Email Recomendado</label>
 		</div>
 		<div class="input-field col s12">
 			<button type="submit" class="btn waves-effect waves-light" 
@@ -180,4 +184,3 @@
 		</div>
 	</div>
 </form>
-

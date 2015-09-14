@@ -49,6 +49,12 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 					aRecommended.categories[0].image;
 		});
 	};
+	
+	$scope.searchRecommended = function() {
+		if($scope.recommendedKey) {
+			redirect("recomendados/" + $scope.recommendedKey);
+		}
+	};
 
 	/****Pager****/
 	$scope.goToNextPage = function() {

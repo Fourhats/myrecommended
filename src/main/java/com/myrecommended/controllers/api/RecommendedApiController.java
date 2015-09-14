@@ -38,10 +38,13 @@ public class RecommendedApiController extends BaseController {
 			
 			recommendedDto.setUserId(this.getUserId());
 			this.recommendedService.createOrUpdate(recommendedDto);
-		} catch (MyRecommendedBusinessException|AuthenticationCredentialsNotFoundException e) {
+		} catch (MyRecommendedBusinessException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
-		} 
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		}
 		
 		return returnObject;
     }

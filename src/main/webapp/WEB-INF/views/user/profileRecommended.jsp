@@ -6,14 +6,14 @@
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet">
 </head>
 
-<body data-ng-controller="MainProfileController as vm">
+<body class="blackMenu" data-ng-controller="MainProfileController as vm">
 	<%@ include file="../partials/header.jsp"%>
 	<main>
-		<div class="col m12">
-			<h1 class="header center-on-small-only" data-ng-bind="currentPageName"></h1>
-		</div>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
+				<div class="col m12">
+					<h1 class="header center-on-small-only" data-ng-bind="currentPageName"></h1>
+				</div>	
 				<div class="row">
 					<div class="col s3 profileMenu">
 						<div class="collection">

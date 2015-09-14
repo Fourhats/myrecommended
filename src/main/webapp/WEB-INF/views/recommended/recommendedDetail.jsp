@@ -4,15 +4,15 @@
 	<%@ include file="../partials/styles.jsp"%>
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet">
 </head>
-<body data-ng-controller="recommendedDetailController">
+<body class="blackMenu" data-ng-controller="recommendedDetailController">
 	<%@ include file="../partials/header.jsp"%>
 
 	<main>
-		<div class="col m12">
-			<h1 class="header center-on-small-only">Información del recomendado</h1>
-		</div>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
+				<div class="col m12" style="margin-bottom: 20px;">
+					<h1 class="header center-on-small-only">Información del recomendado</h1>
+				</div>
 				<div class="row" style="margin-top: 30px;">
 					<div class="col s4">
 						<img width="270" data-ng-src="{{recommended.avatarPath}}">

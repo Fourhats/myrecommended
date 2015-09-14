@@ -7,7 +7,7 @@
 </div>
 
 <header data-ng-controller="headerController">
-	<div class="container">
+	<!-- <div class="container">
 		<a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only">
 			<i class="mdi-navigation-menu"></i>
 		</a>
@@ -59,7 +59,33 @@
 				</a>
 			</li>
 		</sec:authorize>
-	</ul>
+	</ul>-->
+	  <nav class="transparentBackground" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><a href="javascript:redirect('home');" style="display: inline;"><img src="<%=headerPageContext%>/static/img/logo.png" /></a></a>
+      <ul class="right hide-on-med-and-down">
+		<sec:authorize access="!isAuthenticated()">
+			<li>
+				<a class="modal-trigger" href="#login">
+					Ingresa
+				</a>
+			</li>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+			<ul id="dropdown1" class="dropdown-content">
+			  <li><a href="<%=headerPageContext%>/perfil" >Mi Perfíl</a></li>
+			  <li><a href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
+			</ul>
+			<li ><a class="dropdown-button" href="#!" data-activates="dropdown1">Bienvenido <strong><sec:authentication property="principal.fullName" /></strong>!</a></li>
+		</sec:authorize>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
 </header>
 
 <div id="login" class="modal" style="text-align: center;" data-ng-controller="loginController">

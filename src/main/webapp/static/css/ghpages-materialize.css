@@ -8991,6 +8991,27 @@ margin-top: 100px;
     padding: 0px;
     margin: 0px;
 }
+
+    .row .s3 canvas{
+    	max-width: 100%;
+    }
+    
+    .row .recommendedImage img{
+    	max-width: 100%;
+    } 
+    .recommendedImage{
+    margin-top: 20px;
+    }
+    
+    .categoryCheckItem{
+    margin-top: 20px;
+    }
+    
+    .editAvatarRecommended{
+        position: absolute;
+    bottom: 0;
+    left: 0;
+    }
  
  .select2-container {
     box-sizing: border-box;
@@ -9110,6 +9131,8 @@ nav ul a:hover{
     width: 60%;
 } 
 }
+
+
 
 
 

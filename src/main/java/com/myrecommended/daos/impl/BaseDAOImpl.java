@@ -40,7 +40,7 @@ public abstract class BaseDAOImpl<T, PK extends Serializable> implements BaseDAO
 		criteria.setFirstResult((pageIndex - 1) * pageSize).setMaxResults(pageSize);
 		List<T> elements = (List<T>) hibernateTemplate.findByCriteria(detachedCriteria);
 		
-		criteria.setProjection(Projections.rowCount()).setFirstResult(0).setMaxResults(999999999);
+		criteria.setProjection(Projections.countDistinct("id")).setFirstResult(0).setMaxResults(999999999);
 		long totalItems = (Long) criteria.uniqueResult();
 		
 		return new Page<T>(elements, pageIndex, pageSize, totalItems);

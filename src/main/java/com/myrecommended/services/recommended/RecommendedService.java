@@ -22,7 +22,7 @@ public interface RecommendedService {
 	Page<RecommendedDTO> getRecommendedsPage(int pageIndex, int pageSize, List<Long> categoriesFiltered);
 
 	@Transactional
-	Page<RecommendedDTO> getRecommendedsPageByKeyword(int pageIndex, int pageSize,String recommendedKey);
+	Page<RecommendedDTO> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey);
 
 	@Transactional
 	RecommendedDTO getRecommendedById(long recommendedId);

@@ -3,11 +3,27 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	
 	$scope.recommendedPage = recommendedPage;
 	
-	$scope.selectedCategories = selectedCategories ? selectedCategories : [];
+	$scope.getSelectedCategory = function(categoryId) {
+		var selectedCategory = { id: 0 };
+		angular.forEach($scope.categories, function(aCategory, rKey) {
+			if(aCategory.id == categoryId) {
+				selectedCategory = aCategory;
+			}
+		});
+		
+		return selectedCategory;
+	};
+	
+	$scope.selectedCategory = $scope.getSelectedCategory(categoryId);
+	$scope.recommendedKey = recommendedKey;
 	
 	$scope.goToPage = function(pageNumber) {
 		showMainProgressBar();
-		$http.get(getCompletePath("recommended/" + pageNumber + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategories))
+		
+		var getUrl = "recommended/" + pageNumber + "/" + $scope.recommendedPage.pageSize + "/" + $scope.selectedCategory.id;
+		if($scope.recommendedKey != "") getUrl += "/" + $scope.recommendedKey;
+		
+		$http.get(getCompletePath(getUrl))
 		.then(function (response) {
 			setImages(response.data.elements);
 			
@@ -19,20 +35,6 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	    });
 	};
 	
-	$scope.toggleCategorySelection = function (categoryId) {
-	    var idx = $scope.selectedCategories.indexOf(categoryId);
-
-	    if (idx > -1) {
-	    	$scope.selectedCategories.splice(idx, 1);
-	    } else {
-	    	$scope.selectedCategories.push(categoryId);
-	    }
-	    
-	    $scope.recommendedPage.pageIndex = 0;
-	    $scope.recommendedPage.elements = [];
-	    $scope.getMoreRecommendeds();
-	};
-
 	$scope.goToRecommendedDetail = function(recommended) {
 		redirect("recomendado/" + recommended.id + "/" + recommended.name);
 	};
@@ -51,8 +53,16 @@ myRecommendedApp.controller('recommendedGalleryController', function ($scope, $h
 	};
 	
 	$scope.searchRecommended = function() {
-		if($scope.recommendedKey) {
-			redirect("recomendados/" + $scope.recommendedKey);
+		if($scope.selectedCategory) {
+			if($scope.recommendedKey) {
+				redirect("recomendados/" + $scope.selectedCategory.id + "/" + $scope.recommendedKey);
+			} else {
+				redirect("recomendados/" + $scope.selectedCategory.id);
+			}
+		} else if($scope.recommendedKey) {
+			redirect("recomendados/0/" + $scope.recommendedKey);
+		} else {
+			redirect("recomendados");
 		}
 	};
 

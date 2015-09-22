@@ -25,14 +25,6 @@ public class CategoryDAOImpl extends BaseDAOImpl<Category, Long> implements Cate
 		return (List<Category>) getHibernateTemplate().findByCriteria(criteria);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Category> getCategoriesByKeyword(String recommendedKey) {
-		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
-		criteria.createAlias("categoryKeywords", "categoryKeywords");
-		criteria.add(Restrictions.ilike("categoryKeywords.keyword", "%" + recommendedKey + "%"));
-		return (List<Category>) getHibernateTemplate().findByCriteria(criteria);
-	}
-	
 	public boolean existCategory(Long categoryId) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
 		criteria.add(Restrictions.eq("id", categoryId));

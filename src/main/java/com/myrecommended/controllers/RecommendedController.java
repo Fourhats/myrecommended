@@ -25,27 +25,13 @@ public class RecommendedController {
     public String goToPedilo(Model model) {
 		Gson gson = new Gson();
 		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
+		
 		return "recommended/petition";
     }
 	
 	@RequestMapping(value="/recomendados")
     public String goToRecomendados(Model model) {
-		Gson gson = new Gson();
-		
-		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
-		model.addAttribute("recommendedPage", gson.toJson(this.recommendedService.getRecommendedsPage(1, 3, new ArrayList<Long>())));
-		return "recommended/recommendedGallery";
-    }
-	
-	@RequestMapping(value="/recomendados/{recommendedKey}")
-    public String goToRecomendadosSearch(@PathVariable String recommendedKey, Model model) {
-		Gson gson = new Gson();
-		
-		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
-		model.addAttribute("selectedCategories", gson.toJson(this.categoryService.getCategoryIdsByKeyword(recommendedKey)));
-		model.addAttribute("recommendedPage", gson.toJson(this.recommendedService.getRecommendedsPageByKeyword(1, 3, recommendedKey)));
-		model.addAttribute("recommendedKey", gson.toJson(recommendedKey));
-		return "recommended/recommendedGallery";
+		return this.goToGallery(0, "", model);
     }
 	
 	@RequestMapping(value="/recomendado/{recommendedId}/{recommendedName}")
@@ -53,6 +39,28 @@ public class RecommendedController {
 		Gson gson = new Gson();
 		
 		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId)));
+		
 		return "recommended/recommendedDetail";
     }
+	
+	@RequestMapping(value="/recomendados/{categoryId}/{recommendedKey}")
+    public String goToRecomendadosGalleryFiltered(@PathVariable long categoryId, @PathVariable String recommendedKey, Model model) {
+		return this.goToGallery(categoryId, recommendedKey, model);
+    }
+	
+	@RequestMapping(value="/recomendados/{categoryId}")
+    public String goToRecomendadosGallery(@PathVariable long categoryId, Model model) {
+		return this.goToGallery(categoryId, "", model);
+    }
+	
+	private String goToGallery(long categoryId, String recommendedKey, Model model) {
+		Gson gson = new Gson();
+		
+		model.addAttribute("categories", gson.toJson(this.categoryService.getAllCategories()));
+		model.addAttribute("categoryId", categoryId);
+		model.addAttribute("recommendedPage", gson.toJson(this.recommendedService.getRecommendedsPageByCategoryAndKeyword(1, 3, categoryId, recommendedKey)));
+		model.addAttribute("recommendedKey", gson.toJson(recommendedKey));
+		
+		return "recommended/recommendedGallery";
+	}
 }

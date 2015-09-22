@@ -42,12 +42,15 @@ public class RecommendedDAOImpl extends BaseDAOImpl<Recommended, Long> implement
 		return this.getPageByCriteria(criteria, pageIndex, pageSize);
 	}
 
-	public Page<Recommended> getRecommendedsPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {
+	public Page<Recommended> getRecommendedsPageByCategoryAndKeyword(int pageIndex, int pageSize, long categoryId, String recommendedKey) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		criteria.createAlias("categories", "categories");
-		criteria.createAlias("categories.categoryKeywords", "categoryKeywords");
-		criteria.add(Restrictions.ilike("categoryKeywords.keyword", "%" + recommendedKey + "%"));
+		criteria.add(Restrictions.ilike("name", "%" + recommendedKey + "%"));
+		
+		if(categoryId != 0) {
+			criteria.createAlias("categories", "categories");
+			criteria.add(Restrictions.eq("categories.id", categoryId));
+		}
 		
 		return getPageByCriteria(criteria, pageIndex, pageSize);
 	}

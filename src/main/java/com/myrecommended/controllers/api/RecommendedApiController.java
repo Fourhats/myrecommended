@@ -3,7 +3,6 @@ package com.myrecommended.controllers.api;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
@@ -54,8 +53,13 @@ public class RecommendedApiController extends BaseController {
 		return this.recommendedService.getRecommendedsPage(pageIndex, pageSize, new ArrayList<Long>());	
 	}
 	
-	@RequestMapping(value="/recommended/{pageIndex}/{pageSize}/{categories}", method = RequestMethod.GET, consumes="*/*")
-	public @ResponseBody Page<RecommendedDTO> getFilteredRecommended(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable List<Long> categories) {
-		return this.recommendedService.getRecommendedsPage(pageIndex, pageSize, categories);	
+	@RequestMapping(value="/recommended/{pageIndex}/{pageSize}/{categoryId}", method = RequestMethod.GET, consumes="*/*")
+	public @ResponseBody Page<RecommendedDTO> getRecommendedFilteredByCategory(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable long categoryId) {
+		return this.recommendedService.getRecommendedsPageByCategoryAndKeyword(pageIndex, pageSize, categoryId, "");	
+	}
+	
+	@RequestMapping(value="/recommended/{pageIndex}/{pageSize}/{categoryId}/{keyword}", method = RequestMethod.GET, consumes="*/*")
+	public @ResponseBody Page<RecommendedDTO> getRecommendedFilteredByCategoryAndKeyword(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable long categoryId, @PathVariable String keyword) {
+		return this.recommendedService.getRecommendedsPageByCategoryAndKeyword(pageIndex, pageSize, categoryId, keyword);	
 	}
 }

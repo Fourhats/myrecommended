@@ -15,38 +15,35 @@
 					servicios!</h5>
 			</div>
 			<div class="row center homeSearch">
-				<div class="input-field col s3 m3">
+				<!-- <div class="input-field col s3 m3">
 					<select style="width: 80%">
 						<option value="" disabled selected>Ubicación</option>
 						<option value="1">Option 1</option>
 						<option value="2">Option 2</option>
 						<option value="3">Option 3</option>
 					</select>
+				</div>-->
+				<div class="input-field col s3 m4">
+					<select style="width: 80%" 
+						data-ng-model="selectedCategory" 
+						data-ng-options="category.name for category in categories">
+				     		<option value="" disabled selected>Especialidad</option>
+				    </select>
 				</div>
-				<div class="input-field col s3 m3 ">
-					<select style="width: 80%">
-						<option value="" disabled selected>Especialidad</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-				<div class="input-field col s3 m3 ">
+				<div class="input-field col s3 m4">
 					<input id="searchKey" data-ng-model="recommendedKey" type="text"
 						class="validate">
 				</div>
-				<div class="input-field col s3 m3 input-field ">
-					<button class="btn-large waves-effect waves-light"
-						data-ng-disabled="!recommendedKey"
-						data-ng-click="searchRecommended()">Buscar</button>
+				<div class="input-field col s3 m4 input-field">
+					<button class="btn-large waves-effect waves-light" data-ng-click="searchRecommended()">
+						Buscar
+					</button>
 				</div>
 			</div>
 			<br>
 			<br>
-
 		</div>
 	</div>
-
 
 	<div class="container">
 		<div class="section">
@@ -57,7 +54,7 @@
 				<div class="col s12 m4">
 					<div class="icon-block">
 						<h2 class="center light-blue-text">
-							<i class="material-icons">desktop_mac</i>
+							<i class="material-icons"></i>
 						</h2>
 						<h5 class="center">Contanos tú necesidad</h5>
 						<p class="light">Con tu ubicación y el especialista que
@@ -68,7 +65,7 @@
 				<div class="col s12 m4">
 					<div class="icon-block">
 						<h2 class="center light-blue-text">
-							<i class="material-icons">group</i>
+							<i class="material-icons"></i>
 						</h2>
 						<h5 class="center">Elegí a tu recomendado</h5>
 						<p class="light">Revisa los recomendados que quieras entre los
@@ -79,7 +76,7 @@
 				<div class="col s12 m4">
 					<div class="icon-block">
 						<h2 class="center light-blue-text">
-							<i class="material-icons">face</i>
+							<i class="material-icons"></i>
 						</h2>
 						<h5 class="center">¡Contratá!</h5>
 						<p class="light">Contactá al recomendado que buscabas y
@@ -89,86 +86,21 @@
 			</div>
 
 		</div>
-		<br>
-		<br>
+		<br> <br>
 
 		<div class="section">
 			<div class="row homeImages">
-				<div class="col s12 m3">
-					<img src="static/img/defaultImages/boxed/electricista.png" />
-				</div>
-				<div class="col s12 m3">
-					<img src="static/img/defaultImages/boxed/constructor.png" />
-				</div>
-				<div class="col s12 m3">
-					<img src="static/img/defaultImages/boxed/gasista.png" />
-				</div>
-				<div class="col s12 m3">
-					<img src="static/img/defaultImages/boxed/jardinero.png" />
-				</div>
-				<div class="col s12 m3">
-					<img src="static/img/defaultImages/boxed/pintor.png" />
+				<div class="col s12 m3" data-ng-repeat="category in categories">
+					<img data-ng-src="{{category.image}}" data-ng-attr-title="{{category.name}}"/>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- <main>
-		<div class="section no-pad-bot" id="index-banner">
-			<div class="container">
-				<img id="banner1" class="homeImage" src="static/img/workerBanner1.jpg" />
-				<img id="banner2" class="homeImage" src="static/img/workerBanner2.jpg" />
-				<img id="banner3" class="homeImage" src="static/img/workerBanner3.jpg" />
-				<div class="row homeRecommendedRow">
-	
-					<div class="col s6 homeRecommended">
-						<div class="col s4">
-							<img src="static/img/defaultImages/electricista.png">
-						</div>
-						<div class="col s8">
-							<span class="recommendedTitle">Nombre del Recomendado</span>
-							 <span class="recommendedDescription">Descripción</span>
-						</div>
-					</div>
-					<div class="col s6 homeRecommended">
-						<div class="col s4">
-							<img src="static/img/defaultImages/gasista.png">
-						</div>
-						<div class="col s8">
-							<span class="recommendedTitle">Nombre del Recomendado</span>
-							<span class="recommendedDescription">Descripción Descripción
-								Descripción Descripción Descripción Descripción </span>
-						</div>
-					</div>
-					<div class="col s6 homeRecommended">
-						<div class="col s4">
-							<img src="static/img/defaultImages/jardinero.png">
-						</div>
-						<div class="col s8">
-							<span class="recommendedTitle">Nombre del Recomendado</span> 
-							<span class="recommendedDescription">Descripción Descripción
-								Descripción Descripción Descripción Descripción </span>
-						</div>
-					</div>
-					<div class="col s6 homeRecommended">
-						<div class="col s4">
-							<img src="static/img/defaultImages/gasista.png">
-						</div>
-						<div class="col s8">
-							<span class="recommendedTitle">Nombre del Recomendado</span> 
-							<span class="recommendedDescription">Descripción Descripción Descripción Descripción Descripción Descripción </span>
-						</div>
-					</div>
-	
-				</div>
-				<div style="position: absolute; bottom: 33px; right: 10px;" class="fb-page" data-href="https://www.facebook.com/facebook" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
-			</div>
-		</div>
-	</main>
-	-->
 </body>
 <%@ include file="partials/scripts.jsp"%>
 <script>
+	var categories = <%=request.getAttribute("categories")%>;
+
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'toastr', 'angularFileUpload']);
     $(document).ready(function() {
 		hideMainProgressBar();

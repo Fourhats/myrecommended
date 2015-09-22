@@ -23,8 +23,4 @@ public class CategoryServiceImpl implements CategoryService {
 		List<Category> categories = this.categorySearcher.getAll();
 		return MapperUtil.map(mapper, categories, CategoryDTO.class);
 	}
-
-	public List<Long> getCategoryIdsByKeyword(String recommendedKey) {
-		return this.categorySearcher.getCategoryIdsByKeyword(recommendedKey);
-	}
 }

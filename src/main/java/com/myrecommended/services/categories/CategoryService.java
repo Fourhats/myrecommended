@@ -10,6 +10,4 @@ import com.myrecommended.services.categories.dtos.CategoryDTO;
 public interface CategoryService {
 
 	List<CategoryDTO> getAllCategories();
-
-	List<Long> getCategoryIdsByKeyword(String recommendedKey);
 }

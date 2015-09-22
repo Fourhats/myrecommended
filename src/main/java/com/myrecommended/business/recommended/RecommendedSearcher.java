@@ -23,8 +23,8 @@ public class RecommendedSearcher {
 		return this.recommendedDao.getRecommendedsPage(pageIndex, pageSize, categoriesFiltered);
 	}
 
-	public Page<Recommended> getPageByKeyword(int pageIndex, int pageSize, String recommendedKey) {
-		return this.recommendedDao.getRecommendedsPageByKeyword(pageIndex, pageSize, recommendedKey);
+	public Page<Recommended> getRecommendedsPageByCategoryAndKeyword(int pageIndex, int pageSize, long categoryId, String recommendedKey) {
+		return this.recommendedDao.getRecommendedsPageByCategoryAndKeyword(pageIndex, pageSize, categoryId, recommendedKey);	
 	}
 
 	public Recommended getById(long recommendedId) {

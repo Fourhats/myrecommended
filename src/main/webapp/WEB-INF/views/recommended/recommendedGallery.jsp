@@ -19,24 +19,13 @@
 							<label for="searchKey">Busca tu recomendado</label>
 						</div>
 						<div class="col s12">
-							<select>
-								<option value="" selected>Ubicación</option>
-								<option value="1">Caballito</option>
-								<option value="2">Flores</option>
-								<option value="3">Belgrano</option>
-							</select>
+							<select 
+								data-ng-model="selectedCategory" 
+								data-ng-options="category.name for category in categories">
+						     		<option value="" disabled selected>Especialidad</option>
+						    </select>
 						</div>
-						<div class="col s12">
-							<select>
-								<option value="" disabled selected>Especialidad</option>
-								<option value="1">Electricista</option>
-								<option value="2">Gasista</option>
-								<option value="3">Plomero</option>
-							</select>
-						</div>
-						<button class="btn-large waves-effect waves-light" 
-							data-ng-disabled="!recommendedKey"
-							data-ng-click="searchRecommended()">
+						<button class="btn-large waves-effect waves-light" data-ng-click="searchRecommended()">
 							Buscar
 						</button>
 					</div>
@@ -93,7 +82,7 @@
 <script>
 	var recommendedPage = <%=request.getAttribute("recommendedPage")%>;
 	var categories = <%=request.getAttribute("categories")%>;
-	var selectedCategories = <%=request.getAttribute("selectedCategories")%>;
+	var categoryId = <%=request.getAttribute("categoryId")%>;
 	var recommendedKey = <%=request.getAttribute("recommendedKey")%>;
 	
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'toastr']);

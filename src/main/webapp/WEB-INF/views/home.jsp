@@ -4,7 +4,9 @@
 	<%@ include file="partials/styles.jsp"%>
 </head>
 <body data-ng-controller="homeController">
-	<%@ include file="partials/header.jsp"%>
+	<div style="position: absolute; width: 100%;">
+		<%@ include file="partials/header.jsp"%>
+	</div>
 	<div class="section no-pad-bot" id="index-banner">
 		<div class="container homeContainer">
 			<br>

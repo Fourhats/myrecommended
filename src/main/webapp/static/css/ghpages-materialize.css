@@ -8218,7 +8218,7 @@ nav ul li:hover, nav ul li.active {
   padding: 20px 20px; }
 
 header, main, footer {
-  padding-left: 240px; }
+  /*padding-left: 240px; */}
 
 .parallax-demo header, .parallax-demo main, .parallax-demo footer {
   padding-left: 0; }
@@ -8817,10 +8817,10 @@ background: rgba(40, 34, 30, 0.6);
 
 .transparentBackground{
 background: transparent;
-    position: absolute;
     border-bottom: 0px;
     box-shadow: none;
     left:0;
+    height: 155px;
 }
 
 @media only screen and (max-width: 1400px){
@@ -9001,8 +9001,12 @@ margin-top: 100px;
     } 
     .recommendedImage{
     margin-top: 20px;
+    min-height: 130px;
     }
     
+    .preActive{
+    bottom: 80px;
+    }
     .categoryCheckItem{
     margin-top: 20px;
     }
@@ -9035,6 +9039,15 @@ margin-top: 100px;
     height: 36px;
     
 }
+
+.preActiveAvatar{
+	
+	position: absolute;
+    top: 35%;
+    left: 125px;
+}
+
+
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 50px;

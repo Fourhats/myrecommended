@@ -61,7 +61,7 @@
 		</sec:authorize>
 	</ul>-->
 	  <nav class="transparentBackground" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><a href="javascript:redirect('home');" style="display: inline;"><img src="<%=headerPageContext%>/static/img/logo.png" /></a></a>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><a href="javascript:redirect('home');" style="float: left; display: block;"><img src="<%=headerPageContext%>/static/img/logo.png" /></a></a>
       <ul class="right hide-on-med-and-down">
 		<sec:authorize access="!isAuthenticated()">
 			<li>

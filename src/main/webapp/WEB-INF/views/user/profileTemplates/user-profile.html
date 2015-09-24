@@ -1,8 +1,8 @@
 <form class="col s9 userProfileForm" data-ng-submit="updateUser()" name="updateUserForm">
 	<div class="row">
-		<div class="input-field col s6">
+		<div class="input-field col s4">
 			<div data-ng-show="uploader.queue.length == 0">
-				<img data-ng-src="{{user.avatarPath}}" width="200" />
+				<img data-ng-src="{{user.avatarPath}}" width="100%" />
 			</div>
 			<div data-ng-repeat="item in uploader.queue">
 				<div data-ng-show="$last">
@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<!-- circular loader -->
-			<div data-ng-show="isUploadingAvatar" class="preloader-wrapper big active">
+			<div data-ng-show="isUploadingAvatar" class="preloader-wrapper big active preActiveAvatar">
 				<div class="spinner-layer spinner-blue">
 					<div class="circle-clipper left">
 						<div class="circle"></div>
@@ -62,7 +62,7 @@
 			</div>
 			<!-- end circular loader -->
 		</div>
-		<div class="input-field col s6" data-ng-hide="user.isFacebookLogin">
+		<div class="input-field col s8" data-ng-hide="user.isFacebookLogin">
 			<input style="display: none;" id="avatarUpload" type="file" nv-file-select="" uploader="uploader" />
 			<button type="button" class="btn waves-effect waves-light" data-ng-click="uploadAvatar()">Cambiar Avatar</button>
 		</div>

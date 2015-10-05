@@ -12,10 +12,12 @@
 		<div class="nav-wrapper container">
 			<a id="logo-container" href="#" class="brand-logo">
 				<a href="javascript:redirect('home');" style="float: left; display: block;">
-					<img src="<%=headerPageContext%>/static/img/logo.png" />
+					<img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" />
 				</a>
 			</a>
 			<ul class="right hide-on-med-and-down">
+				<li><a href="#">¡Ofrece tus servicios gratis!</a></li>
+				<li><a href="#">¿Como funciona?</a></li>
 				<sec:authorize access="!isAuthenticated()">
 					<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 				</sec:authorize>
@@ -31,7 +33,6 @@
 						</a>
 					</li>
 				</sec:authorize>
-				<li><a href="#">Ayuda</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">

@@ -17,10 +17,10 @@
   color: #f3989b !important; }
 
 .materialize-red.lighten-2 {
-  background-color: #ee6e73 !important; }
+  background-color: #26a69a !important; }
 
 .materialize-red-text.text-lighten-2 {
-  color: #ee6e73 !important; }
+  color: #26a69a !important; }
 
 .materialize-red.lighten-1 {
   background-color: #ea454b !important; }
@@ -2027,7 +2027,7 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #ee6e73; }
+  border-left: 5px solid #26a69a; }
 
 i {
   line-height: inherit; }
@@ -2171,7 +2171,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: #ee6e73; }
+  background-color: #26a69a; }
   footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 50px;
@@ -5241,7 +5241,7 @@ span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #26a69a;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -5717,7 +5717,7 @@ small {
     letter-spacing: .8px;
     width: 15%; }
     .tabs .tab a {
-      color: #ee6e73;
+      color: #26a69a;
       display: block;
       width: 100%;
       height: 100%;
@@ -7059,7 +7059,7 @@ select {
       left: auto; } }
 
 .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73; }
+  background-color: #26a69a; }
   .side-nav .collapsible-body li.active a, .side-nav.fixed .collapsible-body li.active a {
     color: #fff; }
 
@@ -8204,7 +8204,7 @@ nav ul li:hover, nav ul li.active {
   background-color: #ea454b; }
 
 .header {
-  color: #ee6e73;
+  color: #26a69a;
   font-weight: 300; }
 
 .caption {
@@ -8321,7 +8321,7 @@ a.button-collapse.top-nav {
   margin: 0 auto; }
 
 #index-banner {
-  background-color: #ee6e73; }
+  background-color: #26a69a; }
   #index-banner .container {
     position: relative; }
   #index-banner .header {
@@ -8386,7 +8386,7 @@ a.button-collapse.top-nav {
       display: block; } }
   .promo i {
     margin: 40px 0;
-    color: #ee6e73;
+    color: #26a69a;
     font-size: 7rem;
     display: block; }
 
@@ -8400,7 +8400,7 @@ a.button-collapse.top-nav {
   background-color: #FFF;
   position: relative; }
   #front-page-nav a {
-    color: #ee6e73; }
+    color: #26a69a; }
   #front-page-nav li:hover {
     background-color: #fdeaeb; }
   #front-page-nav li.active {
@@ -8769,7 +8769,7 @@ body.parallax-demo footer {
         color: inherit;
         background-color: #fdeaeb; }
   #tx-live-lang-container .txlive-langselector-toggle {
-    border-bottom: 2px solid #ee6e73; }
+    border-bottom: 2px solid #26a69a; }
   #tx-live-lang-container .txlive-langselector-current {
     color: rgba(0, 0, 0, 0.87); }
   #tx-live-lang-container .txlive-langselector-marker {
@@ -8794,6 +8794,7 @@ background: url('../img/background.jpg');
 background-size: cover;
 height: 620px;
 }
+
 
 #index-banner h1, #index-banner h5{
 color: white;
@@ -8820,7 +8821,6 @@ background: transparent;
     border-bottom: 0px;
     box-shadow: none;
     left:0;
-    height: 155px;
 }
 
 @media only screen and (max-width: 1400px){
@@ -8941,8 +8941,34 @@ margin-top: 100px;
  max-width: 100px;
  }
  
+ .logoImage{
+ height: 50px;
+ }
+ 
  .listRow{
  padding: 10px;
+ }
+ 
+ .icon-block .light{
+     color: white;
+    text-align: center;
+ }
+.numberingHome {
+    border: 1px solid white;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    display: inline-block;
+    line-height: 33px;
+    margin-right: 10px;
+}
+ .nav-wrapper{
+     background-color: #26a69a;
+    height: 65px!important;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
  }
  
  .recommendedDescription{
@@ -8965,10 +8991,7 @@ margin-top: 100px;
  
  }*/
  
- .blackMenu .transparentBackground ul a{
- color: black;
- }
- 
+  
  .modalButton{
  width: 100%;
  font-size: 14px;
@@ -9064,6 +9087,12 @@ nav ul a:hover{
 	
 }
 
+.homeP{
+	font-size: 20px;
+	color: #000;
+	margin-top: 10px;
+	margin-bottom: 30px;	
+}
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #444;
     line-height: 28px;

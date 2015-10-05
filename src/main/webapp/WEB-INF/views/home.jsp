@@ -10,7 +10,6 @@
 	<div class="section no-pad-bot" id="index-banner">
 		<div class="container homeContainer">
 			<br>
-			<br>
 			<h1 class="center">Mis Recomendados</h1>
 			<div class="row center">
 				<h5 class="header col s12 light">¡La mejor manera de contratar
@@ -42,23 +41,10 @@
 					</button>
 				</div>
 			</div>
-			<br>
-			<br>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="section">
-			<h2 class="header col s12 light center" style="font-size: 30px;">Contratar
-				servicios nunca fue tan fácil</h2>
-			<!--   Icon Section   -->
 			<div class="row">
 				<div class="col s12 m4">
 					<div class="icon-block">
-						<h2 class="center light-blue-text">
-							<i class="material-icons"></i>
-						</h2>
-						<h5 class="center">Contanos tú necesidad</h5>
+						<h5 class="center"><span class="numberingHome">1</span>Contanos tú necesidad</h5>
 						<p class="light">Con tu ubicación y el especialista que
 							busques vamos a seleccionar los mejores candidatos disponibles</p>
 					</div>
@@ -66,10 +52,7 @@
 
 				<div class="col s12 m4">
 					<div class="icon-block">
-						<h2 class="center light-blue-text">
-							<i class="material-icons"></i>
-						</h2>
-						<h5 class="center">Elegí a tu recomendado</h5>
+						<h5 class="center"><span class="numberingHome">2</span>Elegí a tu recomendado</h5>
 						<p class="light">Revisa los recomendados que quieras entre los
 							cientos que tenemos disponibles en nuestra red de profesionales</p>
 					</div>
@@ -77,19 +60,57 @@
 
 				<div class="col s12 m4">
 					<div class="icon-block">
-						<h2 class="center light-blue-text">
-							<i class="material-icons"></i>
-						</h2>
-						<h5 class="center">¡Contratá!</h5>
+						<h5 class="center"><span class="numberingHome">3</span>¡Contratá!</h5>
 						<p class="light">Contactá al recomendado que buscabas y
 							resolvé tus problemas más rápido que nunca ;)</p>
 					</div>
 				</div>
 			</div>
+			<br>
+			<br>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="section">
+			<h2 class="header col s12 light center" style="font-size: 30px;">¡Contratar
+				servicios nunca fue tan fácil!</h2>
+				<h4 class="header col s12 center homeP">Mis recomendados te ofrece profesionales de calidad calificados por nuestros usuarios<br>¡Podrás accederlos de manera fácil, rápida y gratuita!</h4>
+			<div class="row">
+				<div class="col s4 center">
+					<a href="#">Albañiles </a><br>
+					<a href="#">Armadores de muebles</a><br>
+					<a href="#">Automotores</a><br>
+					<a href="#">Decoradores</a><br>
+					<a href="#">Durlock</a><br>
+					<a href="#">Electricistas</a><br>
+					<a href="#">Fletes</a><br>			
+				</div>
+				<div class="col s4 center">
+					<a href="#">Gasistas</a><br>
+					<a href="#">Limpieza de alfombras y tapizados</a><br>
+					<a href="#">Maestros mayor de obra</a><br>
+					<a href="#">Mudanzas</a><br>
+					<a href="#">Pequeñas Soluciones</a><br>
+					<a href="#">Pintores</a><br>
+				</div>
+				<div class="col s4 center">
+					<a href="#">Pisos</a><br>
+					<a href="#">Plomeros</a><br>
+					<a href="#">Service Aire Acondicionado</a><br>
+					<a href="#">Service Línea Blanca</a><br>
+					<a href="#">Service TV, Audio y Video</a><br>
+					<a href="#">Service Técnico PC</a><br>	
+				</div>			
+			</div>
+			
 
 		</div>
 		<br> <br>
-
+		
+		<img style="width: 100%;" src="<%=headerPageContext%>/static/img/bannerIcons.png" />
+		
+		<!-- 
 		<div class="section">
 			<div class="row homeImages">
 				<div class="col s12 m3" data-ng-repeat="category in categories">
@@ -97,6 +118,7 @@
 				</div>
 			</div>
 		</div>
+		 -->
 	</div>
 </body>
 <%@ include file="partials/scripts.jsp"%>

@@ -56,22 +56,23 @@
 						</div>
 					</div>
 				</div>
-	
-				<ul class="pagination">
-					<li data-ng-class="{'disabled' : !recommendedPage.hasPreviousPage , 'waves-effect' : recommendedPage.hasPreviousPage}"
-						data-ng-click="goToPreviousPage()">
-						<a href="#!"><i class="material-icons">chevron_left</i></a>
-					</li>
-					<li data-ng-repeat="i in getNumber(recommendedPage.pageIndex, recommendedPage.totalPages)" 
-						data-ng-class="{'active' : i == recommendedPage.pageIndex, 'waves-effect' : i != recommendedPage.pageIndex}"
-						data-ng-click="goToPage(i)" >
-						<a data-ng-bind="i"></a>
-					</li>
-					<li data-ng-class="{'disabled' : !recommendedPage.hasNextPage, 'waves-effect' : recommendedPage.hasNextPage}"
-						data-ng-click="goToNextPage()">
-						<a href="#!"><i class="material-icons">chevron_right</i></a>
-					</li>
-				</ul>
+				<div class="row" style="text-align: right;">
+					<ul class="pagination" style="display: inline-block;">
+						<li data-ng-class="{'disabled' : !recommendedPage.hasPreviousPage , 'waves-effect' : recommendedPage.hasPreviousPage}"
+							data-ng-click="goToPreviousPage()">
+							<a href="#!"><i class="material-icons">chevron_left</i></a>
+						</li>
+						<li data-ng-repeat="i in getNumber(recommendedPage.pageIndex, recommendedPage.totalPages)" 
+							data-ng-class="{'active' : i == recommendedPage.pageIndex, 'waves-effect' : i != recommendedPage.pageIndex}"
+							data-ng-click="goToPage(i)" >
+							<a data-ng-bind="i"></a>
+						</li>
+						<li data-ng-class="{'disabled' : !recommendedPage.hasNextPage, 'waves-effect' : recommendedPage.hasNextPage}"
+							data-ng-click="goToNextPage()">
+							<a href="#!"><i class="material-icons">chevron_right</i></a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</main>

@@ -23,10 +23,10 @@
   color: #26a69a !important; }
 
 .materialize-red.lighten-1 {
-  background-color: #ea454b !important; }
+  background-color: #26a69a !important; }
 
 .materialize-red-text.text-lighten-1 {
-  color: #ea454b !important; }
+  color: #26a69a !important; }
 
 .materialize-red {
   background-color: #e51c23 !important; }
@@ -5735,7 +5735,7 @@ small {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #f6b2b5;
+    background-color: blue;
     will-change: left, right; }
 
 .tabs .tab {
@@ -8201,7 +8201,7 @@ h1, h2, h3, h4, h5, h6 {
 nav a {
   -webkit-font-smoothing: antialiased; }
 nav ul li:hover, nav ul li.active {
-  background-color: #ea454b; }
+  background-color: #26a69a; }
 
 .header {
   color: #26a69a;
@@ -8825,7 +8825,7 @@ background: transparent;
 
 @media only screen and (max-width: 1400px){
 .homeContainer{
-margin-top: 100px;
+/*margin-top: 100px;*/
 }
 
 }
@@ -9114,10 +9114,46 @@ nav ul a:hover{
     #index-banner, #index-banner .container{
 		min-height: 1024px;
    }
+   
+   .homeContainer{
+   	    margin-top: 10%;
+   }
 }
 
  @media screen and (max-width:460px) 
   {
+  
+  .nav-wrapper{
+  padding-left: 0px;
+  padding-right: 0px;
+  }
+  
+  .button-collapse {
+    position: absolute!important;
+    z-index: 1;
+    height: 56px;
+    top: 15px!important;
+    right: 5px!important;
+}
+
+.homeContainer h1{
+	font-size: 30px;
+	
+}
+
+#index-banner{
+	height: auto;
+	
+}
+.homeSearch .col.s3{
+	width: 100%;
+	
+}
+
+.homeSearch{
+	padding: 5.5%;
+	
+}
     .row .col.s3.profileMenu{
 		width:100%;
    }
@@ -9172,6 +9208,11 @@ nav ul a:hover{
    ul.side-nav.fixed li.logo img{
     width: 60%;
 } 
+}
+
+.dropdown-button:hover:after{
+	background: white;
+	
 }
 
 

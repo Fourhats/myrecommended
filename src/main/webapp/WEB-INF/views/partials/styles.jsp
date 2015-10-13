@@ -17,6 +17,7 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/prism.css">
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/ghpages-materialize.css" type="text/cs" media="screen,projection">
+<link rel="stylesheet" href="<%=stylePageContext %>/static/css/jquery.fancybox.css" type="text/cs" media="screen,projection">
 <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 

@@ -17,16 +17,16 @@
   color: #f3989b !important; }
 
 .materialize-red.lighten-2 {
-  background-color: #ee6e73 !important; }
+  background-color: #26a69a !important; }
 
 .materialize-red-text.text-lighten-2 {
-  color: #ee6e73 !important; }
+  color: #26a69a !important; }
 
 .materialize-red.lighten-1 {
-  background-color: #ea454b !important; }
+  background-color: #26a69a !important; }
 
 .materialize-red-text.text-lighten-1 {
-  color: #ea454b !important; }
+  color: #26a69a !important; }
 
 .materialize-red {
   background-color: #e51c23 !important; }
@@ -2027,7 +2027,7 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #ee6e73; }
+  border-left: 5px solid #26a69a; }
 
 i {
   line-height: inherit; }
@@ -2171,7 +2171,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: #ee6e73; }
+  background-color: #26a69a; }
   footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 50px;
@@ -5241,7 +5241,7 @@ span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #26a69a;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -5717,7 +5717,7 @@ small {
     letter-spacing: .8px;
     width: 15%; }
     .tabs .tab a {
-      color: #ee6e73;
+      color: #26a69a;
       display: block;
       width: 100%;
       height: 100%;
@@ -5735,7 +5735,7 @@ small {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #f6b2b5;
+    background-color: blue;
     will-change: left, right; }
 
 .tabs .tab {
@@ -7059,7 +7059,7 @@ select {
       left: auto; } }
 
 .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73; }
+  background-color: #26a69a; }
   .side-nav .collapsible-body li.active a, .side-nav.fixed .collapsible-body li.active a {
     color: #fff; }
 
@@ -8201,10 +8201,10 @@ h1, h2, h3, h4, h5, h6 {
 nav a {
   -webkit-font-smoothing: antialiased; }
 nav ul li:hover, nav ul li.active {
-  background-color: #ea454b; }
+  background-color: #26a69a; }
 
 .header {
-  color: #ee6e73;
+  color: #26a69a;
   font-weight: 300; }
 
 .caption {
@@ -8321,7 +8321,7 @@ a.button-collapse.top-nav {
   margin: 0 auto; }
 
 #index-banner {
-  background-color: #ee6e73; }
+  background-color: #26a69a; }
   #index-banner .container {
     position: relative; }
   #index-banner .header {
@@ -8386,7 +8386,7 @@ a.button-collapse.top-nav {
       display: block; } }
   .promo i {
     margin: 40px 0;
-    color: #ee6e73;
+    color: #26a69a;
     font-size: 7rem;
     display: block; }
 
@@ -8400,7 +8400,7 @@ a.button-collapse.top-nav {
   background-color: #FFF;
   position: relative; }
   #front-page-nav a {
-    color: #ee6e73; }
+    color: #26a69a; }
   #front-page-nav li:hover {
     background-color: #fdeaeb; }
   #front-page-nav li.active {
@@ -8769,7 +8769,7 @@ body.parallax-demo footer {
         color: inherit;
         background-color: #fdeaeb; }
   #tx-live-lang-container .txlive-langselector-toggle {
-    border-bottom: 2px solid #ee6e73; }
+    border-bottom: 2px solid #26a69a; }
   #tx-live-lang-container .txlive-langselector-current {
     color: rgba(0, 0, 0, 0.87); }
   #tx-live-lang-container .txlive-langselector-marker {
@@ -8794,6 +8794,7 @@ background: url('../img/background.jpg');
 background-size: cover;
 height: 620px;
 }
+
 
 #index-banner h1, #index-banner h5{
 color: white;
@@ -8820,54 +8821,17 @@ background: transparent;
     border-bottom: 0px;
     box-shadow: none;
     left:0;
-    height: 155px;
 }
 
-@media only screen and (max-width: 1400px){
-.homeContainer{
-margin-top: 100px;
+
+@media (max-width: 1400px){
+#index-banner{
+padding-top: 100px;
 }
 
-}
-  /*
-  ul.side-nav.fixed li{
-  text-align: center;
-  }
-  
-  #index-banner{
-	/*background: url('../img/workerBanner.jpg');
-	background-size: cover;
-	min-height: 100%;
-	height: 100%;
-	min-width: 100%;
-	width: 100%;
-	padding-top: 0px;
-	background: rgba(0,0,0,0);
-  }
-  
-    #index-banner .container{
 
-	min-height: 100%;
-	height: 100%;
-	min-width: 100%;
-	width: 100%;
-	
-  }
-  
-  .homeImage{
-  	width: 100%;
-  	height: 100%;
-  }
-  
-  #banner2, #banner3{
-  display: none;
-  } 
-  #banner2, #banner3, #banner1{
-        position: absolute;
-       top:0;
-       left:0;
-  }
-  */
+
+}
  .homeRecommended div{
  /*height: 50px;*/
  
@@ -8941,8 +8905,34 @@ margin-top: 100px;
  max-width: 100px;
  }
  
+ .logoImage{
+ height: 50px;
+ }
+ 
  .listRow{
  padding: 10px;
+ }
+ 
+ .icon-block .light{
+     color: white;
+    text-align: center;
+ }
+.numberingHome {
+    border: 1px solid white;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    display: inline-block;
+    line-height: 33px;
+    margin-right: 10px;
+}
+ .nav-wrapper{
+     background-color: #26a69a;
+    height: 65px!important;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
  }
  
  .recommendedDescription{
@@ -8965,10 +8955,7 @@ margin-top: 100px;
  
  }*/
  
- .blackMenu .transparentBackground ul a{
- color: black;
- }
- 
+  
  .modalButton{
  width: 100%;
  font-size: 14px;
@@ -9064,6 +9051,12 @@ nav ul a:hover{
 	
 }
 
+.homeP{
+	font-size: 20px;
+	color: #000;
+	margin-top: 10px;
+	margin-bottom: 30px;	
+}
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #444;
     line-height: 28px;
@@ -9085,10 +9078,46 @@ nav ul a:hover{
     #index-banner, #index-banner .container{
 		min-height: 1024px;
    }
+   
+   .homeContainer{
+   	    margin-top: 10%;
+   }
 }
 
  @media screen and (max-width:460px) 
   {
+  
+  .nav-wrapper{
+  padding-left: 0px;
+  padding-right: 0px;
+  }
+  
+  .button-collapse {
+    position: absolute!important;
+    z-index: 1;
+    height: 56px;
+    top: 15px!important;
+    right: 5px!important;
+}
+
+.homeContainer h1{
+	font-size: 30px;
+	
+}
+
+#index-banner{
+	height: auto;
+	
+}
+.homeSearch .col.s3{
+	width: 100%;
+	
+}
+
+.homeSearch{
+	padding: 5.5%;
+	
+}
     .row .col.s3.profileMenu{
 		width:100%;
    }
@@ -9143,6 +9172,11 @@ nav ul a:hover{
    ul.side-nav.fixed li.logo img{
     width: 60%;
 } 
+}
+
+.dropdown-button:hover:after{
+	background: white;
+	
 }
 
 

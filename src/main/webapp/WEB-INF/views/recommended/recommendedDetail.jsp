@@ -19,26 +19,40 @@
 					</div>
 					<div class="col s8" style="text-align: left;">
 						<h4 style="font-weight: 100;" data-ng-bind="recommended.name"></h4>
-						<div class="col s6" style="float: left;">
-							<div class="rating">
+						<div class="col s12" style="float: left;">
+							<!-- <div class="rating">
 								<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
 								(15 reviews positivos)
-							</div>
+							</div>-->
 						</div>
-						<div class="col s6" style="float: left;">
-							<img class="rowBadge"
+						<div class="col s12" style="float: left;">
+							<div class="chip"
 								data-ng-repeat="category in recommended.categories"
-								data-ng-src="{{category.image}}"
-								data-ng-attr-title="{{category.name}}"> 
+								data-ng-attr-title="{{category.name}}">
+								{{category.name}} 
+							</div>
+						<br><br>	
+						<strong style="width: 100%; float: left;">Acerca del recomendado:</strong>
+						<span data-ng-bind="recommended.description" class="recommendedDescription" style="width:100%; float: left; margin-top: 5px; margin-bottom: 10px;"></span>
+						<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
+							<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">email</i>Email:  </strong>
+							<span data-ng-bind="recommended.email" class="recommendedDescription" style=" float: left;"></span><br>
 						</div>
-	
-						<span data-ng-bind="recommended.description" class="recommendedDescription" style="width: 100%; float: left; margin-top: 30px;"></span>
-	
+						<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
+							<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">phone</i>Teléfono:  </strong>
+							<span data-ng-bind="recommended.phone" class="recommendedDescription" style=" float: left;"></span>
+						</div>
 						<div class="col s12" style="float: left; padding-top: 20px; text-align: left;">
-							<img style="height: 70px; width: 70px; margin: 10px;"
-								data-ng-repeat="recommendedImage in recommended.recommendedImages"
-								data-ng-src="{{getRecommendedImagePath(recommendedImage)}}"/>
+						<!-- Dani, acá el <a> debería repetirse por cada imagen y el href apuntar a la imagen en tamaño grande -->
+							<a class="fancybox-button" rel="fancybox-button" href="http://farm8.staticflickr.com/7308/15783866983_27160395b9_b.jpg">
+								<img style="height: 70px; width: 70px; margin: 10px;" 
+									data-ng-repeat="recommendedImage in recommended.recommendedImages"
+									data-ng-src="{{getRecommendedImagePath(recommendedImage)}}"/>
+							</a>
 						</div>
+						
+	
+
 					</div>
 					<div class="col s12"></div>
 				</div>
@@ -59,4 +73,16 @@
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/recommended/recommendedDetailController.js"></script>
 
 <%@ include file="../partials/footerScritps.jsp"%>
+
+<script>
+$(".fancybox-button").fancybox({
+	prevEffect		: 'none',
+	nextEffect		: 'none',
+	closeBtn		: false,
+	helpers		: {
+		title	: { type : 'inside' },
+		buttons	: {}
+	}
+});
+</script>
 </html>

@@ -42,10 +42,10 @@
 								<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
 							</div>
 							<div class="col s2">
-								<div class="rating">
+								<!-- <div class="rating">
 									<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><br>
 									(15 reviews positivos)
-								</div>
+								</div>-->
 							</div>
 							<div class="col s2" style="padding-top: 20px;">
 								<img class="rowBadge"
@@ -56,22 +56,23 @@
 						</div>
 					</div>
 				</div>
-	
-				<ul class="pagination">
-					<li data-ng-class="{'disabled' : !recommendedPage.hasPreviousPage , 'waves-effect' : recommendedPage.hasPreviousPage}"
-						data-ng-click="goToPreviousPage()">
-						<a href="#!"><i class="material-icons">chevron_left</i></a>
-					</li>
-					<li data-ng-repeat="i in getNumber(recommendedPage.pageIndex, recommendedPage.totalPages)" 
-						data-ng-class="{'active' : i == recommendedPage.pageIndex, 'waves-effect' : i != recommendedPage.pageIndex}"
-						data-ng-click="goToPage(i)" >
-						<a data-ng-bind="i"></a>
-					</li>
-					<li data-ng-class="{'disabled' : !recommendedPage.hasNextPage, 'waves-effect' : recommendedPage.hasNextPage}"
-						data-ng-click="goToNextPage()">
-						<a href="#!"><i class="material-icons">chevron_right</i></a>
-					</li>
-				</ul>
+				<div class="row" style="text-align: right;">
+					<ul class="pagination" style="display: inline-block;">
+						<li data-ng-class="{'disabled' : !recommendedPage.hasPreviousPage , 'waves-effect' : recommendedPage.hasPreviousPage}"
+							data-ng-click="goToPreviousPage()">
+							<a href="#!"><i class="material-icons">chevron_left</i></a>
+						</li>
+						<li data-ng-repeat="i in getNumber(recommendedPage.pageIndex, recommendedPage.totalPages)" 
+							data-ng-class="{'active' : i == recommendedPage.pageIndex, 'waves-effect' : i != recommendedPage.pageIndex}"
+							data-ng-click="goToPage(i)" >
+							<a data-ng-bind="i"></a>
+						</li>
+						<li data-ng-class="{'disabled' : !recommendedPage.hasNextPage, 'waves-effect' : recommendedPage.hasNextPage}"
+							data-ng-click="goToNextPage()">
+							<a href="#!"><i class="material-icons">chevron_right</i></a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</main>

@@ -11,10 +11,12 @@
 		<div class="nav-wrapper container">
 			<a id="logo-container" href="#" class="brand-logo">
 				<a href="javascript:redirect('home');" style="float: left; display: block;">
-					<img src="<%=headerPageContext%>/static/img/logo.png" />
+					<img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" />
 				</a>
 			</a>
 			<ul class="right hide-on-med-and-down">
+				<li><a href="#">¡Ofrece tus servicios gratis!</a></li>
+				<li><a href="#">¿Como funciona?</a></li>
 				<sec:authorize access="!isAuthenticated()">
 					<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 				</sec:authorize>
@@ -25,16 +27,29 @@
 							href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
 					</ul>
 					<li> 
-						<a class="dropdown-button" href="#!" data-activates="dropdown1">
-							Bienvenido <strong><sec:authentication property="principal.fullName" />!</strong>
+						<a class="dropdown-button" href="#!" data-activates="dropdown1">Bienvenido <strong><sec:authentication property="principal.fullName" />!</strong>
 						</a>
 					</li>
 				</sec:authorize>
-				<li><a href="#">Ayuda</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#">Navbar Link</a></li>
+				<li><a href="#">¡Ofrece tus servicios gratis!</a></li>
+				<li><a href="#">¿Como funciona?</a></li>
+				<sec:authorize access="!isAuthenticated()">
+					<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<ul id="dropdown1" class="dropdown-content">
+						<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
+						<li><a
+							href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
+					</ul>
+					<li> 
+						<a class="dropdown-button" href="#!" data-activates="dropdown1">Bienvenido <strong><sec:authentication property="principal.fullName" />!</strong>
+						</a>
+					</li>
+				</sec:authorize>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse">
 				<i class="material-icons">menu</i>

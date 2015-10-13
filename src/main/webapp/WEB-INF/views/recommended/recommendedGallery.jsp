@@ -42,10 +42,10 @@
 								<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
 							</div>
 							<div class="col s2">
-								<div class="rating">
+								<!-- <div class="rating">
 									<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><br>
 									(15 reviews positivos)
-								</div>
+								</div>-->
 							</div>
 							<div class="col s2" style="padding-top: 20px;">
 								<img class="rowBadge"

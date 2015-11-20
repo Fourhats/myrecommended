@@ -27,7 +27,6 @@ public class UserController extends BaseController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	
 	@RequestMapping(value="/registracion")
     public String goToRegister(Model model) {
 		if(this.isUserLogged()) {
@@ -53,22 +52,5 @@ public class UserController extends BaseController {
 		model.addAttribute("categories", gson.toJson(categories));
 		
 		return "user/profileRecommended";
-    }
-	
-	//TODO: eliminar xq es singlepage
-	@RequestMapping(value="/perfil/listadoTrabajos")
-    public String jobList(Model model) {
-		return "user/jobList";
-    }
-	
-	//TODO: eliminar xq es singlepage
-	@RequestMapping(value="/perfil/preguntas")
-    public String questionsList(Model model) {
-		return "user/questionsList";
-    }
-	
-	@RequestMapping(value="/perfil/informacion")
-    public String accountInformation(Model model) {
-		return "user/accountInformation";
     }
 }

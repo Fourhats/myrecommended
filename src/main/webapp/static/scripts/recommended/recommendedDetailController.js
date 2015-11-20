@@ -8,9 +8,21 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 		category.image = getCompletePath('static/img/defaultImages/' + category.name + '.png');
 	});
 	
-	$scope.getRecommendedImagePath = function(recommendedImage) {
-    	return getImagePath('recommendedOldJobsThumb', recommendedImage.path, 'medium');
-    };
+	angular.forEach(recommended.recommendedImages, function(recommendedImage, key) {
+		recommendedImage.completePath = getImagePath('recommendedOldJobsThumb', recommendedImage.path, 'medium');
+	
+		if(recommended.recommendedImages.length - 1 == key) {
+			$(".fancybox-button").fancybox({
+				prevEffect		: 'none',
+				nextEffect		: 'none',
+				closeBtn		: false,
+				helpers		: {
+					title	: { type : 'inside' },
+					buttons	: {}
+				}
+			});
+		}
+	});
     
     $(document).ready(function() {
 		hideMainProgressBar();

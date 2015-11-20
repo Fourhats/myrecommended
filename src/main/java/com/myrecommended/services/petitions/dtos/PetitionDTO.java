@@ -4,11 +4,10 @@ import java.util.Date;
 
 import com.myrecommended.services.categories.dtos.CategoryDTO;
 import com.myrecommended.services.users.dtos.CurrentUserDTO;
+import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
-public class PetitionDTO {
+public class PetitionDTO extends MyRecommendedBaseDTO {
 
-	private String error;
-	
 	private Long id;
 	
 	private CurrentUserDTO user;
@@ -22,14 +21,6 @@ public class PetitionDTO {
 	private Date initialDate;
 	
 	private String address;
-
-	public String getError() {
-		return error;
-	}
-
-	public void setError(String error) {
-		this.error = error;
-	}
 
 	public Long getId() {
 		return id;

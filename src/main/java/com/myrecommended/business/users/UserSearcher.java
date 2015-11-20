@@ -31,4 +31,8 @@ public class UserSearcher {
 	public User getUser(long userId) {
 		return this.userDAO.getById(userId);
 	}
+	
+	public User getUser(String email) {
+		return this.userDAO.getByEmail(email);
+	}
 }

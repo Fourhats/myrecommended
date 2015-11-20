@@ -82,6 +82,11 @@
 						</button>
 					</div>
 					<div class="col s6">
+						<button class="btn-large waves-effect waves-light modalButton" type="button" data-ng-enabled="!user.email" data-ng-click="askNewPassword()">
+							Olvide mi contraseña
+						</button>
+					</div>
+					<div class="col s6">
 						<button class="btn-large waves-effect waves-light blue darken-1 modalButton" type="button" data-ng-click="facebookLogin()">
 							Inicia con <br>Facebook
 						</button>

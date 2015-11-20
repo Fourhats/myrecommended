@@ -1,9 +1,9 @@
 window.fbAsyncInit = function() {
 	  FB.init({
 		//prd
-	    //appId      : '592902834143382',
+	    appId      : '592902834143382',
 	    //localhost
-	    appId      : '614363918663940',
+	    //appId      : '614363918663940',
 	    cookie     : true,
 		xfbml      : true,
 		version    : 'v2.0'
@@ -106,6 +106,24 @@ myRecommendedApp.controller('loginController', function ($scope, $http, toastr) 
 		  } else {
 		  }
 		}, {scope: 'public_profile,email'});
+	};
+	
+	$scope.askNewPassword = function() {
+		if($scope.user && $scope.user.email) {
+			showMainProgressBar();
+			$http.post(getCompletePath("users/askForNewPassword"), JSON.stringify($scope.user))
+			.then(function (result) {
+				if(result.data.hasError) {
+					toastr.warning(result.data.error);
+				} else {
+					toastr.success('Le hemos enviado un email con su nueva contraseña');
+				}
+		    }).catch(function (result) {
+		    	toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+		    }).finally(function() {
+		    	hideMainProgressBar();
+		    });
+		}
 	};
 });
 

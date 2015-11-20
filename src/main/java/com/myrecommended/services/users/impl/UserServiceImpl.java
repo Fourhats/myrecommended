@@ -2,13 +2,20 @@ package com.myrecommended.services.users.impl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
+
+import org.apache.commons.lang.RandomStringUtils;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.business.emails.EmailSender;
 import com.myrecommended.business.users.UserGenerator;
 import com.myrecommended.business.users.UserSearcher;
 import com.myrecommended.business.users.UserUpdater;
@@ -16,6 +23,7 @@ import com.myrecommended.constants.TempFolders;
 import com.myrecommended.daos.UserDAO;
 import com.myrecommended.models.User;
 import com.myrecommended.services.users.UserService;
+import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
@@ -40,6 +48,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserUpdater userUpdater;
+	
+	@Autowired
+	private EmailSender emailSender;
 	
 	@Value("#{configProps}")
 	private Properties properties;
@@ -82,5 +93,26 @@ public class UserServiceImpl implements UserService {
 
 	public String getUserAvatar(long userId) {
 		return this.getUser(userId).getAvatarName();
+	}
+	
+	public void askForNewPassword(AskNewPasswordRequestDTO askNewPasswordDTO) throws MyRecommendedBusinessException, AuthenticationFailedException, MessagingException {
+		String newPassword = RandomStringUtils.randomAlphanumeric(8);
+		User user = this.userSearcher.getUser(askNewPasswordDTO.getEmail());
+		if(user == null) {
+			return;
+		}
+		
+		ChangePasswordRequestDTO changePasswordDto = new ChangePasswordRequestDTO();
+		changePasswordDto.setNewPassword(newPassword);
+		changePasswordDto.setOldPassword(user.getPassword());
+		changePasswordDto.setUserId(user.getId());
+		
+		this.userUpdater.changePassword(changePasswordDto);
+		
+		Map<String, String> values = new HashMap<String, String>();
+		values.put("{UserName}", user.getName());
+		values.put("{NewPassword}", newPassword);
+		
+		this.emailSender.sendEMail(user.getEmail(), "Nueva contrase&ntilde;a - Mis Recomendados", this.properties.getProperty("folder.emails"), "recoverPasswordEmail", values);
 	}
 }

@@ -12,5 +12,4 @@ public interface PetitionService {
 
 	@Transactional
 	PetitionDTO addPetition(PetitionRequestDTO petitionDto) throws MyRecommendedBusinessException;
-
 }

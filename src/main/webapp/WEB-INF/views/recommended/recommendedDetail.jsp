@@ -44,15 +44,13 @@
 						</div>
 						<div class="col s12" style="float: left; padding-top: 20px; text-align: left;">
 						<!-- Dani, acá el <a> debería repetirse por cada imagen y el href apuntar a la imagen en tamaño grande -->
-							<a class="fancybox-button" rel="fancybox-button" href="http://farm8.staticflickr.com/7308/15783866983_27160395b9_b.jpg">
+							<a class="fancybox-button" rel="fancybox-button" 
+								data-ng-repeat="recommendedImage in recommended.recommendedImages"
+								data-ng-href="{{recommendedImage.completePath}}">
 								<img style="height: 70px; width: 70px; margin: 10px;" 
-									data-ng-repeat="recommendedImage in recommended.recommendedImages"
-									data-ng-src="{{getRecommendedImagePath(recommendedImage)}}"/>
+									data-ng-src="{{recommendedImage.completePath}}"/>
 							</a>
 						</div>
-						
-	
-
 					</div>
 					<div class="col s12"></div>
 				</div>
@@ -74,15 +72,4 @@
 
 <%@ include file="../partials/footerScritps.jsp"%>
 
-<script>
-$(".fancybox-button").fancybox({
-	prevEffect		: 'none',
-	nextEffect		: 'none',
-	closeBtn		: false,
-	helpers		: {
-		title	: { type : 'inside' },
-		buttons	: {}
-	}
-});
-</script>
 </html>

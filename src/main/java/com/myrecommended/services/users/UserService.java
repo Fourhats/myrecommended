@@ -3,10 +3,14 @@ package com.myrecommended.services.users;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
@@ -37,4 +41,6 @@ public interface UserService {
 	void changePassword(ChangePasswordRequestDTO changePasswordDto) throws MyRecommendedBusinessException;
 
 	String getUserAvatar(long userId);
+
+	void askForNewPassword(AskNewPasswordRequestDTO askNewPasswordDTO) throws MyRecommendedBusinessException, AuthenticationFailedException, MessagingException;
 }

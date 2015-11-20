@@ -18,6 +18,7 @@ import com.myrecommended.services.petitions.PetitionService;
 import com.myrecommended.services.petitions.dtos.PetitionDTO;
 import com.myrecommended.services.petitions.dtos.PetitionRequestDTO;
 import com.myrecommended.services.users.UserService;
+import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
@@ -129,6 +130,21 @@ public class UserApiController extends BaseController {
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
+		}
+		
+		return returnObject;
+	}
+	
+	@RequestMapping(value="/users/askForNewPassword", method = RequestMethod.POST)
+	public MyRecommendedBaseDTO askForNewPassword(@RequestBody AskNewPasswordRequestDTO askNewPasswordDto) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
+		try {
+			this.userService.askForNewPassword(askNewPasswordDto);
+		} catch (MyRecommendedBusinessException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
 		}
 		
 		return returnObject;

@@ -1,4 +1,6 @@
-myRecommendedApp.controller('recommendedGalleryController', function ($scope, $http, toastr) {
+var recommendedGalleryController = "recommendedGalleryController";
+
+myRecommendedApp.controller(recommendedGalleryController, function ($scope, $http, toastr) {
 	$scope.categories = categories;
 	
 	$scope.recommendedPage = recommendedPage;

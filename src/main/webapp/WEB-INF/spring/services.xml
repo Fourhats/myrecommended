@@ -7,4 +7,5 @@
 	<bean name="recommendedService" class="com.myrecommended.services.recommended.impl.RecommendedServiceImpl"></bean>
 	<bean name="categoryService" class="com.myrecommended.services.categories.impl.CategoryServiceImpl"></bean>
 	<bean name="petitionService" class="com.myrecommended.services.petitions.impl.PetitionServiceImpl"></bean>
+	<bean name="questionService" class="com.myrecommended.services.questions.impl.QuestionServiceImpl"></bean>
 </beans>

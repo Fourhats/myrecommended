@@ -1,9 +1,9 @@
 window.fbAsyncInit = function() {
 	  FB.init({
 		//prd
-	    appId      : '592902834143382',
+	    //appId      : '592902834143382',
 	    //localhost
-	    //appId      : '614363918663940',
+	    appId      : '614363918663940',
 	    cookie     : true,
 		xfbml      : true,
 		version    : 'v2.0'
@@ -18,7 +18,8 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-myRecommendedApp.controller('loginController', function ($scope, $http, toastr) {
+var loginController = "loginController";
+myRecommendedApp.controller(loginController, function ($scope, $http, toastr) {
 	$scope.registerUser = function() {
 		if ($scope.registrationForm.$valid) {
 			$scope.sendRegisterUser();

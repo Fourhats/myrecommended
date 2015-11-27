@@ -2,11 +2,12 @@ package com.myrecommended.daos;
 
 import java.util.List;
 
+import com.myrecommended.models.Page;
 import com.myrecommended.models.Question;
 
 public interface QuestionDAO extends BaseDAO<Question, Long> {
 	
-	 List<Question> getQuestions(long entityId, int entityType);
+	 Page<Question> getQuestions(int pageIndex, int pageSize, long entityId);
 
 	 List<Question> getQuestionByUser(long userId);
 	 

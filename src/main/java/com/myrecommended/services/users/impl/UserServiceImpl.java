@@ -100,6 +100,8 @@ public class UserServiceImpl implements UserService {
 		User user = this.userSearcher.getUser(askNewPasswordDTO.getEmail());
 		if(user == null) {
 			return;
+		} else if (user.getSignInProvider() != null) {
+			return;
 		}
 		
 		ChangePasswordRequestDTO changePasswordDto = new ChangePasswordRequestDTO();

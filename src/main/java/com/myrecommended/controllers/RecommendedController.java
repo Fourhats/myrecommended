@@ -1,7 +1,5 @@
 package com.myrecommended.controllers;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 import com.myrecommended.services.categories.CategoryService;
+import com.myrecommended.services.questions.QuestionService;
 import com.myrecommended.services.recommended.RecommendedService;
 
 @Controller
@@ -20,6 +19,9 @@ public class RecommendedController {
 	
 	@Autowired
 	private RecommendedService recommendedService;
+	
+	@Autowired
+	private QuestionService questionService;
 	
 	@RequestMapping(value="/pedilo")
     public String goToPedilo(Model model) {
@@ -39,6 +41,7 @@ public class RecommendedController {
 		Gson gson = new Gson();
 		
 		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId)));
+		model.addAttribute("recommendedQuestions", gson.toJson(this.questionService.getQuestions(recommendedId, 0, 5)));
 		
 		return "recommended/recommendedDetail";
     }

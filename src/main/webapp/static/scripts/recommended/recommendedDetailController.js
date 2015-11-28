@@ -1,4 +1,4 @@
-myRecommendedApp.controller('recommendedDetailController', function ($scope, $http) {
+myRecommendedApp.controller('recommendedDetailController', function ($scope, $http, toastr) {
 	$scope.recommended = recommended;
 	$scope.recommended.avatarPath = $scope.recommended.avatarName ?
 			getImagePath('recommendedAvatarThumb', $scope.recommended.avatarName, "medium") :
@@ -23,6 +23,33 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 			});
 		}
 	});
+	
+	$scope.questionsPage = recommendedQuestions;
+	$scope.newQuestions = [];
+	
+	$scope.addQuestion = function() {
+		if ($scope.newQuestion) {
+			showMainProgressBar();
+			
+			var question = {description: $scope.newQuestion, entityId: recommended.id};
+			var makeQuestionUrl = "questions/makeQuestion";
+			
+			$http.post(getCompletePath(makeQuestionUrl), JSON.stringify(question))
+			.then(function (result) {
+				if(result.data.hasError) {
+					toastr.warning(result.data.error);
+				} else {
+					$scope.newQuestion = "";
+					$scope.newQuestions.push(result.data);
+					toastr.success('La pregunta se ha realizado correctamente');
+				}
+		    }).catch(function (response) {
+				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+		    }).finally(function() {
+		    	hideMainProgressBar();
+		    });
+		}
+	};
     
     $(document).ready(function() {
 		hideMainProgressBar();

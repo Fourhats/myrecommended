@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.myrecommended.daos.QuestionDAO;
+import com.myrecommended.models.Page;
 import com.myrecommended.models.Question;
 
 @Repository
@@ -18,19 +19,16 @@ public class QuestionDAOImpl extends BaseDAOImpl<Question, Long> implements Ques
 		super(Question.class.getName());
 	}
 
-	//TODO: VER SI SE NECESITA
-	@SuppressWarnings("unchecked")
-	public List<Question> getQuestions(long entityId, int entityType) {
+	public Page<Question> getQuestions(int pageIndex, int pageSize, long entityId) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
 		criteria.createCriteria("questionableObject", "questionableObject");
         criteria.add(Restrictions.eq("questionableObject.entityId", entityId));
-        criteria.add(Restrictions.eq("questionableObject.entityType", entityType));
         
         criteria.addOrder(Order.desc("date"));
         
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         
-        return (List<Question>) getHibernateTemplate().findByCriteria(criteria);
+        return this.getPageByCriteria(criteria, pageIndex, pageSize);
 	}
 
 	//TODO: VER SI SE NECESITA

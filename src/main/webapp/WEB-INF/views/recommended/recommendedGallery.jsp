@@ -9,11 +9,13 @@
 	<main>	
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
-				<div class="col m12" style="margin-bottom: 20px;">
-					<h1 class="header center-on-small-only">Recomendados</h1>
+				<div class="row">
+					<div class="col m12" style="margin-bottom: 20px;">
+						<h1 class="header center-on-small-only">Recomendados</h1>
+					</div>
 				</div>
 				<div class="row">
-					<div class="col m3 center">
+					<div class="col l3 m12 s12 center">
 						<div class="input-field col s12">
 							<input id="searchKey" data-ng-model="recommendedKey" type="text" class="validate" style="color:black;"> 
 							<label for="searchKey">Busca tu recomendado</label>
@@ -29,25 +31,25 @@
 							Buscar
 						</button>
 					</div>
-					<div class="col m9">
+					<div class="col l9 m12 s12">
 						<div style="cursor: hand;" class="row listRow z-depth-1"
 							data-ng-repeat="recommended in recommendedPage.elements" data-ng-click="goToRecommendedDetail(recommended)"
 									class="ng-binding">
-							<div class="col s2">
+							<div class="col l2 m2 s12">
 								<img class="rowThumbnail" data-ng-src="{{recommended.avatarPath}}">
 							</div>
-							<div class="col s6">
+							<div class="col l6 m6 s12">
 								<h4 style="font-weight: 100;" data-ng-bind="recommended.name"
 									></h4>
 								<p>Zonas de trabajo: Palermo, Recoleta, Caballito</p>
 							</div>
-							<div class="col s2">
+							<div class="col l2 m2 s12">
 								<!-- <div class="rating">
 									<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><br>
 									(15 reviews positivos)
 								</div>-->
 							</div>
-							<div class="col s2" style="padding-top: 20px;">
+							<div class="col l2 m2 l12" style="padding-top: 20px;">
 								<img class="rowBadge"
 									data-ng-repeat="category in recommended.categories"
 									data-ng-src="{{category.image}}"

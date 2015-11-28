@@ -7,61 +7,43 @@
 </div>
 
 <header data-ng-controller="headerController">
-	<nav class="transparentBackground" role="navigation">
-		<div class="nav-wrapper container">
-			<a id="logo-container" href="#" class="brand-logo">
-				<a href="javascript:redirect('home');" style="float: left; display: block;">
-					<img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" />
-				</a>
-			</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="#">¡Ofrece tus servicios gratis!</a></li>
-				<li><a href="#">¿Como funciona?</a></li>
-				<sec:authorize access="!isAuthenticated()">
-					<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<ul id="dropdown1" class="dropdown-content">
-						<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
-						<li><a
-							href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
-					</ul>
-					<li> 
-						<a class="dropdown-button" href="#!" data-activates="dropdown1">Bienvenido <strong><sec:authentication property="principal.fullName" />!</strong>
-						</a>
-					</li>
-				</sec:authorize>
-			</ul>
-
-			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#">¡Ofrece tus servicios gratis!</a></li>
-				<li><a href="#">¿Como funciona?</a></li>
-				<sec:authorize access="!isAuthenticated()">
-					<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<ul id="dropdown1" class="dropdown-content">
-						<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
-						<li><a
-							href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
-					</ul>
-					<li> 
-						<a class="dropdown-button" href="#!" data-activates="dropdown1">Bienvenido <strong><sec:authentication property="principal.fullName" />!</strong>
-						</a>
-					</li>
-				</sec:authorize>
-			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse">
-				<i class="material-icons">menu</i>
-			</a>
-		</div>
+	
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
+		<li><a href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
+	</ul>
+	<nav>
+	  <div class="nav-wrapper">
+	    <a href="javascript:redirect('home');" class="brand-logo"><img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" /></a>
+	    <ul class="right hide-on-med-and-down">
+			<li><a href="#">Ofrece tus servicios gratis!</a></li>
+			<li><a href="#">Como funciona?</a></li>
+			<sec:authorize access="!isAuthenticated()">
+				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Bienvenido <strong><sec:authentication property="principal.fullName" />!</strong><i class="material-icons right">arrow_drop_down</i></a></li>
+			</sec:authorize>	
+	    </ul>
+		<ul id="slide-out" class="side-nav">
+			<li><a href="#">Ofrece tus servicios gratis!</a></li>
+			<li><a href="#">Como funciona?</a></li>
+			<sec:authorize access="!isAuthenticated()">
+				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
+				<li><a href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
+			</sec:authorize>		
+		</ul>    
+	    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+	  </div>
 	</nav>
-</header>
-
+	
 <div id="login" class="modal" style="text-align: center;"
 	data-ng-controller="loginController">
 	<div class="col m12">
-		<h1 class="header center-on-small-only">Inicia sesión</h1>
+		<h1 class="header center-on-small-only modalHeader">Inicia Sesión</h1>
 	</div>
 	<div class="modal-content"
 		style="margin-left: auto; margin-right: auto;">
@@ -82,14 +64,15 @@
 						</button>
 					</div>
 					<div class="col s6">
-						<button class="btn-large waves-effect waves-light modalButton" type="button" data-ng-enabled="!user.email" data-ng-click="askNewPassword()">
-							Olvide mi contraseña
-						</button>
-					</div>
-					<div class="col s6">
 						<button class="btn-large waves-effect waves-light blue darken-1 modalButton" type="button" data-ng-click="facebookLogin()">
 							Inicia con <br>Facebook
 						</button>
+					</div>
+					<div class="col s12">
+						<br>
+						<a class="" type="button" data-ng-enabled="!user.email" data-ng-click="askNewPassword()">
+							Olvide mi contraseña
+						</a>
 					</div>
 				</div>
 			</form>
@@ -112,7 +95,7 @@
 									Debe ingresar su nombre
 								</span> 
 								<span data-ng-show="registrationForm.name.$error.maxlength">
-									Supera la cantidad máxima de caracteres
+									Supera la cantidad mï¿½xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -125,7 +108,7 @@
 									Debe ingresar su apellido
 								</span>
 								<span data-ng-show="registrationForm.surname.$error.maxlength">
-									Supera la cantidad máxima de caracteres
+									Supera la cantidad mï¿½xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -160,10 +143,10 @@
 					</div>
 					<div class="col m12">
 						<div class="input-field">
-							<input name="password" required maxlength="50" data-ng-minlength="5" placeholder="Contraseña" type="password" tabindex="8" data-ng-model="newUser.password" />
+							<input name="password" required maxlength="50" data-ng-minlength="5" placeholder="Contraseï¿½a" type="password" tabindex="8" data-ng-model="newUser.password" />
 							<label class="ng-hide" for="password" data-ng-show="registrationForm.password.$dirty && registrationForm.password.$invalid">
 								<span data-ng-show="registrationForm.password.$error.required">
-									Debe ingresar su contraseña
+									Debe ingresar su contraseï¿½a
 								</span> 
 								<span data-ng-show="registrationForm.password.$error.maxlength">
 									Supera la cantidad maxima de caracteres

@@ -48,4 +48,6 @@
 		$("#loginForm").toggle("slide");
 
 	});
+	
+	$(".button-collapse").sideNav();
 </script>

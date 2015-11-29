@@ -2,7 +2,6 @@ package com.myrecommended.controllers.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,10 @@ import com.myrecommended.constants.ObjectTypes;
 import com.myrecommended.controllers.BaseController;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.questions.QuestionService;
+import com.myrecommended.services.questions.dtos.AnswerRequestDTO;
 import com.myrecommended.services.questions.dtos.QuestionDTO;
 import com.myrecommended.services.questions.dtos.QuestionRequestDTO;
+import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
 @RestController
 public class QuestionApiController extends BaseController {
@@ -25,7 +26,7 @@ public class QuestionApiController extends BaseController {
 	private QuestionService questionService;
 	
 	@RequestMapping(value = "/questions/makeQuestion", method = RequestMethod.POST)
-    public @ResponseBody QuestionDTO makeQuestionToRecommended(@RequestBody QuestionRequestDTO questionDto, Model model) {
+    public @ResponseBody QuestionDTO makeQuestionToRecommended(@RequestBody QuestionRequestDTO questionDto) {
 		QuestionDTO returnObject = new QuestionDTO();
 		
 		try {
@@ -38,7 +39,27 @@ public class QuestionApiController extends BaseController {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
 		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError("Debe ingresar a Mis Recomendados para poder hacer preguntas");
+			e.printStackTrace();
+		}
+		
+		return returnObject;
+	}
+	
+	@RequestMapping(value = "/questions/answerQuestion", method = RequestMethod.POST)
+    public @ResponseBody MyRecommendedBaseDTO answerQuestion(@RequestBody AnswerRequestDTO answerDto) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
+		try {
+			this.verifyAuthentication();
+			
+			answerDto.setUserId(this.getUserId());
+			this.questionService.answerQuestion(answerDto);
+		} catch (MyRecommendedBusinessException e) {
 			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError("Debe ingresar a Mis Recomendados para poder hacer preguntas");
 			e.printStackTrace();
 		}
 		

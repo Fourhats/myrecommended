@@ -12,7 +12,7 @@ import com.myrecommended.services.questions.QuestionService;
 import com.myrecommended.services.recommended.RecommendedService;
 
 @Controller
-public class RecommendedController {
+public class RecommendedController extends BaseController {
 
 	@Autowired
 	private CategoryService categoryService;
@@ -40,7 +40,7 @@ public class RecommendedController {
     public String goToRecomendadosDetail(@PathVariable long recommendedId, @PathVariable String recommendedName, Model model) {
 		Gson gson = new Gson();
 		
-		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId)));
+		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId, this.getUserId())));
 		model.addAttribute("recommendedQuestions", gson.toJson(this.questionService.getQuestions(recommendedId, 0, 5)));
 		
 		return "recommended/recommendedDetail";

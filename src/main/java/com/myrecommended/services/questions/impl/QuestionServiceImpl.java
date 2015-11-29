@@ -33,6 +33,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public void answerQuestion(AnswerRequestDTO answerDto) throws MyRecommendedBusinessException {
+		this.questioner.answerQuestion(answerDto);
 	}
 
 	@Override

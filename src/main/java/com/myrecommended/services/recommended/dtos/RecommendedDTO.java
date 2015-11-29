@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.myrecommended.services.categories.dtos.CategoryDTO;
-import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
 public class RecommendedDTO extends MyRecommendedBaseDTO {
 
 	private Long id;
 	
-	private CurrentUserDTO user;
+	private boolean isOwner;
 	
 	private String name;
 	
@@ -37,14 +36,14 @@ public class RecommendedDTO extends MyRecommendedBaseDTO {
 		this.id = id;
 	}
 
-	public CurrentUserDTO getUser() {
-		return user;
+	public boolean isOwner() {
+		return isOwner;
 	}
 
-	public void setUser(CurrentUserDTO user) {
-		this.user = user;
+	public void setOwner(boolean isOwner) {
+		this.isOwner = isOwner;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

@@ -63,9 +63,9 @@
 				</div>
 			</div>
 		</div>
-		<div>
+		<div data-ng-show="!recommended.isOwner">
 			<input type="text" data-ng-model="newQuestion">
-			<input type="submit" data-ng-click="addQuestion()">
+			<button data-ng-click="addQuestion()">Preguntar</button>
 		</div>
 		<div>
 			Nuevas preguntas
@@ -79,6 +79,11 @@
 			<div data-ng-repeat="question in questionsPage.elements">
 				<span data-ng-bind="question.fullName"></span>:
 				<span data-ng-bind="question.description"></span>
+				<div data-ng-show="recommended.isOwner">
+					Responder:
+					<input type="text" data-ng-model="newAnswer">
+					<button data-ng-click="addAnswer(question.id)">Responder</button>
+				</div>
 			</div>
 		</div>
 	</main>

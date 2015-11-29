@@ -50,6 +50,30 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 		    });
 		}
 	};
+	
+	$scope.addAnswer = function(question) {
+		if ($scope.newAnswer) {
+			showMainProgressBar();
+			
+			var answer = {description: $scope.newAnswer, questionId: question.id};
+			var makeAnswerUrl = "questions/answerQuestion";
+			
+			$http.post(getCompletePath(makeAnswerUrl), JSON.stringify(answer))
+			.then(function (result) {
+				if(result.data.hasError) {
+					toastr.warning(result.data.error);
+				} else {
+					$scope.question.answer = $scope.newAnswer;
+					$scope.newAnswer = "";
+					toastr.success('La pregunta se ha realizado correctamente');
+				}
+		    }).catch(function (response) {
+				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
+		    }).finally(function() {
+		    	hideMainProgressBar();
+		    });
+		}
+	};
     
     $(document).ready(function() {
 		hideMainProgressBar();

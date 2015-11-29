@@ -25,7 +25,7 @@ public interface RecommendedService {
 	Page<RecommendedDTO> getRecommendedsPageByCategoryAndKeyword(int pageIndex, int pageSize, long categoryId, String recommendedKey);
 
 	@Transactional
-	RecommendedDTO getRecommendedById(long recommendedId);
+	RecommendedDTO getRecommendedById(long recommendedId, long currentUserId);
 
 	@Transactional
 	RecommendedDTO getRecommendedByUserId(Long userId);

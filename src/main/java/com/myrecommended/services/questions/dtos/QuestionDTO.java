@@ -8,6 +8,8 @@ public class QuestionDTO extends MyRecommendedBaseDTO {
 	
 	private String description;
 	
+	private String answer;
+	
 	private String userName;
 	
 	private String userSurname;
@@ -28,6 +30,14 @@ public class QuestionDTO extends MyRecommendedBaseDTO {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	public String getUserName() {

@@ -25,13 +25,13 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 	});
 	
 	$scope.questionsPage = recommendedQuestions;
-	$scope.newQuestions = [];
+	$scope.hasAlreadyAsked = false;
 	
-	$scope.addQuestion = function() {
-		if ($scope.newQuestion) {
+	$scope.addQuestion = function(newQuestion) {
+		if (newQuestion) {
 			showMainProgressBar();
 			
-			var question = {description: $scope.newQuestion, entityId: recommended.id};
+			var question = {description: newQuestion, entityId: recommended.id};
 			var makeQuestionUrl = "questions/makeQuestion";
 			
 			$http.post(getCompletePath(makeQuestionUrl), JSON.stringify(question))
@@ -39,8 +39,8 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 				if(result.data.hasError) {
 					toastr.warning(result.data.error);
 				} else {
-					$scope.newQuestion = "";
-					$scope.newQuestions.push(result.data);
+					$scope.questionsPage.elements.unshift(result.data);
+					$scope.hasAlreadyAsked = true;
 					toastr.success('La pregunta se ha realizado correctamente');
 				}
 		    }).catch(function (response) {
@@ -51,11 +51,11 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 		}
 	};
 	
-	$scope.addAnswer = function(question) {
-		if ($scope.newAnswer) {
+	$scope.addAnswer = function(newAnswer, question) {
+		if (newAnswer) {
 			showMainProgressBar();
 			
-			var answer = {description: $scope.newAnswer, questionId: question.id};
+			var answer = {description: newAnswer, questionId: question.id};
 			var makeAnswerUrl = "questions/answerQuestion";
 			
 			$http.post(getCompletePath(makeAnswerUrl), JSON.stringify(answer))
@@ -63,8 +63,8 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 				if(result.data.hasError) {
 					toastr.warning(result.data.error);
 				} else {
-					$scope.question.answer = $scope.newAnswer;
-					$scope.newAnswer = "";
+					question.hasAnswer = true;
+					question.answers = [{ description : newAnswer }];
 					toastr.success('La pregunta se ha realizado correctamente');
 				}
 		    }).catch(function (response) {
@@ -73,6 +73,10 @@ myRecommendedApp.controller('recommendedDetailController', function ($scope, $ht
 		    	hideMainProgressBar();
 		    });
 		}
+	};
+	
+	$scope.getQuestionUserAvatarPath = function(userAvatarName) {
+		return getImagePath('avatarThumb', userAvatarName, 'small');
 	};
     
     $(document).ready(function() {

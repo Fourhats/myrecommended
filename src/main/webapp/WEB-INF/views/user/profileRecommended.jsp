@@ -15,7 +15,7 @@
 					<h1 class="header center-on-small-only" data-ng-bind="currentPageName"></h1>
 				</div>	
 				<div class="row">
-					<div class="col s3 profileMenu">
+					<div class="col l3 m12 s12 profileMenu">
 						<div class="collection">
 							<a href="#usuario" class="collection-item" data-ng-class="{'active' : currentPage == 'userProfile'}">Información del usuario</a> 
 							<a href="#recomendado" class="collection-item" data-ng-class="{'active' : currentPage == 'recommendedProfile'}">Información del recomendado</a> 

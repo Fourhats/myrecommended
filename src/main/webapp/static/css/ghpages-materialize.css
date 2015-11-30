@@ -9084,6 +9084,17 @@ nav ul a:hover{
    }
 }
 
+.s12 h4{
+margin-top: 0px;
+}
+
+.answer{
+margin-left: 30px!important;
+}
+.row h1{
+padding-top: 20px;
+}
+
  @media screen and (max-width:460px) 
   {
   
@@ -9092,13 +9103,7 @@ nav ul a:hover{
   padding-right: 0px;
   }
   
-  .button-collapse {
-    position: absolute!important;
-    z-index: 1;
-    height: 56px;
-    top: 15px!important;
-    right: 5px!important;
-}
+
 
 .homeContainer h1{
 	font-size: 30px;
@@ -9179,6 +9184,11 @@ nav ul a:hover{
 	
 }
 
+.modalHeader{
+    background: #26a69a;
+    color: white;
+    padding: 5px;
+}
 
 
 

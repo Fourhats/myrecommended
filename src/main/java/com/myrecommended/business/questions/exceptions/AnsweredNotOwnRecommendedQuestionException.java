@@ -2,11 +2,11 @@ package com.myrecommended.business.questions.exceptions;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
 
-public class AnsweredNotOwnRecommendedQuestion extends MyRecommendedBusinessException {
+public class AnsweredNotOwnRecommendedQuestionException extends MyRecommendedBusinessException {
 
 	private static final long serialVersionUID = 1L;
 
-	public AnsweredNotOwnRecommendedQuestion(String message) {
+	public AnsweredNotOwnRecommendedQuestionException(String message) {
 		super(message);
 	}
 }

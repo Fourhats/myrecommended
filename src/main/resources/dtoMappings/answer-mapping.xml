@@ -5,14 +5,9 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
   <mapping wildcard="false">
-    <class-a>com.myrecommended.models.Question</class-a>
-    <class-b>com.myrecommended.services.questions.dtos.QuestionDTO</class-b>
+    <class-a>com.myrecommended.models.Answer</class-a>
+    <class-b>com.myrecommended.services.questions.dtos.AnswerDTO</class-b>
       
-      <field>
-        <a>id</a>
-        <b>id</b>
-      </field>
-
 	  <field>
 	  	<a>user.name</a>
 	  	<b>userName</b>
@@ -24,13 +19,14 @@
 	  </field>
 	  
 	  <field>
-	  	<a>user.avatarName</a>
-	  	<b>userAvatarName</b>
-	  </field>
-	  
-	  <field><a>answers</a><b>answers</b></field><field>
 	  	<a>description</a>
 	  	<b>description</b>
 	  </field>
+
+	  <field>
+	  	<a>date</a>
+	  	<b>date</b>
+	  </field>
+
   </mapping>
 </mappings>

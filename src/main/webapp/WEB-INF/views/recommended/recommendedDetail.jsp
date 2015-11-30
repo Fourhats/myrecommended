@@ -10,15 +10,24 @@
 	<main>
 		<div class="section no-pad-bot" id="index-banners">
 			<div class="container">
-				<div class="col m12" style="margin-bottom: 20px;">
-					<h1 class="header center-on-small-only">Información del recomendado</h1>
+				<div class="row">
+					<div class="col l12" style="margin-bottom: 20px;">
+						<h1 class="header center-on-small-only">Información del recomendado</h1>
+					</div>
 				</div>
 				<div class="row" style="margin-top: 30px;">
-					<div class="col s4">
+					<div class="col l4 m12 s12">
 						<img width="270" data-ng-src="{{recommended.avatarPath}}">
 					</div>
-					<div class="col s8" style="text-align: left;">
-						<h4 style="font-weight: 100;" data-ng-bind="recommended.name"></h4>
+					<div class="col l8 m12 s12" style="text-align: left;">
+						<div class="row">
+							<div class="col l6 m6 s12">
+								<h4 style="font-weight: 100;" data-ng-bind="recommended.name"></h4>
+							</div>
+							<div class="col l6 m6 s12">
+								<a class="waves-effect waves-light btn modal-trigger" href="#contactModal">¡Contacta a tú recomendado!</a>
+							</div>
+						</div>
 						<div class="col s12" style="float: left;">
 							<!-- <div class="rating">
 								<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
@@ -35,17 +44,11 @@
 							<strong style="width: 100%; float: left;">Acerca del recomendado:</strong>
 							<span data-ng-bind="recommended.description" class="recommendedDescription" style="width:100%; float: left; margin-top: 5px; margin-bottom: 10px;"></span>
 							<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
-								<strong style="float: left; margin-right: 10px;">
-									<i style="float: left;" class="material-icons"></i>
-									Email: 
-								</strong>
+								<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">email</i>Email:  </strong>
 								<span data-ng-bind="recommended.email" class="recommendedDescription" style=" float: left;"></span><br>
 							</div>
 							<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
-								<strong style="float: left;margin-right: 10px;">
-									<i style="float: left;" class="material-icons"></i>
-									Teléfono:  
-								</strong>
+								<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">phone</i>Teléfono:  </strong>
 								<span data-ng-bind="recommended.phone" class="recommendedDescription" style=" float: left;"></span>
 							</div>
 							<div class="col s12" style="float: left; padding-top: 20px; text-align: left;">
@@ -53,46 +56,58 @@
 								<a class="fancybox-button" rel="fancybox-button" 
 									data-ng-repeat="recommendedImage in recommended.recommendedImages"
 									data-ng-href="{{recommendedImage.completePath}}">
-									<img style="height: 70px; width: 70px; margin: 10px;" 
-										data-ng-src="{{recommendedImage.completePath}}"/>
+									<img style="height: 70px; width: 70px; margin: 10px;"  data-ng-src="{{recommendedImage.completePath}}"/>
 								</a>
 							</div>
 						</div>
-						<div class="col s12"></div>
-					</div>
+						<div class="row" data-ng-if="!recommended.isOwner && !hasAlreadyAsked">
+						    <form class="col s12">
+						    	<div class="row">
+						        	<div class="input-field col s12">
+						          		<input data-ng-model="newQuestion" placeholder="¡Hace tu pregunta!" id="new_question" type="text" class="validate">
+						          		<label for="new_question">Preguntas</label>
+						        	</div>
+						      	</div>
+						    	<button data-ng-click="addQuestion(newQuestion)" type="submit" class="waves-effect waves-light btn">Preguntar</button>
+							</form>
+						</div>
+				      	<div class="row" data-ng-repeat="question in questionsPage.elements">
+				        	<div class="col s10 pull-s2">
+					        	<img width="25" data-ng-src="{{getQuestionUserAvatarPath(question.userAvatarName)}}">
+					        	<span data-ng-bind="question.fullName"></span><br>
+					        	<span width="100" style="float: left;" data-ng-bind="question.description"></span>
+				        	</div>
+					        <div class="col s10 pull-s2 answer" data-ng-show="question.hasAnswer">
+					        	<img width="25" data-ng-src="{{recommended.avatarPath}}">
+					        	<span data-ng-bind="recommended.name"></span><br>
+					        	<span width="100" style="float: left;" data-ng-bind="question.answers[0].description"></span>
+					        </div>
+					        <div class="col s10 pull-s2 answer" data-ng-show="recommended.isOwner && !question.hasAnswer">
+								<input data-ng-model="newAnswer" placeholder="¡Responde la consulta!" id="new_answer_{{question.id}}" type="text" class="validate">
+						        <label for="new_answer_{{question.id}}">Respuesta</label>
+								<button data-ng-click="addAnswer(newAnswer, question)">Responder</button>
+							</div>
+				        </div>
+			      	</div>
+			      
 				</div>
 			</div>
 		</div>
-		<div data-ng-show="!recommended.isOwner">
-			<input type="text" data-ng-model="newQuestion">
-			<button data-ng-click="addQuestion()">Preguntar</button>
-		</div>
-		<div>
-			Nuevas preguntas
-			<div data-ng-repeat="question in newQuestions">
-				<span data-ng-bind="question.fullName"></span>:
-				<span data-ng-bind="question.description"></span>
-			</div>
-		</div>
-		<div>
-			Viejas preguntas
-			<div data-ng-repeat="question in questionsPage.elements">
-				<span data-ng-bind="question.fullName"></span>:
-				<span data-ng-bind="question.description"></span>
-				<div data-ng-show="recommended.isOwner">
-					Responder:
-					<input type="text" data-ng-model="newAnswer">
-					<button data-ng-click="addAnswer(question.id)">Responder</button>
-				</div>
-			</div>
-		</div>
+		<div id="contactModal" class="modal">
+    		<div class="modal-content">
+      			<h4>¡Contacta a tu recomendado!</h4>
+      			<p>En misrecomendado.com te ofrecemos acceder sin compromiso a la información de contacto del especialista que elegiste, sólo te pedimos que despejes tus dudas primero por el sistema de preguntas y respuestas ;)</p>
+    		</div>
+    		<div class="modal-footer">
+      			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ver información de contacto</a>
+      			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    		</div>
+  		</div>
 	</main>
 </body>
 
 <%@ include file="../partials/scripts.jsp"%>
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
-<!-- 16 KB -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
 <script>
 	var recommended = <%=request.getAttribute("recommended")%>;
 	var recommendedQuestions = <%=request.getAttribute("recommendedQuestions")%>;

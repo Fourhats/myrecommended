@@ -21,6 +21,7 @@ public class QuestionDAOImpl extends BaseDAOImpl<Question, Long> implements Ques
 
 	public Page<Question> getQuestions(int pageIndex, int pageSize, long entityId) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
+
 		criteria.createCriteria("questionableObject", "questionableObject");
         criteria.add(Restrictions.eq("questionableObject.entityId", entityId));
         
@@ -30,7 +31,7 @@ public class QuestionDAOImpl extends BaseDAOImpl<Question, Long> implements Ques
         
         return this.getPageByCriteria(criteria, pageIndex, pageSize);
 	}
-
+	
 	//TODO: VER SI SE NECESITA
 	@SuppressWarnings("unchecked")
 	public List<Question> getQuestionByUser(long userId) {
@@ -43,15 +44,5 @@ public class QuestionDAOImpl extends BaseDAOImpl<Question, Long> implements Ques
         
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return (List<Question>) getHibernateTemplate().findByCriteria(criteria);
-	}
-
-	//TODO: VER SI SE NECESITA
-	@SuppressWarnings("unchecked")
-	public List<Question> getQuestionsByQuestionableEntityIds(List<Long> questionableEntityIds) {
-		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
-		criteria.createCriteria("questionableObject", "questionableObject");
-		criteria.add(Restrictions.in("questionableObject.entityId", questionableEntityIds));
-		criteria.addOrder(Order.desc("date"));
-		return (List<Question>) getHibernateTemplate().findByCriteria(criteria);
 	}
 }

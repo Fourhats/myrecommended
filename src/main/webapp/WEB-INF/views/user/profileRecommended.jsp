@@ -20,7 +20,7 @@
 							<a href="#usuario" class="collection-item" data-ng-class="{'active' : currentPage == 'userProfile'}">Información del usuario</a> 
 							<a href="#recomendado" class="collection-item" data-ng-class="{'active' : currentPage == 'recommendedProfile'}">Información del recomendado</a> 
 							<a href="#!" class="collection-item">Trabajos realizados</a> 
-							<a href="#!" class="collection-item">Preguntas <span class="new badge">4</span></a>
+							<a href="#preguntas" class="collection-item" data-ng-class="{'active' : currentPage == 'userQuestions'}">Preguntas <span class="new badge" data-ng-bind="unansweredQuestions"></span></a>
 						</div>
 					</div>
 					<div data-ng-view></div>
@@ -39,11 +39,13 @@
 	var user = <%=request.getAttribute("user")%>;
 	var recommended = <%=request.getAttribute("recommended")%>;
 	var categories = <%=request.getAttribute("categories")%>;
+	var questionsPage = <%=request.getAttribute("questionsPage")%>;
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toastr']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/userProfileController.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/recommendedProfileController.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/userQuestionsController.js"></script>
 
 <%@ include file="../partials/footerScritps.jsp" %>
 </html>

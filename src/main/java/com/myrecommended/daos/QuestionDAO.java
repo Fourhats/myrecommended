@@ -10,6 +10,4 @@ public interface QuestionDAO extends BaseDAO<Question, Long> {
 	 Page<Question> getQuestions(int pageIndex, int pageSize, long entityId);
 
 	 List<Question> getQuestionByUser(long userId);
-	 
-	 List<Question> getQuestionsByQuestionableEntityIds(List<Long> questionableEntityIds);
 }

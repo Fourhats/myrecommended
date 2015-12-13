@@ -1,4 +1,6 @@
-myRecommendedApp.controller('recommendedProfileController', function($scope, $http, toastr, FileUploader) {
+var recommendedProfileController = "recommendedProfileController";
+
+myRecommendedApp.controller(recommendedProfileController, function($scope, $http, toastr, FileUploader) {
 	$scope.recommended = recommended == null ? { email : user.email, categoryIds: [], recommendedImages: [] } : recommended;
 	$scope.recommended.recommendedImageNames = [];
 	$scope.recommended.previousRecommendedImages = $scope.recommended.recommendedImages.slice();

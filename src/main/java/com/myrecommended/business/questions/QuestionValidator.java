@@ -14,7 +14,6 @@ import com.myrecommended.business.recommended.RecommendedSearcher;
 import com.myrecommended.business.users.exceptions.UserIsNotEnableException;
 import com.myrecommended.business.users.exceptions.UserNotExistException;
 import com.myrecommended.daos.QuestionDAO;
-import com.myrecommended.daos.RecommendedDAO;
 import com.myrecommended.daos.UserDAO;
 import com.myrecommended.models.Question;
 import com.myrecommended.models.Recommended;

@@ -41,7 +41,7 @@ public class RecommendedController extends BaseController {
 		Gson gson = new Gson();
 		
 		model.addAttribute("recommended", gson.toJson(this.recommendedService.getRecommendedById(recommendedId, this.getUserId())));
-		model.addAttribute("recommendedQuestions", gson.toJson(this.questionService.getQuestions(recommendedId, 0, 5)));
+		model.addAttribute("recommendedQuestions", gson.toJson(this.questionService.getQuestions(recommendedId, 0, 100)));
 		
 		return "recommended/recommendedDetail";
     }

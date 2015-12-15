@@ -24,7 +24,7 @@
 							<div class="col l6 m6 s12">
 								<h4 style="font-weight: 100;" data-ng-bind="recommended.name"></h4>
 							</div>
-							<div class="col l6 m6 s12">
+							<div class="col l6 m6 s12" data-ng-if="!recommended.isOwner && !hasBought">
 								<a class="waves-effect waves-light btn modal-trigger" href="#contactModal">¡Contacta a tú recomendado!</a>
 							</div>
 						</div>
@@ -40,16 +40,18 @@
 								data-ng-attr-title="{{category.name}}">
 								{{category.name}} 
 							</div>
-							<br><br>	
-							<strong style="width: 100%; float: left;">Acerca del recomendado:</strong>
-							<span data-ng-bind="recommended.description" class="recommendedDescription" style="width:100%; float: left; margin-top: 5px; margin-bottom: 10px;"></span>
-							<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
-								<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">email</i>Email:  </strong>
-								<span data-ng-bind="recommended.email" class="recommendedDescription" style=" float: left;"></span><br>
-							</div>
-							<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
-								<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">phone</i>Teléfono:  </strong>
-								<span data-ng-bind="recommended.phone" class="recommendedDescription" style=" float: left;"></span>
+							<br><br>
+							<div data-ng-if="hasBought">
+								<strong style="width: 100%; float: left;">Acerca del recomendado:</strong>
+								<span data-ng-bind="recommended.description" class="recommendedDescription" style="width:100%; float: left; margin-top: 5px; margin-bottom: 10px;"></span>
+								<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
+									<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">email</i>Email:  </strong>
+									<span data-ng-bind="recommended.email" class="recommendedDescription" style=" float: left;"></span><br>
+								</div>
+								<div style="width: 100%; float: left;margin-bottom: 10px; margin-top: 10px;">
+									<strong style="float: left;margin-right: 10px;"><i style="float: left;" class="material-icons">phone</i>Teléfono:  </strong>
+									<span data-ng-bind="recommended.phone" class="recommendedDescription" style=" float: left;"></span>
+								</div>
 							</div>
 							<div class="col s12" style="float: left; padding-top: 20px; text-align: left;">
 							<!-- Dani, acá el <a> debería repetirse por cada imagen y el href apuntar a la imagen en tamaño grande -->
@@ -95,12 +97,14 @@
 		</div>
 		<div id="contactModal" class="modal">
     		<div class="modal-content">
-      			<h4>¡Contacta a tu recomendado!</h4>
-      			<p>En misrecomendado.com te ofrecemos acceder sin compromiso a la información de contacto del especialista que elegiste, sólo te pedimos que despejes tus dudas primero por el sistema de preguntas y respuestas ;)</p>
+      			<h4 data-ng-show="!hasBought">¡Contacta a tu recomendado!</h4>
+      			<h4 data-ng-if="hasBought">¡Gracias por contactarlo!</h4>
+      			<p data-ng-show="!hasBought">En misrecomendados.com te ofrecemos acceder sin compromiso a la información de contacto del especialista que elegiste, sólo te pedimos que despejes tus dudas primero por el sistema de preguntas y respuestas ;)</p>
+    			<p data-ng-if="hasBought">Te llegará un email con la información. Además ya puedes ver la información de contacto del recomendado</p>
     		</div>
     		<div class="modal-footer">
-      			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ver información de contacto</a>
-      			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      			<a href="#!" class="modal-action waves-effect waves-green btn-flat" data-ng-show="!hasBought" data-ng-click="hireRecommended()">Ver información de contacto</a>
+      			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
     		</div>
   		</div>
 	</main>

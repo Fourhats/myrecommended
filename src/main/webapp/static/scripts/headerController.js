@@ -45,7 +45,7 @@ myRecommendedApp.controller(loginController, function ($scope, $http, toastr) {
 	function verifyAuthentication(response, onLoggedinSuccess) {
 		if(isNaN(response) && response.indexOf("USER_IS_NOT_AUTHENTICATED") != -1) {
 			loggedinCallback = onLoggedinSuccess;
-			$('#modal-login').modal('show');	
+			$('#modal-login').modal('show');
 		} else {
 			onLoggedinSuccess();
 		}

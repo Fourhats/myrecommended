@@ -29,7 +29,7 @@ public class RecommendedApiController extends BaseController {
 	private RecommendedService recommendedService;
 	
 	@RequestMapping(value = "/recommended/updateRecommended", method = RequestMethod.POST)
-    public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto, Model model) throws FileNotFoundException, IOException, Exception {
+    public MyRecommendedBaseDTO updateRecommended(@RequestBody RecommendedRequestDTO recommendedDto) throws FileNotFoundException, IOException, Exception {
 		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
 		try {
@@ -40,6 +40,20 @@ public class RecommendedApiController extends BaseController {
 		} catch (MyRecommendedBusinessException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return returnObject;
+    }
+	
+	@RequestMapping(value = "/recommended/contactRecommended", method = RequestMethod.POST)
+    public MyRecommendedBaseDTO contactRecommended() throws FileNotFoundException, IOException, Exception {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
+		try {
+			this.verifyAuthentication();
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

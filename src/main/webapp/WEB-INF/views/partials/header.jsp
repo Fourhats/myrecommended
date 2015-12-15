@@ -7,7 +7,6 @@
 </div>
 
 <header data-ng-controller="headerController">
-	
 	<ul id="dropdown1" class="dropdown-content">
 		<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
 		<li><a href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
@@ -39,14 +38,13 @@
 	    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 	  </div>
 	</nav>
-	
-<div id="login" class="modal" style="text-align: center;"
-	data-ng-controller="loginController">
+</header>
+
+<div id="login" class="modal" style="text-align: center;" data-ng-controller="loginController">
 	<div class="col m12">
 		<h1 class="header center-on-small-only modalHeader">Inicia Sesión</h1>
 	</div>
-	<div class="modal-content"
-		style="margin-left: auto; margin-right: auto;">
+	<div class="modal-content" style="margin-left: auto; margin-right: auto;">
 		<div id="loginForm">
 			<form name="loginForm" data-ng-submit="login()">
 				<div class="input-field col s6">

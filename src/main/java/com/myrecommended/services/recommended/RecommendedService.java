@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.models.Page;
+import com.myrecommended.services.recommended.dtos.HireRecommendedRequestDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
+import com.myrecommended.services.recommended.dtos.RecommendedFeedbackRequestDTO;
+import com.myrecommended.services.recommended.dtos.RecommendedHiredDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
 
 @Service
@@ -31,4 +34,19 @@ public interface RecommendedService {
 	RecommendedDTO getRecommendedByUserId(Long userId);
 
 	String getRecommendedAvatarByUser(long userId);
+
+	@Transactional
+	void hireRecommended(HireRecommendedRequestDTO hireRecommendedDto);
+
+	@Transactional
+	void giveFeedbackToRecommended(RecommendedFeedbackRequestDTO recommendedFeedbackDto);
+
+	@Transactional
+	void giveFeedbackToUser(RecommendedFeedbackRequestDTO recommendedFeedbackDto);
+
+	@Transactional
+	Page<RecommendedHiredDTO> getRecommendedHired(long userId);
+
+	@Transactional
+	Page<RecommendedHiredDTO> getCustomers(long recommendedId);
 }

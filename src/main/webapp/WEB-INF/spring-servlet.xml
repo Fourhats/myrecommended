@@ -96,8 +96,10 @@
 	    	<value>dtoMappings/fullcategory-mapping.xml</value>
 	    	<value>dtoMappings/loggeduser-mapping.xml</value>
 	    	<value>dtoMappings/currentuser-mapping.xml</value>
+	    	<value>dtoMappings/baseuser-mapping.xml</value>
 	    	<value>dtoMappings/petition-mapping.xml</value>
 	    	<value>dtoMappings/recommended-mapping.xml</value>
+	    	<value>dtoMappings/recommendedhired-mapping.xml</value>
 	    	<value>dtoMappings/question-mapping.xml</value>
 	    </list>
 	  </property>

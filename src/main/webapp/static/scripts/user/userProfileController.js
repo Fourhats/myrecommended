@@ -1,4 +1,6 @@
-myRecommendedApp.controller('userProfileController', function($scope, $http, toastr, FileUploader) {
+var userProfileController = 'userProfileController';
+
+myRecommendedApp.controller(userProfileController, function($scope, $http, toastr, FileUploader) {
 	$scope.user = user;
 	
 	if($scope.user.isFacebookLogin) {

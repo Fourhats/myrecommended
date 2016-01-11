@@ -1,0 +1,14 @@
+<div class="row" data-ng-repeat="recommendedHired in recommendedsHiredPage.elements">
+	<div data-ng-show="!recommendedHired.hasRecommendedFeedback">
+		<div data-ng-bind="recommendedHired.recommended.name"></div>
+		<input data-ng-model="feedback" placeholder="&iquest;Qu&eacute; te parecio el servicio?" type="text" class="validate">
+		<input type="number" placeholder="puntaje de 1 a 5" data-ng-model="stars">
+		<button data-ng-click="giveFeedback(recommendedHired, feedback, stars)">Responder</button>
+	</div>
+	
+	<div data-ng-show="recommendedHired.hasRecommendedFeedback">
+		<div data-ng-bind="recommendedHired.recommended.name"></div>
+		<div data-ng-bind="recommendedHired.recommendedFeedback"></div>
+		<div data-ng-bind="recommendedHired.star"></div>
+	</div>
+</div>

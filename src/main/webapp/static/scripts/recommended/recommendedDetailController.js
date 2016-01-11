@@ -15,8 +15,9 @@ myRecommendedApp.controller(recommendedDetailController, function ($scope, $http
 	$scope.hireRecommended = function() {
 		showMainProgressBar();
 		var contactRecommendedUrl = "recommended/contactRecommended";
+		var hireRecommended = { recommendedId: $scope.recommended.id };
 		
-		$http.post(getCompletePath(contactRecommendedUrl))
+		$http.post(getCompletePath(contactRecommendedUrl), JSON.stringify(hireRecommended))
 		.then(function (result) {
 			if(result.data.hasError) {
 				if(result.data.error === "USER_IS_NOT_AUTHENTICATED") {
@@ -58,7 +59,7 @@ myRecommendedApp.controller(recommendedDetailController, function ($scope, $http
 		if (newQuestion) {
 			showMainProgressBar();
 			
-			var question = {description: newQuestion, entityId: recommended.id};
+			var question = { description: newQuestion, entityId: recommended.id };
 			var makeQuestionUrl = "questions/makeQuestion";
 			
 			$http.post(getCompletePath(makeQuestionUrl), JSON.stringify(question))

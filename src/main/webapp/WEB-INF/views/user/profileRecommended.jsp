@@ -19,7 +19,8 @@
 						<div class="collection">
 							<a href="#usuario" class="collection-item" data-ng-class="{'active' : currentPage == 'userProfile'}">Información del usuario</a> 
 							<a href="#recomendado" class="collection-item" data-ng-class="{'active' : currentPage == 'recommendedProfile'}">Información del recomendado</a> 
-							<a href="#!" class="collection-item">Trabajos realizados</a> 
+							<a href="#recomendadosContratados" class="collection-item" data-ng-class="{'active' : currentPage == 'hiredRecommended'}">Trabajos contratados</a> 
+							<a href="#trabajosRealizados" class="collection-item" data-ng-class="{'active' : currentPage == 'customers'}">Trabajos realizados</a> 
 							<a href="#preguntas" class="collection-item" data-ng-class="{'active' : currentPage == 'userQuestions'}">Preguntas <span class="new badge" data-ng-bind="unansweredQuestions"></span></a>
 						</div>
 					</div>
@@ -40,11 +41,16 @@
 	var recommended = <%=request.getAttribute("recommended")%>;
 	var categories = <%=request.getAttribute("categories")%>;
 	var questionsPage = <%=request.getAttribute("questionsPage")%>;
+	var recommendedsHiredPage = <%=request.getAttribute("recommendedsHiredPage")%>;
+	var customersPage = <%=request.getAttribute("customersPage")%>;
+	
 	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toastr']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/userProfileController.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/recommendedProfileController.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/customersController.js"></script>
+<script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/hiredRecommendedController.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/userQuestionsController.js"></script>
 
 <%@ include file="../partials/footerScritps.jsp" %>

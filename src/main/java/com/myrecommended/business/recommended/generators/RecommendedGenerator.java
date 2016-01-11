@@ -1,9 +1,10 @@
-package com.myrecommended.business.recommended;
+package com.myrecommended.business.recommended.generators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.business.recommended.RecommendedValidator;
 import com.myrecommended.business.recommended.factories.RecommendedFactory;
 import com.myrecommended.daos.RecommendedDAO;
 import com.myrecommended.models.Recommended;

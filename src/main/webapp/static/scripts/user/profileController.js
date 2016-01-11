@@ -15,6 +15,16 @@ myRecommendedApp.config(function($routeProvider) {
             controller  : 'userQuestionsController'
         })
     
+        .when('/recomendadosContratados', {
+        	templateUrl :  getCompletePath('profileTemplates/hired-recommended.html'),
+            controller  : 'hiredRecommendedController'
+        })
+        
+        .when('/trabajosRealizados', {
+        	templateUrl :  getCompletePath('profileTemplates/customers.html'),
+            controller  : 'customersController'
+        })
+        
     	.otherwise({
     		redirectTo : '/usuario'
     	});

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,9 @@ import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.controllers.BaseController;
 import com.myrecommended.models.Page;
 import com.myrecommended.services.recommended.RecommendedService;
+import com.myrecommended.services.recommended.dtos.HireRecommendedRequestDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedDTO;
+import com.myrecommended.services.recommended.dtos.RecommendedFeedbackRequestDTO;
 import com.myrecommended.services.recommended.dtos.RecommendedRequestDTO;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
 
@@ -49,11 +50,47 @@ public class RecommendedApiController extends BaseController {
     }
 	
 	@RequestMapping(value = "/recommended/contactRecommended", method = RequestMethod.POST)
-    public MyRecommendedBaseDTO contactRecommended() throws FileNotFoundException, IOException, Exception {
+    public MyRecommendedBaseDTO contactRecommended(@RequestBody HireRecommendedRequestDTO hireRecommendedDto) {
 		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
 		
 		try {
 			this.verifyAuthentication();
+			
+			hireRecommendedDto.setUserId(this.getUserId());
+			
+			this.recommendedService.hireRecommended(hireRecommendedDto);
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return returnObject;
+    }
+	
+	@RequestMapping(value = "/recommended/giveFeedbackToRecommended", method = RequestMethod.POST)
+    public MyRecommendedBaseDTO giveFeedbackToRecommended(@RequestBody RecommendedFeedbackRequestDTO recommendedFeedbackDto) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
+		try {
+			this.verifyAuthentication();
+			
+			this.recommendedService.giveFeedbackToRecommended(recommendedFeedbackDto);
+		} catch (AuthenticationCredentialsNotFoundException e) {
+			returnObject.setError(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return returnObject;
+    }
+	
+	@RequestMapping(value = "/recommended/giveFeedbackToUser", method = RequestMethod.POST)
+    public MyRecommendedBaseDTO giveFeedbackToUser(@RequestBody RecommendedFeedbackRequestDTO recommendedFeedbackDto) {
+		MyRecommendedBaseDTO returnObject = new MyRecommendedBaseDTO();
+		
+		try {
+			this.verifyAuthentication();
+			
+			this.recommendedService.giveFeedbackToUser(recommendedFeedbackDto);
 		} catch (AuthenticationCredentialsNotFoundException e) {
 			returnObject.setError(e.getMessage());
 			e.printStackTrace();

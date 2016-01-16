@@ -1,5 +1,6 @@
 package com.myrecommended.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +54,14 @@ public class UserController extends BaseController {
 		CurrentUserDTO user =  this.userService.getUser(this.getUserId());
 		RecommendedDTO recommended = this.recommendedService.getRecommendedByUserId(user.getId());
 		List<CategoryDTO> categories = this.categoryService.getAllCategories();
-		Page<QuestionDTO> questions = this.questionService.getQuestions(recommended.getId(), 0, 100);
+		//TODO: Dani, arregla esto
+		Page<QuestionDTO> questions = new Page<QuestionDTO>(new ArrayList<QuestionDTO>(),0,0,new Long(0));
+		Page<RecommendedHiredDTO> customersPage = new Page<RecommendedHiredDTO>(new ArrayList<RecommendedHiredDTO>(),0,0,new Long(0));
+		if (recommended != null){
+			questions = this.questionService.getQuestions(recommended.getId(), 0, 100);
+			customersPage = this.recommendedService.getCustomers(recommended.getId());
+		}
 		Page<RecommendedHiredDTO> recommendedsHiredPage = this.recommendedService.getRecommendedHired(user.getId());
-		Page<RecommendedHiredDTO> customersPage = this.recommendedService.getCustomers(recommended.getId());
 		
 		model.addAttribute("user", gson.toJson(user));
 		model.addAttribute("recommended", gson.toJson(recommended));

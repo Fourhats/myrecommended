@@ -9190,7 +9190,23 @@ padding-top: 20px;
     padding: 5px;
 }
 
+.modal-content-question{
+padding: 0px;
+}
 
+#contactModal .modal-footer .btn-flat {
+    float: right;
+    margin: 6px 0;
+    color: white;
+    background: #26a69a;
+    margin: 5px;
+}
+.modal-content-question h4{
+    color: white;
+    background: #26a69a;
+    padding: 10px;
+}
 
-
-  
+.modal-content-question p{
+padding: 10px;
+}

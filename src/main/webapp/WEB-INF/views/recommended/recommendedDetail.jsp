@@ -96,7 +96,7 @@
 			</div>
 		</div>
 		<div id="contactModal" class="modal">
-    		<div class="modal-content">
+    		<div class="modal-content-question">
       			<h4 data-ng-show="!hasBought">¡Contacta a tu recomendado!</h4>
       			<h4 data-ng-if="hasBought">¡Gracias por contactarlo!</h4>
       			<p data-ng-show="!hasBought">En misrecomendados.com te ofrecemos acceder sin compromiso a la información de contacto del especialista que elegiste, sólo te pedimos que despejes tus dudas primero por el sistema de preguntas y respuestas ;)</p>

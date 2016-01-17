@@ -9210,3 +9210,53 @@ padding: 0px;
 .modal-content-question p{
 padding: 10px;
 }
+
+.questionRow hr{
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	float: left;
+	border-top: 1px solid #ccc;
+}
+
+.questionRow .col span, .questionRow .col img{
+float: left;
+}
+.questionRow .answer, .questionRow .questionContent{
+margin-top: 10px;
+}
+
+.questionRow .questionContent, .questionRow .questionName{
+margin-left: 10px;
+}
+
+#questionButton{
+    margin-left: auto;
+    margin-right: auto;
+    display: inherit;
+}
+
+.questionRow .questionName{
+font-weight: bold;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  float: left;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: 30px;
+  color: gold;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}

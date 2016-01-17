@@ -63,32 +63,34 @@
 							</div>
 						</div>
 						<div class="row" data-ng-if="!recommended.isOwner && !hasAlreadyAsked">
+						<h5>Preguntas</h5>
 						    <form class="col s12">
 						    	<div class="row">
 						        	<div class="input-field col s12">
 						          		<input data-ng-model="newQuestion" placeholder="¡Hace tu pregunta!" id="new_question" type="text" class="validate">
-						          		<label for="new_question">Preguntas</label>
+						          		<label for="new_question"></label>
 						        	</div>
 						      	</div>
-						    	<button data-ng-click="addQuestion(newQuestion)" type="submit" class="waves-effect waves-light btn">Preguntar</button>
+						    	<button id="questionButton" data-ng-click="addQuestion(newQuestion)" type="submit" class="waves-effect waves-light btn">Preguntar</button>
 							</form>
 						</div>
-				      	<div class="row" data-ng-repeat="question in questionsPage.elements">
+				      	<div class="row questionRow" data-ng-repeat="question in questionsPage.elements">
 				        	<div class="col s10 pull-s2">
 					        	<img width="25" data-ng-src="{{getQuestionUserAvatarPath(question.userAvatarName)}}">
-					        	<span data-ng-bind="question.fullName"></span><br>
-					        	<span width="100" style="float: left;" data-ng-bind="question.description"></span>
+					        	<span class="questionName" data-ng-bind="question.fullName"></span><br>
+					        	<span width="100" class="questionContent" style="float: left;" data-ng-bind="question.description"></span>
 				        	</div>
 					        <div class="col s10 pull-s2 answer" data-ng-show="question.hasAnswer">
 					        	<img width="25" data-ng-src="{{recommended.avatarPath}}">
-					        	<span data-ng-bind="recommended.name"></span><br>
-					        	<span width="100" style="float: left;" data-ng-bind="question.answers[0].description"></span>
+					        	<span class="questionName" data-ng-bind="recommended.name"></span><br>
+					        	<span width="100" class="questionContent" style="float: left;" data-ng-bind="question.answers[0].description"></span>
 					        </div>
 					        <div class="col s10 pull-s2 answer" data-ng-show="recommended.isOwner && !question.hasAnswer">
 								<input data-ng-model="newAnswer" placeholder="¡Responde la consulta!" id="new_answer_{{question.id}}" type="text" class="validate">
 						        <label for="new_answer_{{question.id}}">Respuesta</label>
 								<button data-ng-click="addAnswer(newAnswer, question)">Responder</button>
 							</div>
+							<hr>
 				        </div>
 			      	</div>
 			      

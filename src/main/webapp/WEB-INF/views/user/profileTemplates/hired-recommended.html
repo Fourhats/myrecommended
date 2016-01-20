@@ -2,29 +2,16 @@
 	<div class="row" data-ng-repeat="recommendedHired in recommendedsHiredPage.elements">
 		<div data-ng-show="!recommendedHired.hasRecommendedFeedback">
 			<div data-ng-bind="recommendedHired.recommended.name"></div>
-			<input data-ng-model="feedback" placeholder="¿Que te pareció el servicio?"; te parecio el servicio?" type="text" class="validate">
-			<input  class="ratingNumber" type="number" placeholder="puntaje de 1 a 5" data-ng-model="stars">
-			<div class="rating">
-				<span onclick="saveRating(5);">☆</span><span onclick="saveRating(4);">☆</span><span onclick="saveRating(3);">☆</span><span onclick="saveRating(2);">☆</span><span onclick="saveRating(1);">☆</span>
-			</div>
-			<br>
+			<input data-ng-model="feedback" placeholder="&iquest;Qu&eacute; te parecio el servicio?" type="text" class="validate">
+			<input data-ng-model="stars" placeholder="Estrellas?" type="number" class="validate">
 			<button class="waves-effect waves-light btn" data-ng-click="giveFeedback(recommendedHired, feedback, stars)">Responder</button>
 		</div>
 		
 		<div data-ng-show="recommendedHired.hasRecommendedFeedback">
 			<div style="font-weight: bold;" data-ng-bind="recommendedHired.recommended.name"></div>
 			<div data-ng-bind="recommendedHired.recommendedFeedback"></div>
-			<div data-ng-bind="recommendedHired.star"></div>
 			<hr style="width: 100%;"/>
+			<div data-ng-bind="recommendedHired.star"></div>
 		</div>
 	</div>
 </div>
-
-<script>
-function saveRating(rating){
-alert(rating);
-//document.getElementsByClassName("ratingNumber").value = rating;
-}
-
-</script>
-

@@ -1,14 +1,17 @@
 <div class="col s9">
 	<div class="row" data-ng-repeat="customer in customersPage.elements">
 		<div data-ng-show="!customer.hasUserFeedback">
-			<div data-ng-bind="recommendedHired.user.name"></div>
-			<input data-ng-model="feedback" placeholder="&iquest;Qu&eacute; te parecio el cliente?" type="text" class="validate">
-			<button class="waves-effect waves-light btn" data-ng-click="giveUserFeedback(customer, feedback)">Responder</button>
+			<div data-ng-bind="customer.user.fullName"></div>
+			<input data-ng-model="feedback"
+				placeholder="&iquest;Qu&eacute; te parecio el cliente?" type="text"
+				class="validate">
+			<button class="waves-effect waves-light btn"
+				data-ng-click="giveUserFeedback(customer, feedback)">Responder</button>
 		</div>
-		
+
 		<div data-ng-show="customer.hasUserFeedback">
-			<div data-ng-bind="recommendedHired.user.name"></div>
-			<div data-ng-bind="recommendedHired.userFeedback"></div>
+			<div data-ng-bind="customer.user.fullName"></div>
+			<div data-ng-bind="customer.userFeedback"></div>
 		</div>
 	</div>
 </div>

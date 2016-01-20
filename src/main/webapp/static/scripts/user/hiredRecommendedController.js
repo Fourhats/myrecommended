@@ -2,7 +2,7 @@ var hiredRecommendedController = "hiredRecommendedController";
 
 myRecommendedApp.controller(hiredRecommendedController, function($scope, $http, toastr) {
 	$scope.recommendedsHiredPage = recommendedsHiredPage;
-	
+
 	$scope.giveFeedback = function(recommendedHired, feedback, stars) {
 		if (feedback || stars < 1 || stars > 5) {
 			showMainProgressBar();

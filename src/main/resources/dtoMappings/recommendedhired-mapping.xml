@@ -8,5 +8,5 @@
     <class-a>com.myrecommended.models.RecommendedHired</class-a>
     <class-b>com.myrecommended.services.recommended.dtos.RecommendedHiredDTO</class-b>
       
-  <field><a>userFeedback</a><b>userFeedback</b></field><field><a>recommendedFeedback</a><b>recommendedFeedback</b></field><field><a>star</a><b>star</b></field><field><a>hiredDate</a><b>hiredDate</b></field><field><a>recommended</a><b>recommended</b></field><field><a>id</a><b>id</b></field></mapping>
+  <field><a>userFeedback</a><b>userFeedback</b></field><field><a>recommendedFeedback</a><b>recommendedFeedback</b></field><field><a>star</a><b>star</b></field><field><a>hiredDate</a><b>hiredDate</b></field><field><a>recommended</a><b>recommended</b></field><field><a>id</a><b>id</b></field><field><a>user</a><b>user</b></field></mapping>
 </mappings>

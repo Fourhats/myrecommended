@@ -44,7 +44,7 @@
 	var recommendedsHiredPage = <%=request.getAttribute("recommendedsHiredPage")%>;
 	var customersPage = <%=request.getAttribute("customersPage")%>;
 	
-	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toastr']);
+	var myRecommendedApp = angular.module('myRecommendedApp', ['ui.bootstrap', 'angularFileUpload', 'ngRoute', 'toastr', 'angular-input-stars']);
 </script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/profileController.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/scripts/user/userProfileController.js"></script>

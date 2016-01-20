@@ -10,6 +10,8 @@ public class BaseUserDTO {
 	
 	private String surname;
 	
+	private String fullName;
+	
 	private String avatarName;
 
 	public Long getId() {
@@ -42,6 +44,15 @@ public class BaseUserDTO {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+		this.setFullName(this.name + " " + this.surname);
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getAvatarName() {

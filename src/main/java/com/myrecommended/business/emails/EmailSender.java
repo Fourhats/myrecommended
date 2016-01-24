@@ -20,7 +20,6 @@ import javax.mail.internet.MimeMessage;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class EmailSender {
 	private static final String SMTP_HOST_NAME = "localhost";

@@ -43,7 +43,7 @@
 	
 	<bean id="propertyConfigurer"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-        p:location="/WEB-INF/properties/jdbc-local.properties" />
+        p:location="/WEB-INF/properties/jdbc-production.properties" />
 	
 	<!-- Tratamiento de Base de datos -->
 	<bean id="dataSource"
@@ -106,5 +106,5 @@
 	</bean> 
 	
 	<!-- App Settings -->
-	<util:properties id="configProps" location="classpath:config-local.properties" />
+	<util:properties id="configProps" location="classpath:config-production.properties" />
 </beans>

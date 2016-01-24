@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
+import com.myrecommended.business.emails.EmailManager;
 import com.myrecommended.daos.UserDAO;
 import com.myrecommended.models.User;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
@@ -22,6 +23,9 @@ public class UserUpdater {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private EmailManager emailManager;
 	
 	public void update(UpdateUserRequestDTO userDto) throws MyRecommendedBusinessException {
 		this.userValidator.validateIfCanBeUpdated(userDto);
@@ -40,5 +44,7 @@ public class UserUpdater {
 		user.setPassword(changePasswordDto.getNewPassword());
 		
 		this.userDao.add(user);
+		
+		this.emailManager.SendNewPasswordGenerationEmail(user, changePasswordDto.getNewPassword());
 	}
 }

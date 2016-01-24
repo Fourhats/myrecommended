@@ -18,7 +18,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserDAO userDAO;
 	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
-		
 		if (username != null && !username.equals("")) {
 			User user = userDAO.getByUsername(username);
 			if(user == null) {

@@ -97,6 +97,8 @@ public class UserServiceImpl implements UserService {
 	
 	public void askForNewPassword(AskNewPasswordRequestDTO askNewPasswordDTO) throws MyRecommendedBusinessException, AuthenticationFailedException, MessagingException {
 		String newPassword = RandomStringUtils.randomAlphanumeric(8);
+		
+		//TODO: MOVE TO VALIDATOR
 		User user = this.userSearcher.getUser(askNewPasswordDTO.getEmail());
 		if(user == null) {
 			return;
@@ -110,11 +112,5 @@ public class UserServiceImpl implements UserService {
 		changePasswordDto.setUserId(user.getId());
 		
 		this.userUpdater.changePassword(changePasswordDto);
-		
-		Map<String, String> values = new HashMap<String, String>();
-		values.put("{UserName}", user.getName());
-		values.put("{NewPassword}", newPassword);
-		
-		this.emailSender.sendEMail(user.getEmail(), "Nueva contrase&ntilde;a - Mis Recomendados", this.properties.getProperty("folder.emails"), "recoverPasswordEmail", values);
 	}
 }

@@ -1,0 +1,8 @@
+<div class="rating" data-ng-mouseleave="stopHover()">
+	<a data-ng-repeat="star in stars" 
+  		data-ng-mouseover="hover(star.index)" 
+  		data-ng-mouseleave="stopHover()"
+    	data-ng-click="setRating(star.index)">
+    	<img data-ng-src="{{star.full ? fullStarSrc : emptyStarSrc}}" height="20" width="20">
+	</a>
+</div>

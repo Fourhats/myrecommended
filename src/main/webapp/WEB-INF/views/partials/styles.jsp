@@ -23,4 +23,3 @@
 
 <!-- AngularJs css -->
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/angular-toastr.css" />
-<link rel="stylesheet" href="<%=stylePageContext %>/static/css/raiting-stars.css" />

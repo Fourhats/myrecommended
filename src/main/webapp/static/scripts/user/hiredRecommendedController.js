@@ -2,9 +2,9 @@ var hiredRecommendedController = "hiredRecommendedController";
 
 myRecommendedApp.controller(hiredRecommendedController, function($scope, $http, toastr) {
 	$scope.recommendedsHiredPage = recommendedsHiredPage;
-
 	$scope.giveFeedback = function(recommendedHired, feedback, stars) {
-		if (feedback || stars < 1 || stars > 5) {
+		if (feedback) {
+			$scope.isSaving = true;
 			showMainProgressBar();
 			
 			var recommendedFeedbackRequest = {recommendedHiredId : recommendedHired.id, feedback: feedback, stars: stars};
@@ -23,6 +23,7 @@ myRecommendedApp.controller(hiredRecommendedController, function($scope, $http, 
 		    }).catch(function (response) {
 				toastr.error('Ha ocurrido un problema. Por favor intente nuevamente');
 		    }).finally(function() {
+		    	$scope.isSaving = false;
 		    	hideMainProgressBar();
 		    });
 		}

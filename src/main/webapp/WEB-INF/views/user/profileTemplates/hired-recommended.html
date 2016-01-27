@@ -3,8 +3,9 @@
 		<div data-ng-show="!recommendedHired.hasRecommendedFeedback">
 			<div data-ng-bind="recommendedHired.recommended.name"></div>
 			<input data-ng-model="feedback" placeholder="&iquest;Qu&eacute; te parecio el servicio?" type="text" class="validate">
-			<input data-ng-model="stars" placeholder="Estrellas?" type="number" class="validate">
-			<button class="waves-effect waves-light btn" data-ng-click="giveFeedback(recommendedHired, feedback, stars)">Responder</button>
+			<ratingstars score="stars" max="5" class="pull-left"></ratingstars>
+			
+			<button class="waves-effect waves-light btn" data-ng-disabled="!feedback || isSaving" data-ng-click="giveFeedback(recommendedHired, feedback, stars)">Responder</button>
 		</div>
 		
 		<div data-ng-show="recommendedHired.hasRecommendedFeedback">
@@ -15,3 +16,5 @@
 		</div>
 	</div>
 </div>
+
+<div class="emptystar"></div>

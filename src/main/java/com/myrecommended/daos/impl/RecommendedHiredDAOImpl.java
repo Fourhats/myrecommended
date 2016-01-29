@@ -2,6 +2,7 @@ package com.myrecommended.daos.impl;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -19,9 +20,10 @@ public class RecommendedHiredDAOImpl extends BaseDAOImpl<RecommendedHired, Long>
 	public Page<RecommendedHired> getRecommendedHired(int pageIndex, int pageSize, long userId) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
 		criteria.createAlias("user", "user");
-		//TODO: ES NECESARIO LO DE ABAJO
+		//TODO: ES NECESARIO LO DE ABAJO?
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		
+		criteria.addOrder(Order.desc("hiredDate"));
 		criteria.add(Restrictions.eq("user.id", userId));
 
 		return getPageByCriteria(criteria, pageIndex, pageSize);
@@ -30,9 +32,10 @@ public class RecommendedHiredDAOImpl extends BaseDAOImpl<RecommendedHired, Long>
 	public Page<RecommendedHired> getCustomers(int pageIndex, int pageSize, long recommendedId) {
 		DetachedCriteria criteria = DetachedCriteria.forEntityName(entityName);
 		criteria.createAlias("recommended", "recommended");
-		//TODO: ES NECESARIO LO DE ABAJO
+		//TODO: ES NECESARIO LO DE ABAJO?
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		
+		criteria.addOrder(Order.desc("hiredDate"));
 		criteria.add(Restrictions.eq("recommended.id", recommendedId));
 
 		return getPageByCriteria(criteria, pageIndex, pageSize);

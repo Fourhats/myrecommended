@@ -54,7 +54,7 @@ public class UserController extends BaseController {
 		CurrentUserDTO user =  this.userService.getUser(this.getUserId());
 		RecommendedDTO recommended = this.recommendedService.getRecommendedByUserId(user.getId());
 		List<CategoryDTO> categories = this.categoryService.getAllCategories();
-		//TODO: Dani, arregla esto
+
 		Page<QuestionDTO> questions = new Page<QuestionDTO>(new ArrayList<QuestionDTO>(),0,0,new Long(0));
 		Page<RecommendedHiredDTO> customersPage = new Page<RecommendedHiredDTO>(new ArrayList<RecommendedHiredDTO>(),0,0,new Long(0));
 		if (recommended != null){

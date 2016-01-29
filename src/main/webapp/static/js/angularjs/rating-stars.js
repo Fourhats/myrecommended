@@ -5,8 +5,9 @@ angular
 		directive.restrict = 'AE';
 	
 		directive.scope = {
-			score : '=score',
-			max : '=max'
+			score: '=score',
+			max: '=max',
+			readonly: '=readonly'
 		};
 	
 		directive.templateUrl = "static/js/angularjs/rating-stars.html";
@@ -35,8 +36,10 @@ angular
 			};
 	
 			scope.setRating = function(idx) {
-				scope.score = idx;
-				scope.stopHover();
+				if(!scope.readonly) {
+					scope.score = idx;
+					scope.stopHover();
+				}
 			};
 	
 			scope.$watch('score', function(newValue, oldValue) {
@@ -46,7 +49,7 @@ angular
 			});
 			
 			scope.$watch('hoverIdx', function(newValue, oldValue) {
-				if (newValue !== null && newValue !== undefined) {
+				if (!scope.readonly && newValue !== null && newValue !== undefined) {
 					scope.updateStars();
 				}
 			});

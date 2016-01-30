@@ -76,8 +76,8 @@
 						</div>
 				      	<div class="row questionRow" data-ng-repeat="question in questionsPage.elements">
 				        	<div class="col s10 pull-s2">
-					        	<img width="25" data-ng-src="{{getQuestionUserAvatarPath(question.userAvatarName)}}">
-					        	<span class="questionName" data-ng-bind="question.fullName"></span><br>
+					        	<img width="25" data-ng-src="{{getQuestionUserAvatarPath(question.user)}}">
+					        	<span class="questionName" data-ng-bind="question.user.fullName"></span><br>
 					        	<span width="100" class="questionContent" style="float: left;" data-ng-bind="question.description"></span>
 				        	</div>
 					        <div class="col s10 pull-s2 answer" data-ng-show="question.hasAnswer">
@@ -87,7 +87,6 @@
 					        </div>
 					        <div class="col s10 pull-s2 answer" data-ng-show="recommended.isOwner && !question.hasAnswer">
 								<input data-ng-model="newAnswer" placeholder="¡Responde la consulta!" id="new_answer_{{question.id}}" type="text" class="validate">
-						        <label for="new_answer_{{question.id}}">Respuesta</label>
 								<button data-ng-click="addAnswer(newAnswer, question)">Responder</button>
 							</div>
 							<hr>

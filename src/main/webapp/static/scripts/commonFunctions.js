@@ -12,6 +12,9 @@ function redirect(path){
 
 function getImagePath(actionControllerName, imageName, type){
 	type = type || 'none';
+	if(!imageName) {
+		return getCompletePath("imageHandler/" + actionControllerName) + '?fileName=&type=' + type;
+	}
 	return getCompletePath("imageHandler/" + actionControllerName) + '?fileName=' + imageName + '&type=' + type;
 }
 

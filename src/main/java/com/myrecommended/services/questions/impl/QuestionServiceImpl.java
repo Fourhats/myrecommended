@@ -24,18 +24,15 @@ public class QuestionServiceImpl implements QuestionService {
 	
 	@Autowired
 	private QuestionSearcher questionSearcher;
-	
 
 	public QuestionDTO addQuestion(QuestionRequestDTO questionDto) throws MyRecommendedBusinessException {
 		Question question = this.questioner.MakeQuestion(questionDto);
 		return MapperUtil.map(mapper, question, QuestionDTO.class);
 	}
 
-
 	public void answerQuestion(AnswerRequestDTO answerDto) throws MyRecommendedBusinessException {
 		this.questioner.answerQuestion(answerDto);
 	}
-
 
 	public Page<QuestionDTO> getQuestions(long entityId, int pageIndex, int pageSize) {
 		Page<Question> questionsPage = this.questionSearcher.getPage(pageIndex, pageSize, entityId);

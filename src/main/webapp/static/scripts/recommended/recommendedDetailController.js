@@ -103,8 +103,12 @@ myRecommendedApp.controller(recommendedDetailController, function ($scope, $http
 		}
 	};
 	
-	$scope.getQuestionUserAvatarPath = function(userAvatarName) {
-		return getImagePath('avatarThumb', userAvatarName, 'small');
+	$scope.getQuestionUserAvatarPath = function(user) {
+		if(user.isFacebookLogin) {
+			return 'http://graph.facebook.com/' + user.providerId + '/picture?type=large';
+		} 
+
+		return getImagePath('avatarThumb', user.avatarName, 'small');
 	};
     
     $(document).ready(function() {

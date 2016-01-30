@@ -1,5 +1,7 @@
 package com.myrecommended.services.users.dtos;
 
+import com.myrecommended.constants.SignInProvider;
+
 public class BaseUserDTO {
 
 	private Long id;
@@ -13,6 +15,12 @@ public class BaseUserDTO {
 	private String fullName;
 	
 	private String avatarName;
+	
+	private String signInProvider;
+	
+	private String providerId;
+	
+	private boolean isFacebookLogin;
 
 	public Long getId() {
 		return id;
@@ -61,5 +69,30 @@ public class BaseUserDTO {
 
 	public void setAvatarName(String avatarName) {
 		this.avatarName = avatarName;
+	}
+
+	public String getSignInProvider() {
+		return signInProvider;
+	}
+
+	public void setSignInProvider(String signInProvider) {
+		this.signInProvider = signInProvider;
+	}
+
+	public String getProviderId() {
+		return providerId;
+	}
+
+	public void setProviderId(String providerId) {
+		this.providerId = providerId;
+		this.setIsFacebookLogin(this.signInProvider.equals(SignInProvider.FACEBOOK.getValue()));
+	}
+
+	public boolean isFacebookLogin() {
+		return isFacebookLogin;
+	}
+
+	public void setIsFacebookLogin(boolean isFacebookLogin) {
+		this.isFacebookLogin = isFacebookLogin;
 	}
 }

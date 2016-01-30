@@ -7,30 +7,21 @@
   <mapping wildcard="false">
     <class-a>com.myrecommended.models.Question</class-a>
     <class-b>com.myrecommended.services.questions.dtos.QuestionDTO</class-b>
-      
       <field>
         <a>id</a>
         <b>id</b>
       </field>
-
 	  <field>
-	  	<a>user.name</a>
-	  	<b>userName</b>
+	  	<a>answers</a>
+	  	<b>answers</b>
 	  </field>
-
 	  <field>
-	  	<a>user.surname</a>
-	  	<b>userSurname</b>
-	  </field>
-	  
-	  <field>
-	  	<a>user.avatarName</a>
-	  	<b>userAvatarName</b>
-	  </field>
-	  
-	  <field><a>answers</a><b>answers</b></field><field>
 	  	<a>description</a>
 	  	<b>description</b>
 	  </field>
+  	  <field>
+  	  	<a>user</a>
+  	  	<b>user</b>
+  	  </field>
   </mapping>
 </mappings>

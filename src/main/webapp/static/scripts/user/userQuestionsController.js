@@ -1,5 +1,7 @@
 myRecommendedApp.controller('userQuestionsController', function($scope, $http, $filter, toastr) {
 	$scope.questionsPage = questionsPage;
+	$scope.recommended = recommended;
+	$scope.recommended.avatarPath = getCurrentUserImagePath('currentRecommendedAvatarThumb', "medium");
 	
 	$scope.addAnswer = function(newAnswer, question) {
 		if (newAnswer) {
@@ -26,8 +28,12 @@ myRecommendedApp.controller('userQuestionsController', function($scope, $http, $
 		}
 	};
 	
-	$scope.getQuestionUserAvatarPath = function(userAvatarName) {
-		return getImagePath('avatarThumb', userAvatarName, 'small');
+	$scope.getQuestionUserAvatarPath = function(user) {
+		if(user.isFacebookLogin) {
+			return 'http://graph.facebook.com/' + user.providerId + '/picture?type=large';
+		} 
+
+		return getImagePath('avatarThumb', user.avatarName, 'small');
 	};
 	
 	$scope.$parent.currentPage = "userQuestions";

@@ -86,7 +86,7 @@
 					        	<span width="100" class="questionContent" style="float: left;" data-ng-bind="question.answers[0].description"></span>
 					        </div>
 					        <div class="col s10 pull-s2 answer" data-ng-show="recommended.isOwner && !question.hasAnswer">
-								<input data-ng-model="newAnswer" placeholder="¡Responde la consulta!" id="new_answer_{{question.id}}" type="text" class="validate">
+								<input data-ng-model="newAnswer" placeholder="&iexcl;Responde la consulta!" id="new_answer_{{question.id}}" type="text" class="validate">
 								<button data-ng-click="addAnswer(newAnswer, question)">Responder</button>
 							</div>
 							<hr>

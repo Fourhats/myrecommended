@@ -8,15 +8,15 @@
 
 <header data-ng-controller="headerController">
 	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="<%=headerPageContext%>/perfil">Mi Perfíl</a></li>
+		<li><a href="<%=headerPageContext%>/perfil">Mi Perfil</a></li>
 		<li><a href='<c:url value="javascript:redirect(\"j_spring_security_logout\")" />'>Salir</a></li>
 	</ul>
 	<nav>
 	  <div class="nav-wrapper">
 	    <a href="javascript:redirect('home');" class="brand-logo"><img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" /></a>
 	    <ul class="right hide-on-med-and-down">
-			<li><a href="#">Ofrece tus servicios gratis!</a></li>
-			<li><a href="#">Como funciona?</a></li>
+			<li><a href="#">&iexcl;Ofrece tus servicios gratis!</a></li>
+			<li><a href="#">&iquest;C&otilde;mo funciona?</a></li>
 			<sec:authorize access="!isAuthenticated()">
 				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 			</sec:authorize>
@@ -25,8 +25,8 @@
 			</sec:authorize>	
 	    </ul>
 		<ul id="slide-out" class="side-nav">
-			<li><a href="#">Ofrece tus servicios gratis!</a></li>
-			<li><a href="#">Como funciona?</a></li>
+			<li><a href="#">&iexcl;Ofrece tus servicios gratis!</a></li>
+			<li><a href="#">&iquest;C&otilde;mo funciona?</a></li>
 			<sec:authorize access="!isAuthenticated()">
 				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 			</sec:authorize>
@@ -42,7 +42,7 @@
 
 <div id="login" class="modal" style="text-align: center;" data-ng-controller="loginController">
 	<div class="col m12">
-		<h1 class="header center-on-small-only modalHeader">Inicia Sesión</h1>
+		<h1 class="header center-on-small-only modalHeader">Inicia Sesi&otilde;n</h1>
 	</div>
 	<div class="modal-content" style="margin-left: auto; margin-right: auto;">
 		<div id="loginForm">
@@ -53,12 +53,12 @@
 				</div>
 				<div class="input-field col s6">
 					<input id="contrasena" type="password" required maxlength="100" data-ng-model="user.password"> 
-					<label for="contrasena">Contraseña</label>
+					<label for="contrasena">Contrase&ntilde;a</label>
 				</div>
 				<div class="row">
 					<div class="col s6">
 						<button class="btn-large waves-effect waves-light modalButton" data-ng-disabled="loginForm.$invalid" type="submit">
-							Inicia sesión
+							Inicia sesi&otilde;n
 						</button>
 					</div>
 					<div class="col s6">
@@ -69,18 +69,18 @@
 					<div class="col s12">
 						<br>
 						<a class="" type="button" data-ng-enabled="!user.email" data-ng-click="askNewPassword()">
-							Olvide mi contraseña
+							Olvide mi contrase&ntilde;a
 						</a>
 					</div>
 				</div>
 			</form>
 
-			¿No tenés una cuenta? <br>
+			&iquest;No ten&etilde;s una cuenta? <br>
 			<button id="register" class="btn-large waves-effect waves-light blue darken-1">Registrate</button>
 		</div>
 		<div id="registerForm">
 			<div class="col m12 ng-hide" data-ng-show="error != undefined">
-				<strong>Ups!</strong> <span data-ng-bind="error"></span>.
+				<strong>&iexcl;Ups!</strong> <span data-ng-bind="error"></span>.
 			</div>
 			<form class="contact-form" data-ng-submit="registerUser()"
 				name="registrationForm">
@@ -93,7 +93,7 @@
 									Debe ingresar su nombre
 								</span> 
 								<span data-ng-show="registrationForm.name.$error.maxlength">
-									Supera la cantidad mï¿½xima de caracteres
+									Supera la cantidad m&atilde;xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -106,7 +106,7 @@
 									Debe ingresar su apellido
 								</span>
 								<span data-ng-show="registrationForm.surname.$error.maxlength">
-									Supera la cantidad mï¿½xima de caracteres
+									Supera la cantidad m&atilde;xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -119,7 +119,7 @@
 								Debe ingresar su nombre de usuario
 							</span>
 							<span data-ng-show="registrationForm.username.$error.maxlength">
-								Supera la cantidad maxima de caracteres</span>
+								Supera la cantidad m&atilde;xima de caracteres</span>
 							</label>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 									Debe ingresar un e-mail valido
 								</span>
 								<span data-ng-show="registrationForm.email.$error.maxlength">
-									Supera la cantidad maxima de caracteres
+									Supera la cantidad m&atilde;xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -144,13 +144,13 @@
 							<input name="password" required maxlength="50" data-ng-minlength="5" placeholder="Contraseï¿½a" type="password" tabindex="8" data-ng-model="newUser.password" />
 							<label class="ng-hide" for="password" data-ng-show="registrationForm.password.$dirty && registrationForm.password.$invalid">
 								<span data-ng-show="registrationForm.password.$error.required">
-									Debe ingresar su contraseï¿½a
+									Debe ingresar su contrase&ntilde;a
 								</span> 
 								<span data-ng-show="registrationForm.password.$error.maxlength">
-									Supera la cantidad maxima de caracteres
+									Supera la cantidad m&atilde;xima de caracteres
 								</span> 
 								<span data-ng-show="registrationForm.password.$error.minlength">
-									Debe tener mas de 5 caracteres
+									Debe tener m&atilde;s de 5 caracteres
 								</span>
 							</label>
 						</div>

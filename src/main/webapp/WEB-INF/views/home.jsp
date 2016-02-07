@@ -12,8 +12,7 @@
 			<br>
 			<h1 class="center">Mis Recomendados</h1>
 			<div class="row center">
-				<h5 class="header col s12 light">¡La mejor manera de contratar
-					servicios!</h5>
+				<h5 class="header col s12 light">¡La mejor manera de contratar servicios!</h5>
 			</div>
 			<div class="row center homeSearch">
 				<!-- <div class="input-field col s3 m3">

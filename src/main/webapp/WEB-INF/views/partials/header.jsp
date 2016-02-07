@@ -15,8 +15,8 @@
 	  <div class="nav-wrapper">
 	    <a href="javascript:redirect('home');" class="brand-logo"><img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" /></a>
 	    <ul class="right hide-on-med-and-down">
-			<li><a href="#">&iexcl;Ofrece tus servicios gratis!</a></li>
-			<li><a href="#">&iquest;C&otilde;mo funciona?</a></li>
+			<li><a href="<%=headerPageContext%>/tusServicios">&iexcl;Ofrece tus servicios gratis!</a></li>
+			<li><a href="<%=headerPageContext%>/comoFunciona">&iquest;C&otilde;mo funciona?</a></li>
 			<sec:authorize access="!isAuthenticated()">
 				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 			</sec:authorize>

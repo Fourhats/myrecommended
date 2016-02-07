@@ -26,4 +26,14 @@ public class HomeController {
 		
 		return "home";
     }
+	
+	@RequestMapping(value="/tusServicios")
+    public String giveYourServices(Model model) {
+		return "/info/giveYourServices";
+    }
+	
+	@RequestMapping(value="/comoFunciona")
+    public String howWorks(Model model) {
+		return "/info/howWorks";
+    }
 }

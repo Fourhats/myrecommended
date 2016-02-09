@@ -2,8 +2,6 @@ package com.myrecommended.services.users.impl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.AuthenticationFailedException;
@@ -15,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.myrecommended.business.MyRecommendedBusinessException;
-import com.myrecommended.business.emails.EmailSender;
+import com.myrecommended.business.emails.EmailManager;
 import com.myrecommended.business.users.UserGenerator;
 import com.myrecommended.business.users.UserSearcher;
 import com.myrecommended.business.users.UserUpdater;
@@ -26,6 +24,7 @@ import com.myrecommended.services.users.UserService;
 import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
+import com.myrecommended.services.users.dtos.SendContactRequestDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
@@ -50,7 +49,7 @@ public class UserServiceImpl implements UserService {
 	private UserUpdater userUpdater;
 	
 	@Autowired
-	private EmailSender emailSender;
+	private EmailManager emailManager;
 	
 	@Value("#{configProps}")
 	private Properties properties;
@@ -112,5 +111,10 @@ public class UserServiceImpl implements UserService {
 		changePasswordDto.setUserId(user.getId());
 		
 		this.userUpdater.changePassword(changePasswordDto);
+	}
+
+	@Override
+	public void sendContact(SendContactRequestDTO sendContactDto) {
+		this.emailManager.SendContact(sendContactDto);
 	}
 }

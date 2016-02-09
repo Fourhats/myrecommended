@@ -1,8 +1,5 @@
 package com.myrecommended.business.users;
 
-import javax.mail.AuthenticationFailedException;
-import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

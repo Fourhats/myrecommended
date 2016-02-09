@@ -13,6 +13,7 @@ import com.myrecommended.business.MyRecommendedBusinessException;
 import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
+import com.myrecommended.services.users.dtos.SendContactRequestDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
@@ -43,4 +44,6 @@ public interface UserService {
 	String getUserAvatar(long userId);
 
 	void askForNewPassword(AskNewPasswordRequestDTO askNewPasswordDTO) throws MyRecommendedBusinessException, AuthenticationFailedException, MessagingException;
+
+	void sendContact(SendContactRequestDTO sendContactDto);
 }

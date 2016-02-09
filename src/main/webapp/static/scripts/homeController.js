@@ -1,4 +1,4 @@
-myRecommendedApp.controller('homeController', function ($scope, $http) {
+myRecommendedApp.controller('homeController', function ($scope) {
 	$scope.categories = categories;
 	
 	angular.forEach($scope.categories, function(category, cKey) {

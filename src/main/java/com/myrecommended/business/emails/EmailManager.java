@@ -15,6 +15,7 @@ import com.myrecommended.models.Answer;
 import com.myrecommended.models.Question;
 import com.myrecommended.models.Recommended;
 import com.myrecommended.models.User;
+import com.myrecommended.services.users.dtos.SendContactRequestDTO;
 
 @Component
 public class EmailManager {
@@ -107,6 +108,22 @@ public class EmailManager {
 		
 		try {
 			this.emailSender.sendEMail(answer.getQuestion().getUser().getEmail(), "Han respondido a tu pregunta - Mis Recomendados", this.properties.getProperty("folder.emails"), "questionAnsweredEmail", values);
+		} catch (AuthenticationFailedException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void SendContact(SendContactRequestDTO sendContactDto) {
+		Map<String, String> values = new HashMap<String, String>();
+		values.put("{Name}", sendContactDto.getName());
+		values.put("{Description}", sendContactDto.getDescription());
+		values.put("{Email}", sendContactDto.getEmail());
+		
+		try {
+			this.emailSender.sendEMail("danielorozco87@gmail.com", "Nuevo contacto - Mis Recomendados", this.properties.getProperty("folder.emails"), "newContactEmail", values);
+			this.emailSender.sendEMail("pedroalessandri@gmail.com", "Nuevo contacto - Mis Recomendados", this.properties.getProperty("folder.emails"), "newContactEmail", values);
 		} catch (AuthenticationFailedException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {

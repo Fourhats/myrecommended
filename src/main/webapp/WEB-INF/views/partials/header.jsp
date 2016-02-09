@@ -16,7 +16,7 @@
 	    <a href="javascript:redirect('home');" class="brand-logo"><img class="logoImage" src="<%=headerPageContext%>/static/img/logo.png" /></a>
 	    <ul class="right hide-on-med-and-down">
 			<li><a href="<%=headerPageContext%>/tusServicios">&iexcl;Ofrece tus servicios gratis!</a></li>
-			<li><a href="<%=headerPageContext%>/comoFunciona">&iquest;C&otilde;mo funciona?</a></li>
+			<li><a href="<%=headerPageContext%>/comoFunciona">&iquest;C&oacute;mo funciona?</a></li>
 			<sec:authorize access="!isAuthenticated()">
 				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 			</sec:authorize>
@@ -26,7 +26,7 @@
 	    </ul>
 		<ul id="slide-out" class="side-nav">
 			<li><a href="#">&iexcl;Ofrece tus servicios gratis!</a></li>
-			<li><a href="#">&iquest;C&otilde;mo funciona?</a></li>
+			<li><a href="#">&iquest;C&oacute;mo funciona?</a></li>
 			<sec:authorize access="!isAuthenticated()">
 				<li><a class="modal-trigger" href="#login"> Ingresa </a></li>
 			</sec:authorize>
@@ -42,7 +42,7 @@
 
 <div id="login" class="modal" style="text-align: center;" data-ng-controller="loginController">
 	<div class="col m12">
-		<h1 class="header center-on-small-only modalHeader">Inicia Sesi&otilde;n</h1>
+		<h1 class="header center-on-small-only modalHeader">Inicia Sesi&oacute;n</h1>
 	</div>
 	<div class="modal-content" style="margin-left: auto; margin-right: auto;">
 		<div id="loginForm">
@@ -58,7 +58,7 @@
 				<div class="row">
 					<div class="col s6">
 						<button class="btn-large waves-effect waves-light modalButton" data-ng-disabled="loginForm.$invalid" type="submit">
-							Inicia sesi&otilde;n
+							Inicia sesi&oacute;n
 						</button>
 					</div>
 					<div class="col s6">
@@ -75,7 +75,7 @@
 				</div>
 			</form>
 
-			&iquest;No ten&etilde;s una cuenta? <br>
+			&iquest;No ten&eacute;s una cuenta? <br>
 			<button id="register" class="btn-large waves-effect waves-light blue darken-1">Registrate</button>
 		</div>
 		<div id="registerForm">
@@ -93,7 +93,7 @@
 									Debe ingresar su nombre
 								</span> 
 								<span data-ng-show="registrationForm.name.$error.maxlength">
-									Supera la cantidad m&atilde;xima de caracteres
+									Supera la cantidad m&aacute;xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -106,7 +106,7 @@
 									Debe ingresar su apellido
 								</span>
 								<span data-ng-show="registrationForm.surname.$error.maxlength">
-									Supera la cantidad m&atilde;xima de caracteres
+									Supera la cantidad m&aacute;xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -119,7 +119,7 @@
 								Debe ingresar su nombre de usuario
 							</span>
 							<span data-ng-show="registrationForm.username.$error.maxlength">
-								Supera la cantidad m&atilde;xima de caracteres</span>
+								Supera la cantidad m&aacute;xima de caracteres</span>
 							</label>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 									Debe ingresar un e-mail valido
 								</span>
 								<span data-ng-show="registrationForm.email.$error.maxlength">
-									Supera la cantidad m&atilde;xima de caracteres
+									Supera la cantidad m&aacute;xima de caracteres
 								</span>
 							</label>
 						</div>
@@ -147,10 +147,10 @@
 									Debe ingresar su contrase&ntilde;a
 								</span> 
 								<span data-ng-show="registrationForm.password.$error.maxlength">
-									Supera la cantidad m&atilde;xima de caracteres
+									Supera la cantidad m&aacute;xima de caracteres
 								</span> 
 								<span data-ng-show="registrationForm.password.$error.minlength">
-									Debe tener m&atilde;s de 5 caracteres
+									Debe tener m&aacute;s de 5 caracteres
 								</span>
 							</label>
 						</div>

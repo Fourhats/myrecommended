@@ -21,6 +21,7 @@ import com.myrecommended.services.users.UserService;
 import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
+import com.myrecommended.services.users.dtos.SendContactRequestDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.myrecommended.services.utils.MyRecommendedBaseDTO;
@@ -148,5 +149,10 @@ public class UserApiController extends BaseController {
 		}
 		
 		return returnObject;
+	}
+	
+	@RequestMapping(value="/users/sendContact", method = RequestMethod.POST)
+	public void sendContact(@RequestBody SendContactRequestDTO sendContactDto) {
+		this.userService.sendContact(sendContactDto);
 	}
 }

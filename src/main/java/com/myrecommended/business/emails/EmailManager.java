@@ -120,6 +120,7 @@ public class EmailManager {
 		values.put("{Name}", sendContactDto.getName());
 		values.put("{Description}", sendContactDto.getDescription());
 		values.put("{Email}", sendContactDto.getEmail());
+		values.put("{Phone}", sendContactDto.getPhone());
 		
 		try {
 			this.emailSender.sendEMail("danielorozco87@gmail.com", "Nuevo contacto - Mis Recomendados", this.properties.getProperty("folder.emails"), "newContactEmail", values);

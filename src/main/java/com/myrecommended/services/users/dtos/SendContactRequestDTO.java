@@ -6,6 +6,8 @@ public class SendContactRequestDTO {
 	
 	private String email;
 	
+	private String phone;
+	
 	private String description;
 
 	public String getName() {
@@ -22,6 +24,14 @@ public class SendContactRequestDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getDescription() {

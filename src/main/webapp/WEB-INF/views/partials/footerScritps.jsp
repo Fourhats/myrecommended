@@ -1,23 +1,23 @@
 <% String footerScriptsPageContext = request.getContextPath(); %>
  <a style="position: fixed; bottom: 15px; right: 30px;" class="btn-floating btn-large waves-effect waves-light btn modal-trigger" href="#contactForm"><i class="material-icons">email</i></a>
 
-  <!-- Modal Structure -->
-  <div id="contactForm" class="modal">
-    		<div class="modal-content-question">
-      			<h4 style="text-align: center;">¡Escribinos!</h4>
-      			<p style="padding: 0px;text-align: center;">¿Tenes dudas, consultas o sugerencias sobre Mis Recomendados?<br>¿Queres formar parte de nuestra base de profesionales?<br><b>Escribinos que en breve te estaremos contactando!</b></p>
-			    <form class="col s12">
-			    	<div class="row">
-			        	<div class="input-field col s12">
-							<input placeholder="Tu email" id="new_question" type="text" class="validate">
-							<input placeholder="Tu nombre" id="new_question" type="text" class="validate">
-							<textarea placeholder="Tus comentarios"id="textarea1" class="materialize-textarea"></textarea>
-			        	</div>
-			      	</div>
-			    	<button id="questionButton" data-ng-click="addQuestion(newQuestion)" type="submit" class="waves-effect waves-light btn">Enviar</button>
-				</form>
-    		</div>
-  </div>
+ <!-- Modal Structure -->
+ <div id="contactForm" class="modal" data-ng-controller="sendContactController">
+  	<div class="modal-content-question">
+    	<h4 style="text-align: center;">¡Escribinos!</h4>
+    	<p style="padding: 0px;text-align: center;">¿Tenes dudas, consultas o sugerencias sobre Mis Recomendados?<br>¿Queres formar parte de nuestra base de profesionales?<br><b>Escribinos que en breve te estaremos contactando!</b></p>
+	    <form class="col s12">
+	    	<div class="row">
+	        	<div class="input-field col s12">
+					<input data-ng-model="contact.email" placeholder="Tu email" type="text" class="validate">
+					<input data-ng-model="contact.name" placeholder="Tu nombre" type="text" class="validate">
+					<textarea data-ng-model="contact.description" placeholder="Tus comentarios" class="materialize-textarea"></textarea>
+				</div>
+			</div>
+			<button data-ng-click="sendContact()" type="submit" class="waves-effect waves-light btn">Enviar</button>
+		</form>
+	</div>
+</div>
 <footer class="page-footer">
 	<div class="container">
 		<div class="row">
@@ -54,4 +54,5 @@
 
 <script type="text/javascript" src="<%=footerScriptsPageContext%>/static/js/angularjs/imageUploader/ngThumbDirective.js"></script>
 <script type="text/javascript" src="<%=footerScriptsPageContext%>/static/scripts/headerController.js"></script>
+<script type="text/javascript" src="<%=footerScriptsPageContext%>/static/scripts/info/sendContactController.js"></script>
 <script type="text/javascript" src="<%=footerScriptsPageContext%>/static/js/jquery.fancybox.js"></script>

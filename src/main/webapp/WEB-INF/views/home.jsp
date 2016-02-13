@@ -108,16 +108,6 @@
 		<br> <br>
 		
 		<img style="width: 100%;" src="<%=headerPageContext%>/static/img/bannerIcons.png" />
-		
-		<!-- 
-		<div class="section">
-			<div class="row homeImages">
-				<div class="col s12 m3" data-ng-repeat="category in categories">
-					<img data-ng-src="{{category.image}}" data-ng-attr-title="{{category.name}}"/>
-				</div>
-			</div>
-		</div>
-		 -->
 	</div>
 </body>
 <%@ include file="partials/scripts.jsp"%>

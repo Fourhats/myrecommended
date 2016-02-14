@@ -4,7 +4,10 @@ myRecommendedApp.controller(sendContactController, function ($scope, $http, toas
 	$scope.sendContact = function() {
 		if($scope.contact.name && $scope.contact.description && $scope.contact.email) {
 			showMainProgressBar();
-		
+			if(!$scope.contact.phone) {
+				$scope.contact.phone = "";
+			}
+			
 			var sendContactUrl = "users/sendContact";
 			
 			$http.post(getCompletePath(sendContactUrl), JSON.stringify($scope.contact))

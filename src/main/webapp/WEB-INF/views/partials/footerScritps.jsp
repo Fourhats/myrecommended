@@ -1,5 +1,7 @@
 <% String footerScriptsPageContext = request.getContextPath(); %>
- <a style="position: fixed; bottom: 15px; right: 30px;" class="btn-floating btn-large waves-effect waves-light btn modal-trigger" href="#contactForm"><i class="material-icons">email</i></a>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
+<a style="position: fixed; bottom: 15px; right: 30px;" class="btn-floating btn-large waves-effect waves-light btn modal-trigger" href="#contactForm"><i class="material-icons">email</i></a>
 
  <!-- Modal Structure -->
  <div id="contactForm" class="modal" data-ng-controller="sendContactController">
@@ -29,16 +31,19 @@
 				<h5 class="white-text">Links</h5>
 				<ul>
 					<li>
-						<a class="grey-text text-lighten-3" href="#!"> ¡Ofrece tus servicios!</a>
+						<a class="grey-text text-lighten-3" href="<%=footerScriptsPageContext%>/tusServicios"> ¡Ofrece tus servicios!</a>
 					</li>
 					<li>
-						<a class="grey-text text-lighten-3" href="#!">¿Como funciona?</a>
+						<a class="grey-text text-lighten-3" href="<%=footerScriptsPageContext%>/comoFunciona"">¿Como funciona?</a>
 					</li>
+					<sec:authorize access="!isAuthenticated()">
+						<li>
+							<a class="grey-text text-lighten-3 modal-trigger" href="#login">Ingresa</a>
+						</li>
+					</sec:authorize>
+					
 					<li>
-						<a class="grey-text text-lighten-3" href="#!">Ingresa</a>
-					</li>
-					<li>
-						<a class="grey-text text-lighten-3" href="#!">Contacto</a>
+						<a class="grey-text text-lighten-3 modal-trigger" href="#contactForm">Contacto</a>
 					</li>
 				</ul>
 			</div>
@@ -47,7 +52,7 @@
 	<div class="footer-copyright">
 		<div class="container">
 			© 2015 Copyright Mis Recomendados 
-			<a class="grey-text text-lighten-4 right" href="#!">¡Registrate!</a>
+			<a class="grey-text text-lighten-4 right modal-trigger" href="#login">¡Registrate!</a>
 		</div>
 	</div>
 </footer>

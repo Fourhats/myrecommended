@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <html data-ng-app="myRecommendedApp">
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 	<%@ include file="partials/styles.jsp"%>
 </head>
 <body data-ng-controller="homeController">
@@ -102,8 +102,11 @@
 					<a href="#">Service Técnico PC</a><br>	
 				</div>			
 			</div>
-			
-
+			<div class="row">
+				<div class="col s12 center">
+					<a class="btn-large waves-effect waves-light" href="comoFunciona">¡Descubrí como funciona Mis Recomendados!</a>
+				</div>
+			</div>		
 		</div>
 		<br> <br>
 		

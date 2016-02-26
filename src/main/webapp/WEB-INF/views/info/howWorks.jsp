@@ -2,9 +2,21 @@
 <html data-ng-app="myRecommendedApp">
 <head>
 	<%@ include file="../partials/styles.jsp"%>
+	<style>
+		.row .col.s6 {
+			width: 50%;
+			margin-left: 0;
+			text-align: center;
+		}
+
+		.row{
+			width: 75%;
+		}
+	</style>
 </head>
 <body>
 	<%@ include file="../partials/header.jsp"%>
+	<br>
 	<div class="row">
 		<div class="col s6" style="text-align: center;">
 			<h3>Paso 1: Buscas el servicio que deseas</h3>

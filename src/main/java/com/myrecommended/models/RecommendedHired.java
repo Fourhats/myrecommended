@@ -35,6 +35,12 @@ public class RecommendedHired extends PersistibleEntity {
     @Column(name="star")
     private int star;
     
+    @Column(name="priceStars")
+    private int priceStars;
+    
+    @Column(name="timeStars")
+    private int timeStars;
+    
     @Column(name="recommendedFeedback")
     private String recommendedFeedback;
     
@@ -71,6 +77,22 @@ public class RecommendedHired extends PersistibleEntity {
 
 	public void setStar(int star) {
 		this.star = star;
+	}
+	
+	public int getPriceStars() {
+		return priceStars;
+	}
+
+	public void setPriceStars(int priceStars) {
+		this.priceStars = priceStars;
+	}
+
+	public int getTimeStars() {
+		return timeStars;
+	}
+
+	public void setTimeStars(int timeStars) {
+		this.timeStars = timeStars;
 	}
 
 	public String getRecommendedFeedback() {

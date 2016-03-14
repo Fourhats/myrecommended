@@ -3,16 +3,20 @@
 		<div data-ng-show="!recommendedHired.hasRecommendedFeedback">
 			<div data-ng-bind="recommendedHired.recommended.name"></div>
 			<input data-ng-model="feedback" placeholder="&iquest;Qu&eacute; te parecio el servicio?" type="text" class="validate">
-			<ratingstars score="stars" max="5" readonly="false" class="pull-left"></ratingstars>
+			<ratingstars labelvalue="'Calidad:'" score="stars" max="5" readonly="false" class="pull-left"></ratingstars>
+			<ratingstars labelvalue="'Precio:'" score="priceStars" max="5" readonly="false" class="pull-left"></ratingstars>
+			<ratingstars labelvalue="'Tiempo:'" score="timeStars" max="5" readonly="false" class="pull-left"></ratingstars>
 			
-			<button class="waves-effect waves-light btn" data-ng-disabled="!feedback || isSaving" data-ng-click="giveFeedback(recommendedHired, feedback, stars)">Responder</button>
+			<button class="waves-effect waves-light btn" data-ng-disabled="!feedback || isSaving" data-ng-click="giveFeedback(recommendedHired, feedback, stars, priceStars, timeStars)">Responder</button>
 		</div>
 		
 		<div data-ng-show="recommendedHired.hasRecommendedFeedback">
 			<div style="font-weight: bold;" data-ng-bind="recommendedHired.recommended.name"></div>
 			<div data-ng-bind="recommendedHired.recommendedFeedback"></div>
 			<hr style="width: 100%;"/>
-			<ratingstars score="recommendedHired.star" max="5" readonly="true" class="pull-left"></ratingstars>
+			<ratingstars labelvalue="'Calidad:'" score="recommendedHired.star" max="5" readonly="true" class="pull-left"></ratingstars>
+			<ratingstars labelvalue="'Precio:'" score="recommendedHired.priceStars" max="5" readonly="true" class="pull-left"></ratingstars>
+			<ratingstars labelvalue="'Tiempo:'" score="recommendedHired.timeStars" max="5" readonly="true" class="pull-left"></ratingstars>
 		</div>
 	</div>
 </div>

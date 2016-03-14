@@ -2,12 +2,12 @@ var hiredRecommendedController = "hiredRecommendedController";
 
 myRecommendedApp.controller(hiredRecommendedController, function($scope, $http, toastr) {
 	$scope.recommendedsHiredPage = recommendedsHiredPage;
-	$scope.giveFeedback = function(recommendedHired, feedback, stars) {
+	$scope.giveFeedback = function(recommendedHired, feedback, stars, priceStars, timeStars) {
 		if (feedback) {
 			$scope.isSaving = true;
 			showMainProgressBar();
 			
-			var recommendedFeedbackRequest = {recommendedHiredId : recommendedHired.id, feedback: feedback, stars: stars};
+			var recommendedFeedbackRequest = {recommendedHiredId : recommendedHired.id, feedback: feedback, stars: stars, priceStars: priceStars, timeStars: timeStars};
 			var giveFeedbackUrl = "recommended/giveFeedbackToRecommended";
 			
 			$http.post(getCompletePath(giveFeedbackUrl), JSON.stringify(recommendedFeedbackRequest))
@@ -17,6 +17,8 @@ myRecommendedApp.controller(hiredRecommendedController, function($scope, $http, 
 				} else {
 					recommendedHired.hasRecommendedFeedback = true;
 					recommendedHired.star = stars;
+					recommendedHired.priceStars = priceStars;
+					recommendedHired.timeStars = timeStars;
 					recommendedHired.recommendedFeedback = feedback;
 					toastr.success('Has calificado al recomendado exitosamente');
 				}

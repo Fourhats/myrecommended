@@ -13,6 +13,8 @@ public class CurrentUserDTO extends MyRecommendedBaseDTO {
 	//TODO: SIRVE EL ID ACTUAL?
 	private Long id;
 	
+	private boolean canBeRecommended;
+	
 	private String email;
 	
 	private String username;
@@ -35,6 +37,14 @@ public class CurrentUserDTO extends MyRecommendedBaseDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public boolean isCanBeRecommended() {
+		return canBeRecommended;
+	}
+
+	public void setCanBeRecommended(boolean canBeRecommended) {
+		this.canBeRecommended = canBeRecommended;
 	}
 
 	public String getEmail() {

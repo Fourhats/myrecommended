@@ -8,6 +8,10 @@ public class RecommendedFeedbackRequestDTO {
 	
 	private int stars;
 
+	private int priceStars;
+	
+	private int timeStars;
+	
 	public long getRecommendedHiredId() {
 		return recommendedHiredId;
 	}
@@ -30,5 +34,21 @@ public class RecommendedFeedbackRequestDTO {
 
 	public void setStars(int stars) {
 		this.stars = stars;
+	}
+
+	public int getPriceStars() {
+		return priceStars;
+	}
+
+	public void setPriceStars(int priceStars) {
+		this.priceStars = priceStars;
+	}
+
+	public int getTimeStars() {
+		return timeStars;
+	}
+
+	public void setTimeStars(int timeStars) {
+		this.timeStars = timeStars;
 	}
 }

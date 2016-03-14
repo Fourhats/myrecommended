@@ -40,5 +40,9 @@
 			<a>signInProvider</a>
 			<b>signInProvider</b>
 		</field>
+		<field>
+			<a>canBeRecommended</a>
+			<b>canBeRecommended</b>
+		</field>
 	</mapping>
 </mappings>

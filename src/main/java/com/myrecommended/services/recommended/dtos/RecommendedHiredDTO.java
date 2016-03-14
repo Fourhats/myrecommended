@@ -17,6 +17,10 @@ public class RecommendedHiredDTO extends MyRecommendedBaseDTO {
     
     private int star;
     
+    private int priceStars;
+    
+    private int timeStars;
+    
     private String recommendedFeedback;
     
     private String userFeedback;
@@ -64,6 +68,22 @@ public class RecommendedHiredDTO extends MyRecommendedBaseDTO {
 	public void setStar(int star) {
 		this.star = star;
 		this.setHasRecommendedFeedback(this.star != 0);
+	}
+
+	public int getPriceStars() {
+		return priceStars;
+	}
+
+	public void setPriceStars(int priceStars) {
+		this.priceStars = priceStars;
+	}
+
+	public int getTimeStars() {
+		return timeStars;
+	}
+
+	public void setTimeStars(int timeStars) {
+		this.timeStars = timeStars;
 	}
 
 	public String getRecommendedFeedback() {

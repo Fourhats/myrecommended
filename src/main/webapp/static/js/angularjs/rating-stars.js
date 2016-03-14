@@ -7,12 +7,14 @@ angular
 		directive.scope = {
 			score: '=score',
 			max: '=max',
-			readonly: '=readonly'
+			readonly: '=readonly',
+			labelValue: '=labelvalue'
 		};
 	
 		directive.templateUrl = "static/js/angularjs/rating-stars.html";
 	
 		directive.link = function(scope, elements, attr) {
+			scope.labelValue = scope.labelValue;
 			scope.fullStarSrc = "static/img/ratingStars/fullstar.png";
 			scope.emptyStarSrc = "static/img/ratingStars/emptystar.png";
 	

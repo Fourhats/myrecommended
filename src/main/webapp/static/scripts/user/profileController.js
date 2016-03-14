@@ -32,6 +32,7 @@ myRecommendedApp.config(function($routeProvider) {
 
 myRecommendedApp.controller('MainProfileController', function($scope) {
 	$scope.unansweredQuestions = 0;
+	$scope.canBeRecommended = user.canBeRecommended;
 	
 	angular.forEach(questionsPage.elements, function(question, key) {
 		$scope.unansweredQuestions += question.hasAnswer ? 0 : 1;

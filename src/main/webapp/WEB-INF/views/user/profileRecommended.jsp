@@ -18,9 +18,9 @@
 					<div class="col l3 m12 s12 profileMenu">
 						<div class="collection">
 							<a href="#usuario" class="collection-item" data-ng-class="{'active' : currentPage == 'userProfile'}">Información del usuario</a> 
-							<a href="#recomendado" class="collection-item" data-ng-class="{'active' : currentPage == 'recommendedProfile'}">Información del recomendado</a> 
+							<a href="#recomendado" class="collection-item" data-ng-if="canBeRecommended" data-ng-class="{'active' : currentPage == 'recommendedProfile'}">Información del recomendado</a> 
 							<a href="#recomendadosContratados" class="collection-item" data-ng-class="{'active' : currentPage == 'hiredRecommended'}">Trabajos contratados</a> 
-							<a href="#trabajosRealizados" class="collection-item" data-ng-class="{'active' : currentPage == 'customers'}">Trabajos realizados</a> 
+							<a href="#trabajosRealizados" class="collection-item" data-ng-if="canBeRecommended" data-ng-class="{'active' : currentPage == 'customers'}">Trabajos realizados</a> 
 							<a href="#preguntas" class="collection-item" data-ng-class="{'active' : currentPage == 'userQuestions'}">Preguntas <span class="new badge" data-ng-bind="unansweredQuestions"></span></a>
 						</div>
 					</div>

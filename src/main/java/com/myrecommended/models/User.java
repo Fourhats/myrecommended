@@ -30,6 +30,7 @@ public class User extends PersistibleEntity {
 		this.avatarName = avatarName;
 		this.creationDate = new Date();
 		this.updateDate = new Date();
+		this.canBeRecommended = false;
 	}
 	
 	@Column(name="email",unique=true,nullable=false)
@@ -37,6 +38,9 @@ public class User extends PersistibleEntity {
 	
 	@Column(name="enabled")
 	private boolean enable;
+
+	@Column(name="canBeRecommended")
+	private boolean canBeRecommended;
 	
 	@Column(name="username",unique=true,nullable=false)
 	private String username;
@@ -86,6 +90,14 @@ public class User extends PersistibleEntity {
 
 	public void setEnable(boolean enable) {
 		this.enable = enable;
+	}
+
+	public boolean isCanBeRecommended() {
+		return canBeRecommended;
+	}
+
+	public void setCanBeRecommended(boolean canBeRecommended) {
+		this.canBeRecommended = canBeRecommended;
 	}
 
 	public String getUsername() {

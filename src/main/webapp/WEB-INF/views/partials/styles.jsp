@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/prism.css">
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/ghpages-materialize.css" type="text/cs" media="screen,projection">
 <link rel="stylesheet" href="<%=stylePageContext %>/static/css/jquery.fancybox.css" type="text/cs" media="screen,projection">
+<link href="<%=stylePageContext %>/static/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 

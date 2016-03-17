@@ -19,6 +19,7 @@
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/materialize.js"></script>
 <script type="text/javascript" src="<%=scriptPageContext%>/static/js/init.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<script src="<%=scriptPageContext%>/static/js/jquery.bxslider.js"></script>
 
 <script>
 	$('select').select2();
@@ -50,4 +51,13 @@
 	});
 	
 	$(".button-collapse").sideNav();
+	
+	$(document).ready(function(){
+	  $('.bxslider').bxSlider({
+		  minSlides: 3,
+		  maxSlides: 4,
+		  slideWidth: 220,
+		  slideMargin: 10
+		});
+	});
 </script>

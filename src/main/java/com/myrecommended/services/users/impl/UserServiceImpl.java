@@ -23,10 +23,10 @@ import com.myrecommended.models.User;
 import com.myrecommended.services.users.UserService;
 import com.myrecommended.services.users.dtos.AskNewPasswordRequestDTO;
 import com.myrecommended.services.users.dtos.ChangePasswordRequestDTO;
+import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.users.dtos.LoggedUserDTO;
 import com.myrecommended.services.users.dtos.SendContactRequestDTO;
 import com.myrecommended.services.users.dtos.UpdateUserRequestDTO;
-import com.myrecommended.services.users.dtos.CurrentUserDTO;
 import com.myrecommended.services.users.dtos.UserRequestDTO;
 import com.myrecommended.services.utils.FileHelper;
 import com.myrecommended.services.utils.MapperUtil;
@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
 		this.userUpdater.changePassword(changePasswordDto);
 	}
 
-	@Override
+	//@Override
 	public void sendContact(SendContactRequestDTO sendContactDto) {
 		this.emailManager.SendContact(sendContactDto);
 	}

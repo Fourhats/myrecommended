@@ -41,31 +41,39 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col s12 m4">
+				<div class="col s12 m3">
 					<div class="icon-block">
 						<h5 class="center"><span class="numberingHome">1</span>Contanos tú necesidad</h5>
 						<p class="light">Con tu ubicación y el especialista que
 							busques vamos a seleccionar los mejores candidatos disponibles</p>
 					</div>
 				</div>
-
-				<div class="col s12 m4">
+				<div class="col s12 m3">
 					<div class="icon-block">
 						<h5 class="center"><span class="numberingHome">2</span>Elegí a tu recomendado</h5>
 						<p class="light">Revisa los recomendados que quieras entre los
 							cientos que tenemos disponibles en nuestra red de profesionales</p>
 					</div>
 				</div>
-
-				<div class="col s12 m4">
+				<div class="col s12 m3">
 					<div class="icon-block">
 						<h5 class="center"><span class="numberingHome">3</span>¡Contratá!</h5>
 						<p class="light">Contactá al recomendado que buscabas y
 							resolvé tus problemas más rápido que nunca ;)</p>
 					</div>
 				</div>
+				<div class="col s12 m3">
+					<div class="icon-block">
+						<h5 class="center"><span class="numberingHome">4</span>Danos tu feedback</h5>
+						<p class="light">Ayudanos a formar la red de profesionales más grande y calificada del país 
+						dandonos tu feedback sobre los servicios que contrataste</p>
+					</div>
+				</div>
 			</div>
 			<br>
+			<div class="row center">
+				<h6 class="header col s12 light"><a href="tusServicios" style="color: white; text-decoration: underline;">Tenés a alguien para recomendarnos? Clickeá acá!</a></h6>
+			</div>
 			<br>
 		</div>
 	</div>
@@ -109,7 +117,15 @@
 			</div>		
 		</div>
 		<br> <br>
-		
+<h5 class="center">Mira los últimos feedbacks de los servicios contratados:</h5>		
+<ul class="bxslider">
+  <li><div style="height: 150px; text-align: center;"><span>Nombre del Recomendado</span><div style="background: #26a69a; color: white; line-height: 30px; height: 30px;">Feedback Positivo!</div><p/Feedback Positivo!</div><p style="font-style: italic">Descripción del feedback del recomendado</p></div></li>
+  <li><div style="height: 150px; text-align: center;"><span>Nombre del Recomendado</span><div style="background: #26a69a; color: white; line-height: 30px; height: 30px;">Feedback Positivo!</div><p/Feedback Positivo!</div><p style="font-style: italic">Descripción del feedback del recomendado</p></div></li>
+  <li><div style="height: 150px; text-align: center;"><span>Nombre del Recomendado</span><div style="background: #26a69a; color: white; line-height: 30px; height: 30px;">Feedback Positivo!</div><p/Feedback Positivo!</div><p style="font-style: italic">Descripción del feedback del recomendado</p></div></li>
+  <li><div style="height: 150px; text-align: center;"><span>Nombre del Recomendado</span><div style="background: #26a69a; color: white; line-height: 30px; height: 30px;">Feedback Positivo!</div><p/Feedback Positivo!</div><p style="font-style: italic">Descripción del feedback del recomendado</p></div></li>
+  <li><div style="height: 150px; text-align: center;"><span>Nombre del Recomendado</span><div style="background: #26a69a; color: white; line-height: 30px; height: 30px;">Feedback Positivo!</div><p/Feedback Positivo!</div><p style="font-style: italic">Descripción del feedback del recomendado</p></div></li>
+  <li><div style="height: 150px; text-align: center;"><span>Nombre del Recomendado</span><div style="background: #26a69a; color: white; line-height: 30px; height: 30px;">Feedback Positivo!</div><p/Feedback Positivo!</div><p style="font-style: italic">Descripción del feedback del recomendado</p></div></li>
+</ul>
 		<img style="width: 100%;" src="<%=headerPageContext%>/static/img/bannerIcons.png" />
 	</div>
 </body>
